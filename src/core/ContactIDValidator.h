@@ -33,7 +33,7 @@
 #ifndef CONTACTIDVALIDATOR_H
 #define CONTACTIDVALIDATOR_H
 
-#include <QRegularExpressionValidator>
+#include "../utils/QRegularExpressionValidator.h"
 #include "UserIdentity.h"
 
 class ContactIDValidator : public QRegularExpressionValidator
@@ -55,7 +55,7 @@ public:
     void setNotContactOfIdentity(UserIdentity *i) { m_uniqueIdentity = i; }
 
     virtual void fixup(QString &text) const;
-    virtual State validate(QString &text, int &pos) const;
+    virtual QValidator::State validate(QString &text, int &pos) const;
 
     Q_INVOKABLE ContactUser *matchingContact(const QString &text) const;
     Q_INVOKABLE bool matchesIdentity(const QString &text) const;
