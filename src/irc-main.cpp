@@ -125,6 +125,11 @@ signals:
 
 int main(int argc, char *argv[])
 {
+    /* Disable rwx memory.
+       This will also ensure full PAX/Grsecurity protections. */
+    qputenv("QV4_FORCE_INTERPRETER",  "1");
+    qputenv("QT_ENABLE_REGEXP_JIT",   "0");
+
     QCoreApplication app(argc, argv);
     app.setApplicationVersion(QLatin1String("1.1.1"));
     app.setOrganizationName(QStringLiteral("Ricochet"));
