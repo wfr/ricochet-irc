@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
     qputenv("QT_ENABLE_REGEXP_JIT",   "0");
 
     QCoreApplication app(argc, argv);
-    app.setApplicationVersion(QLatin1String("1.1.1"));
+    app.setApplicationVersion(QLatin1String("1.1.2"));
     app.setOrganizationName(QStringLiteral("Ricochet"));
     qSetMessagePattern(QString::fromLatin1("%{file}(%{line}): %{message}"));
 
