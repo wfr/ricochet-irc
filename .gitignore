@@ -31,4 +31,6 @@ config.tests/*/*
 !config.tests/*/*.cpp
 !config.tests/*/*.h
 ricochet
+ricochet.pro.user
 ricochet-irc
+ricochet-irc.pro.user

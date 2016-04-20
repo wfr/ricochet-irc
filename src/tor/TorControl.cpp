@@ -44,8 +44,9 @@
 #include <QHostAddress>
 #include <QDir>
 #include <QNetworkProxy>
-// FIXME: commented out in ricochet-irc to avoid GUI dependency
-//#include <QQmlEngine>
+#ifndef RICOCHET_HEADLESS
+#include <QQmlEngine>
+#endif
 #include <QTimer>
 #include <QSaveFile>
 #include <QRegularExpression>
@@ -601,8 +602,9 @@ QObject *TorControl::getConfiguration(const QString &options)
     GetConfCommand *command = new GetConfCommand(GetConfCommand::GetConf);
     d->socket->sendCommand(command, command->build(options.toLatin1()));
 
-	// FIXME: commented out in ricochet-irc to avoid GUI dependency
-    //QQmlEngine::setObjectOwnership(command, QQmlEngine::CppOwnership);
+#ifndef RICOCHET_HEADLESS
+    QQmlEngine::setObjectOwnership(command, QQmlEngine::CppOwnership);
+#endif
     return command;
 }
 
@@ -612,8 +614,9 @@ QObject *TorControl::setConfiguration(const QVariantMap &options)
     command->setResetMode(true);
     d->socket->sendCommand(command, command->build(options));
 
-	// FIXME: commented out in ricochet-irc to avoid GUI dependency
-    //QQmlEngine::setObjectOwnership(command, QQmlEngine::CppOwnership);
+#ifndef RICOCHET_HEADLESS
+    QQmlEngine::setObjectOwnership(command, QQmlEngine::CppOwnership);
+#endif
     return command;
 }
 
@@ -718,8 +721,9 @@ PendingOperation *TorControl::saveConfiguration()
     QObject::connect(operation, &PendingOperation::finished, operation, &QObject::deleteLater);
     operation->start(d->socket);
 
-	// FIXME: commented out in ricochet-irc to avoid GUI dependency
-    //QQmlEngine::setObjectOwnership(operation, QQmlEngine::CppOwnership);
+#ifndef RICOCHET_HEADLESS
+    QQmlEngine::setObjectOwnership(operation, QQmlEngine::CppOwnership);
+#endif
     return operation;
 }
 

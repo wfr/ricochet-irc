@@ -38,16 +38,17 @@ TEMPLATE = app
 QT = core network
 CONFIG += c++11 console debug
 
-VERSION = 1.1.1
+VERSION = 1.1.2
 
-## Use CONFIG+=no-hardened to disable compiler hardening options
-#!CONFIG(no-hardened) {
-#    CONFIG += hardened
-#    include(hardened.pri)
-#}
+# Use CONFIG+=no-hardened to disable compiler hardening options
+!CONFIG(no-hardened) {
+    CONFIG += hardened
+    include(hardened.pri)
+}
 
 # Pass DEFINES+=RICOCHET_NO_PORTABLE for a system-wide installation
 
+DEFINES += "RICOCHET_HEADLESS"
 CONFIG(release,debug|release):DEFINES += QT_NO_DEBUG_OUTPUT QT_NO_WARNING_OUTPUT
 
 contains(DEFINES, RICOCHET_NO_PORTABLE) {
@@ -157,7 +158,6 @@ SOURCES += \
     src/utils/Settings.cpp \
     src/utils/PendingOperation.cpp \
     src/irc-main.cpp \
-    src/main-shared.cpp \
     src/utils/QRegularExpressionValidator.cpp \
     src/core/ContactIDValidator.cpp \
     src/irc/IrcChannel.cpp \
@@ -193,7 +193,6 @@ HEADERS += \
     src/tor/TorSocket.h \
     src/utils/Settings.h \
     src/utils/PendingOperation.h \
-    src/main-shared.h \
     src/utils/QRegularExpressionValidator.h \
     src/core/ContactIDValidator.h \
     src/irc/IrcChannel.h \

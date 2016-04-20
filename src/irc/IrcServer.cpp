@@ -141,7 +141,7 @@ void IrcServer::broadcast(IrcUser *sender, QString msg)
         else
         {
             qWarning() << "client is NULL";
-            // FIXME: should never happen; handle nevertheless...
+            // This should never happen.
         }
     }
 }

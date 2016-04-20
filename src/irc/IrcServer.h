@@ -90,7 +90,9 @@ protected:
      */
     virtual void privmsgHook(IrcUser*, const QString&, const QString&) {}
 
-    virtual void ircUserLoggedIn(IrcConnection* conn = 0) {};
+    virtual void ircUserLoggedIn(IrcConnection* conn = 0) {
+        Q_UNUSED(conn);
+    };
 
 };
 

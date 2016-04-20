@@ -33,6 +33,11 @@
 #ifndef CONTACTIDVALIDATOR_H
 #define CONTACTIDVALIDATOR_H
 
+/* QRegularExpressionValidator requires the Qt GUI libaries which
+ * are otherwise unnecessary for ricochet-irc.
+ * Temporary workaround: use a copy of the source.
+ * TODO: rewrite ContactIDValidator
+ */
 #include "../utils/QRegularExpressionValidator.h"
 #include "UserIdentity.h"
 
