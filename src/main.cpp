@@ -48,6 +48,7 @@
 #include <QLocale>
 #include <QLockFile>
 #include <QStandardPaths>
+#include <QCommandLineParser>
 #include <openssl/crypto.h>
 
 static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &errorMessage);
@@ -155,9 +156,23 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
      */
 
     QString configPath;
-    QStringList args = qApp->arguments();
-    if (args.size() > 1) {
-        configPath = args[1];
+    QCommandLineParser parser;
+    parser.setApplicationDescription(QCoreApplication::translate("main", "Anonymous peer-to-peer instant messaging"));
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.addPositionalArgument(QStringLiteral("config"),
+                                 QCoreApplication::translate("main", "Configuration directory."),
+                                 QStringLiteral("[directory]"));
+// TODO
+//    parser.addOptions({
+//                          {{"v", "verbose"},
+//                           QCoreApplication::translate("main", "Verbose output.")}
+//                      });
+    parser.process(qApp->arguments());
+    const QStringList args = parser.positionalArguments();
+
+    if (args.size() > 0) {
+        configPath = args[0];
     } else {
 #ifndef RICOCHET_NO_PORTABLE
 # ifdef Q_OS_MAC
