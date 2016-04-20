@@ -47,6 +47,7 @@
 #include <QLocale>
 #include <QLockFile>
 #include <QStandardPaths>
+#include <QCommandLineParser>
 #include <openssl/crypto.h>
 #include <QMetaObject>
 #include <QDebug>
@@ -85,13 +86,8 @@ public slots:
                          SLOT(torStatusChanged(int, int)));
 
 
-        int port = 6667;
-        if(args.length() == 3 && args[1] == QStringLiteral("--port"))
-        {
-            port = args[2].toInt();
-        }
-
-        ircServer = new RicochetIrcServer(this, port);
+        SettingsObject settings;
+        ircServer = new RicochetIrcServer(this, settings.read("irc.port", 6667).toInt());
         QMetaObject::invokeMethod(ircServer, "run");
 
         //emit finished();
@@ -127,19 +123,6 @@ public slots:
             foreach(identity, identityManager->identities())
             {
                 qDebug() << "Identity: " << identity->hostname();
-// old test code, delete this, just for reference...
-//                identity->contacts.createContactRequest(
-//                            "ricochet:mjiesqmikh67vqbo",
-//                            "io",
-//                            "",
-//                            "Hello world");
-//                ContactUser *contact;
-//                foreach(contact, identity->getContacts()->contacts())
-//                {
-//                    ConversationModel* conv = contact->conversation();
-//                    QMetaObject::invokeMethod((QObject*)conv, "sendMessage", Qt::QueuedConnection, Q_ARG(QString, "Hello!"));
-//                }
-
             }
         }
     }
@@ -254,9 +237,23 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
      */
 
     QString configPath;
-    QStringList args = qApp->arguments();
-    if (args.size() > 1) {
-        configPath = args[1];
+    QCommandLineParser parser;
+    parser.setApplicationDescription(QCoreApplication::translate("main", "Anonymous peer-to-peer instant messaging, IRC gateway"));
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.addPositionalArgument(QStringLiteral("config"),
+                                 QCoreApplication::translate("main", "Configuration directory."),
+                                 QStringLiteral("[directory]"));
+    QCommandLineOption irc_port(QStringLiteral("port"),
+                                QCoreApplication::translate("irc", "IRC server port."),
+                                QStringLiteral("port"),
+                                QStringLiteral("6667"));
+    parser.addOption(irc_port);
+    parser.process(qApp->arguments());
+
+    const QStringList args = parser.positionalArguments();
+    if (args.size() > 0) {
+        configPath = args[0];
     } else {
 #ifndef RICOCHET_NO_PORTABLE
 # ifdef Q_OS_MAC
@@ -320,6 +317,18 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     // if still empty, load defaults here
     if (settings->root()->data().isEmpty()) {
         loadDefaultSettings(settings);
+    }
+
+    if(parser.isSet(irc_port)) {
+        bool ok;
+        int port = parser.value(QStringLiteral("port")).toInt(&ok);
+        if(!ok)
+        {
+            errorMessage = QCoreApplication::translate("irc", "invalid IRC server port");
+            return false;
+        }
+        settings->root()->write("irc.port", port);
+        qInfo() << "IRC server port is" << port;
     }
 
     return true;

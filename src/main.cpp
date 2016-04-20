@@ -163,11 +163,6 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     parser.addPositionalArgument(QStringLiteral("config"),
                                  QCoreApplication::translate("main", "Configuration directory."),
                                  QStringLiteral("[directory]"));
-// TODO
-//    parser.addOptions({
-//                          {{"v", "verbose"},
-//                           QCoreApplication::translate("main", "Verbose output.")}
-//                      });
     parser.process(qApp->arguments());
     const QStringList args = parser.positionalArguments();
 
