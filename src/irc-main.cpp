@@ -274,7 +274,7 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
             return false;
         }
         settings->root()->write("irc.port", port);
-        qInfo() << "IRC server port is" << port;
+        qDebug() << "IRC server port is" << port;
     }
 
     return true;
