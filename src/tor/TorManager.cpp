@@ -220,6 +220,15 @@ void TorManager::start()
     }
 }
 
+void TorManager::stop()
+{
+    if(d->process->state() == TorProcess::State::Ready) {
+        d->control->shutdownSync();
+        d->process->stop();
+        d->process = 0;
+    }
+}
+
 void TorManagerPrivate::processStateChanged(int state)
 {
     qDebug() << Q_FUNC_INFO << state << TorProcess::Ready << process->controlPassword() << process->controlHost() << process->controlPort();

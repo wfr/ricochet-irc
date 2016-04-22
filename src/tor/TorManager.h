@@ -77,6 +77,7 @@ public:
 
 public slots:
     void start();
+    void stop();
 
 signals:
     void configurationNeededChanged();
