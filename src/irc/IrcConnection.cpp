@@ -20,7 +20,7 @@ static const QRegularExpression re_channel (
         QStringLiteral("^[&#+!][^\\x00\\x07\\x0a\\x0d ,:]{0,50}$"));
 
 static const QRegularExpression re_message (
-        QStringLiteral("^(?<prefix>:[^ ]+)? ?(?<command>[^ ]+) ?(?<params>.+?)(( :)(?<trailing>.*))?\r\n$"));
+        QStringLiteral("^(?<prefix>:[^ ]+)? ?(?<command>[^ ]+) ?(?<params>.+?)(( :)(?<trailing>.*))?\r?\n?$"));
 
 
 IrcConnection::IrcConnection(QObject *parent, IrcServer* server, QTcpSocket *socket)
@@ -53,7 +53,15 @@ void IrcConnection::readyRead()
     {
         buffer->append(socket->readAll());
     }
-    dataReceived();
+
+    QString data = QString::fromUtf8(*buffer);
+    buffer->clear();
+
+    QStringList lines = data.split(QStringLiteral("\r\n"), QString::SkipEmptyParts);
+    foreach(const QString& line, lines)
+    {
+        lineReceived(line);
+    }
 }
 
 
@@ -74,13 +82,11 @@ QString IrcConnection::getLocalHostname()
 }
 
 
-void IrcConnection::dataReceived()
+void IrcConnection::lineReceived(const QString& line)
 {
-    QString data = QString::fromUtf8(*buffer);
-    buffer->clear();
-    qDebug() << "RECV:" << data;
+    qDebug() << "RECV:" << line;
 
-    QRegularExpressionMatch match = re_message.match(data);
+    QRegularExpressionMatch match = re_message.match(line);
     if(!match.hasMatch())
     {
         socket->disconnect();
@@ -187,7 +193,6 @@ void IrcConnection::reply(const QString& text)
     reply(getLocalHostname(), text);
 }
 
-
 void IrcConnection::reply(const QString& prefix, const QString& text)
 {
     QString out_str;
@@ -197,7 +202,7 @@ void IrcConnection::reply(const QString& prefix, const QString& text)
     out_bytes = out_str.toUtf8();
     socket->write(out_bytes.constData(), out_bytes.length());
     socket->flush();
-    qDebug() << "SENT:" << out_str;
+    qDebug() << "SEND:" << out_str;
 }
 
 
@@ -215,24 +220,16 @@ void IrcConnection::join(const QString& channel_name)
     if(match.hasMatch())
     {
         IrcChannel *channel = ircserver->getChannel(channel_name);
-        channel->addMember(this);
-        emit joined(this, channel_name);
+        if(!channel->hasMember(this->nick))
+        {
+            channel->addMember(this);
+            emit joined(this, channel_name);
+        }
 
         QString members_str;
         foreach(IrcUser* member, channel->getMembers())
         {
-            QString longflag,
-                    shortflag;
-            longflag = channel->getMemberFlags(member);
-            if(longflag == QStringLiteral("+v"))
-            {
-                shortflag = QStringLiteral("+");
-            }
-            else
-            {
-                shortflag = longflag;
-            }
-            members_str += shortflag + member->nick + QStringLiteral(" ");
+            members_str += channel->getMemberFlagsShort(member) + member->nick + QStringLiteral(" ");
         }
         members_str = members_str.trimmed();
 

@@ -47,7 +47,7 @@ private:
     QByteArray *buffer;
 
     QString getLocalHostname();
-    void dataReceived();
+    void lineReceived(const QString& line);
 
     bool logged_in;
 

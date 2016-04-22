@@ -14,7 +14,6 @@ public:
     explicit IrcChannel(QObject *parent, const QString& name);
 
     QString name;
-    QString topic;
 
     void addMember(IrcUser* user, const QString& flags = QStringLiteral(""));
     QList<IrcUser*> getMembers();
@@ -23,16 +22,23 @@ public:
 
     void setMemberFlags(IrcUser* member, const QString& flags);
     QString getMemberFlags(IrcUser* member);
+    QString getMemberFlagsShort(IrcUser* member);
 
     void removeMember(IrcUser* member);
+
+    void setTopic(IrcUser* sender, const QString& topic);
+    const QString& getTopic();
 
 signals:
     void flagsChanged(IrcUser* member);
     void part(IrcUser* member);
+    void topicChanged(IrcUser* sender, IrcChannel* channel);
 
 private:
     // {user: flags, ...}
     QHash<IrcUser*, QString> members;
+    QString topic;
+
 };
 
 #endif // IRCCHANNEL_H

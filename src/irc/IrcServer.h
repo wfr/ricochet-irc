@@ -48,7 +48,7 @@ public slots:
     /**
      * @brief main entry point. invoke this slot to start the server.
      */
-    void run();
+    bool run();
 
     void newConnection();
 
@@ -70,9 +70,11 @@ public slots:
 
     void part(IrcConnection* conn, const QString& channel);
 
-    void quit(IrcConnection* conn);
+    void quit(IrcUser* conn);
 
     void disconnect(IrcConnection* conn);
+
+    void topicChanged(IrcUser* sender, IrcChannel* channel);
 
 
 protected:
@@ -90,7 +92,18 @@ protected:
      */
     virtual void privmsgHook(IrcUser*, const QString&, const QString&) {}
 
+    /**
+     * @brief ircUserLoggedIn A new user connected successfully.
+     * @param conn
+     */
     virtual void ircUserLoggedIn(IrcConnection* conn = 0) {
+        Q_UNUSED(conn);
+    };
+
+    /**
+     * @brief ircUserLeft A user quit and/or disconnected
+     */
+    virtual void ircUserLeft(IrcConnection* conn = 0) {
         Q_UNUSED(conn);
     };
 

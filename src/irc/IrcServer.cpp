@@ -4,7 +4,8 @@
 #include "IrcConnection.h"
 #include <QTcpSocket>
 #include <QTimer>
-
+#include <QException>
+#include <QDebug>
 
 IrcServer::IrcServer(QObject *parent, uint16_t port, const QString& password)
     : QObject(parent), port(port), password(password)
@@ -27,14 +28,23 @@ IrcServer::~IrcServer()
 }
 
 
-void IrcServer::run()
+bool IrcServer::run()
 {
     tcpServer = new QTcpServer(this);
-    qDebug() << "Listening:" << tcpServer->listen(QHostAddress::LocalHost, port);
-    connect(tcpServer,
-            SIGNAL(newConnection()),
-            this,
-            SLOT(newConnection()));
+    if(tcpServer->listen(QHostAddress::LocalHost, port))
+    {
+        connect(tcpServer,
+                SIGNAL(newConnection()),
+                this,
+                SLOT(newConnection()));
+        return true;
+    }
+    else
+    {
+        qFatal("TCP listen() failed");
+        return false;
+
+    }
 }
 
 
@@ -104,6 +114,10 @@ IrcChannel* IrcServer::getChannel(QString channel_name)
                          SIGNAL(flagsChanged(IrcUser*)),
                          this,
                          SLOT(flagsChanged(IrcUser*)));
+        QObject::connect(channel,
+                         SIGNAL(topicChanged(IrcUser*, IrcChannel*)),
+                         this,
+                         SLOT(topicChanged(IrcUser*, IrcChannel*)));
     }
     return channel;
 }
@@ -203,13 +217,24 @@ void IrcServer::part(IrcConnection* conn, const QString& channel)
 }
 
 
-void IrcServer::quit(IrcConnection* conn)
+void IrcServer::quit(IrcUser* conn)
 {
     broadcast(conn, QStringLiteral("QUIT :Client quit"));
     foreach(IrcChannel* chan, channels)
     {
         chan->removeMember(conn);
     }
+}
+
+void IrcServer::disconnect(IrcConnection* conn)
+{
+    // just in case...
+    foreach(IrcChannel* chan, channels)
+    {
+        chan->removeMember(conn);
+    }
+    clients.remove(conn->getSocket());
+    ircUserLeft(conn);
 }
 
 IrcUser* IrcServer::findUser(const QString& nickname)
@@ -241,12 +266,7 @@ void IrcServer::rename(IrcUser *member, const QString& new_nick)
 }
 
 
-void IrcServer::disconnect(IrcConnection* conn)
+void IrcServer::topicChanged(IrcUser* sender, IrcChannel *channel)
 {
-    // just in case...
-    foreach(IrcChannel* chan, channels)
-    {
-        chan->removeMember(conn);
-    }
-    clients.remove(conn->getSocket());
+    broadcast(sender, QStringLiteral("TOPIC %1 :%2").arg(channel->name).arg(channel->getTopic()));
 }
