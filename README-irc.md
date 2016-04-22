@@ -5,50 +5,63 @@
 *Work in progress!*
 
 
-### Build instructions
+### Build 
 
 ```
 	qmake ricochet-irc.pro
 	make -j$(nproc)
 ```
 
+### Debug build
+
+```
+	qmake ricochet-irc.pro CONFIG+=debug CONFIG+=no-hardened
+	make clean
+	make -j$(nproc)
+```
+
 ### Usage
 ```
-	./ricochet-irc
+	./ricochet-irc --help
+	./ricochet-irc --port 12345
 	
-	# connect to localhost/6667
+	# connect to localhost/12345
 	# you are automatically joined into #ricochet
 	# type: help
 ```
 
 ### Recent changes
+ * Tor only runs when an IRC user is connected.
 
- * rename works (no strict checking, beware of duplicate names)
+ * The Control channel topic shows your own ID.
 
- * added standalone IRC demo `irc-server-example`
+ * Offline users are now shown immediately.
+
+ * Show online/offline status with flag: +v/-v.
+
+ * Fixed various IRC bugs.
  
- * implemented NICK/JOIN/PART/QUIT
+ * Command-line parsing. Try --help.
 
- * --port 12345
+ * Implemented `rename` and `delete`
 
- * send AWAY message in query with disconnected user
+ * Send AWAY message in query with disconnected user.
  
- * show online/offline status with flag: +v/-v
-
- * autojoin #ricochet
- 
- * the executable name was changed to `ricochet-irc`
+ * IRC user is automatically joined into #ricochet.
 
 
-### Plan
+### To do
 
- * add support for IRC server passwords
+ * Deal with rejected outgoing requests
 
- * replace user-facing QStringLiterals with i18n
+ * Support IRC password protection.
+
+ * i18n
+
+ * Provide instructions on disabling logging for various IRC clients 
 
 
 ### Implementation notes
 
-The Qt based IRC server is very minimalistic and does not intend to implement
-the full RFC. It is NOT intended for public connections. It is hardcoded to
-listen on localhost only.
+The embedded IRC server is minimalistic and not intended to implement
+the complete RFC. It is hardcoded to listen on localhost only.

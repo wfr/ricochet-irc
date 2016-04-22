@@ -61,80 +61,27 @@ class Task : public QObject
 {
     Q_OBJECT
 public:
-    Task(QCoreApplication *app) : QObject(app) { this->args = app->arguments(); }
+    Task(QCoreApplication *app) : QObject(app) { }
 
 private:
     RicochetIrcServer *ircServer;
-    QStringList args;
+
+signals:
+    void finished();
 
 public slots:
     void run()
     {
-        Tor::TorManager *torManager = Tor::TorManager::instance();
-        Tor::TorProcess *proc = torManager->process();
-        QObject::connect(proc,
-                         SIGNAL(stop()),
-                         this,
-                         SLOT(torStopped()));
-        QObject::connect(torManager,
-                         SIGNAL(configurationNeededChanged()),
-                         this,
-                         SLOT(torConfigurationNeededChanged()));
-        QObject::connect(torManager->control(),
-                         SIGNAL(torStatusChanged(int, int)),
-                         this,
-                         SLOT(torStatusChanged(int, int)));
-
-
+        bool result;
         SettingsObject settings;
         ircServer = new RicochetIrcServer(this, settings.read("irc.port", 6667).toInt());
-        QMetaObject::invokeMethod(ircServer, "run");
-
-        //emit finished();
-    }
-
-    void torConfigurationNeededChanged()
-    {
-        Tor::TorManager *torManager = Tor::TorManager::instance();
-        qDebug() << "==== Tor configuration needed ====";
-        QVariantMap conf;
-        /* TODO: make Tor configurable */
-        // conf.insert(QStringLiteral("Socks4Proxy"), 0);
-        // conf.insert(QStringLiteral("Socks5Proxy"), 0);
-        // conf.insert(QStringLiteral("Socks5ProxyUsername"), 0);
-        // conf.insert(QStringLiteral("Socks5ProxyPassword"), 0);
-        // conf.insert(QStringLiteral("HTTPProxy"), 0);
-        // conf.insert(QStringLiteral("HTTPProxyAuthenticator"), 0);
-        // conf.insert(QStringLiteral("FirewallPorts"), 0);
-        conf.insert(QStringLiteral("FascistFirewall"), 0);
-        // conf.insert(QStringLiteral("Bridge"), 0);
-        conf.insert(QStringLiteral("UseBridges"), 0);
-        conf.insert(QStringLiteral("DisableNetwork"), 0);
-        torManager->control()->setConfiguration(conf);
-    }
-
-    void torStatusChanged(int newStatus, int oldStatus)
-    {
-        Q_UNUSED(oldStatus);
-        if(newStatus == Tor::TorControl::TorStatus::TorReady)
+        QMetaObject::invokeMethod(ircServer, "run", Q_RETURN_ARG(bool, result));
+        if(!result)
         {
-            qDebug() << "=== TOR READY ===";
-            UserIdentity *identity;
-            foreach(identity, identityManager->identities())
-            {
-                qDebug() << "Identity: " << identity->hostname();
-            }
+            qDebug() << "!result";
+            emit finished();
         }
     }
-
-    void torStopped()
-    {
-        qDebug() << "tor stopped";
-        emit finished();
-    }
-
-signals:
-    void finished();
 };
 
 #include "irc-main.moc"
@@ -176,14 +123,13 @@ int main(int argc, char *argv[])
     Tor::TorManager *torManager = Tor::TorManager::instance();
     torManager->setDataDirectory(QFileInfo(settings->filePath()).path() + QStringLiteral("/tor/"));
     torControl = torManager->control();
-    torManager->start();
+    //torManager->start();
 
     /* Identities */
     identityManager = new IdentityManager;
     QScopedPointer<IdentityManager> scopedIdentityManager(identityManager);
 
     Task *task = new Task(&a);
-
     QObject::connect(task, SIGNAL(finished()), &a, SLOT(quit()));
     QMetaObject::invokeMethod( task, "run", Qt::QueuedConnection );
 

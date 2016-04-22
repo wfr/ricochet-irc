@@ -22,42 +22,49 @@ public:
                                const QString& control_channel_name = QStringLiteral("#ricochet"));
     ~RicochetIrcServer();
 
-signals:
-
 public slots:
-    void run();
+    bool run();
 
 protected:
     void ircUserLoggedIn(IrcConnection* conn);
+    void ircUserLeft(IrcConnection* conn);
+    const QString getWelcomeMessage();
 
 private slots:
+    void torConfigurationNeededChanged();
+    void torStatusChanged(int newStatus, int oldStatus);
+
     void onContactAdded(ContactUser *user);
-//    void outgoingRequestAdded(OutgoingContactRequest *request);
-//    void unreadCountChanged(ContactUser *user, int unreadCount);
     void onContactStatusChanged(ContactUser* user, int status);
     void onUnreadCountChanged();
-    //void onMessageReceived(const QString &text, const QDateTime &time, MessageId id);
-
     void requestAdded(IncomingContactRequest *request);
     void requestRemoved(IncomingContactRequest *request);
     void requestsChanged();
 
 private:
-    IrcUser *ricochet_user;
     QString control_channel_name;
-
+    IrcUser *ricochet_user;
     QHash<ContactUser*, IrcUser*> usermap;
-
-    void privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text);
-    void echo(const QString& text);
-
     UserIdentity *identity;
 
-    void cmdHelp(const QStringList& args);
+    void initRicochet();
+    void startRicochet();
+    void stopRicochet();
+    bool first_start;
+
+    void privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text);
+
+    void echo(const QString& text);
+    void error(const QString& text);
+
+    void cmdHelp();
+    void cmdId();
     void cmdAdd(const QStringList& args);
-    void cmdId(const QStringList& args);
+    void cmdDelete(const QStringList& args);
     void cmdRename(const QStringList& args);
     void cmdRequest(const QStringList& args);
+
+    IncomingContactRequest* getIncomingRequestByID(const QString& id);
 };
 
 #endif // RICOCHETIRCSERVER_H

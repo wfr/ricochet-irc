@@ -14,9 +14,13 @@
 #include "tor/TorControl.h"
 #include "tor/TorProcess.h"
 
+#include <QCoreApplication>
+
 
 RicochetIrcServer::RicochetIrcServer(QObject *parent, uint16_t port, const QString& password, const QString& control_channel_name)
-    : IrcServer(parent, port, password), control_channel_name(control_channel_name)
+    : IrcServer(parent, port, password),
+      control_channel_name(control_channel_name),
+      first_start(true)
 {
 }
 
@@ -26,10 +30,14 @@ RicochetIrcServer::~RicochetIrcServer()
     delete ricochet_user;
 }
 
-
-void RicochetIrcServer::run()
+bool RicochetIrcServer::run()
 {
-    IrcServer::run();
+    if(!IrcServer::run())
+    {
+        return false;
+    }
+
+    this->welcome_message = QCoreApplication::translate("irc", "Welcome to Ricochet-IRC!");
 
     // Create the control user @ricochet
     ricochet_user = new IrcUser(this);
@@ -42,11 +50,16 @@ void RicochetIrcServer::run()
                      this,
                      SLOT(privmsg(IrcUser*, const QString&, const QString&)));
 
-    // Create the control channel #ricochet
-    IrcChannel *ricochet_channel = getChannel(QStringLiteral("#ricochet"));
+    // Create the control channel
+    IrcChannel *ricochet_channel = getChannel(control_channel_name);
     ricochet_channel->addMember(ricochet_user, QStringLiteral("@"));
     channels.insert(ricochet_channel->name, ricochet_channel);
 
+    return true;
+}
+
+void RicochetIrcServer::initRicochet()
+{
     identity = identityManager->identities()[0];
     if(identityManager->identities().length() != 1)
     {
@@ -81,139 +94,161 @@ void RicochetIrcServer::run()
                      SIGNAL(requestsChanged()),
                      this,
                      SLOT(requestsChanged()));
-
 }
 
+void RicochetIrcServer::startRicochet()
+{
+    if(first_start) {
+        initRicochet();
+    }
+
+    Tor::TorManager *torManager = Tor::TorManager::instance();
+    Tor::TorProcess *proc = torManager->process();
+    torControl = torManager->control();
+
+    if(!first_start)
+    {
+        torControl->reconnect();
+    }
+
+    if(proc == Q_NULLPTR || proc->state() == Tor::TorProcess::State::NotStarted)
+    {
+        torManager->start();
+        if(first_start)
+        {
+            QObject::connect(torManager,
+                             SIGNAL(configurationNeededChanged()),
+                             this,
+                             SLOT(torConfigurationNeededChanged()));
+            QObject::connect(torManager->control(),
+                             SIGNAL(torStatusChanged(int, int)),
+                             this,
+                             SLOT(torStatusChanged(int, int)));
+        }
+    }
+
+    first_start = false;
+}
+
+void RicochetIrcServer::stopRicochet()
+{
+    Tor::TorManager *torManager = Tor::TorManager::instance();
+    Tor::TorProcess *proc = torManager->process();
+    if(proc->state() != Tor::TorProcess::State::NotStarted)
+    {
+        torManager->stop();
+    }
+}
+
+
+void RicochetIrcServer::torConfigurationNeededChanged()
+{
+    // TODO: make Tor configurable via IRC
+    qDebug() << "==== Tor configuration needed ====";
+    Tor::TorManager *torManager = Tor::TorManager::instance();
+    QVariantMap conf;
+    conf.insert(QStringLiteral("FascistFirewall"), 0);
+    conf.insert(QStringLiteral("UseBridges"), 0);
+    conf.insert(QStringLiteral("DisableNetwork"), 0);
+    // conf.insert(QStringLiteral("Socks4Proxy"), 0);
+    // conf.insert(QStringLiteral("Socks5Proxy"), 0);
+    // conf.insert(QStringLiteral("Socks5ProxyUsername"), 0);
+    // conf.insert(QStringLiteral("Socks5ProxyPassword"), 0);
+    // conf.insert(QStringLiteral("HTTPProxy"), 0);
+    // conf.insert(QStringLiteral("HTTPProxyAuthenticator"), 0);
+    // conf.insert(QStringLiteral("FirewallPorts"), 0);
+    // conf.insert(QStringLiteral("Bridge"), 0);
+    torManager->control()->setConfiguration(conf);
+    torManager->control()->saveConfiguration();
+}
+
+void RicochetIrcServer::torStatusChanged(int newStatus, int oldStatus)
+{
+    Q_UNUSED(oldStatus);
+
+    if(newStatus == Tor::TorControl::TorStatus::TorReady)
+    {
+        qDebug() << "=== Tor ready ===";
+        UserIdentity *identity;
+        foreach(identity, identityManager->identities())
+        {
+            getChannel(control_channel_name)->setTopic(ricochet_user,identity->contactID());
+        }
+    }
+
+    if(clients.count() > 0)
+    {
+        switch(newStatus) {
+            case Tor::TorControl::TorStatus::TorUnknown:
+                echo(QStringLiteral("Tor status: unknown"));
+                break;
+            case Tor::TorControl::TorStatus::TorOffline:
+                echo(QStringLiteral("Tor status: offline"));
+                break;
+            case Tor::TorControl::TorStatus::TorReady:
+                echo(QStringLiteral("Tor status: ready"));
+
+                // add all contacts to IRC
+                ContactsManager *contactsManager = identity->getContacts();
+                foreach(ContactUser* contact, contactsManager->contacts()) {
+                    emit onContactStatusChanged(contact, ContactUser::Offline);
+                }
+
+                break;
+        }
+    }
+}
+
+const QString RicochetIrcServer::getWelcomeMessage()
+{
+    return welcome_message;
+}
 
 void RicochetIrcServer::ircUserLoggedIn(IrcConnection* conn)
 {
-    conn->join(QStringLiteral("#ricochet"));
+    qDebug() << "ircUserLoggedIn -- # of connections: " << this->clients.count();
+    conn->join(control_channel_name);
+    getChannel(control_channel_name)->setMemberFlags(conn, QStringLiteral("+@"));
+    echo(QStringLiteral(" ___ _            _        _     ___ ___  ___ "));
+    echo(QStringLiteral("| _ (_)__ ___  __| |_  ___| |_  |_ _| _ \\/ __|"));
+    echo(QStringLiteral("|   / / _/ _ \\/ _| ' \\/ -_)  _|  | ||   / (__ "));
+    echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___|"));
+    //echo(QCoreApplication::translate("irc", "Please turn off logging in your IRC client."));
+    echo(QStringLiteral(""));
+    cmdHelp();
+    echo(QStringLiteral(""));
+
+    // start Tor
+    if(this->clients.count() == 1)
+    {
+        startRicochet();
+    }
+    else if(this->clients.count() > 1)
+    {
+        qWarning() << "more than one IRC client connected; undefined behavior";
+    }
 }
 
+void RicochetIrcServer::ircUserLeft(IrcConnection* conn)
+{
+    Q_UNUSED(conn);
+    qDebug() << "ircUserLeft     -- # of connections: " << this->clients.count();
+
+    if(this->clients.count() == 0)
+    {
+        stopRicochet();
+    }
+}
 
 void RicochetIrcServer::echo(const QString &text)
 {
     privmsg(ricochet_user, control_channel_name, text);
 }
 
-void RicochetIrcServer::cmdHelp(const __attribute__((unused)) QStringList& args)
+void RicochetIrcServer::error(const QString &text)
 {
-    echo(QStringLiteral("COMMANDS:"));
-    echo(QStringLiteral("* help"));
-    echo(QStringLiteral("* id                           -- print your own ID"));
-    echo(QStringLiteral("* add ID NICKNAME MESSAGE      -- add contact"));
-    echo(QStringLiteral("* rename NICKNAME NEW_NICKNAME -- rename contact"));
-    echo(QStringLiteral("* request list                 -- list requests"));
-    echo(QStringLiteral("* request (accept|reject) ID NICKNAME  -- manage requests"));
+    echo(QStringLiteral("ERROR: ") + text);
 }
-
-void RicochetIrcServer::cmdId(const __attribute__((unused)) QStringList& args)
-{
-    echo(identity->contactID());
-}
-
-void RicochetIrcServer::cmdAdd(const QStringList& args)
-{
-    if(args.length() != 3)
-    {
-        echo(QStringLiteral("INPUT ERROR: wrong number of arguments"));
-    }
-    else
-    {
-        QString id = args[0];
-        QString nickname = args[1];
-        QString message = args[2];
-        echo(QStringLiteral("sending contact request to user `%1` with id: %2").arg(nickname).arg(id));;
-
-        ContactsManager *contactsManager = identity->getContacts();
-        contactsManager->createContactRequest(id, nickname, identity->nickname(), message);
-    }
-}
-
-void RicochetIrcServer::cmdRename(const QStringList& args)
-{
-    if(args.length() != 2)
-    {
-        echo(QStringLiteral("INPUT ERROR: wrong number of arguments"));
-    }
-    else
-    {
-        QString nickname = args[0];
-        QString new_nickname = args[1];
-        echo(QStringLiteral("renaming user `%1` to `%2`").arg(nickname).arg(new_nickname));
-
-        foreach(ContactUser* contactuser, usermap.keys())
-        {
-            if(contactuser->nickname() == nickname)
-            {
-                contactuser->setNickname(new_nickname);
-
-                IrcUser* ircuser = usermap.value(contactuser);
-                if(ircuser != Q_NULLPTR)
-                {
-                    this->rename(ircuser, new_nickname);
-                }
-                return;
-            }
-        }
-    }
-}
-
-void RicochetIrcServer::cmdRequest(const QStringList& args)
-{
-    ContactsManager *contactsManager = identity->getContacts();
-    IncomingRequestManager *irm = contactsManager->incomingRequestManager();
-
-    if(args[0] == QStringLiteral("list"))
-    {
-        // list open contact requests
-        foreach(IncomingContactRequest *inc, irm->requests())
-        {
-            echo(QStringLiteral("Contact request from: %1 with nickname: '%2' and message: '%3'")
-                 .arg(inc->contactId()).arg(inc->nickname()).arg(inc->message()));
-        }
-    }
-    else
-    if(args[0] == QStringLiteral("accept"))
-    {
-        if(args.length() != 3)
-        {
-            echo(QStringLiteral("Unexpected number of arguments."));
-            return;
-        }
-        QString subject_id = args[1];
-        QString subject_nickname = args[2];
-        IncomingContactRequest *subject = Q_NULLPTR;
-        foreach(IncomingContactRequest *inc, irm->requests())
-        {
-            if(inc->contactId() == subject_id)
-            {
-                subject = inc;
-            }
-        }
-        if(!subject)
-        {
-            echo(QStringLiteral("request not found"));
-            return;
-        }
-
-        if(args[0] == QStringLiteral("accept") && subject)
-        {
-            subject->setNickname(subject_nickname);
-            subject->accept();
-        }
-        else
-        if(args[1] == QStringLiteral("reject") && subject)
-        {
-            subject->reject();
-        }
-    }
-    else
-    {
-        echo(QStringLiteral("Unexpected number of arguments."));
-    }
-}
-
 
 
 void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text)
@@ -226,17 +261,22 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
 
         if(cmd == QStringLiteral("help"))
         {
-            cmdHelp(args);
+            cmdHelp();
         }
         else
         if(cmd == QStringLiteral("id"))
         {
-            cmdId(args);
+            cmdId();
         }
         else
         if(cmd == QStringLiteral("add"))
         {
             cmdAdd(args);
+        }
+        else
+        if(cmd == QStringLiteral("delete"))
+        {
+            cmdDelete(args);
         }
         else
         if(cmd == QStringLiteral("rename"))
@@ -250,8 +290,7 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
         }
         else
         {
-            echo(QStringLiteral("INPUT ERROR: unknown command: %1").arg(cmd));
-            cmdHelp(args);
+            error(QStringLiteral("Unknown command: %1").arg(cmd));
         }
     }
     else
@@ -272,6 +311,173 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
                 contactuser->conversation()->sendMessage(text);
             }
         }
+    }
+}
+
+
+void RicochetIrcServer::cmdHelp()
+{
+    echo(QStringLiteral("COMMANDS:"));
+    echo(QStringLiteral(" * help"));
+    echo(QStringLiteral(" * id                      -- print your ricochet id"));
+    echo(QStringLiteral(" * add ID NICK MESSAGE     -- add a contact"));
+    echo(QStringLiteral(" * delete NICK             -- delete a contact"));
+    echo(QStringLiteral(" * rename NICK NEW_NICK    -- rename a contact"));
+    echo(QStringLiteral(" * request list            -- list incoming requests"));
+    echo(QStringLiteral(" * request accept ID NICK  -- accept incoming request"));
+    echo(QStringLiteral(" * request reject ID       -- reject incoming request"));
+}
+
+
+void RicochetIrcServer::cmdId()
+{
+    echo(identity->contactID());
+}
+
+
+void RicochetIrcServer::cmdAdd(const QStringList& args)
+{
+    if(args.length() != 3)
+    {
+        error(QStringLiteral("Unexpected arguments."));
+    }
+    else
+    {
+        // TODO: validate arguments
+        QString id = args[0];
+        QString nickname = args[1];
+        QString message = args[2];
+        echo(QStringLiteral("sending contact request to user `%1` with id: %2").arg(nickname).arg(id));;
+
+        ContactsManager *contactsManager = identity->getContacts();
+        contactsManager->createContactRequest(id, nickname, identity->nickname(), message);
+    }
+}
+
+
+void RicochetIrcServer::cmdDelete(const QStringList& args)
+{
+    if(args.length() == 1)
+    {
+        ContactsManager *contactsManager = identity->getContacts();
+        ContactUser *contact = contactsManager->lookupNickname(args[0]);
+        if(contact)
+        {
+            contact->deleteContact();
+            quit(usermap.value(contact));
+            usermap.remove(contact);
+        }
+        else
+        {
+            echo(QStringLiteral("Contact not found."));
+        }
+    }
+    else
+    {
+        error(QStringLiteral("Unexpected arguments."));
+    }
+}
+
+
+void RicochetIrcServer::cmdRename(const QStringList& args)
+{
+    if(args.length() == 2)
+    {
+        QString old_nickname = args[0];
+        QString new_nickname = args[1];
+
+        ContactsManager *contactsManager = identity->getContacts();
+
+        if(contactsManager->lookupNickname(new_nickname))
+        {
+            error(QStringLiteral("Target nickname `%1` already exists.").arg(new_nickname));
+        }
+        else
+        {
+            ContactUser *contact = contactsManager->lookupNickname(old_nickname);
+            if(contact)
+            {
+                echo(QStringLiteral("renaming user `%1` to `%2`").arg(old_nickname).arg(new_nickname));
+                contact->setNickname(new_nickname);
+                IrcUser* ircuser = usermap.value(contact);
+                if(ircuser != Q_NULLPTR)
+                {
+                    this->rename(ircuser, new_nickname);
+                }
+            }
+            else
+            {
+                echo(QStringLiteral("Contact not found."));
+            }
+        }
+    }
+    else
+    {
+        error(QStringLiteral("Unexpected arguments."));
+    }
+}
+
+
+IncomingContactRequest* RicochetIrcServer::getIncomingRequestByID(const QString& id)
+{
+    IncomingContactRequest *result = Q_NULLPTR;
+    ContactsManager *contactsManager = identity->getContacts();
+    foreach(IncomingContactRequest *request, contactsManager->incomingRequestManager()->requests())
+    {
+        if(request->contactId() == id)
+        {
+            result = request;
+        }
+    }
+    return result;
+}
+
+
+void RicochetIrcServer::cmdRequest(const QStringList& args)
+{
+    // TODO: validate arguments
+    ContactsManager *contactsManager = identity->getContacts();
+    IncomingRequestManager *irm = contactsManager->incomingRequestManager();
+
+    if(args.length() == 1 && args[0] == QStringLiteral("list"))
+    {
+        echo(QStringLiteral("You have %1 incoming contact request(s):").arg(irm->requests().count()));
+        foreach(IncomingContactRequest *inc, irm->requests())
+        {
+            echo(QStringLiteral("    %1 (message: %2)")
+                 .arg(inc->contactId()).arg(inc->message()));
+        }
+    }
+    else
+    if(args.length() == 3 && args[0] == QStringLiteral("accept"))
+    {
+        IncomingContactRequest *request = getIncomingRequestByID(args[1]);
+        if(request)
+        {
+            request->setNickname(args[2]);
+            request->accept();
+        }
+        else
+        {
+            echo(QStringLiteral("No such request was found."));
+        }
+    }
+    else
+    if(args.length() == 2 && args[0] == QStringLiteral("reject"))
+    {
+        IncomingContactRequest *request = getIncomingRequestByID(args[1]);
+        if(request)
+        {
+            request->reject();
+        }
+        else
+        {
+            echo(QStringLiteral("No such request was found."));
+        }
+    }
+    else
+    {
+        error(QStringLiteral("Unexpected arguments."));
     }
 }
 
@@ -308,11 +514,9 @@ void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
     switch(status)
     {
         case ContactUser::Online:
-            echo(QStringLiteral("contact `%1` is now online").arg(user->nickname()));
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("+v"));
         break;
         case ContactUser::Offline:
-            echo(QStringLiteral("contact `%1` is now offline").arg(user->nickname()));
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("-v"));
         break;
     }
@@ -335,27 +539,22 @@ void RicochetIrcServer::onUnreadCountChanged()
     }
 }
 
-//void RicochetIrcServer::onMessageReceived(const QString &text, const QDateTime &time, MessageId id)
-//{
-
-//}
-
 
 void RicochetIrcServer::requestAdded(IncomingContactRequest *request)
 {
-    echo(QStringLiteral("Incoming contact request from: %1, nickname: %2, message: %3")
-         .arg(request->contactId()).arg(request->nickname()).arg(request->message()));
+    echo(QStringLiteral("Incoming contact request from: %1 (message: %2)")
+         .arg(request->contactId()).arg(request->message()));
 }
 
 
 void RicochetIrcServer::requestRemoved(IncomingContactRequest *request)
 {
-    echo(QStringLiteral("Request removed: %1, nickname: %2, message: %3")
-         .arg(request->contactId()).arg(request->nickname()).arg(request->message()));
+    qDebug() << QStringLiteral("Request removed: %1, message: %2")
+         .arg(request->contactId()).arg(request->message());
 }
 
 
 void RicochetIrcServer::requestsChanged()
 {
-    echo(QStringLiteral("Contact requests changed"));
+    qDebug() << "Contact requests changed";
 }
