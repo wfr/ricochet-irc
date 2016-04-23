@@ -199,7 +199,11 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     parser.addHelpOption();
     parser.addVersionOption();
     parser.process(qApp->arguments());
-    //const QStringList args = parser.positionalArguments();
+    const QStringList args = parser.positionalArguments();
+    if(args.count() > 0) {
+        parser.showHelp(1);
+    }
+
 
     if(parser.isSet(opt_config_path)) {
         configPath = parser.value(opt_config_path);
