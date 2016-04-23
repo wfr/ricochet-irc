@@ -188,11 +188,10 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     parser.setApplicationDescription(QCoreApplication::translate("main","Anonymous peer-to-peer instant messaging, IRC gateway"));
     QCommandLineOption opt_config_path(QStringLiteral("config"),
                                        QCoreApplication::translate("main", "Configuration directory."),
-                                       QStringLiteral("config-path"),
-                                       QStringLiteral("6667"));
+                                       QStringLiteral("config-path"));
     parser.addOption(opt_config_path);
     QCommandLineOption opt_irc_port(QStringLiteral("port"),
-                                    QCoreApplication::translate("irc", "IRC server port."),
+                                    QCoreApplication::translate("irc", "Set IRC server port."),
                                     QStringLiteral("port"),
                                     QStringLiteral("6667"));
     parser.addOption(opt_irc_port);

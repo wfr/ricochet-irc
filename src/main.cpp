@@ -161,8 +161,7 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     parser.setApplicationDescription(QCoreApplication::translate("main", "Anonymous peer-to-peer instant messaging"));
     QCommandLineOption opt_config_path(QStringLiteral("config"),
                                        QCoreApplication::translate("main", "Configuration directory."),
-                                       QStringLiteral("config-path"),
-                                       QStringLiteral("6667"));
+                                       QStringLiteral("config-path"));
     parser.addOption(opt_config_path);
     parser.addHelpOption();
     parser.addVersionOption();
