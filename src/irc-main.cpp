@@ -183,23 +183,26 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
      */
 
     QString configPath;
+
     QCommandLineParser parser;
-    parser.setApplicationDescription(QCoreApplication::translate("main", "Anonymous peer-to-peer instant messaging, IRC gateway"));
+    parser.setApplicationDescription(QCoreApplication::translate("main","Anonymous peer-to-peer instant messaging, IRC gateway"));
+    QCommandLineOption opt_config_path(QStringLiteral("config"),
+                                       QCoreApplication::translate("main", "Configuration directory."),
+                                       QStringLiteral("config-path"),
+                                       QStringLiteral("6667"));
+    parser.addOption(opt_config_path);
+    QCommandLineOption opt_irc_port(QStringLiteral("port"),
+                                    QCoreApplication::translate("irc", "IRC server port."),
+                                    QStringLiteral("port"),
+                                    QStringLiteral("6667"));
+    parser.addOption(opt_irc_port);
     parser.addHelpOption();
     parser.addVersionOption();
-    parser.addPositionalArgument(QStringLiteral("config"),
-                                 QCoreApplication::translate("main", "Configuration directory."),
-                                 QStringLiteral("[directory]"));
-    QCommandLineOption irc_port(QStringLiteral("port"),
-                                QCoreApplication::translate("irc", "IRC server port."),
-                                QStringLiteral("port"),
-                                QStringLiteral("6667"));
-    parser.addOption(irc_port);
     parser.process(qApp->arguments());
+    //const QStringList args = parser.positionalArguments();
 
-    const QStringList args = parser.positionalArguments();
-    if (args.size() > 0) {
-        configPath = args[0];
+    if(parser.isSet(opt_config_path)) {
+        configPath = parser.value(opt_config_path);
     } else {
 #ifndef RICOCHET_NO_PORTABLE
 # ifdef Q_OS_MAC
@@ -265,7 +268,7 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
         loadDefaultSettings(settings);
     }
 
-    if(parser.isSet(irc_port)) {
+    if(parser.isSet(opt_irc_port)) {
         bool ok;
         int port = parser.value(QStringLiteral("port")).toInt(&ok);
         if(!ok)
