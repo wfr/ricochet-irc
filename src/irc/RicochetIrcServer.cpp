@@ -246,6 +246,8 @@ void RicochetIrcServer::error(const QString &text)
 
 void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text)
 {
+    IrcConnection* sender_conn = qobject_cast<IrcConnection*>(sender);
+
     if(msgtarget == control_channel_name && sender->nick != ricochet_user->nick)
     {
         QStringList args = text.split(QLatin1Char(' '));
@@ -288,20 +290,32 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
     }
     else
     {
-        foreach(ContactUser* contactuser, usermap.keys())
+        handlePM(sender_conn, msgtarget, text);
+    }
+}
+
+
+void RicochetIrcServer::handlePM(IrcConnection *sender, const QString &contact_nick, const QString &text)
+{
+    foreach(ContactUser* contact, usermap.keys())
+    {
+        if(contact->nickname() == contact_nick)
         {
-            if(contactuser->nickname() == msgtarget)
+            contact->conversation()->sendMessage(text);
+
+            IrcUser* contact_irc_user = usermap.value(contact);
+            if(!contact->isConnected())
             {
-                if(!contactuser->isConnected())
-                {
-                    IrcConnection* conn = qobject_cast<IrcConnection*>(sender);
-                    conn->reply(RPL_AWAY,
-                                QStringLiteral("%1 %2 :is offline")
-                                .arg(sender->nick)
-                                .arg(contactuser->nickname())
-                                );
-                }
-                contactuser->conversation()->sendMessage(text);
+                sender->reply(RPL_AWAY,
+                            QStringLiteral("%1 %2 :is offline")
+                            .arg(sender->nick)
+                            .arg(contact->nickname())
+                            );
+                sender->reply(contact_irc_user->getPrefix(),
+                            QStringLiteral("PRIVMSG %1 :\x02[Contact is offline. %2 queued message(s).]")
+                            .arg(sender->getPrefix())
+                            .arg(contact->conversation()->queuedCount()));
+
             }
         }
     }
@@ -515,6 +529,17 @@ void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
     {
         case ContactUser::Online:
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("+v"));
+
+            // Notify user in query when there are queued messages.
+            if(user->conversation()->queuedCount() > 0)
+            {
+                foreach(IrcConnection *conn, clients.values())
+                {
+                    conn->reply(ircuser->getPrefix(),
+                                QStringLiteral("PRIVMSG %1 :\x02[Contact is back online. Sending queued messages...]")
+                                .arg(conn->getPrefix()));
+                }
+            }
         break;
         case ContactUser::Offline:
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("-v"));

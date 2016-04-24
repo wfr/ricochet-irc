@@ -53,6 +53,7 @@ private:
     bool first_start;
 
     void privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text);
+    void handlePM(IrcConnection* sender, const QString& contact_nick, const QString& text);
 
     void echo(const QString& text);
     void error(const QString& text);
