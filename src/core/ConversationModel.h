@@ -72,6 +72,7 @@ public:
 
     int unreadCount() const { return m_unreadCount; }
     Q_INVOKABLE void resetUnreadCount();
+    int queuedCount();
 
     virtual QHash<int,QByteArray> roleNames() const;
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;

@@ -316,3 +316,13 @@ int ConversationModel::indexOfIdentifier(MessageId identifier, bool isOutgoing) 
     return -1;
 }
 
+int ConversationModel::queuedCount()
+{
+    int queued_count = 0;
+    foreach (const MessageData &data, messages) {
+        if (data.status == Queued) {
+            queued_count++;
+        }
+    }
+    return queued_count;
+}
