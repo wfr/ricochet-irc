@@ -53,7 +53,7 @@ void IrcServer::newConnection()
     while (tcpServer->hasPendingConnections())
     {
         QTcpSocket *socket = tcpServer->nextPendingConnection();
-        IrcConnection *conn = new IrcConnection(this, this, socket);
+        IrcConnection *conn = new IrcConnection(this, this, socket, password);
         clients.insert(socket, conn);
         QObject::connect(conn,
                          SIGNAL(loggedIn()),
@@ -76,9 +76,9 @@ void IrcServer::newConnection()
                          this,
                          SLOT(part(IrcConnection*, const QString&)));
         QObject::connect(conn,
-                         SIGNAL(quit(IrcConnection*)),
+                         SIGNAL(quit(IrcUser*)),
                          this,
-                         SLOT(quit(IrcConnection*)));
+                         SLOT(quit(IrcUser*)));
         QObject::connect(conn,
                          SIGNAL(disconnect(IrcConnection*)),
                          this,
@@ -203,8 +203,7 @@ void IrcServer::joined(IrcUser* user, const QString& channel_name)
 void IrcServer::flagsChanged(IrcUser *member)
 {
     IrcChannel* channel = qobject_cast<IrcChannel*>(sender());
-    QString message = QStringLiteral("MODE %1 %2 %3").arg(channel->name).arg(channel->getMemberFlags(member)).arg(member->nick);
-    qDebug() << "flagsChanged: " << message;
+    QString message = QStringLiteral("MODE %1 %2 %3").arg(channel->name).arg(channel->getMemberFlagsLong(member)).arg(member->nick);
     channelMessage(channel, message, member, true);
 }
 
@@ -226,6 +225,7 @@ void IrcServer::quit(IrcUser* conn)
     }
 }
 
+
 void IrcServer::disconnect(IrcConnection* conn)
 {
     // just in case...
@@ -236,6 +236,7 @@ void IrcServer::disconnect(IrcConnection* conn)
     clients.remove(conn->getSocket());
     ircUserLeft(conn);
 }
+
 
 IrcUser* IrcServer::findUser(const QString& nickname)
 {

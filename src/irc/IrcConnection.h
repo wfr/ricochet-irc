@@ -14,7 +14,7 @@ class IrcConnection : public IrcUser
 {
     Q_OBJECT
 public:
-    explicit IrcConnection(QObject *parent, IrcServer* server, QTcpSocket* socket);
+    explicit IrcConnection(QObject *parent, IrcServer* server, QTcpSocket* socket, const QString& password = QStringLiteral(""));
     ~IrcConnection();
 
     QTcpSocket* getSocket() const;
@@ -46,10 +46,14 @@ private:
     QTcpSocket *socket;
     QByteArray *buffer;
 
-    QString getLocalHostname();
-    void lineReceived(const QString& line);
+    QString password;
 
-    bool logged_in;
+    QString getLocalHostname();
+    void handleLine(const QString& line);
+
+    bool have_nick, have_user, have_pass, welcome_sent;
+    bool isLoggedIn();
+    void checkLogin();
 
     IrcServer* getIrcServer();
 };

@@ -21,8 +21,9 @@ public:
     IrcUser* getMember(const QString& nickname);
 
     void setMemberFlags(IrcUser* member, const QString& flags);
-    QString getMemberFlags(IrcUser* member);
+    QString getMemberFlagsLong(IrcUser* member);
     QString getMemberFlagsShort(IrcUser* member);
+    QString getMemberListString();
 
     void removeMember(IrcUser* member);
 

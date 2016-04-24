@@ -52,6 +52,7 @@
 #include <QMetaObject>
 #include <QDebug>
 #include <QtCore>
+#include <iostream>
 
 static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &errorMessage);
 static bool importLegacySettings(SettingsFile *settings, const QString &oldPath);
@@ -64,7 +65,6 @@ public:
     Task(QCoreApplication *app) : QObject(app) { }
 
 private:
-    RicochetIrcServer *ircServer;
 
 signals:
     void finished();
@@ -74,13 +74,28 @@ public slots:
     {
         bool result;
         SettingsObject settings;
-        ircServer = new RicochetIrcServer(this, settings.read("irc.port", 6667).toInt());
-        QMetaObject::invokeMethod(ircServer, "run", Q_RETURN_ARG(bool, result));
+        uint16_t port = settings.read("irc.port", 6667).toInt();
+        QString password = settings.read("irc.password", QStringLiteral("")).toString();
+
+        RicochetIrcServer *irc_server = new RicochetIrcServer(this, port, password);
+        QMetaObject::invokeMethod(irc_server, "run", Q_RETURN_ARG(bool, result));
         if(!result)
         {
             qDebug() << "!result";
             emit finished();
         }
+
+        std::cout << std::endl;
+        std::cout << "## IRC server started:" << std::endl;
+        std::cout << "Host/port: 127.0.0.1/" << port << std::endl;
+        std::cout << "Password:  " << password.toUtf8().data() << std::endl;
+        std::cout << std::endl;
+        std::cout << "### WeeChat client setup:" << std::endl;
+        std::cout << "/server add ricochet 127.0.0.1/" << port << std::endl;
+        std::cout << "/set irc.server.ricochet.password \"" << password.toUtf8().data() << "\"" << std::endl;
+        std::cout << "/set logger.level.irc.ricochet 0" << std::endl;
+        std::cout << std::endl;
+        std::cout.flush();
     }
 };
 
@@ -195,6 +210,9 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
                                     QStringLiteral("port"),
                                     QStringLiteral("6667"));
     parser.addOption(opt_irc_port);
+    QCommandLineOption opt_irc_password(QStringLiteral("generate-password"),
+                                        QCoreApplication::translate("irc", "Generate random IRC password."));
+    parser.addOption(opt_irc_password);
     parser.addHelpOption();
     parser.addVersionOption();
     parser.process(qApp->arguments());
@@ -281,6 +299,10 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
         }
         settings->root()->write("irc.port", port);
         qDebug() << "IRC server port is" << port;
+    }
+
+    if(parser.isSet(opt_irc_password)) {
+        settings->root()->write("irc.password", QString::fromLatin1(SecureRNG::random(18).toBase64()));
     }
 
     return true;

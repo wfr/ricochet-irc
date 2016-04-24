@@ -23,8 +23,15 @@ static const QRegularExpression re_message (
         QStringLiteral("^(?<prefix>:[^ ]+)? ?(?<command>[^ ]+) ?(?<params>.+?)(( :)(?<trailing>.*))?\r?\n?$"));
 
 
-IrcConnection::IrcConnection(QObject *parent, IrcServer* server, QTcpSocket *socket)
-    : IrcUser(parent), server(server), socket(socket)
+IrcConnection::IrcConnection(QObject *parent, IrcServer* server, QTcpSocket *socket, const QString& password)
+    : IrcUser(parent),
+      server(server),
+      socket(socket),
+      password(password),
+      have_nick(false),
+      have_user(false),
+      have_pass(false),
+      welcome_sent(false)
 {
     hostname = socket->localAddress().toString();
     buffer = new QByteArray();
@@ -34,7 +41,8 @@ IrcConnection::IrcConnection(QObject *parent, IrcServer* server, QTcpSocket *soc
     connect(socket,
             SIGNAL(disconnected()),
             SLOT(disconnected()));
-    logged_in = false;
+
+    have_pass = password.count() == 0 ? true : false;
 }
 
 
@@ -60,7 +68,7 @@ void IrcConnection::readyRead()
     QStringList lines = data.split(QStringLiteral("\r\n"), QString::SkipEmptyParts);
     foreach(const QString& line, lines)
     {
-        lineReceived(line);
+        handleLine(line);
     }
 }
 
@@ -82,16 +90,36 @@ QString IrcConnection::getLocalHostname()
 }
 
 
-void IrcConnection::lineReceived(const QString& line)
+bool IrcConnection::isLoggedIn()
+{
+    return have_nick && have_user && have_pass;
+}
+
+
+void IrcConnection::checkLogin()
+{
+    if(isLoggedIn() && !welcome_sent) {
+        reply(RPL_WELCOME, QStringLiteral("%1 :%2")
+              .arg(nick)
+              .arg(server->getWelcomeMessage()));
+        reply(RPL_YOURHOST, QStringLiteral("%1 :Your host is: %2")
+              .arg(nick)
+              .arg(getLocalHostname()));
+        emit loggedIn();
+        welcome_sent = true;
+    }
+}
+
+
+void IrcConnection::handleLine(const QString& line)
 {
     qDebug() << "RECV:" << line;
 
     QRegularExpressionMatch match = re_message.match(line);
     if(!match.hasMatch())
     {
-        socket->disconnect();
         qWarning() << "invalid data received, disconnecting";
-        // TODO raise exception, remove connection in parent
+        socket->close();
         return;
     }
 
@@ -108,7 +136,8 @@ void IrcConnection::lineReceived(const QString& line)
     {
         if(params.size() < 1)
         {
-            qDebug() << "TODO: respond with error message";
+            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("expected argument"));
+            return;
         }
         else
         {
@@ -117,10 +146,16 @@ void IrcConnection::lineReceived(const QString& line)
             if(match.hasMatch())
             {
                 emit rename(this, new_nick);
+
+                if(!have_nick)
+                {
+                    have_nick = true;
+                    checkLogin();
+                }
             }
             else
             {
-                qDebug() << "TODO: respond to invalid nickname";
+                reply(ERR_ERRONEUSNICKNAME, QStringLiteral("invalid nickname"));
             }
         }
     }
@@ -128,32 +163,53 @@ void IrcConnection::lineReceived(const QString& line)
     {
         if(!re_user.match(params[0]).hasMatch())
         {
-            qDebug() << "invalid user name";
-            socket->disconnect();
+            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("invalid user name"));
+            socket->close();
             return;
         }
         user = params[0];
 
         if(!re_realname.match(params[3]).hasMatch())
         {
-            qDebug() << "invalid real name";
-            socket->disconnect();
+            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("invalid real name"));
+            socket->close();
             return;
         }
         realname = params[3];
 
-        logged_in = true;
-        emit loggedIn();
-
-        reply(RPL_WELCOME, QStringLiteral("%1 :%2")
-              .arg(nick)
-              .arg(server->getWelcomeMessage()));
-        reply(RPL_YOURHOST, QStringLiteral("%1 :Your host is: %2")
-              .arg(nick)
-              .arg(getLocalHostname()));
+        have_user = true;
+        checkLogin();
+    }
+    else if(command == QStringLiteral("PASS"))
+    {
+        if(params.size() == 0)
+        {
+            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("expected argument"));
+            return;
+        }
+        if(password.count() > 0)
+        {
+            if(password == params[0])
+            {
+                have_pass = true;
+            }
+            else
+            {
+                reply(ERR_PASSWDMISMATCH, QStringLiteral("invalid password"));
+                socket->close();
+                return;
+            }
+        }
+        checkLogin();
     }
     else if(command == QStringLiteral("JOIN"))
     {
+        if(!isLoggedIn())
+        {
+            reply(ERR_NOLOGIN, QStringLiteral("Unauthenticated access prohibited."));
+            return;
+        }
+
         join(params[0]);
     }
     else if(command == QStringLiteral("PING"))
@@ -162,18 +218,29 @@ void IrcConnection::lineReceived(const QString& line)
     }
     else if(command == QStringLiteral("PRIVMSG"))
     {
+        if(!isLoggedIn())
+        {
+            reply(ERR_NOLOGIN, QStringLiteral("Unauthenticated access prohibited."));
+            return;
+        }
+
         emit privmsg(this, params[0], params[1]);
     }
     else if(command == QStringLiteral("PART"))
     {
+        if(!isLoggedIn())
+        {
+            reply(ERR_NOLOGIN, QStringLiteral("Unauthenticated access prohibited."));
+            return;
+        }
+
         if(re_channel.match(params[0]).hasMatch())
         {
             emit part(this, params[0]);
         }
         else
         {
-            qDebug() << "invalid real name";
-            socket->disconnect();
+            reply(ERR_NOSUCHCHANNEL, QStringLiteral("invalid channel name"));
             return;
         }
     }
@@ -224,21 +291,12 @@ void IrcConnection::join(const QString& channel_name)
         {
             channel->addMember(this);
             emit joined(this, channel_name);
+            reply(QStringLiteral("MODE %1 +ns").arg(channel_name));
+            reply(RPL_NOTOPIC, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(QStringLiteral("No topic is set")));
+            reply(RPL_NAMREPLY, QStringLiteral("%1 @ %2 :%3").arg(nick).arg(channel_name).arg(channel->getMemberListString()));
+            reply(RPL_ENDOFNAMES, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(QStringLiteral("End of names list")));
         }
 
-        QString members_str;
-        foreach(IrcUser* member, channel->getMembers())
-        {
-            members_str += channel->getMemberFlagsShort(member) + member->nick + QStringLiteral(" ");
-        }
-        members_str = members_str.trimmed();
-
-        reply(QStringLiteral("MODE %1 +ns").arg(channel_name));
-
-        // TODO: support topics
-        reply(RPL_NOTOPIC, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(QStringLiteral("No topic is set")));
-        reply(RPL_NAMREPLY, QStringLiteral("%1 @ %2 :%3").arg(nick).arg(channel_name).arg(members_str));
-        reply(RPL_ENDOFNAMES, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(QStringLiteral("End of names list")));
     }
     else
     {

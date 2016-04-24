@@ -24,14 +24,14 @@ void IrcChannel::setMemberFlags(IrcUser* member, const QString& flags)
     emit flagsChanged(member);
 }
 
-QString IrcChannel::getMemberFlags(IrcUser *member)
+QString IrcChannel::getMemberFlagsLong(IrcUser *member)
 {
     return members[member];
 }
 
 QString IrcChannel::getMemberFlagsShort(IrcUser *member)
 {
-    QString lf = getMemberFlags(member);
+    QString lf = getMemberFlagsLong(member);
     if(lf == QStringLiteral("+v"))
     {
         return QStringLiteral("+");
@@ -40,8 +40,27 @@ QString IrcChannel::getMemberFlagsShort(IrcUser *member)
     {
         return QStringLiteral("");
     }
+    if(lf == QStringLiteral("+o"))
+    {
+        return QStringLiteral("@");
+    }
+    if(lf == QStringLiteral("-o"))
+    {
+        return QStringLiteral("");
+    }
     return lf;
 }
+
+QString IrcChannel::getMemberListString()
+{
+    QString r;
+    foreach(IrcUser* member, getMembers())
+    {
+        r += getMemberFlagsShort(member) + member->nick + QStringLiteral(" ");
+    }
+    return r.trimmed();
+}
+
 
 bool IrcChannel::hasMember(const QString& nickname)
 {
