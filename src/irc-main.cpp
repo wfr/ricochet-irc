@@ -301,7 +301,7 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
         qDebug() << "IRC server port is" << port;
     }
 
-    if(parser.isSet(opt_irc_password)) {
+    if(parser.isSet(opt_irc_password) || settings->root()->read("irc.password", QStringLiteral("")) == QStringLiteral("")) {
         settings->root()->write("irc.password", QString::fromLatin1(SecureRNG::random(18).toBase64()));
     }
 
