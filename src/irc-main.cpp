@@ -1,4 +1,8 @@
-/* Ricochet - https://ricochet.im/
+/* Ricochet-IRC - https://github.com/wfr/ricochet-irc/
+ * Wolfgang Frisch <wfr@roembden.net>
+ *
+ * Derived from:
+ * Ricochet - https://ricochet.im/
  * Copyright (C) 2014, John Brooks <john.brooks@dereferenced.net>
  *
  * Redistribution and use in source and binary forms, with or without

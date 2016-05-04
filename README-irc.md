@@ -1,8 +1,10 @@
-### IRC frontend for Ricochet
+### IRC gateway to Ricochet
 
-`ricochet-irc` is a headless IRC frontend for Ricochet. It enables you to use the Ricochet network with your favorite IRC client.
+`ricochet-irc` is an IRC proxy for Ricochet. It enables you to use the Ricochet network with your favorite IRC client.
 
-*Work in progress!*
+This program is work in progress. Use at your own risk!
+
+It has only been tested with [WeeChat](https://weechat.org/).
 
 
 ### Build 
@@ -15,7 +17,7 @@
 ### Debug build
 
 ```
-	qmake ricochet-irc.pro CONFIG+=debug CONFIG+=no-hardened
+	qmake ricochet-irc.pro CONFIG+=debug
 	make clean
 	make -j$(nproc)
 ```
@@ -23,11 +25,15 @@
 ### Usage
 ```
 	./ricochet-irc --help
-	./ricochet-irc --port 12345
+
+	./ricochet-irc
+
+	# The program now listens for an IRC connection on localhost:6667.
+	# If you're running it for the first time, it generates
+	# a random server password and prints it on stdout.
 	
-	# connect to localhost/12345
-	# you are automatically joined into #ricochet
-	# type: help
+	# Point your IRC client to localhost:6667
+	# => You are automatically joined into the #ricochet channel.
 ```
 
 ### Recent changes
@@ -38,30 +44,21 @@
  * Offline users are now shown immediately.
 
  * Show online/offline status with flag: +v/-v.
-
- * Fixed various IRC bugs.
  
  * Command-line parsing. Try --help.
 
  * Implemented `rename` and `delete`
 
- * Send AWAY message in query with disconnected user.
+ * Send AWAY message in queries with disconnected users.
  
- * IRC user is automatically joined into #ricochet.
-
 
 ### To do
 
- * Deal with rejected outgoing requests
-
- * Support IRC password protection.
-
  * i18n
 
- * Provide instructions on disabling logging for various IRC clients 
+ * Test with clients other than WeeChat.
 
 
 ### Implementation notes
 
-The embedded IRC server is minimalistic and not intended to implement
-the complete RFC. It is hardcoded to listen on localhost only.
+The embedded IRC server is rudimentary. It is hardcoded to listen on localhost only.

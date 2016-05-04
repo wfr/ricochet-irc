@@ -1,4 +1,7 @@
-# Ricochet - https://ricochet.im/
+# Ricochet-IRC - https://github.com/wfr/ricochet-irc/
+#
+# Derived from:
+# Ricochet - https://ricochet.im/Ricochet - https://ricochet.im/
 # Copyright (C) 2014, John Brooks <john.brooks@dereferenced.net>
 #
 # Redistribution and use in source and binary forms, with or without
@@ -200,7 +203,6 @@ HEADERS += \
     src/irc/IrcServer.h \
     src/irc/IrcUser.h \
     src/irc/RicochetIrcServer.h \
-    src/irc/irc.h \
     src/irc/IrcConstants.h
 
 SOURCES += src/protocol/Channel.cpp \
