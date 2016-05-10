@@ -254,6 +254,7 @@ void RicochetIrcServer::ircUserLoggedIn(IrcConnection* conn)
     else if(this->clients.count() > 1)
     {
         qWarning() << "more than one IRC client connected; undefined behavior";
+        // TODO: kill stale connections
     }
 }
 
@@ -392,7 +393,7 @@ void RicochetIrcServer::cmdAdd(const QStringList& args)
     }
     else
     {
-        // TODO: validate arguments
+        // TODO: validate arguments (ricochet-core)
         QString id = args[0];
         QString nickname = args[1];
         QString message = args[2];
@@ -591,10 +592,16 @@ void RicochetIrcServer::onUnreadCountChanged()
         QString text = convo->data(convo->index(0)).toString();
         convo->clear();
 
-        IrcUser *ircuser = usermap[convo->contact()];
-        foreach(IrcConnection *conn, clients.values())
+        // IRC has no concept of multi-line messages. Split them.
+        QStringList lines = text.split(QLatin1Char('\n'));
+        foreach(QString line, lines)
         {
-            conn->reply(ircuser->getPrefix(), QStringLiteral("PRIVMSG %1 :%2").arg(conn->nick).arg(text));
+            IrcUser *ircuser = usermap[convo->contact()];
+            foreach(IrcConnection *conn, clients.values())
+            {
+                conn->reply(ircuser->getPrefix(),
+                            QStringLiteral("PRIVMSG %1 :%2").arg(conn->nick).arg(line));
+            }
         }
     }
 }
