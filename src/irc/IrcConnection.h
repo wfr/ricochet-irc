@@ -60,12 +60,14 @@ public:
 
     void messageChannel(const QString& command, const QString& text);
 
+    bool isLoggedIn();
+
 signals:
     void loggedIn();
     void joined(IrcUser* user, const QString& channel);
     void rename(IrcUser* user, const QString& new_nick);
     void part(IrcConnection* conn, const QString& channel);
-    void quit(IrcConnection* conn);
+    void quit(IrcUser* conn);
     void disconnect(IrcConnection* conn);
 
 public slots:
@@ -83,7 +85,6 @@ private:
     void handleLine(const QString& line);
 
     bool have_nick, have_user, have_pass, welcome_sent;
-    bool isLoggedIn();
     void checkLogin();
 
     IrcServer* getIrcServer();

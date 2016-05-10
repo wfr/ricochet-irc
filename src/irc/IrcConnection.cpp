@@ -51,7 +51,7 @@ static const QRegularExpression re_channel (
         QStringLiteral("^[&#+!][^\\x00\\x07\\x0a\\x0d ,:]{0,50}$"));
 
 static const QRegularExpression re_message (
-        QStringLiteral("^(?<prefix>:[^ ]+)? ?(?<command>[^ ]+) ?(?<params>.+?)(( :)(?<trailing>.*))?\r?\n?$"));
+        QStringLiteral("^(?<prefix>:[^ ]+)? ?(?<command>[^ ]+) ?(?<params>.+?)?(( :)(?<trailing>.*))?\r?\n?$"));
 
 
 IrcConnection::IrcConnection(QObject *parent, IrcServer* server, QTcpSocket *socket, const QString& password)
@@ -83,7 +83,9 @@ IrcConnection::~IrcConnection()
 }
 
 
-QTcpSocket* IrcConnection::getSocket() const { return socket; }
+QTcpSocket* IrcConnection::getSocket() const {
+    return socket;
+}
 
 
 void IrcConnection::readyRead()
@@ -118,6 +120,33 @@ void IrcConnection::disconnected()
 QString IrcConnection::getLocalHostname()
 {
     return socket->localAddress().toString();
+}
+
+
+void IrcConnection::reply(const QString& text)
+{
+    reply(getLocalHostname(), text);
+}
+
+
+void IrcConnection::reply(const QString& prefix, const QString& text)
+{
+    QString out_str;
+    QByteArray out_bytes;
+
+    out_str = QStringLiteral(":%1 %2\r\n").arg(prefix).arg(text);
+    out_bytes = out_str.toUtf8();
+    socket->write(out_bytes.constData(), out_bytes.length());
+    socket->flush();
+    qDebug() << "SEND:" << out_str;
+}
+
+
+void IrcConnection::reply(IrcReplies command, const QString& text)
+{
+    QString cmd;
+    cmd.sprintf("%03d", command);
+    reply(QStringLiteral("%1 %2").arg(cmd).arg(text));
 }
 
 
@@ -285,31 +314,6 @@ void IrcConnection::handleLine(const QString& line)
     }
 }
 
-
-void IrcConnection::reply(const QString& text)
-{
-    reply(getLocalHostname(), text);
-}
-
-void IrcConnection::reply(const QString& prefix, const QString& text)
-{
-    QString out_str;
-    QByteArray out_bytes;
-
-    out_str = QStringLiteral(":%1 %2\r\n").arg(prefix).arg(text);
-    out_bytes = out_str.toUtf8();
-    socket->write(out_bytes.constData(), out_bytes.length());
-    socket->flush();
-    qDebug() << "SEND:" << out_str;
-}
-
-
-void IrcConnection::reply(IrcReplies command, const QString& text)
-{
-    QString cmd;
-    cmd.sprintf("%03d", command);
-    reply(QStringLiteral("%1 %2").arg(cmd).arg(text));
-}
 
 
 void IrcConnection::join(const QString& channel_name)
