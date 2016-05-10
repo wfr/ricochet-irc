@@ -253,8 +253,15 @@ void RicochetIrcServer::ircUserLoggedIn(IrcConnection* conn)
     }
     else if(this->clients.count() > 1)
     {
-        qWarning() << "more than one IRC client connected; undefined behavior";
-        // TODO: kill stale connections
+        qWarning() << "more than one IRC client connected; killing old connections";
+        foreach(IrcConnection* client_conn, clients.values())
+        {
+            if(conn != client_conn)
+            {
+                quit(client_conn);
+                disconnect(client_conn);
+            }
+        }
     }
 }
 

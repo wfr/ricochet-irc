@@ -268,6 +268,7 @@ void IrcServer::disconnect(IrcConnection* conn)
     }
     clients.remove(conn->getSocket());
     ircUserLeft(conn);
+    conn->getSocket()->close();
 }
 
 
