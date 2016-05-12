@@ -95,6 +95,9 @@ bool RicochetIrcServer::run()
 }
 
 
+/**
+ * @brief RicochetIrcServer::initRicochet  Prepare the magical intertubes.
+ */
 void RicochetIrcServer::initRicochet()
 {
     if(identityManager->identities().length() != 1)
@@ -137,6 +140,9 @@ void RicochetIrcServer::initRicochet()
 }
 
 
+/**
+ * @brief RicochetIrcServer::startRicochet  (Re)start Tor
+ */
 void RicochetIrcServer::startRicochet()
 {
     if(first_start) {
@@ -171,6 +177,9 @@ void RicochetIrcServer::startRicochet()
 }
 
 
+/**
+ * @brief RicochetIrcServer::stopRicochet  Stop Tor (when the IRC user disconnects).
+ */
 void RicochetIrcServer::stopRicochet()
 {
     Tor::TorManager *torManager = Tor::TorManager::instance();
@@ -182,9 +191,13 @@ void RicochetIrcServer::stopRicochet()
 }
 
 
+/**
+ * @brief RicochetIrcServer::torConfigurationNeededChanged  Hardcoded Tor configuration
+ *
+ * TODO: make this configurable
+ */
 void RicochetIrcServer::torConfigurationNeededChanged()
 {
-    // TODO: make Tor configurable via IRC
     qDebug() << "==== Tor configuration needed ====";
     Tor::TorManager *torManager = Tor::TorManager::instance();
     QVariantMap conf;
@@ -306,18 +319,32 @@ void RicochetIrcServer::ircUserLeft(IrcConnection* conn)
 }
 
 
+/**
+ * @brief RicochetIrcServer::echo  Print in the #ricochet channel.
+ * @param text
+ */
 void RicochetIrcServer::echo(const QString &text)
 {
     privmsg(ricochet_user, control_channel_name, text);
 }
 
 
+/**
+ * @brief RicochetIrcServer::error  Print an error in #ricochet.
+ * @param text
+ */
 void RicochetIrcServer::error(const QString &text)
 {
     echo(QStringLiteral("ERROR: ") + text);
 }
 
 
+/**
+ * @brief RicochetIrcServer::privmsgHook  Handle IRC messages from the user
+ * @param sender
+ * @param msgtarget  can be a #channel or a nickname
+ * @param text
+ */
 void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text)
 {
     IrcConnection* sender_conn = qobject_cast<IrcConnection*>(sender);
@@ -369,6 +396,14 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
 }
 
 
+/**
+ * @brief RicochetIrcServer::handlePM  Forward outgoing IRC messages to Ricochet.
+ * @param sender IRC user who sent the message
+ * @param contact_nick Nickname of the Ricochet contact
+ * @param text
+ *
+ * Notify the IRC user if the contact is offline.
+ */
 void RicochetIrcServer::handlePM(IrcConnection *sender, const QString &contact_nick, const QString &text)
 {
     foreach(ContactUser* contact, usermap.keys())
@@ -579,6 +614,14 @@ void RicochetIrcServer::onContactAdded(ContactUser *user)
 }
 
 
+/**
+ * @brief RicochetIrcServer::onContactStatusChanged  A contact has come online or gone offline.
+ * @param user
+ * @param status
+ *
+ * => set +v/-v in #ricochet
+ * => tell the IRC user about any unsent essages
+ */
 void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
 {
     IrcChannel *ctrlchan = channels[control_channel_name];
@@ -621,6 +664,9 @@ void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
     }
 }
 
+/**
+ * @brief RicochetIrcServer::onUnreadCountChanged  Forward Ricochet messages to IRC.
+ */
 void RicochetIrcServer::onUnreadCountChanged()
 {
     ConversationModel* convo = qobject_cast<ConversationModel*>(sender());
@@ -645,10 +691,18 @@ void RicochetIrcServer::onUnreadCountChanged()
 }
 
 
+/**
+ * @brief RicochetIrcServer::requestAdded  There is an incoming contact request.
+ * @param request Incoming contact request
+ */
 void RicochetIrcServer::requestAdded(IncomingContactRequest *request)
 {
-    echo(QStringLiteral("Incoming contact request from: %1 (message: %2)")
-         .arg(request->contactId()).arg(request->message()));
+    QString notice = QStringLiteral("Incoming contact request from: %1").arg(request->contactId());
+    if(request->message().length() > 0)
+    {
+        notice += QStringLiteral(" (message: %1)").arg(request->message());
+    }
+    echo(notice);
 }
 
 
