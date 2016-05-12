@@ -1,10 +1,11 @@
 ## Ricochet-IRC
 *=> [README-irc.md](README-irc.md)*
+*=> [README-irc.md](README-irc.md)*
+*=> [README-irc.md](README-irc.md)*
 
-[Ricochet-IRC](https://github.com/wfr/ricochet-irc) is not affiliated with or endorsed by the [Ricochet](https://github.com/ricochet-im/ricochet/) project.
+Ricochet-IRC is not affiliated with or endorsed by the [Ricochet](https://github.com/ricochet-im/ricochet/) project.
 
-Ricochet-IRC provides an IRC gateway to the Ricochet network. The user can connect to a local IRC server with their favorite client.
-
+It is a fork that extends the original client. Below you can find the original README.md:
 
 ## Ricochet
 
