@@ -91,8 +91,8 @@ public slots:
 
         std::cout << std::endl;
         std::cout << "## IRC server started:" << std::endl;
-        std::cout << "Host:      : 127.0.0.1" << std::endl;
-        std::cout << "Port:      : " << port << std::endl;
+        std::cout << "Host:      127.0.0.1" << std::endl;
+        std::cout << "Port:      " << port << std::endl;
         std::cout << "Password:  " << password.toUtf8().data() << std::endl;
         std::cout << std::endl;
         std::cout << "### WeeChat client setup:" << std::endl;

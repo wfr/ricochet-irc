@@ -65,6 +65,7 @@ RicochetIrcServer::~RicochetIrcServer()
     delete ricochet_user;
 }
 
+
 bool RicochetIrcServer::run()
 {
     if(!IrcServer::run())
@@ -93,13 +94,15 @@ bool RicochetIrcServer::run()
     return true;
 }
 
+
 void RicochetIrcServer::initRicochet()
 {
-    identity = identityManager->identities()[0];
     if(identityManager->identities().length() != 1)
     {
         qWarning() << "not one identity! don't know what to do...";
+        return;
     }
+    identity = identityManager->identities()[0];
 
     // Connect Ricochet contact events to IRC
     ContactsManager *contactsManager = identity->getContacts();
@@ -114,9 +117,11 @@ void RicochetIrcServer::initRicochet()
     foreach(ContactUser* user, contactsManager->contacts())
     {
         ConversationModel* convo = user->conversation();
-        QObject::connect(convo, SIGNAL(unreadCountChanged()), this, SLOT(onUnreadCountChanged()));
+        QObject::connect(convo,
+                         SIGNAL(unreadCountChanged()),
+                         this,
+                         SLOT(onUnreadCountChanged()));
     }
-
     QObject::connect(contactsManager->incomingRequestManager(),
                      SIGNAL(requestAdded(IncomingContactRequest*)),
                      this,
@@ -130,6 +135,7 @@ void RicochetIrcServer::initRicochet()
                      this,
                      SLOT(requestsChanged()));
 }
+
 
 void RicochetIrcServer::startRicochet()
 {
@@ -161,9 +167,9 @@ void RicochetIrcServer::startRicochet()
                              SLOT(torStatusChanged(int, int)));
         }
     }
-
     first_start = false;
 }
+
 
 void RicochetIrcServer::stopRicochet()
 {
@@ -193,22 +199,42 @@ void RicochetIrcServer::torConfigurationNeededChanged()
     // conf.insert(QStringLiteral("HTTPProxyAuthenticator"), 0);
     // conf.insert(QStringLiteral("FirewallPorts"), 0);
     // conf.insert(QStringLiteral("Bridge"), 0);
-    torManager->control()->setConfiguration(conf);
+    connect(torManager->control()->setConfiguration(conf),
+            SIGNAL(finished()), SLOT(torConfigurationFinished()));
+}
+
+
+void RicochetIrcServer::torConfigurationFinished()
+{
+    Tor::TorManager *torManager = Tor::TorManager::instance();
     torManager->control()->saveConfiguration();
 }
+
+
 
 void RicochetIrcServer::torStatusChanged(int newStatus, int oldStatus)
 {
     Q_UNUSED(oldStatus);
 
-    if(newStatus == Tor::TorControl::TorStatus::TorReady)
+    switch(newStatus)
     {
-        qDebug() << "=== Tor ready ===";
-        UserIdentity *identity;
-        foreach(identity, identityManager->identities())
-        {
-            getChannel(control_channel_name)->setTopic(ricochet_user,identity->contactID());
-        }
+        case Tor::TorControl::TorStatus::TorOffline:
+            // Workaround for new profiles
+            if(Tor::TorManager::instance()->configurationNeeded())
+            {
+                torConfigurationNeededChanged();
+            }
+        break;
+
+        case Tor::TorControl::TorStatus::TorReady:
+            qDebug() << "=== Tor ready ===";
+            UserIdentity *identity;
+            foreach(identity, identityManager->identities())
+            {
+                getChannel(control_channel_name)->setTopic(ricochet_user,identity->contactID());
+            }
+        break;
+
     }
 
     if(clients.count() > 0)
@@ -234,10 +260,12 @@ void RicochetIrcServer::torStatusChanged(int newStatus, int oldStatus)
     }
 }
 
+
 const QString RicochetIrcServer::getWelcomeMessage()
 {
     return welcome_message;
 }
+
 
 void RicochetIrcServer::ircUserLoggedIn(IrcConnection* conn)
 {
@@ -265,6 +293,7 @@ void RicochetIrcServer::ircUserLoggedIn(IrcConnection* conn)
     }
 }
 
+
 void RicochetIrcServer::ircUserLeft(IrcConnection* conn)
 {
     Q_UNUSED(conn);
@@ -276,10 +305,12 @@ void RicochetIrcServer::ircUserLeft(IrcConnection* conn)
     }
 }
 
+
 void RicochetIrcServer::echo(const QString &text)
 {
     privmsg(ricochet_user, control_channel_name, text);
 }
+
 
 void RicochetIrcServer::error(const QString &text)
 {

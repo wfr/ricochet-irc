@@ -67,6 +67,7 @@ protected:
 
 private slots:
     void torConfigurationNeededChanged();
+    void torConfigurationFinished();
     void torStatusChanged(int newStatus, int oldStatus);
 
     void onContactAdded(ContactUser *user);
