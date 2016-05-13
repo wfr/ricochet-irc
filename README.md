@@ -1,7 +1,7 @@
 ## Ricochet-IRC
 *=> [README-irc.md](README-irc.md)*
-*=> [README-irc.md](README-irc.md)*
-*=> [README-irc.md](README-irc.md)*
+
+![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
 Ricochet-IRC is not affiliated with or endorsed by the [Ricochet](https://github.com/ricochet-im/ricochet/) project.
 

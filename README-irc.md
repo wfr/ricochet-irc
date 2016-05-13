@@ -4,7 +4,9 @@
 
 This program is work in progress. Use at your own risk!
 
-It has only been tested with [WeeChat](https://weechat.org/).
+Example session using [WeeChat](https://weechat.org/):
+
+![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
 ### Debug build instruction
 
