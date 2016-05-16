@@ -673,18 +673,23 @@ void RicochetIrcServer::onUnreadCountChanged()
 
     while(convo->rowCount())
     {
-        QString text = convo->data(convo->index(0)).toString();
+        QModelIndex index = convo->index(0);
+        QString text = convo->data(index, Qt::DisplayRole).toString();
+        bool isOutgoing = convo->data(index, ConversationModel::IsOutgoingRole).toBool();
         convo->clear();
 
-        // IRC has no concept of multi-line messages. Split them.
-        QStringList lines = text.split(QLatin1Char('\n'));
-        foreach(QString line, lines)
+        if(!isOutgoing)
         {
-            IrcUser *ircuser = usermap[convo->contact()];
-            foreach(IrcConnection *conn, clients.values())
+            // IRC has no concept of multi-line messages. Split them.
+            QStringList lines = text.split(QLatin1Char('\n'));
+            foreach(QString line, lines)
             {
-                conn->reply(ircuser->getPrefix(),
-                            QStringLiteral("PRIVMSG %1 :%2").arg(conn->nick).arg(line));
+                IrcUser *ircuser = usermap[convo->contact()];
+                foreach(IrcConnection *conn, clients.values())
+                {
+                    conn->reply(ircuser->getPrefix(),
+                                QStringLiteral("PRIVMSG %1 :%2").arg(conn->nick).arg(line));
+                }
             }
         }
     }
