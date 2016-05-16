@@ -93,6 +93,7 @@ private:
 
     void echo(const QString& text);
     void error(const QString& text);
+    void highlight();
 
     void cmdHelp();
     void cmdId();

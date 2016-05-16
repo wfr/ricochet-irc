@@ -340,6 +340,21 @@ void RicochetIrcServer::error(const QString &text)
 
 
 /**
+ * @brief RicochetIrcServer::highlight Draw attention to the user ...
+ * ... by highlighting them in #ricochet
+ */
+void RicochetIrcServer::highlight()
+{
+    IrcChannel *cc = getChannel(control_channel_name);
+    foreach(IrcUser* user, clients.values()) {
+        if(cc->hasMember(user->nick)) {
+            echo(QStringLiteral("%1: Attention!").arg(user->nick));
+        }
+    }
+}
+
+
+/**
  * @brief RicochetIrcServer::privmsgHook  Handle IRC messages from the user
  * @param sender
  * @param msgtarget  can be a #channel or a nickname
@@ -702,6 +717,7 @@ void RicochetIrcServer::onUnreadCountChanged()
  */
 void RicochetIrcServer::requestAdded(IncomingContactRequest *request)
 {
+    highlight();
     QString notice = QStringLiteral("Incoming contact request from: %1").arg(request->contactId());
     if(request->message().length() > 0)
     {
