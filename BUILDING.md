@@ -67,7 +67,7 @@ To take full advantage of the sanitizer options, you may need to install `libasa
 
 You will need:
  * Xcode (for toolchain)
- * Qt 5 - preferably the [Qt SDK](https://qt-project.org/downloads)
+ * Qt 5 - preferably the [Qt SDK](https://www.qt.io/download/)
  * Protocol Buffers (libprotobuf, protoc) - `brew install protobuf`
 
 You can either load `ricochet.pro` in Qt Creator and build normally, or build command-line with:
@@ -82,13 +82,22 @@ Normally, configuration will be stored in a `config.ricochet` folder, in the sam
 
 The `packaging/osx/release_osx.sh` script demonstrates how to build a redistributable app bundle.
 
+Since the openssl header files were removed in El Capitan, have qmake use the openssl that comes with brew (see the OPENSSLDIR var below).
+
+Steps:
+```
+brew install protobuf qt5 tor
+/usr/local/opt/qt5/bin/qmake OPENSSLDIR=/usr/local/opt/openssl/ CONFIG+=debug
+make
+```
+
 ## Windows
 
 Building for Windows is difficult. The process and scripts used for release builds are documented in the [buildscripts repository](https://github.com/ricochet-im/buildscripts/tree/master/mingw).
 
 For development builds, you will want:
  * Visual Studio C++ or MinGW
- * Qt 5 - preferably the [Qt SDK](https://qt-project.org/downloads)
+ * Qt 5 - preferably the [Qt SDK](https://www.qt.io/download/)
  * OpenSSL (including libs and headers)
  * Protocol Buffers >= 2.6.0
 
