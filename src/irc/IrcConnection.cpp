@@ -66,6 +66,7 @@ IrcConnection::IrcConnection(QObject *parent, IrcServer* server, QTcpSocket *soc
 {
     hostname = socket->localAddress().toString();
     buffer = new QByteArray();
+    configureHandlers();
     connect(socket,
             SIGNAL(readyRead()),
             SLOT(readyRead()));
@@ -123,6 +124,12 @@ QString IrcConnection::getLocalHostname()
 }
 
 
+IrcServer* IrcConnection::getIrcServer()
+{
+    return server;
+}
+
+
 void IrcConnection::reply(const QString& text)
 {
     reply(getLocalHostname(), text);
@@ -170,11 +177,9 @@ void IrcConnection::checkLogin()
     }
 }
 
-
 void IrcConnection::handleLine(const QString& line)
 {
     qDebug() << "RECV:" << line;
-
     QRegularExpressionMatch match = re_message.match(line);
     if(!match.hasMatch())
     {
@@ -185,135 +190,180 @@ void IrcConnection::handleLine(const QString& line)
 
     QString prefix = match.captured(QStringLiteral("prefix"));
     QString command = match.captured(QStringLiteral("command"));
-    QString trailing = match.captured(QStringLiteral("trailing"));
     QList<QString> params = match.captured(QStringLiteral("params")).split(QStringLiteral(" "));
-    if(trailing != QStringLiteral(""))
+    QString trailing = match.captured(QStringLiteral("trailing"));
+    if(trailing.count())
     {
         params.append(trailing);
     }
 
-    if(command == QStringLiteral("NICK"))
+    if(command_funcs.contains(command))
     {
-        if(params.size() < 1)
+        if(!have_pass && command != QStringLiteral("PASS"))
         {
-            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("expected argument"));
-            return;
+            reply(ERR_NOTREGISTERED, QStringLiteral("User cannot proceed without a password."));
         }
         else
         {
-            QString new_nick = params[0];
-            QRegularExpressionMatch match = re_nickname.match(new_nick);
-            if(match.hasMatch())
-            {
-                emit rename(this, new_nick);
-
-                if(!have_nick)
-                {
-                    have_nick = true;
-                    checkLogin();
-                }
-            }
-            else
-            {
-                reply(ERR_ERRONEUSNICKNAME, QStringLiteral("invalid nickname"));
-            }
+            command_funcs[command](params);
         }
-    }
-    else if(command == QStringLiteral("USER"))
-    {
-        if(!re_user.match(params[0]).hasMatch())
-        {
-            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("invalid user name"));
-            socket->close();
-            return;
-        }
-        user = params[0];
-
-        if(!re_realname.match(params[3]).hasMatch())
-        {
-            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("invalid real name"));
-            socket->close();
-            return;
-        }
-        realname = params[3];
-
-        have_user = true;
-        checkLogin();
-    }
-    else if(command == QStringLiteral("PASS"))
-    {
-        if(params.size() == 0)
-        {
-            reply(ERR_UNKNOWNCOMMAND, QStringLiteral("expected argument"));
-            return;
-        }
-        if(password.count() > 0)
-        {
-            if(password == params[0])
-            {
-                have_pass = true;
-            }
-            else
-            {
-                reply(ERR_PASSWDMISMATCH, QStringLiteral("invalid password"));
-                socket->close();
-                return;
-            }
-        }
-        checkLogin();
-    }
-    else if(command == QStringLiteral("JOIN"))
-    {
-        if(!isLoggedIn())
-        {
-            reply(ERR_NOLOGIN, QStringLiteral("Unauthenticated access prohibited."));
-            return;
-        }
-
-        join(params[0]);
-    }
-    else if(command == QStringLiteral("PING"))
-    {
-        reply(QStringLiteral("PONG %1 :%2").arg(getLocalHostname()).arg(getLocalHostname()));
-    }
-    else if(command == QStringLiteral("PRIVMSG"))
-    {
-        if(!isLoggedIn())
-        {
-            reply(ERR_NOLOGIN, QStringLiteral("Unauthenticated access prohibited."));
-            return;
-        }
-
-        emit privmsg(this, params[0], params[1]);
-    }
-    else if(command == QStringLiteral("PART"))
-    {
-        if(!isLoggedIn())
-        {
-            reply(ERR_NOLOGIN, QStringLiteral("Unauthenticated access prohibited."));
-            return;
-        }
-
-        if(re_channel.match(params[0]).hasMatch())
-        {
-            emit part(this, params[0]);
-        }
-        else
-        {
-            reply(ERR_NOSUCHCHANNEL, QStringLiteral("invalid channel name"));
-            return;
-        }
-    }
-    else if(command == QStringLiteral("QUIT"))
-    {
-        emit quit(this);
     }
     else
     {
-        qDebug() << "unknown command:" << command;
+        qDebug() << "unknown IRC command: " << command;
     }
 }
 
+
+void IrcConnection::configureHandlers()
+{
+    command_funcs.insert(QStringLiteral("PASS"), [this](QList<QString> params)    { this->handle_PASS(params); });
+    command_funcs.insert(QStringLiteral("NICK"), [this](QList<QString> params)    { this->handle_NICK(params); });
+    command_funcs.insert(QStringLiteral("USER"), [this](QList<QString> params)    { this->handle_USER(params); });
+    command_funcs.insert(QStringLiteral("JOIN"), [this](QList<QString> params)    { this->handle_JOIN(params); });
+    command_funcs.insert(QStringLiteral("PING"), [this](QList<QString> params)    { this->handle_PING(params); });
+    command_funcs.insert(QStringLiteral("PRIVMSG"), [this](QList<QString> params) { this->handle_PRIVMSG(params); });
+    command_funcs.insert(QStringLiteral("PART"), [this](QList<QString> params)    { this->handle_PART(params); });
+    command_funcs.insert(QStringLiteral("QUIT"), [this](QList<QString> params)    { this->handle_QUIT(params); });
+}
+
+
+void IrcConnection::handle_PASS(QList<QString> params)
+{
+    if(params.size() < 1)
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Expected argument."));
+        return;
+    }
+    if(!have_pass)
+    {
+        if(password == params[0])
+        {
+            have_pass = true;
+        }
+        else
+        {
+            reply(ERR_PASSWDMISMATCH, QStringLiteral("Invalid password."));
+            socket->close();
+            return;
+        }
+    }
+    checkLogin();
+}
+
+
+void IrcConnection::handle_NICK(QList<QString> params)
+{
+    if(params.size() < 1)
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Expected argument."));
+        return;
+    }
+    if(!re_nickname.match(params[0]).hasMatch())
+    {
+        reply(ERR_ERRONEUSNICKNAME, QStringLiteral("Invalid nickname."));
+        return;
+    }
+    emit rename(this, params[0]);
+    if(!have_nick)
+    {
+        have_nick = true;
+        checkLogin();
+    }
+}
+
+
+void IrcConnection::handle_USER(QList<QString> params)
+{
+    if(params.size() < 4)
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Expected argument."));
+        return;
+    }
+    if(!re_user.match(params[0]).hasMatch())
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Invalid user name."));
+        socket->close();
+        return;
+    }
+    if(!re_realname.match(params[3]).hasMatch())
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Invalid real name."));
+        socket->close();
+        return;
+    }
+    this->user = params[0];
+    this->realname = params[3];
+    this->have_user = true;
+    checkLogin();
+}
+
+
+void IrcConnection::handle_JOIN(QList<QString> params)
+{
+    if(params.size() < 1)
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Expected argument."));
+        return;
+    }
+    if(!isLoggedIn())
+    {
+        reply(ERR_NOLOGIN, QStringLiteral("Access prohibited."));
+        return;
+    }
+    join(params[0]);
+}
+
+
+void IrcConnection::handle_PRIVMSG(QList<QString> params)
+{
+    if(params.size() < 2)
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Expected argument."));
+        return;
+    }
+    if(!isLoggedIn())
+    {
+        reply(ERR_NOLOGIN, QStringLiteral("Access prohibited."));
+        return;
+    }
+    emit privmsg(this, params[0], params[1]);
+}
+
+
+void IrcConnection::handle_PART(QList<QString> params)
+{
+    if(params.size() < 1)
+    {
+        reply(ERR_UNKNOWNCOMMAND, QStringLiteral("Expected argument."));
+        return;
+    }
+    if(!isLoggedIn())
+    {
+        reply(ERR_NOLOGIN, QStringLiteral("Access prohibited."));
+        return;
+    }
+    if(!re_channel.match(params[0]).hasMatch())
+    {
+        reply(ERR_NOSUCHCHANNEL, QStringLiteral("Invalid channel name."));
+        return;
+    }
+    emit part(this, params[0]);
+}
+
+
+void IrcConnection::handle_PING(QList<QString> params)
+{
+    (void)params;
+    reply(QStringLiteral("PONG %1 :%2").arg(getLocalHostname()).arg(getLocalHostname()));
+}
+
+
+void IrcConnection::handle_QUIT(QList<QString> params)
+{
+    (void)params;
+    emit quit(this);
+}
 
 
 void IrcConnection::join(const QString& channel_name)
@@ -337,10 +387,4 @@ void IrcConnection::join(const QString& channel_name)
     {
         reply(ERR_NOSUCHCHANNEL, QStringLiteral("%1 %2 :No such channel").arg(nick).arg(channel_name));
     }
-}
-
-
-IrcServer* IrcConnection::getIrcServer()
-{
-    return server;
 }

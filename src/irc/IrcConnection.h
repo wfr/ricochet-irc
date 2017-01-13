@@ -35,6 +35,7 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QByteArray>
+#include <functional>
 #include "IrcUser.h"
 #include "IrcConstants.h"
 
@@ -82,12 +83,22 @@ private:
     QString password;
 
     QString getLocalHostname();
-    void handleLine(const QString& line);
+    IrcServer* getIrcServer();
 
     bool have_nick, have_user, have_pass, welcome_sent;
     void checkLogin();
 
-    IrcServer* getIrcServer();
+    void handleLine(const QString& line);
+    void configureHandlers();
+    QHash<QString, std::function<void(QList<QString>)>> command_funcs;
+    void handle_PASS(QList<QString> params);
+    void handle_NICK(QList<QString> params);
+    void handle_USER(QList<QString> params);
+    void handle_JOIN(QList<QString> params);
+    void handle_PING(QList<QString> params);
+    void handle_PRIVMSG(QList<QString> params);
+    void handle_PART(QList<QString> params);
+    void handle_QUIT(QList<QString> params);
 };
 
 #endif // IRCCONNECTION_H
