@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
     qputenv("QT_ENABLE_REGEXP_JIT",   "0");
 
     QCoreApplication a(argc, argv);
-    a.setApplicationVersion(QLatin1String("1.1.2"));
+    a.setApplicationVersion(QLatin1String("1.1.4"));
     a.setOrganizationName(QStringLiteral("Ricochet"));
     qSetMessagePattern(QString::fromLatin1("%{file}(%{line}): %{message}"));
 
@@ -132,7 +132,11 @@ int main(int argc, char *argv[])
     initTranslation();
 
     /* Initialize OpenSSL's allocator */
+#if OPENSSL_VERSION_NUMBER < 0x10100000L
     CRYPTO_malloc_init();
+#else
+    OPENSSL_malloc_init();
+#endif
 
     /* Seed the OpenSSL RNG */
     if (!SecureRNG::seed())

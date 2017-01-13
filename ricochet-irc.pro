@@ -41,7 +41,7 @@ TEMPLATE = app
 QT = core network
 CONFIG += c++11 console debug
 
-VERSION = 1.1.2
+VERSION = 1.1.4
 
 # Use CONFIG+=no-hardened to disable compiler hardening options
 !CONFIG(no-hardened) {
@@ -130,8 +130,14 @@ win32 {
     }
 
     # required by openssl
-    LIBS += -lUser32 -lGdi32 -ladvapi32
+    LIBS += -luser32 -lgdi32 -ladvapi32
 }
+
+# Exclude unneeded plugins from static builds
+QTPLUGIN.playlistformats = -
+QTPLUGIN.imageformats = -
+QTPLUGIN.printsupport = -
+QTPLUGIN.mediaservice = -
 
 DEFINES += QT_NO_CAST_FROM_ASCII QT_NO_CAST_TO_ASCII
 
@@ -250,10 +256,17 @@ TRANSLATIONS += \
     translation/ricochet_sv.ts \
     translation/ricochet_he.ts \
     translation/ricochet_sl.ts \
-    translation/ricochet_zh.ts
+    translation/ricochet_zh.ts \
+    translation/ricochet_et_EE.ts \
+    translation/ricochet_it_IT.ts \
+    translation/ricochet_nb.ts \
+    translation/ricochet_pt_PT.ts \
+    translation/ricochet_sq.ts \
+    translation/ricochet_zh_HK.ts \
+    translation/ricochet_ja.ts
 
 isEmpty(QMAKE_LRELEASE) {
-    win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
+    contains(QMAKE_HOST.os,Windows):QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease.exe
     else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
 }
 

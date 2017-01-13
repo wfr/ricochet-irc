@@ -8,9 +8,10 @@ Example session using [WeeChat](https://weechat.org/):
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
-### Debug build instruction
+### Debug build
 
 ```
+	lrelease ricochet-irc.pro
 	qmake ricochet-irc.pro CONFIG+=debug CONFIG+=no-hardened
 	make clean
 	make -j$(nproc)
@@ -48,20 +49,16 @@ Once you are connected to the IRC server, your client is automatically joined in
     @ricochet |  * request reject ID       -- reject incoming request
 ```
 
+### Changes
+ * 2017-01-13: updated to v1.1.4
 
-### Recent changes
- * Limit IRC client connections to 1.
 
- * Multi-line messages are supported.
+### Peculiarities
 
- * Tor only runs when an IRC user is connected.
+ * Ricochet-IRC connects to the network only when an IRC client is attached.
 
- * The Control channel topic shows your own ID.
-
- * Show online/offline status with flag: +v/-v.
+ * Contact online/offline status is mapped to IRC user flag: +v/-v
  
- * Command-line parsing. Try --help.
-
 
 ### To do
  * i18n
