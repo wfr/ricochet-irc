@@ -453,18 +453,18 @@ void RicochetIrcServer::cmdHelp()
     echo(QStringLiteral(" ___ _            _        _     ___ ___  ___ "));
     echo(QStringLiteral("| _ (_)__ ___  __| |_  ___| |_  |_ _| _ \\/ __|"));
     echo(QStringLiteral("|   / / _/ _ \\/ _| ' \\/ -_)  _|  | ||   / (__ "));
-    echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___|"));
+    echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___| %1").arg(QCoreApplication::applicationVersion()));
     //echo(QCoreApplication::translate("irc", "Please turn off logging in your IRC client."));
     echo(QStringLiteral(""));
     echo(QStringLiteral("COMMANDS:"));
     echo(QStringLiteral(" * help"));
-    echo(QStringLiteral(" * id                      -- print your ricochet id"));
-    echo(QStringLiteral(" * add ID NICK MESSAGE     -- add a contact"));
-    echo(QStringLiteral(" * delete NICK             -- delete a contact"));
-    echo(QStringLiteral(" * rename NICK NEW_NICK    -- rename a contact"));
-    echo(QStringLiteral(" * request list            -- list incoming requests"));
-    echo(QStringLiteral(" * request accept ID NICK  -- accept incoming request"));
-    echo(QStringLiteral(" * request reject ID       -- reject incoming request"));
+    echo(QStringLiteral(" * id                            -- print your ricochet id"));
+    echo(QStringLiteral(" * add ID NICKNAME MESSAGE       -- add a contact"));
+    echo(QStringLiteral(" * delete NICKNAME               -- delete a contact"));
+    echo(QStringLiteral(" * rename NICKNAME NEW_NICKNAME  -- rename a contact"));
+    echo(QStringLiteral(" * request list                  -- list incoming requests"));
+    echo(QStringLiteral(" * request accept ID NICKNAME    -- accept incoming request"));
+    echo(QStringLiteral(" * request reject ID             -- reject incoming request"));
     echo(QStringLiteral(""));
 }
 
