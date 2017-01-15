@@ -45,6 +45,7 @@
 #include "core/ContactUser.h"
 #include "core/UserIdentity.h"
 #include "core/IncomingRequestManager.h"
+#include "core/ContactIDValidator.h"
 #include "tor/TorManager.h"
 #include "tor/TorControl.h"
 #include "tor/TorProcess.h"
@@ -476,20 +477,29 @@ void RicochetIrcServer::cmdId()
 
 void RicochetIrcServer::cmdAdd(const QStringList& args)
 {
-    if(args.length() != 3)
+    if(args.length() < 3)
     {
         error(QStringLiteral("Unexpected arguments."));
     }
     else
     {
-        // TODO: validate arguments (ricochet-core)
         QString id = args[0];
         QString nickname = args[1];
         QString message = args[2];
-        echo(QStringLiteral("sending contact request to user `%1` with id: %2").arg(nickname).arg(id));;
-
-        ContactsManager *contactsManager = identity->getContacts();
-        contactsManager->createContactRequest(id, nickname, identity->nickname(), message);
+        for(int i=3; i<args.length(); i++)
+        {
+            message.append(QStringLiteral(" %1").arg(args[i]));
+        }
+        if(ContactIDValidator::isValidID(id))
+        {
+            echo(QStringLiteral("sending contact request to user `%1` with id: %2 with message: %3").arg(nickname).arg(id).arg(message));
+            ContactsManager *contactsManager = identity->getContacts();
+            contactsManager->createContactRequest(id, nickname, identity->nickname(), message);
+        }
+        else
+        {
+            error(QStringLiteral("invalid Ricochet ID: %1").arg(id));
+        }
     }
 }
 
