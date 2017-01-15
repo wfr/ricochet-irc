@@ -81,6 +81,7 @@ bool RicochetIrcServer::run()
     ricochet_user->user = QStringLiteral("ricochet");
     ricochet_user->hostname = QStringLiteral("::1");
     ricochet_user->realname = QStringLiteral("Ricochet Control User");
+    this->virtual_clients.append(ricochet_user);
     QObject::connect(ricochet_user,
                      SIGNAL(privmsg(IrcUser*, const QString&, const QString&)),
                      this,
@@ -502,6 +503,7 @@ void RicochetIrcServer::cmdDelete(const QStringList& args)
         if(contact)
         {
             contact->deleteContact();
+            virtual_clients.removeOne(usermap[contact]);
             quit(usermap.value(contact));
             usermap.remove(contact);
         }
@@ -526,7 +528,8 @@ void RicochetIrcServer::cmdRename(const QStringList& args)
 
         ContactsManager *contactsManager = identity->getContacts();
 
-        if(contactsManager->lookupNickname(new_nickname))
+        if(contactsManager->lookupNickname(new_nickname)
+                || findUser(new_nickname) != Q_NULLPTR)
         {
             error(QStringLiteral("Target nickname `%1` already exists.").arg(new_nickname));
         }
@@ -655,6 +658,7 @@ void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
         ctrlchan->addMember(ircuser, QStringLiteral("+v"));
         joined(ircuser, control_channel_name);
         usermap.insert(user, ircuser);
+        virtual_clients.append(ircuser);
     }
 
     switch(status)

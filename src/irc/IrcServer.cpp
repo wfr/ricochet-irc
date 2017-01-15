@@ -281,6 +281,13 @@ IrcUser* IrcServer::findUser(const QString& nickname)
             return dynamic_cast<IrcUser*>(c);
         }
     }
+    foreach(IrcUser* u, virtual_clients)
+    {
+        if(u->nick == nickname)
+        {
+            return u;
+        }
+    }
     return Q_NULLPTR;
 }
 

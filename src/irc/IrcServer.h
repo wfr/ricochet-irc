@@ -115,6 +115,7 @@ protected:
 
     QTcpServer *tcpServer;
     QHash<QTcpSocket*, IrcConnection*> clients;
+    QList<IrcUser*> virtual_clients;
     QHash<QString, IrcChannel*> channels;
 
     /**
