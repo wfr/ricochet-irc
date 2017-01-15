@@ -368,7 +368,7 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
 
     if(msgtarget == control_channel_name && sender->nick != ricochet_user->nick)
     {
-        QStringList args = text.split(QLatin1Char(' '));
+        QStringList args = text.trimmed().split(QLatin1Char(' '));
         QString cmd = args[0];
         args.pop_front();
 
