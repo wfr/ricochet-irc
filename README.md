@@ -1,11 +1,13 @@
 ## Ricochet-IRC
 *=> [README-irc.md](README-irc.md)*
+*=> [README-irc.md](README-irc.md)*
+*=> [README-irc.md](README-irc.md)*
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
 Ricochet-IRC is not affiliated with or endorsed by the [Ricochet](https://github.com/ricochet-im/ricochet/) project.
 
-It is a fork that extends the original client. Below you can find the original README.md:
+It is an extension of the original client. Below you can find the *original README*:
 
 ## Ricochet
 
