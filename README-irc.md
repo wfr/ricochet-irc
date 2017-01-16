@@ -15,7 +15,6 @@ Example session using [WeeChat](https://weechat.org/):
 	cd ricochet-irc
 	git checkout irc
 
-	lrelease ricochet-irc.pro
 	qmake ricochet-irc.pro CONFIG+=debug CONFIG+=no-hardened
 	make clean
 	make -j$(nproc)
