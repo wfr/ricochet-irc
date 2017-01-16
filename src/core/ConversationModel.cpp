@@ -40,6 +40,9 @@ ConversationModel::ConversationModel(QObject *parent)
     , m_contact(0)
     , m_unreadCount(0)
 {
+    m_settings = new SettingsObject(QStringLiteral("ui"));
+    connect(m_settings, &SettingsObject::modified, this, &ConversationModel::onSettingsModified);
+    m_history_limit = m_settings->read("chatHistoryLimit").toInt(1000);
 }
 
 void ConversationModel::setContact(ContactUser *contact)
@@ -117,6 +120,7 @@ void ConversationModel::sendMessage(const QString &text)
     beginInsertRows(QModelIndex(), 0, 0);
     messages.prepend(message);
     endInsertRows();
+    prune();
 }
 
 void ConversationModel::sendQueuedMessages()
@@ -185,6 +189,7 @@ void ConversationModel::messageReceived(const QString &text, const QDateTime &ti
     MessageData message(text, time, id, Received);
     messages.insert(row, message);
     endInsertRows();
+    prune();
 
     m_unreadCount++;
     emit unreadCountChanged();
@@ -316,3 +321,22 @@ int ConversationModel::indexOfIdentifier(MessageId identifier, bool isOutgoing) 
     return -1;
 }
 
+void ConversationModel::prune()
+{
+    while(messages.size() > m_history_limit)
+    {
+        beginRemoveRows(QModelIndex(), messages.size()-1, messages.size()-1);
+        messages.removeLast();
+        endRemoveRows();
+    }
+}
+
+void ConversationModel::onSettingsModified(const QString &key, const QJsonValue &value)
+{
+    if (key == QLatin1String("chatHistoryLimit"))
+    {
+        // The value should always be valid, but: better safe than sorry.
+        m_history_limit = value.toInt(1000);
+        prune();
+    }
+}

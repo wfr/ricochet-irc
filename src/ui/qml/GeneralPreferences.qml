@@ -86,6 +86,19 @@ ColumnLayout {
         }
     }
 
+    RowLayout {
+        Label { text: qsTr("Chat history limit") }
+        TextField {
+            id: chatHistoryLimitField
+            inputMethodHints: Qt.ImhDigitsOnly
+            validator: IntValidator{bottom: 10; top: 1000000000;}
+            text: uiSettings.data.chatHistoryLimit || 1000
+            onEditingFinished: {
+                uiSettings.write("chatHistoryLimit", parseInt(text))
+            }
+        }
+    }
+
 
     Item {
         Layout.fillHeight: true
