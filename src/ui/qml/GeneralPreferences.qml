@@ -87,7 +87,7 @@ ColumnLayout {
     }
 
     RowLayout {
-        Label { text: qsTr("Chat history limit") }
+        Label { text: qsTr("Limit history to") }
         TextField {
             id: chatHistoryLimitField
             inputMethodHints: Qt.ImhDigitsOnly
@@ -97,6 +97,7 @@ ColumnLayout {
                 uiSettings.write("chatHistoryLimit", parseInt(text))
             }
         }
+        Label { text: qsTr("messages") }
     }
 
 
