@@ -112,6 +112,7 @@ private:
     int m_unreadCount;
 
     int indexOfIdentifier(MessageId identifier, bool isOutgoing) const;
+    void prune();
 };
 
 #endif
