@@ -37,6 +37,7 @@
 #include <QDateTime>
 #include "core/ContactUser.h"
 #include "protocol/ChatChannel.h"
+#include "utils/Settings.h"
 
 class ConversationModel : public QAbstractListModel
 {
@@ -91,6 +92,7 @@ private slots:
     void outboundChannelClosed();
     void sendQueuedMessages();
     void onContactStatusChanged();
+    void onSettingsModified(const QString &key, const QJsonValue &value);
 
 private:
     struct MessageData {
@@ -109,9 +111,12 @@ private:
     ContactUser *m_contact;
     QList<MessageData> messages;
     int m_unreadCount;
+    SettingsObject *m_settings;
 
     int indexOfIdentifier(MessageId identifier, bool isOutgoing) const;
     void prune();
+    void expire();
+    void expire(int seconds);
 };
 
 #endif

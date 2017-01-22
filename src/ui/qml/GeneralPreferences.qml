@@ -86,6 +86,54 @@ ColumnLayout {
         }
     }
 
+    RowLayout {
+        CheckBox {
+            id: deleteMessagesBox
+            text: qsTr("Delete messages after")
+            checked: uiSettings.data.deleteMessages || false
+            onCheckedChanged: {
+                uiSettings.write("deleteMessages", checked)
+                deleteMessagesDurationBox.enabled = checked
+            }
+        }
+
+        ComboBox {
+            id: deleteMessagesDurationBox
+            Layout.minimumWidth: 200
+            enabled: deleteMessagesBox.checked
+            model: [
+                { "text": "10 " + qsTr("seconds"),  "seconds": 10 },
+                { "text": "15 " + qsTr("minutes"),  "seconds": 60 * 15 },
+                { "text": "30 " + qsTr("minutes"),  "seconds": 60 * 30 },
+                { "text": "60 " + qsTr("minutes"),  "seconds": 60 * 60 },
+                { "text": "6 " + qsTr("hours"),     "seconds": 60 * 60 * 6 },
+                { "text": "12 " + qsTr("hours"),    "seconds": 60 * 60 * 12 },
+                { "text": "24 " + qsTr("hours"),    "seconds": 60 * 60 * 24 },
+                { "text": "7 " + qsTr("days"),      "seconds": 60 * 60 * 24 * 7 },
+                { "text": "14 " + qsTr("days"),     "seconds": 60 * 60 * 24 * 14 },
+                { "text": "30 " + qsTr("days"),     "seconds": 60 * 60 * 24 * 30  },
+            ]
+            textRole: "text"
+
+            function findBySeconds(seconds) {
+                var closest_index;
+                var closest_diff = 1<<30;
+                for (var i = 0; i < model.length; i++) {
+                    var diff = Math.abs(model[i].seconds - seconds);
+                    if (diff < closest_diff) {
+                        closest_diff = diff;
+                        closest_index = i;
+                    }
+                }
+                return closest_index;
+            }
+
+            currentIndex: findBySeconds(uiSettings.data.deleteMessagesAfter || 1<<30)
+            onCurrentIndexChanged: {
+                uiSettings.write("deleteMessagesAfter", model[currentIndex].seconds);
+            }
+        }
+    }
 
     Item {
         Layout.fillHeight: true
