@@ -42,6 +42,10 @@ ConversationModel::ConversationModel(QObject *parent)
 {
     m_settings = new SettingsObject(QStringLiteral("ui"));
     connect(m_settings, &SettingsObject::modified, this, &ConversationModel::onSettingsModified);
+
+    m_expire_timer = new QTimer(this);
+    m_expire_timer->setSingleShot(true);
+    connect(m_expire_timer, SIGNAL(timeout()), this, SLOT(expire()));
 }
 
 void ConversationModel::setContact(ContactUser *contact)
@@ -262,6 +266,8 @@ void ConversationModel::resetUnreadCount()
         return;
     m_unreadCount = 0;
     emit unreadCountChanged();
+
+    expire();
 }
 
 void ConversationModel::onContactStatusChanged()
@@ -359,16 +365,20 @@ void ConversationModel::prune()
 void ConversationModel::expire()
 {
     if (m_settings->read("deleteMessages").toBool(false)) {
-        expire(m_settings->read("deleteMessagesAfter").toInt(INT_MAX));
+        int seconds = m_settings->read("deleteMessagesAfter").toInt(0);
+        if (seconds) {
+            expire(seconds);
+        }
     }
 }
 
 void ConversationModel::expire(int seconds)
 {
-    QDateTime cutoff = QDateTime::currentDateTime().addSecs(-seconds);
+    const QDateTime now = QDateTime::currentDateTime();
+    const QDateTime cutoff = now.addSecs(-seconds);
     int first = messages.size();
     for (int i = first - 1; i >= 0; i--) {
-        if (messages[i].time < cutoff) {
+        if (messages[i].time <= cutoff) {
             first = i;
         } else {
             break;
@@ -381,5 +391,11 @@ void ConversationModel::expire(int seconds)
             messages.removeLast();
         }
         endRemoveRows();
+    }
+
+    if (messages.size() && !m_unreadCount) {
+        const qint64 msecs_expire = 1000 * (qint64)seconds - messages.last().time.msecsTo(now);
+        const qint64 msecs_sleep = std::max((qint64)100, msecs_expire + 1);
+        m_expire_timer->start(msecs_sleep);
     }
 }
