@@ -5,9 +5,9 @@
 It is currently based on [R2: Ricochet Refresh](https://github.com/blueprint-freespeech/ricochet-refresh/),
 specifically its experimental Tego-Core branch that supports v3 onions.
 
-Please refer to the [README-upstream.md](upstream README) for a more detailed explanation of Ricochet itself.
+Please refer to [README-upstream.md](README-upstream.md) for a more detailed explanation of Ricochet itself.
 
-[WeeChat](https://weechat.org/) as a client:
+Example session with [WeeChat](https://weechat.org/) as a client:
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
