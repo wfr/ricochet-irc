@@ -1,3 +1,14 @@
+## Ricochet-IRC
+*=> [README-irc.md](README-irc.md)*
+*=> [README-irc.md](README-irc.md)*
+*=> [README-irc.md](README-irc.md)*
+
+![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
+
+Ricochet-IRC is not affiliated with or endorsed by the [Ricochet](https://github.com/ricochet-im/ricochet/) project.
+
+It is an extension of the original client. Below you can find the *original README*:
+
 # WORK IN PROGRESS PROJECT REPOSITORY - NOT FOR PRODUCTION USE
 
 ## Tego-Core

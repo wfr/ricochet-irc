@@ -35,6 +35,7 @@
 
 #include "core/ContactUser.h"
 #include "protocol/ChatChannel.h"
+#include <QAbstractListModel>
 
 class ConversationModel : public QAbstractListModel
 {
@@ -70,6 +71,7 @@ public:
 
     int unreadCount() const { return m_unreadCount; }
     Q_INVOKABLE void resetUnreadCount();
+    int queuedCount();
 
     virtual QHash<int,QByteArray> roleNames() const;
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;

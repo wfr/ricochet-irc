@@ -1,5 +1,5 @@
-/* Ricochet - https://ricochet.im/
- * Copyright (C) 2014, John Brooks <john.brooks@dereferenced.net>
+/* QtLocalIRCD - part of https://github.com/wfr/ricochet-irc/
+ * Copyright (C) 2016, Wolfgang Frisch <wfr@roembden.net>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -30,41 +30,48 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef CONTACTIDVALIDATOR_H
-#define CONTACTIDVALIDATOR_H
+#ifndef IRCCHANNEL_H
+#define IRCCHANNEL_H
 
-#include "UserIdentity.h"
-#include <QValidator>
+#include <QObject>
+#include <QHash>
+#include <QList>
 
-class ContactIDValidator : public QRegularExpressionValidator
+class IrcUser;
+
+class IrcChannel : public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(ContactIDValidator)
-
-    Q_PROPERTY(UserIdentity* notContactOfIdentity READ notContactOfIdentity WRITE setNotContactOfIdentity)
-
 public:
-    ContactIDValidator(QObject *parent = 0);
+    explicit IrcChannel(QObject *parent, const QString& name);
 
-    static bool isValidID(const QString &text);
-    static QString hostnameFromID(const QString &ID);
-    static QString idFromHostname(const QString &hostname);
-    static QString idFromHostname(const QByteArray &hostname) { return idFromHostname(QString::fromLatin1(hostname)); }
+    QString name;
 
-    UserIdentity *notContactOfIdentity() const { return m_uniqueIdentity; }
-    void setNotContactOfIdentity(UserIdentity *i) { m_uniqueIdentity = i; }
+    void addMember(IrcUser* user, const QString& flags = QStringLiteral(""));
+    QList<IrcUser*> getMembers();
+    bool hasMember(const QString& nickname);
+    IrcUser* getMember(const QString& nickname);
 
-    virtual void fixup(QString &text) const;
-    virtual State validate(QString &text, int &pos) const;
+    void setMemberFlags(IrcUser* member, const QString& flags);
+    QString getMemberFlagsLong(IrcUser* member);
+    QString getMemberFlagsShort(IrcUser* member);
+    QString getMemberListString();
 
-    Q_INVOKABLE ContactUser *matchingContact(const QString &text) const;
-    Q_INVOKABLE bool matchesIdentity(const QString &text) const;
+    void removeMember(IrcUser* member);
+
+    void setTopic(IrcUser* sender, const QString& topic);
+    const QString& getTopic();
 
 signals:
-    void failed() const;
+    void flagsChanged(IrcUser* member);
+    void part(IrcUser* member);
+    void topicChanged(IrcUser* sender, IrcChannel* channel);
 
-protected:
-    UserIdentity *m_uniqueIdentity;
+private:
+    // {user: flags, ...}
+    QHash<IrcUser*, QString> members;
+    QString topic;
+
 };
 
-#endif // CONTACTIDVALIDATOR_H
+#endif // IRCCHANNEL_H

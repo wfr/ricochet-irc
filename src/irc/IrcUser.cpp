@@ -1,5 +1,5 @@
-/* Ricochet - https://ricochet.im/
- * Copyright (C) 2014, John Brooks <john.brooks@dereferenced.net>
+/* QtLocalIRCD - part of https://github.com/wfr/ricochet-irc/
+ * Copyright (C) 2016, Wolfgang Frisch <wfr@roembden.net>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -29,42 +29,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+#include "IrcUser.h"
+#include "IrcChannel.h"
+#include "IrcServer.h"
 
-#ifndef CONTACTIDVALIDATOR_H
-#define CONTACTIDVALIDATOR_H
-
-#include "UserIdentity.h"
-#include <QValidator>
-
-class ContactIDValidator : public QRegularExpressionValidator
+IrcUser::IrcUser(QObject *ircserver) : QObject(ircserver)
 {
-    Q_OBJECT
-    Q_DISABLE_COPY(ContactIDValidator)
+    this->ircserver = qobject_cast<IrcServer*>(ircserver);
+}
 
-    Q_PROPERTY(UserIdentity* notContactOfIdentity READ notContactOfIdentity WRITE setNotContactOfIdentity)
 
-public:
-    ContactIDValidator(QObject *parent = 0);
-
-    static bool isValidID(const QString &text);
-    static QString hostnameFromID(const QString &ID);
-    static QString idFromHostname(const QString &hostname);
-    static QString idFromHostname(const QByteArray &hostname) { return idFromHostname(QString::fromLatin1(hostname)); }
-
-    UserIdentity *notContactOfIdentity() const { return m_uniqueIdentity; }
-    void setNotContactOfIdentity(UserIdentity *i) { m_uniqueIdentity = i; }
-
-    virtual void fixup(QString &text) const;
-    virtual State validate(QString &text, int &pos) const;
-
-    Q_INVOKABLE ContactUser *matchingContact(const QString &text) const;
-    Q_INVOKABLE bool matchesIdentity(const QString &text) const;
-
-signals:
-    void failed() const;
-
-protected:
-    UserIdentity *m_uniqueIdentity;
-};
-
-#endif // CONTACTIDVALIDATOR_H
+QString IrcUser::getPrefix()
+{
+    return QStringLiteral("%1!~%2@%3").arg(nick, user, hostname);
+}
