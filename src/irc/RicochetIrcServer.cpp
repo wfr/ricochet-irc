@@ -450,11 +450,11 @@ void RicochetIrcServer::handlePM(IrcConnection *sender, const QString &contact_n
 
 void RicochetIrcServer::cmdHelp()
 {
-    echo(QStringLiteral(" ___ _            _        _     ___ ___  ___ "));
-    echo(QStringLiteral("| _ (_)__ ___  __| |_  ___| |_  |_ _| _ \\/ __|"));
-    echo(QStringLiteral("|   / / _/ _ \\/ _| ' \\/ -_)  _|  | ||   / (__ "));
-    echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___| %1").arg(QCoreApplication::applicationVersion()));
-    //echo(QCoreApplication::translate("irc", "Please turn off logging in your IRC client."));
+    // figlet -f small <<< "Ricochet IRC v3"
+    echo(QStringLiteral(" ___ _            _        _     ___ ___  ___       ____"));
+    echo(QStringLiteral("| _ (_)__ ___  __| |_  ___| |_  |_ _| _ \\/ __| __ _|__ /"));
+    echo(QStringLiteral("|   / / _/ _ \\/ _| ' \\/ -_)  _|  | ||   / (__  \\ V /|_ \\"));
+    echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___|  \\_/|___/ %1").arg(QCoreApplication::applicationVersion()));
     echo(QStringLiteral(""));
     echo(QStringLiteral("COMMANDS:"));
     echo(QStringLiteral(" * help"));
