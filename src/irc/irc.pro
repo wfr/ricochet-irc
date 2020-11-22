@@ -1,5 +1,5 @@
-lessThan(QT_MAJOR_VERSION,5)|lessThan(QT_MINOR_VERSION,15) {
-    error("Qt 5.15 or greater is required. You can build your own, or get the SDK at https://qt-project.org/downloads")
+lessThan(QT_MAJOR_VERSION,5)|lessThan(QT_MINOR_VERSION,11) {
+    error("Qt 5.11 or greater is required. You can build your own, or get the SDK at https://qt-project.org/downloads")
 }
 
 QMAKE_INCLUDES = $${PWD}/../qmake_includes
