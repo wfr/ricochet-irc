@@ -1,61 +1,108 @@
-## Ricochet-IRC
-*=> [README-irc.md](README-irc.md)*
-*=> [README-irc.md](README-irc.md)*
-*=> [README-irc.md](README-irc.md)*
+## IRC gateway to Ricochet v3
+
+`ricochet-irc` is an IRC gateway to the Ricochet v3 network.
+
+It is currently based on [R2: Ricochet Refresh](https://github.com/blueprint-freespeech/ricochet-refresh/),
+specifically its experimental Tego-Core branch that supports v3 onions.
+
+Please refer to the [README-upstream.md](upstream README) for a more detailed explanation of Ricochet itself.
+
+[WeeChat](https://weechat.org/) as a client:
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
-Ricochet-IRC is not affiliated with or endorsed by the [Ricochet](https://github.com/ricochet-im/ricochet/) project.
+### Building on Debian 10 (Buster)
 
-It is an extension of the original client. Below you can find the *original README*:
+#### Dependencies
+```
+apt-get install qt5-default qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qtdeclarative5-dev
+apt-get install protobuf-compiler libssl-dev
+```
 
-# WORK IN PROGRESS PROJECT REPOSITORY - NOT FOR PRODUCTION USE
+#### Building
+```
+git clone -b irc https://github.com/wfr/ricochet-irc ricochet-irc
+cd ricochet-irc
+git submodule update --init --recursive
+mkdir build
+cd build
+qmake PROTOBUFDIR=/usr/include/google/ ../src/
+make -j$(nproc)
+```
 
-## Tego-Core
-Tego-Core is the work in progress repository for Ricochet Refresh. We are in the process of making significant changes to Ricochet Refresh to implement V3 Onion Service support as well as some exciting new features. The change to V3 Onion Services will not be backwards compatible with V2, which is the version currently implemented in Ricochet Refresh. As such, we are keeping development separate until we are ready to release a V3 Onion Services version of Ricochet Refresh. 
+#### Running
+```
+cd release/irc/
+./ricochet-irc
+```
 
-As noted above, this is a work in progress repository and should not be used in production. Security protocols may not be fully implemented or tested during the development process. 
+### Usage
+```
+    ./ricochet-irc
+```
+The program is now waiting for an IRC connection on localhost:6667.
+Point your IRC client to localhost:6667 and use the password that is provided on stdout.
 
-Existing README is continued below.
+For custom options, try:
+```
+    ./ricochet-irc --help
+```
 
-## R<sup>2</sup>: Ricochet Refresh
-Ricochet Refresh is the new updated version of Ricochet, supported by Blueprint for Free Speech.. We are a non-government, not-for-profit organisation working to safeguard the freedom of expression for whistleblowers, activists, and everybody else, worldwide. To find out more, check out our profile, or head to [http://blueprintforfreespeech.net]. Blueprint was the original sponsor of Ricochet, written by developer J. Brooks.
+#### IRC interface
+Once you are connected to the IRC server, your client is automatically joined into the `#ricochet` control channel.
 
-Ricochet Refresh is currently available for OS X (10.12 or later) and Linux, with a Windows release available real soon now (tm). Visit the [releases page](https://github.com/blueprint-freespeech/ricochet-refresh/releases) for the latest version and changelog.
+```
+    @ricochet |  ___ _            _        _     ___ ___  ___       ____
+    @ricochet | | _ (_)__ ___  __| |_  ___| |_  |_ _| _ \/ __| __ _|__ /
+    @ricochet | |   / / _/ _ \/ _| ' \/ -_)  _|  | ||   / (__  \ V /|_ \
+    @ricochet | |_|_\_\__\___/\__|_||_\___|\__| |___|_|_\\___|  \_/|___/ 1.1.4
+    @ricochet |
+    @ricochet | COMMANDS:
+    @ricochet |  * help
+    @ricochet |  * id                            -- print your ricochet id
+    @ricochet |  * add ID NICKNAME MESSAGE       -- add a contact
+    @ricochet |  * delete NICKNAME               -- delete a contact
+    @ricochet |  * rename NICKNAME NEW_NICKNAME  -- rename a contact
+    @ricochet |  * request list                  -- list incoming requests
+    @ricochet |  * request accept ID NICKNAME    -- accept incoming request
+    @ricochet |  * request reject ID             -- reject incoming request
+    @ricochet |
+    @ricochet | Tor status: offline
+           -- | ricochet has changed topic for #ricochet to "ricochet:fdmls67o6sf7ok726y5xfrxurhknoul5vg5augtes43w2eue6eu3nbad"
+    @ricochet | Tor status: ready
+          --> | afriend (~afriend@ricochet:sczutjtt4vobmm2fpc5w5usz5pogrliggdzwmqhgoslvo7zph764sdqd) has joined #ricochet
+```
 
-Details about Ricochet can be found at [the original repository](https://github.com/ricochet-im/ricochet). The readme for Ricochet is reproduced below for convenience.
+Ricochet-IRC connects to the network only when an IRC client is attached. As
+soon as you close your IRC client, you will appear offline to your contacts.
 
-## Ricochet's README (not by or affiliated with Blueprint)
-### Anonymous metadata-resistant instant messaging that just works.
-Ricochet is an experimental kind of instant messaging that **doesn't trust anyone** with your identity, your contact list, or your communications.
+### Changes
+2020-11-22:
+ * Rebased on Ricochet Refresh, v3-2020-alpha branch.
+ * Restored compatibility with GCC 8.
+ * Added v3 onion support. Removed v2 onion support.
+ * TODO: clean up, remove GUI dependencies.
 
-* You can chat without exposing your identity (or IP address) to *anyone*
-* Nobody can discover who your contacts are or when you talk (*metadata-free!*)
-* There are no servers or operators that could be compromised, exposing your information.
-* It's cross-platform and easy for non-technical users.
+2017-01-15:
 
-![Screenshot](ricochetscreen.png)
+ * small UX improvements (input sanitation and validation)
+ * prevent nickname conflicts
 
-### How it works
-Ricochet is a peer-to-peer instant messaging system built on the Tor Network [hidden services](https://www.torproject.org/docs/hidden-services.html.en). Your login is your hidden service address, and contacts connect to you (not an intermediate server) through Tor. The rendezvous system makes it extremely hard for anyone to learn your identity from your address.
+2017-01-13:
 
-Ricochet is not affiliated with or endorsed by The Tor Project.
+ * updated to v1.1.4
 
-For more information, you can [read about Tor](https://www.torproject.org/about/overview.html.en) and [learn about Ricochet's design](https://github.com/ricochet-im/ricochet/blob/master/doc/design.md) or [protocol](https://github.com/ricochet-im/ricochet/blob/master/doc/protocol.md) (or the [old protocol](https://github.com/ricochet-im/ricochet/blob/master/doc/deprecated/protocol-1.0.txt)). Everything is [open-source](https://github.com/ricochet-im/ricochet/blob/master/LICENSE) and open to contribution.
 
-### Experimental
-This software is an experiment. Security and anonymity are difficult topics, and you should carefully evaluate your risks and exposure with any software. *Do not rely on Ricochet for your safety* unless you have more trust in my work than it deserves. That said, I believe it does more to try to protect your privacy than any similar software, and is the best chance you have of withholding your personal information.
+### Miscellaneous
+#### Convert Hidden Service key to Ricochet format
+```
+echo $(cut -c 33-95 hs_ed25519_secret_key | base64 -w 0)
+```
 
-### Downloads
-
-Ricochet is available for Windows, OS X (10.7 or later), and as a generic Linux binary package. Visit the [releases page](https://github.com/ricochet-im/ricochet/releases) for the latest version and changelog.
-
-All releases and signatures are also available at https://ricochet.im/releases/.
-
-### Building from source
-See [BUILDING](https://github.com/blueprint-freespeech/ricochet-refresh/blob/master/BUILDING.md) for Linux, OS X, and Windows build instructions.
+### License
+GPLv3
 
 ### Other
-Bugs can be reported on the [issue tracker](https://github.com/blueprint-freespeech/ricochet-refresh/issues). Translations can be contributed on [Transifex](https://www.transifex.com/projects/p/ricochet/).
+Bugs can be reported on the [issue tracker](https://github.com/wfr/ricochet-irc/issues).
 
-You should support [The Tor Project](https://www.torproject.org/donate/donate.html.en), [EFF](https://www.eff.org/), and [run a Tor relay](https://www.torproject.org/docs/tor-relay-debian.html.en).
+`Wolfgang Frisch <wfr@roembden.net>`.
