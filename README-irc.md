@@ -91,8 +91,13 @@ soon as you close your IRC client, you will appear offline to your contacts.
 
 
 ### Implementation notes
-
 The embedded IRC server is hardcoded to listen on 127.0.0.1 only.
+
+### Miscellaneous notes
+#### Convert HS key to Ricochet format
+```
+echo $(cut -c 33-95 hs_ed25519_secret_key | base64 -w 0)
+```
 
 ### License
 GPLv3
