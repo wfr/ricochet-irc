@@ -1,6 +1,6 @@
-## IRC gateway to Ricochet
+## IRC gateway to Ricochet v3
 
-`ricochet-irc` is an IRC gateway for the Ricochet network. It enables you to use Ricochet with an IRC client.
+`ricochet-irc-v3` is an IRC gateway for the Ricochet network. It enables you to use Ricochet with an IRC client.
 
 Work in progress. Use at your own risk.
 
@@ -8,16 +8,29 @@ Example session using [WeeChat](https://weechat.org/):
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
-### Installation
+### Building on Debian 10 (Buster)
 
+#### Dependencies (incomplete)
 ```
-	git clone https://github.com/wfr/ricochet-irc
-	cd ricochet-irc
-	git checkout irc
+apt-get install qt5-default qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qtdeclarative5-dev protobuf-compiler 
+apt-get install libssl-dev
+```
 
-	qmake ricochet-irc.pro CONFIG+=debug CONFIG+=no-hardened
-	make clean
-	make -j$(nproc)
+#### Building
+```
+git clone -b irc-v3-2020-alpha https://github.com/wfr/ricochet-irc ricochet-irc-v3
+cd ricochet-irc-v3
+git submodule update --init --recursive
+mkdir build
+cd build
+qmake PROTOBUFDIR=/usr/include/google/ ../src/
+make -j$(nproc)
+```
+
+#### Running
+```
+cd release/irc/
+./ricochet-irc
 ```
 
 ### Usage
@@ -36,10 +49,10 @@ For custom options, try:
 Once you are connected to the IRC server, your client is automatically joined into the `#ricochet` control channel.
 
 ```
-    @ricochet |  ___ _            _        _     ___ ___  ___
-    @ricochet | | _ (_)__ ___  __| |_  ___| |_  |_ _| _ \/ __|
-    @ricochet | |   / / _/ _ \/ _| ' \/ -_)  _|  | ||   / (__
-    @ricochet | |_|_\_\__\___/\__|_||_\___|\__| |___|_|_\\___| 1.1.4
+    @ricochet |  ___ _            _        _     ___ ___  ___       ____
+    @ricochet | | _ (_)__ ___  __| |_  ___| |_  |_ _| _ \/ __| __ _|__ /
+    @ricochet | |   / / _/ _ \/ _| ' \/ -_)  _|  | ||   / (__  \ V /|_ \
+    @ricochet | |_|_\_\__\___/\__|_||_\___|\__| |___|_|_\\___|  \_/|___/ 1.1.4
     @ricochet |
     @ricochet | COMMANDS:
     @ricochet |  * help
@@ -52,15 +65,21 @@ Once you are connected to the IRC server, your client is automatically joined in
     @ricochet |  * request reject ID             -- reject incoming request
     @ricochet |
     @ricochet | Tor status: offline
-           -- | ricochet has changed topic for #ricochet to "ricochet:neohosiepuos2txr"
+           -- | ricochet has changed topic for #ricochet to "ricochet:fdmls67o6sf7ok726y5xfrxurhknoul5vg5augtes43w2eue6eu3nbad"
     @ricochet | Tor status: ready
-          --> | afriend (~afriend@ricochet:daag4pbdutthcpun) has joined #ricochet
+          --> | afriend (~afriend@ricochet:sczutjtt4vobmm2fpc5w5usz5pogrliggdzwmqhgoslvo7zph764sdqd) has joined #ricochet
 ```
 
 Ricochet-IRC connects to the network only when an IRC client is attached. As
 soon as you close your IRC client, you will appear offline to your contacts.
 
 ### Changes
+2020-11-22:
+ * Rebased on Ricochet Refresh, v3-2020-alpha branch.
+ * Restored compatibility with GCC 8.
+ * Added v3 onion support. Removed v2 onion support.
+ * TODO: clean up, remove GUI dependencies.
+
 2017-01-15:
 
  * small UX improvements (input sanitation and validation)
