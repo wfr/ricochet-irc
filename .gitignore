@@ -46,5 +46,4 @@ ricochet-refresh
 \.vscode/c_cpp_properties\.json
 \.vscode/
 notes/*
-ricochet-irc
-ricochet-irc.pro.user
+.*.swp
