@@ -104,7 +104,7 @@ public slots:
     }
 };
 
-#include "irc-main.moc"
+#include "main.moc"
 
 int main(int argc, char *argv[])
 {
