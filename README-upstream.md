@@ -47,4 +47,4 @@ See [BUILDING](https://github.com/blueprint-freespeech/ricochet-refresh/blob/mas
 ### Other
 Bugs can be reported on the [issue tracker](https://github.com/blueprint-freespeech/ricochet-refresh/issues). Translations can be contributed on [Transifex](https://www.transifex.com/projects/p/ricochet/).
 
-You should support [The Tor Project](https://www.torproject.org/donate/donate.html.en), [EFF](https://www.eff.org/), and [run a Tor relay](https://www.torproject.org/docs/tor-relay-debian.html.en).
+You should support [The Tor Project](https://www.torproject.org/donate/donate.html.en) and [run a Tor relay](https://www.torproject.org/docs/tor-relay-debian.html.en).

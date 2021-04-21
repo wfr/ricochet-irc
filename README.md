@@ -105,4 +105,9 @@ GPLv3
 ### Other
 Bugs can be reported on the [issue tracker](https://github.com/wfr/ricochet-irc/issues).
 
-`Wolfgang Frisch <wfr@roembden.net>`.
+
+### Cash for coffee
+`Wolfgang Frisch <wfrisch@riseup.net>`.
+
+[Algorand](https://www.algorand.com): D3CI5EKC7IRLJMGV74NSKJD6CDXDGS6DT2OQZ4T6NUAB5RIZMTEM37DODI
+[Monero](https://www.getmonero.org/): 4245uqJmyoWbWx7w41TL2scKrgk6MtdiYR8ffFiCenJhDx227AbqbU7enMUjwYkHv9W7K6TKZDCLTEnV8ApXih3uNP1B6B3
