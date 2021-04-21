@@ -107,7 +107,7 @@ Bugs can be reported on the [issue tracker](https://github.com/wfr/ricochet-irc/
 
 
 ### Cash for coffee
-`Wolfgang Frisch <wfrisch@riseup.net>`.
+If you feel like inviting me (`Wolfgang Frisch <wfrisch@riseup.net>`) to a coffee...
 
-[Algorand](https://www.algorand.com): D3CI5EKC7IRLJMGV74NSKJD6CDXDGS6DT2OQZ4T6NUAB5RIZMTEM37DODI
-[Monero](https://www.getmonero.org/): 4245uqJmyoWbWx7w41TL2scKrgk6MtdiYR8ffFiCenJhDx227AbqbU7enMUjwYkHv9W7K6TKZDCLTEnV8ApXih3uNP1B6B3
+* [Algorand](https://www.algorand.com): D3CI5EKC7IRLJMGV74NSKJD6CDXDGS6DT2OQZ4T6NUAB5RIZMTEM37DODI
+* [Monero](https://www.getmonero.org/): 4245uqJmyoWbWx7w41TL2scKrgk6MtdiYR8ffFiCenJhDx227AbqbU7enMUjwYkHv9W7K6TKZDCLTEnV8ApXih3uNP1B6B3
