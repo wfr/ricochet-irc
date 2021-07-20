@@ -1,5 +1,7 @@
 ### Development
 * John Brooks (@special) `<john.brooks@dereferenced.net>`
+* Derwent Mcelhinney (@derwentx)
+* Peter Tonoli (@petertonoli)
 
 ### Sponsors
 * Blueprint for Free Speech - https://blueprintforfreespeech.net/
@@ -23,7 +25,7 @@
 * Ukrainian - l3rixon, nergal
 
 ### Thanks
-* Helder Ribeiro (@obvio171) - "Ricochet"
+* Helder S Ribeiro (@hsribei) - "Ricochet"
 * Robin Burchell (@rburchell)
 * prof7bit (TorChat) - Inspiration
 * Patrick Gray - invisible.im
