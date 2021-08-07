@@ -432,13 +432,8 @@ void RicochetIrcServer::handlePM(IrcConnection *sender, const QString &contact_n
             IrcUser* contact_irc_user = usermap.value(contact);
             if(!contact->isConnected())
             {
-                sender->reply(RPL_AWAY,
-                            QStringLiteral("%1 %2 :is offline")
-                            .arg(sender->nick)
-                            .arg(contact->nickname())
-                            );
                 sender->reply(contact_irc_user->getPrefix(),
-                            QStringLiteral("PRIVMSG %1 :\x02[Contact is offline. %2 queued message(s).]")
+                            QStringLiteral("NOTICE %1 :\x02[Contact is offline. %2 queued message(s).]")
                             .arg(sender->getPrefix())
                             .arg(contact->conversation()->queuedCount()));
 
@@ -676,19 +671,43 @@ void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
         case ContactUser::Online:
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("+v"));
 
+            foreach(IrcConnection *conn, clients.values())
+            {
+               conn->reply(RPL_WHOREPLY,
+                            QStringLiteral("#ricochet %1 %2 %3 127.0.0.1 %4 H 0 %5")
+                            .arg(conn->nick)
+                            .arg(ircuser->user)
+                            .arg(ircuser->hostname)
+                            .arg(ircuser->nick)
+                            .arg(ircuser->nick)
+                           );
+           }
+
             // Notify user in query when there are queued messages.
             if(user->conversation()->queuedCount() > 0)
             {
                 foreach(IrcConnection *conn, clients.values())
                 {
                     conn->reply(ircuser->getPrefix(),
-                                QStringLiteral("PRIVMSG %1 :\x02[Contact is back online. Sending queued messages...]")
+                                QStringLiteral("NOTICE %1 :\x02[Contact is back online. Sending queued messages...]")
                                 .arg(conn->getPrefix()));
                 }
             }
         break;
         case ContactUser::Offline:
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("-v"));
+
+           foreach(IrcConnection *conn, clients.values())
+            {
+               conn->reply(RPL_WHOREPLY,
+                            QStringLiteral("#ricochet %1 %2 %3 127.0.0.1 %4 G 0 %5")
+                            .arg(conn->nick)
+                            .arg(ircuser->user)
+                            .arg(ircuser->hostname)
+                            .arg(ircuser->nick)
+                            .arg(ircuser->nick)
+                           );
+           }
         break;
     }
 }
