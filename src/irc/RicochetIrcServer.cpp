@@ -1,5 +1,5 @@
 /* Ricochet-IRC - https://github.com/wfr/ricochet-irc/
- * Wolfgang Frisch <wfr@roembden.net>
+ * Wolfgang Frisch <wfrisch@riseup.net>
  *
  * Derived from:
  * Ricochet - https://ricochet.im/

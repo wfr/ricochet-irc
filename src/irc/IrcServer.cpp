@@ -1,5 +1,5 @@
 /* QtLocalIRCD - part of https://github.com/wfr/ricochet-irc/
- * Copyright (C) 2016, Wolfgang Frisch <wfr@roembden.net>
+ * Copyright (C) 2016, Wolfgang Frisch <wfrisch@riseup.net>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
