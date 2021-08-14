@@ -64,6 +64,12 @@ ApplicationWindow {
                 id: toolBar
                 // Needed to allow bubble to appear over contact list
                 z: 3
+
+                Accessible.role: Accessible.ToolBar
+                //: Name of the main toolbar for accessibility tech like screen readers
+                Accessible.name: qsTr("Main Toolbar")
+                //: Description of the main toolbar for accessibility tech like screen readers
+                Accessible.description: qsTr("Toolbar with connection status, add contact button, and preferences button")
             }
 
             Item {
@@ -82,6 +88,10 @@ ApplicationWindow {
                             actions.openWindow()
                         }
                     }
+
+                    Accessible.role: Accessible.Pane
+                    //: Name of the pane holding the user's contacts for accessibility tech like screen readers
+                    Accessible.name: qsTr("Contact pane")
                 }
 
                 Loader {
@@ -109,7 +119,15 @@ ApplicationWindow {
             property QtObject currentContact: (visible && width > 0) ? contactList.selectedContact : null
             onCurrentContactChanged: {
                 if (currentContact !== null) {
-                    show(currentContact.uniqueID, Qt.resolvedUrl("ChatPage.qml"),
+
+                    // remove chat page for user when they are deleted
+                    if(typeof currentContact.contactDeletedCallbackAdded === 'undefined') {
+                        currentContact.contactDeleted.connect(function(user) {
+                            remove(user.contactID);
+                        });
+                        currentContact.contactDeletedCallbackAdded = true;
+                    }
+                    show(currentContact.contactID, Qt.resolvedUrl("ChatPage.qml"),
                          { 'contact': currentContact });
                 } else {
                     currentKey = ""

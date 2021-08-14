@@ -44,7 +44,11 @@ TEMPLATE = app
 
 QT += core gui network quick widgets
 
-VERSION = 3.0.0a
+isEmpty(RICOCHET_REFRESH_VERSION) {
+    VERSION = devbuild
+} else {
+    VERSION = $${RICOCHET_REFRESH_VERSION}
+}
 
 DEFINES += "TEGO_VERSION=$${VERSION}"
 
@@ -54,62 +58,13 @@ DEFINES += "TEGO_VERSION=$${VERSION}"
     include($${QMAKE_INCLUDES}/hardened.pri)
 }
 
-# Pass DEFINES+=RICOCHET_NO_PORTABLE for a system-wide installation
-
-CONFIG(release,debug|release):DEFINES += QT_NO_DEBUG_OUTPUT QT_NO_WARNING_OUTPUT
-
-contains(DEFINES, RICOCHET_NO_PORTABLE) {
-    unix:!macx {
-        target.path = /usr/bin
-        shortcut.path = /usr/share/applications
-        shortcut.files = ricochet.desktop
-        icon.path = /usr/share/icons/hicolor/48x48/apps/
-        icon.files = icons/ricochet_refresh.png
-        scalable_icon.path = /usr/share/icons/hicolor/scalable/apps/
-        scalable_icon.files = icons/ricochet_refresh.svg
-        INSTALLS += target shortcut icon scalable_icon
-        QMAKE_CLEAN += contrib/usr.bin.ricochet
-        contains(DEFINES, APPARMOR) {
-            apparmor_profile.extra = cp -f $${_PRO_FILE_PWD_}/contrib/usr.bin.ricochet-apparmor $${_PRO_FILE_PWD_}/contrib/usr.bin.ricochet
-            apparmor_profile.files = contrib/usr.bin.ricochet
-            QMAKE_CLEAN += contrib/usr.bin.ricochet
-            !isEmpty(APPARMORDIR) {
-                    apparmor_profile.path = $${APPARMORDIR}/
-            } else {
-                    apparmor_profile.path = /etc/apparmor.d/
-            }
-            INSTALLS += apparmor_profile
-        }
-
-        exists(tor) {
-            message(Adding bundled Tor to installations)
-            bundletor.path = /usr/lib/ricochet/tor/
-            bundletor.files = tor/*
-            INSTALLS += bundletor
-            DEFINES += BUNDLED_TOR_PATH=\\\"/usr/lib/ricochet/tor/\\\"
-        }
-    }
-}
-
 macx {
     CONFIG += bundle force_debug_plist
     QT += macextras
 
     # Qt 5.4 introduces a bug that breaks QMAKE_INFO_PLIST when qmake has a relative path.
     # Work around by copying Info.plist directly.
-    greaterThan(QT_MAJOR_VERSION,5)|greaterThan(QT_MINOR_VERSION,4) {
-        QMAKE_INFO_PLIST = Info.plist
-    } else:equals(QT_MAJOR_VERSION,5):lessThan(QT_MINOR_VERSION,4) {
-        QMAKE_INFO_PLIST = Info.plist
-    } else {
-        CONFIG += no_plist
-        QMAKE_POST_LINK += cp $${_PRO_FILE_PWD_}/Info.plist $${OUT_PWD}/$${TARGET}.app/Contents/;
-    }
-
-    exists(tor) {
-        # Copy the entire tor/ directory, which should contain tor/tor (the binary itself)
-        QMAKE_POST_LINK += cp -R $${_PRO_FILE_PWD_}/tor $${OUT_PWD}/$${TARGET}.app/Contents/MacOS/;
-    }
+    QMAKE_INFO_PLIST = Info.plist
 
     icons.files = icons/ricochet_refresh.icns
     icons.path = Contents/Resources/
@@ -143,6 +98,12 @@ win32:RC_ICONS = icons/ricochet_refresh.ico
 OTHER_FILES += $${PWD}/../libtego_ui/ui/qml/*
 lupdate_only {
     SOURCES += $${PWD}/../libtego_ui/ui/qml/*.qml
+    SOURCES += $${PWD}/../libtego_ui/ui/*.cpp
+    SOURCES += $${PWD}/../libtego_ui/ui/*.h
+    SOURCES += $${PWD}/../libtego_ui/shims/*.cpp
+    SOURCES += $${PWD}/../libtego_ui/shims/*.h
+    SOURCES += $${PWD}/../libtego_ui/utils/*.cpp
+    SOURCES += $${PWD}/../libtego_ui/utils/*.h
 }
 
 # Translations
@@ -176,7 +137,7 @@ TRANSLATIONS += \
     ricochet_ja
 
 # Only build translations when creating the primary makefile.
-!build_pass: {
+{
     contains(QMAKE_HOST.os,Windows):QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease.exe
     else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
     for (translation, TRANSLATIONS) {

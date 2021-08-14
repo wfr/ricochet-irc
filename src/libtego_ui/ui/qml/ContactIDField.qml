@@ -29,20 +29,35 @@ FocusScope {
             placeholderText: "ricochet:"
             focus: true
 
-            onTextChanged: errorBubble.clear()
-
             ContactIDValidator {
                 id: idValidator
-                notContactOfIdentity: userIdentity
 
                 onFailed: {
                     var contact
                     if ((contact = matchingContact(field.text)))
+                    {
+                        //: Error message showed when user attempts to add a contact already in their contact list
                         errorBubble.show(qsTr("<b>%1</b> is already your contact").arg(Utils.htmlEscaped(contact.nickname)))
+                    }
+                    else if (!isValidID(field.text))
+                    {
+                        //: Error message showed when the id doesn't comply with spec https://gitweb.torproject.org/torspec.git/tree/rend-spec-v3.txt
+                        errorBubble.show(qsTr("This ID is invalid"));
+                    }
                     else if (matchesIdentity(field.text))
+                    {
+                        //: Error message showed when user attempts to add themselves as a contact in their contact list
                         errorBubble.show(qsTr("You can't add yourself as a contact"))
+                    }
                     else
+                    {
+                        //: Error message showed when the provided ricochet id is invalid
                         errorBubble.show(qsTr("Enter an ID starting with <b>ricochet:</b>"))
+                    }
+                }
+
+                onSuccess: {
+                    errorBubble.clear()
                 }
             }
 
@@ -63,8 +78,8 @@ FocusScope {
             }
 
             function copyLoudly() {
-                // The LinkedText helper also copies to the X11 selection clipboard
-                LinkedText.copyToClipboard(field.text)
+                // The Clipboard helper also copies to the X11 selection clipboard
+                Clipboard.copyText(field.text)
                 copyBubble.displayed = true
                 bubbleResetTimer.start()
             }
@@ -78,8 +93,11 @@ FocusScope {
             Bubble {
                 id: copyBubble
                 target: field
+                //: Message displayed when text is copied to the user's clipboard
                 text: qsTr("Copied to clipboard")
                 displayed: false
+                Accessible.role: Accessible.StaticText
+                Accessible.name: text
             }
 
             Timer {
@@ -90,9 +108,16 @@ FocusScope {
         }
 
         Button {
+            //: Text displayed on a button used to copy somethign to the user's clipboard
             text: qsTr("Copy")
             visible: contactId.showCopyButton
             onClicked: field.copyLoudly()
+
+            Accessible.role: Accessible.Button
+            Accessible.name: text
+            //: Text description of ricochet id copy button for accessibility tech like screen readers
+            Accessible.description: qsTr("Copies the ricochet id to the clipboard")
+            Accessible.onPressAction: field.copyLoudly()
         }
     }
 }

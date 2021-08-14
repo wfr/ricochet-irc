@@ -6,7 +6,7 @@
 
 void logger::trace(const source_location& loc)
 {
-    println("{}({})", loc.file_name(), loc.line());
+    println("{}:{} -> {}(...)", loc.file_name(), loc.line(), loc.function_name());
 }
 
 std::ofstream& logger::get_stream()
@@ -28,6 +28,7 @@ double logger::get_timestamp()
     std::chrono::duration<double> duration(now - start);
     return duration.count();
 }
+#endif
 
 //
 // std::ostream << operators
@@ -106,5 +107,3 @@ std::ostream& operator<<(std::ostream& out, const QByteArray& blob)
 
     return out;
 }
-
-#endif // ENABLE_TEGO_LOGGER

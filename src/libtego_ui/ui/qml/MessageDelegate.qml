@@ -1,5 +1,6 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.0
+import QtQuick 2.15
+import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
 import im.ricochet 1.0
 
 Column {
@@ -28,33 +29,18 @@ Column {
                     return Qt.formatDateTime(model.timestamp, Qt.DefaultLocaleShortDate)
             }
             textFormat: Text.PlainText
-            width: background.parent.width
+            width: delegate.width
             elide: Text.ElideRight
             horizontalAlignment: Qt.AlignHCenter
             color: palette.mid
-
-            Rectangle {
-                id: line
-                width: (parent.width - parent.contentWidth) / 2 - 4
-                height: 1
-                y: (parent.height - 1) / 2
-                color: Qt.lighter(palette.mid, 1.4)
-            }
-
-            Rectangle {
-                width: line.width
-                height: 1
-                y: line.y
-                x: parent.width - width
-                color: line.color
-            }
+            height: 28
         }
     }
 
     Rectangle {
         id: background
-        width: Math.max(30, textField.width + 12)
-        height: textField.height + 12
+        width: Math.max(30, message.width + 12)
+        height: message.height + 12
         x: model.isOutgoing ? parent.width - width - 11 : 10
 
         property int __maxWidth: parent.width * 0.8
@@ -81,99 +67,242 @@ Column {
             Behavior on opacity { NumberAnimation { } }
         }
 
-        TextEdit {
-            id: textField
-            width: Math.min(implicitWidth, background.__maxWidth)
-            height: contentHeight
-            x: Math.round((parent.width - width) / 2)
+        Rectangle
+        {
+            id: message
+
+            property Item childItem: {
+                if (model.type == "text")
+                {
+                    return textField;
+                }
+                else if (model.type =="transfer")
+                {
+                    return transferField;
+                }
+            }
+
+            width: childItem.width
+            height: childItem.height
+            x: Math.round((background.width - width) / 2)
             y: 6
 
-            renderType: Text.NativeRendering
-            textFormat: TextEdit.RichText
-            selectionColor: palette.highlight
-            selectedTextColor: palette.highlightedText
-            font.pointSize: styleHelper.pointSize
+            color: "transparent"
 
-            wrapMode: TextEdit.Wrap
-            readOnly: true
-            selectByMouse: true
-            text: LinkedText.parsed(model.text)
+            // text message
 
-            onLinkActivated: {
-                textField.deselect()
-                delegate.showContextMenu(link)
+            TextEdit {
+                id: textField
+                visible: parent.childItem === this
+                width: Math.min(implicitWidth, background.__maxWidth)
+                height: contentHeight
+
+                renderType: Text.NativeRendering
+                textFormat: TextEdit.PlainText
+                selectionColor: palette.highlight
+                selectedTextColor: palette.highlightedText
+                font.pointSize: styleHelper.pointSize
+
+                wrapMode: TextEdit.Wrap
+                readOnly: true
+                selectByMouse: true
+                text: model.text
+
+                MouseArea {
+                    anchors.fill: parent
+                    acceptedButtons: Qt.RightButton
+
+                    onClicked: delegate.showContextMenu()
+                }
             }
 
-            // Workaround an incomplete fix for QTBUG-31646
-            Component.onCompleted: {
-                if (textField.hasOwnProperty('linkHovered'))
-                    textField.linkHovered.connect(function() { })
-            }
-            
-            MouseArea {
-                anchors.fill: parent
-                acceptedButtons: Qt.RightButton
+            // sending file transfer
+            Rectangle {
+                id: transferField
+                visible: parent.childItem === this
 
-                onClicked: delegate.showContextMenu(parent.hoveredLink)
+                width: 256
+                height: transferDisplay.height
+
+                color: "transparent"
+
+                Row {
+                    x: 0
+                    y: 0
+                    width: parent.width
+                    height: parent.height
+                    spacing: 6
+
+                    Column {
+                        id: transferDisplay
+
+                        width: parent.width - (acceptButton.visible ? (acceptButton.width + parent.spacing) : 0) - parent.spacing - cancelButton.width
+                        spacing: 6
+
+                        Text {
+                            id: filename
+
+                            width: parent.width
+                            height: styleHelper.pointSize * 1.5
+
+                            text: model.transfer ? model.transfer.file_name : ""
+                            font.bold: true
+                            font.pointSize: styleHelper.pointSize
+                            elide: Text.ElideMiddle
+                            Accessible.role: Accessible.StaticText
+                            Accessible.name: text
+                            //: Description of the text displaying the filename of a file transfer, used by accessibility tech like screen readres
+                            Accessible.description: qsTr("File transfer file name");
+                        }
+
+                        ProgressBar {
+                            id: progressBar
+
+                            width: parent.width
+                            height: visible ? 8 : 0
+
+                            visible: model.transfer ?
+                                    (model.transfer.status === ConversationModel.Pending ||
+                                     model.transfer.status === ConversationModel.InProgress ||
+                                     model.transfer.status === ConversationModel.Accepted) : false
+
+                            indeterminate: model.transfer ? (model.transfer.status === ConversationModel.Pending) : true
+                            value: model.transfer ? model.transfer.progressPercent : 0
+
+                            Accessible.role: Accessible.ProgressBar
+                            //: Description of progress bar displaying the file transfer progress, used by accessibility tech like screen readers
+                            Accessible.description: qsTr("File transfer progress");
+                        }
+
+                        Label {
+                            id: transferStatus
+
+                            width: parent.width
+                            height: styleHelper.pointSize * 1.5
+
+                            text: model.transfer ? model.transfer.statusString : ""
+                            font.pointSize: filename.font.pointSize * 0.8;
+                            color: Qt.lighter(filename.color, 1.5)
+                            Accessible.role: Accessible.StaticText
+                            Accessible.name: text
+                            //: Description of label displaying the current status of a file transfer, used by accessibility tech like screen readers
+                            Accessible.description: qsTr("File transfer status")
+                        }
+                    }
+
+                    Action {
+                        id: downloadAction
+                        text: qsTr("Download '%1'").arg(filename.text);
+                        onTriggered: {
+                            contact.conversation.tryAcceptFileTransfer(model.transfer.id);
+                        }
+                    }
+
+                    Button {
+                        id: acceptButton
+
+                        visible: model.transfer ? (model.transfer.status === ConversationModel.Pending && model.transfer.direction === ConversationModel.Downloading) : false
+
+                        width: visible ? transferDisplay.height : 0
+                        height: visible ? transferDisplay.height : 0
+
+                        text: ""
+                        Accessible.role: Accessible.Button
+                        //: Label for file transfer 'Download' button for accessibility tech like screen readers
+                        Accessible.name: qsTr("Download")
+                        //: Description of what the file transfer 'Download' button does for accessibility tech like screen readers
+                        Accessible.description: qsTr("Download file")
+
+                        Image {
+                            source: "qrc:/icons/download.png"
+                            anchors.centerIn: parent
+                            width: parent.width * 1/2
+                            height: parent.height * 1/2
+                            fillMode: Image.PreserveAspectFit
+                            mipmap: true
+                        }
+                        action: downloadAction
+                    }
+
+                    Action {
+                        id: rejectFileTransferAction
+                        text: qsTr("Reject file transfer");
+                        onTriggered: {
+                            contact.conversation.rejectFileTransfer(model.transfer.id);
+                        }
+                    }
+
+                    Action {
+                        id: cancelFileTransferAction
+                        text: qsTr("Cancel file transfer");
+                        onTriggered: {
+                            contact.conversation.cancelFileTransfer(model.transfer.id);
+                        }
+                    }
+
+                    Button {
+                        id: cancelButton
+                        visible: model.transfer ?
+                                (model.transfer.status === ConversationModel.Pending ||
+                                 model.transfer.status === ConversationModel.InProgress ||
+                                 model.transfer.status === ConversationModel.Accepted) : false
+
+                        width: visible ? transferDisplay.height : 0
+                        height: visible ? transferDisplay.height : 0
+
+                        text: ""
+                        Accessible.role: Accessible.Button
+                        //: Label for file transfer 'Cancel' button for accessibility tech like screen readers
+                        Accessible.name: qsTr("Cancel or reject")
+                        //: Description of what the file transfer 'Cancel' button does for accessibility tech like screen readers
+                        Accessible.description: qsTr("Cancels or rejects a file transfer")
+
+                        action: acceptButton.visible ? rejectFileTransferAction : cancelFileTransferAction
+                        Image {
+                            source: "qrc:/icons/cancel.png"
+                            anchors.centerIn: parent
+                            width: parent.width * 1/2
+                            height: parent.height * 1/2
+                            fillMode: Image.PreserveAspectFit
+                            mipmap: true
+                        }
+                    }
+                }
             }
         }
     }
 
-    function showContextMenu(link) {
-        var object = contextMenu.createObject(delegate, (link !== undefined) ? { 'hoveredLink': link } : { })
-        // XXX QtQuickControls private API. The only other option is 'visible', and it is not reliable. See PR#183
-        object.popupVisibleChanged.connect(function() { if (!object.__popupVisible) object.destroy(1000) })
+    function showContextMenu() {
+        var object = rightClickContextMenu.createObject(delegate, { })
+        object.popupVisibleChanged.connect(function() { if (!object.visible) object.destroy(1000) })
         object.popup()
     }
 
     Component {
-        id: contextMenu
+        id: rightClickContextMenu
 
         Menu {
-            property string hoveredLink: textField.hasOwnProperty('hoveredLink') ? textField.hoveredLink : ""
             MenuItem {
-                text: linkAddContact.visible ? qsTr("Copy ID") : qsTr("Copy Link")
-                visible: hoveredLink.length > 0
-                onTriggered: LinkedText.copyToClipboard(hoveredLink)
-            }
-            MenuItem {
-                text: qsTr("Open with Browser")
-                visible: hoveredLink.length > 0 && hoveredLink.substr(0,4).toLowerCase() == "http"
-                onTriggered: {
-                    if (uiSettings.data.alwaysOpenBrowser || contact.settings.data.alwaysOpenBrowser) {
-                        Qt.openUrlExternally(hoveredLink)
-                    } else {
-                        var window = uiMain.findParentWindow(delegate)
-                        var object = createDialog("OpenBrowserDialog.qml", { 'link': hoveredLink, 'contact': contact }, window)
-                        object.visible = true
-                    }
-                }
-            }
-            MenuItem {
-                id: linkAddContact
-                text: qsTr("Add as Contact")
-                visible: hoveredLink.length > 0 && (hoveredLink.substr(0,9).toLowerCase() == "ricochet:"
-                                                    || hoveredLink.substr(0,8).toLowerCase() == "torsion:")
-                onTriggered: {
-                    var object = createDialog("AddContactDialog.qml", { 'staticContactId': hoveredLink }, chatWindow)
-                    object.visible = true
-                }
-            }
-            MenuSeparator {
-                visible: hoveredLink.length > 0
-            }
-            MenuItem {
+                //: Text for context menu command to copy an entire message to clipboard
                 text: qsTr("Copy Message")
                 visible: textField.selectedText.length == 0
                 onTriggered: {
-                    LinkedText.copyToClipboard(textField.getText(0, textField.length))
+                    Clipboard.copyText(textField.getText(0, textField.length))
                 }
             }
+
+            Action {
+                id: copySelectionAction
+                text: qsTr("Copy Selection")
+                shortcut: StandardKey.Copy
+                onTriggered: textField.copy()
+            }
+
             MenuItem {
+                //: Text for context menu command to copy selected text to clipboard
                 text: qsTr("Copy Selection")
                 visible: textField.selectedText.length > 0
-                shortcut: "Ctrl+C"
-                onTriggered: textField.copy()
+                action: copySelectionAction
             }
         }
     }

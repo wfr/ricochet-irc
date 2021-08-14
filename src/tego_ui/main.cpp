@@ -32,24 +32,20 @@
  */
 
 #include "ui/MainWindow.h"
-#include "core/IdentityManager.h"
-#include "tor/TorManager.h"
-#include "tor/TorControl.h"
-#include "utils/CryptoKey.h"
-#include "utils/SecureRNG.h"
 #include "utils/Settings.h"
 
+#include <libtego_callbacks.hpp>
+
+// shim replacements
+#include "shims/TorControl.h"
+#include "shims/TorManager.h"
+#include "shims/UserIdentity.h"
+
 static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &errorMessage);
-static bool importLegacySettings(SettingsFile *settings, const QString &oldPath);
 static void initTranslation();
 
 int main(int argc, char *argv[]) try
 {
-    tego_initialize(tego::throw_on_error());
-    auto tego_cleanup = tego::make_scope_exit([]() -> void {
-        tego_uninitialize(tego::throw_on_error());
-    });
-
    /* Disable rwx memory.
        This will also ensure full PAX/Grsecurity protections. */
     qputenv("QV4_FORCE_INTERPRETER",  "1");
@@ -68,18 +64,21 @@ int main(int argc, char *argv[]) try
     }
 
     QApplication a(argc, argv);
-#ifdef TEGO_VERSION
-#   define XSTR(X) STR(X)
-#   define STR(X) #X
-#   define TEGO_VERSION_STR XSTR(TEGO_VERSION)
-#else
-#   define TEGO_VERSION_STR "devbuild"
-#endif
+
+    tego_context_t* tegoContext = nullptr;
+    tego_initialize(&tegoContext, tego::throw_on_error());
+
+    auto tego_cleanup = tego::make_scope_exit([=]() -> void {
+        tego_uninitialize(tegoContext, tego::throw_on_error());
+    });
+
+    init_libtego_callbacks(tegoContext);
+
+
     a.setApplicationVersion(QLatin1String(TEGO_VERSION_STR));
-    a.setOrganizationName(QStringLiteral("Ricochet"));
 
 #if !defined(Q_OS_WIN) && !defined(Q_OS_MAC)
-    a.setWindowIcon(QIcon(QStringLiteral(":/icons/ricochet_refresh.svg")));
+    a.setWindowIcon(QIcon(QStringLiteral(":/icons/ricochet_refresh.png")));
 #endif
 
     QScopedPointer<SettingsFile> settings(new SettingsFile);
@@ -88,6 +87,9 @@ int main(int argc, char *argv[]) try
     QString error;
     QLockFile *lock = 0;
     if (!initSettings(settings.data(), &lock, error)) {
+        if (error.isEmpty()) {
+            return 0;
+        }
         QMessageBox::critical(0, qApp->translate("Main", "Ricochet Error"), error);
         return 1;
     }
@@ -95,26 +97,135 @@ int main(int argc, char *argv[]) try
 
     initTranslation();
 
-    /* Initialize OpenSSL's allocator */
-#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
-    CRYPTO_malloc_init();
-#else
-    OPENSSL_malloc_init();
-#endif
+    // init our tor shims
+    shims::TorControl::torControl = new shims::TorControl(tegoContext);
+    shims::TorManager::torManager = new shims::TorManager(tegoContext);
 
-    /* Seed the OpenSSL RNG */
-    if (!SecureRNG::seed())
-        qFatal("Failed to initialize RNG");
+    // start Tor
+    {
+        std::unique_ptr<tego_tor_launch_config_t> launchConfig;
+        tego_tor_launch_config_initialize(tego::out(launchConfig), tego::throw_on_error());
 
-    /* Tor control manager */
-    Tor::TorManager *torManager = Tor::TorManager::instance();
-    torManager->setDataDirectory(QFileInfo(settings->filePath()).path() + QStringLiteral("/tor/"));
-    torControl = torManager->control();
-    torManager->start();
+        auto rawFilePath = (QFileInfo(settings->filePath()).path() + QStringLiteral("/tor/")).toUtf8();
+        tego_tor_launch_config_set_data_directory(
+            launchConfig.get(),
+            rawFilePath.data(),
+            rawFilePath.size(),
+            tego::throw_on_error());
+
+        tego_context_start_tor(tegoContext, launchConfig.get(), tego::throw_on_error());
+    }
 
     /* Identities */
-    identityManager = new IdentityManager;
-    QScopedPointer<IdentityManager> scopedIdentityManager(identityManager);
+
+    // init our shims
+    shims::UserIdentity::userIdentity = new shims::UserIdentity(tegoContext);
+    auto contactsManager = shims::UserIdentity::userIdentity->getContacts();
+
+    auto privateKeyString = SettingsObject("identity").read<QString>("privateKey");
+    if (privateKeyString.isEmpty())
+    {
+        tego_context_start_service(
+            tegoContext,
+            nullptr,
+            nullptr,
+            nullptr,
+            0,
+            tego::throw_on_error());
+    }
+    else
+    {
+        // construct privatekey from privateKey keyblob
+        std::unique_ptr<tego_ed25519_private_key_t> privateKey;
+        auto keyBlob = privateKeyString.toUtf8();
+
+        tego_ed25519_private_key_from_ed25519_keyblob(
+            tego::out(privateKey),
+            keyBlob.data(),
+            keyBlob.size(),
+            tego::throw_on_error());
+
+        // load all of our user objects
+        std::vector<tego_user_id_t*> userIds;
+        std::vector<tego_user_type_t> userTypes;
+        auto userIdCleanup = tego::make_scope_exit([&]() -> void
+        {
+            std::for_each(userIds.begin(), userIds.end(), &tego_user_id_delete);
+        });
+
+        // map strings saved in json with tego types
+        const static QMap<QString, tego_user_type_t> stringToUserType =
+        {
+            {QString("allowed"), tego_user_type_allowed},
+            {QString("requesting"), tego_user_type_requesting},
+            {QString("blocked"), tego_user_type_blocked},
+            {QString("pending"), tego_user_type_pending},
+            {QString("rejected"), tego_user_type_rejected},
+        };
+
+        auto usersJson = SettingsObject("users").data();
+        for(auto it = usersJson.begin(); it != usersJson.end(); ++it)
+        {
+            // get the user's service id
+            const auto serviceIdString = it.key();
+            const auto serviceIdRaw = serviceIdString.toUtf8();
+
+            std::unique_ptr<tego_v3_onion_service_id_t> serviceId;
+            tego_v3_onion_service_id_from_string(
+                tego::out(serviceId),
+                serviceIdRaw.data(),
+                serviceIdRaw.size(),
+                tego::throw_on_error());
+
+            std::unique_ptr<tego_user_id_t> userId;
+            tego_user_id_from_v3_onion_service_id(
+                tego::out(userId),
+                serviceId.get(),
+                tego::throw_on_error());
+            userIds.push_back(userId.release());
+
+            // load relevant data
+            const auto& userData = it.value().toObject();
+            auto typeString = userData.value("type").toString();
+
+            Q_ASSERT(stringToUserType.contains(typeString));
+            auto type = stringToUserType.value(typeString);
+            userTypes.push_back(type);
+
+            if (type == tego_user_type_allowed ||
+                type == tego_user_type_pending ||
+                type == tego_user_type_rejected)
+            {
+                const auto nickname = userData.value("nickname").toString();
+                auto contact = contactsManager->addContact(serviceIdString, nickname);
+                switch(type)
+                {
+                case tego_user_type_allowed:
+                    contact->setStatus(shims::ContactUser::Offline);
+                    break;
+                case tego_user_type_pending:
+                    contact->setStatus(shims::ContactUser::RequestPending);
+                    break;
+                case tego_user_type_rejected:
+                    contact->setStatus(shims::ContactUser::RequestRejected);
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+        Q_ASSERT(userIds.size() == userTypes.size());
+        const size_t userCount = userIds.size();
+
+        tego_context_start_service(
+            tegoContext,
+            privateKey.get(),
+            userIds.data(),
+            userTypes.data(),
+            userCount,
+            tego::throw_on_error());
+    }
+
 
     /* Window */
     QScopedPointer<MainWindow> w(new MainWindow);
@@ -126,28 +237,22 @@ int main(int argc, char *argv[]) try
 catch(std::exception& re)
 {
     qDebug() << "Caught Exception: " << re.what();
-}
-
-
-static QString userConfigPath()
-{
-    QString path = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
-    QString oldPath = path;
-    oldPath.replace(QStringLiteral("Ricochet"), QStringLiteral("Torsion"), Qt::CaseInsensitive);
-    if (QFile::exists(oldPath))
-        return oldPath;
-    return path;
+    return -1;
 }
 
 #ifdef Q_OS_MAC
+// returns the directory to place the config.ricochet directory on macOS
+// no trailing '/'
 static QString appBundlePath()
 {
     QString path = QApplication::applicationDirPath();
+    // if user left the binaries insidie the app bundle
     int p = path.lastIndexOf(QLatin1String(".app/"));
     if (p >= 0)
     {
+        // just some binaries floating around somewhere
         p = path.lastIndexOf(QLatin1Char('/'), p);
-        path = path.left(p+1);
+        path = path.left(p);
     }
 
     return path;
@@ -163,37 +268,83 @@ static void loadDefaultSettings(SettingsFile *settings)
 
 static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &errorMessage)
 {
-    /* If built in portable mode (default), configuration is stored in the 'config'
-     * directory next to the binary. If not writable, launching fails.
+    /* ricochet-refresh by default loads and saves configuration files from QStandardPaths::AppLocalDataLocation
      *
-     * Portable OS X is an exception. In that case, configuration is stored in a
-     * 'config.ricochet' folder next to the application bundle, unless the application
-     * path contains "/Applications", in which case non-portable mode is used.
+     * Linux: ~/.local/share/ricochet-refresh
+     * Windows: C:/Users/<USER>/AppData/Local/ricochet-refresh
+     * macOS: "~/Library/Application Support/ricochet-refresh"
      *
-     * When not in portable mode, a platform-specific per-user config location is used.
-     *
-     * This behavior may be overriden by passing a folder path as the first argument.
+     * ricochet-refresh can also load configuration files from a custom directory passed in as the first argument
      */
 
     QString configPath;
     QStringList args = qApp->arguments();
+
     if (args.size() > 1) {
         configPath = args[1];
     } else {
-#ifndef RICOCHET_NO_PORTABLE
-# ifdef Q_OS_MAC
-        if (!qApp->applicationDirPath().contains(QStringLiteral("/Applications"))) {
-            // Try old configuration path first
-            configPath = appBundlePath() + QStringLiteral("config.torsion");
-            if (!QFile::exists(configPath))
-                configPath = appBundlePath() + QStringLiteral("config.ricochet");
-        }
-# else
-        configPath = qApp->applicationDirPath() + QStringLiteral("/config");
-# endif
+        // TODO: remove this profile migration after sufficient time has passed (EOY 2021)
+        auto legacyConfigPath = []() -> QString {
+            QString configPath;
+#ifdef Q_OS_MAC
+            // if the user has installed it to /Applications
+            if (qApp->applicationDirPath().contains(QStringLiteral("/Applications"))) {
+                // ~Library/Application Support/Ricochet/Ricochet-Refresh
+                configPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QStringLiteral("/Ricochet/Ricochet-Refresh");
+            } else {
+                configPath = appBundlePath() + QStringLiteral("/config.ricochet");
+            }
+#else
+            configPath = qApp->applicationDirPath() + QStringLiteral("/config");
 #endif
-        if (configPath.isEmpty())
-            configPath = userConfigPath();
+            return configPath;
+        }();
+        configPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+
+        logger::println("configPath : {}", configPath);
+        logger::println("legacyConfigPath : {}", legacyConfigPath);
+
+        // only put up migration UX when
+        if (// old path differs from new path
+            configPath != legacyConfigPath &&
+            // the old path exists
+            QFile::exists(legacyConfigPath) &&
+            // the new path does not exist
+            !QFile::exists(configPath)) {
+
+            QMessageBox msgBox;
+            msgBox.setWindowTitle(QStringLiteral("Profile Migration"));
+            msgBox.setText(QStringLiteral("Ricochet Refresh has detected an existing legacy profile. Do you want to import it?"));
+            msgBox.setIcon(QMessageBox::Question);
+            msgBox.setDetailedText(
+                QStringLiteral(
+                    "Previous versions of Ricochet Refresh stored your profile data in the application's install location. If you import your legacy profile, it will be moved to a new location within your home directory.\n\n"
+                    "Old profile: '%1'\n"
+                    "New profile: '%2'").arg(legacyConfigPath).arg(configPath));
+            msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Abort);
+            msgBox.setDefaultButton(QMessageBox::Abort);
+
+            switch(static_cast<QMessageBox::StandardButton>(msgBox.exec()))
+            {
+                case QMessageBox::Yes:
+                    // migrate profile
+                    if(!QDir().rename(legacyConfigPath, configPath)) {
+                        errorMessage = QStringLiteral("Unable to migrate profile");
+                        return false;
+                    }
+                    break;
+                case QMessageBox::No:
+                    // use old profile path
+                    configPath = legacyConfigPath;
+                    break;
+                case QMessageBox::Abort:
+                    // exit program
+                    return false;
+                default:
+                    errorMessage = QStringLiteral("Invalid return value from msgBox.exec()");
+                    return false;
+                }
+        }
     }
 
     QDir dir(configPath);
@@ -232,104 +383,9 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
         return false;
     }
 
-    if (settings->root()->data().isEmpty()) {
-        QString filePath = dir.filePath(QStringLiteral("Torsion.ini"));
-        if (!QFile::exists(filePath))
-            filePath = dir.filePath(QStringLiteral("ricochet.ini"));
-        if (QFile::exists(filePath))
-            importLegacySettings(settings, filePath);
-    }
     // if still empty, load defaults here
     if (settings->root()->data().isEmpty()) {
         loadDefaultSettings(settings);
-    }
-
-    return true;
-}
-
-static void copyKeys(QSettings &old, SettingsObject *object)
-{
-    foreach (const QString &key, old.childKeys()) {
-        QVariant value = old.value(key);
-        if ((QMetaType::Type)value.type() == QMetaType::QDateTime)
-            object->write(key, value.toDateTime());
-        else if ((QMetaType::Type)value.type() == QMetaType::QByteArray)
-            object->write(key, Base64Encode(value.toByteArray()));
-        else
-            object->write(key, value.toString());
-    }
-}
-
-static bool importLegacySettings(SettingsFile *settings, const QString &oldPath)
-{
-    QSettings old(oldPath, QSettings::IniFormat);
-    SettingsObject *root = settings->root();
-    QVariant value;
-
-    qDebug() << "Importing legacy format settings from" << oldPath;
-
-    if (!(value = old.value(QStringLiteral("tor/controlIp"))).isNull())
-        root->write("tor.controlAddress", value.toString());
-    if (!(value = old.value(QStringLiteral("tor/controlPort"))).isNull())
-        root->write("tor.controlPort", value.toInt());
-    if (!(value = old.value(QStringLiteral("tor/authPassword"))).isNull())
-        root->write("tor.controlPassword", value.toString());
-    if (!(value = old.value(QStringLiteral("tor/socksIp"))).isNull())
-        root->write("tor.socksAddress", value.toString());
-    if (!(value = old.value(QStringLiteral("tor/socksPort"))).isNull())
-        root->write("tor.socksPort", value.toInt());
-    if (!(value = old.value(QStringLiteral("tor/executablePath"))).isNull())
-        root->write("tor.executablePath", value.toString());
-    if (!(value = old.value(QStringLiteral("core/neverPublishService"))).isNull())
-        root->write("tor.neverPublishServices", value.toBool());
-    if (!(value = old.value(QStringLiteral("identity/0/dataDirectory"))).isNull())
-        root->write("identity.dataDirectory", value.toString());
-    if (!(value = old.value(QStringLiteral("identity/0/createNewService"))).isNull())
-        root->write("identity.initializing", value.toBool());
-    if (!(value = old.value(QStringLiteral("core/listenIp"))).isNull())
-        root->write("identity.localListenAddress", value.toString());
-    if (!(value = old.value(QStringLiteral("core/listenPort"))).isNull())
-        root->write("identity.localListenPort", value.toInt());
-
-    {
-        old.beginGroup(QStringLiteral("contacts"));
-        QStringList ids = old.childGroups();
-        foreach (const QString &id, ids) {
-            old.beginGroup(id);
-            SettingsObject userObject(root, QStringLiteral("contacts.%1").arg(id));
-
-            copyKeys(old, &userObject);
-
-            if (old.childGroups().contains(QStringLiteral("request"))) {
-                old.beginGroup(QStringLiteral("request"));
-                QStringList requestKeys = old.childKeys();
-                foreach (const QString &key, requestKeys)
-                    userObject.write(QStringLiteral("request.") + key, old.value(key).toString());
-                old.endGroup();
-            }
-
-            old.endGroup();
-        }
-        old.endGroup();
-    }
-
-    {
-        old.beginGroup(QStringLiteral("contactRequests"));
-        QStringList contacts = old.childGroups();
-
-        foreach (const QString &hostname, contacts) {
-            old.beginGroup(hostname);
-            SettingsObject requestObject(root, QStringLiteral("contactRequests.%1").arg(hostname));
-            copyKeys(old, &requestObject);
-            old.endGroup();
-        }
-
-        old.endGroup();
-    }
-
-    if (!(value = old.value(QStringLiteral("core/hostnameBlacklist"))).isNull()) {
-        QStringList blacklist = value.toStringList();
-        root->write("identity.hostnameBlacklist", QJsonArray::fromStringList(blacklist));
     }
 
     return true;

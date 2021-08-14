@@ -77,7 +77,7 @@ QtObject {
 
     property list<QtObject> data: [
         Connections {
-            target: userIdentity.contacts.incomingRequests
+            target: userIdentity
             function onRequestAdded(request) {
                 var object = createDialog("ContactRequestDialog.qml", { 'request': request })
                 object.visible = true
@@ -118,19 +118,6 @@ QtObject {
             property int pointSize: (Qt.platform.os === "windows") ? 10 : fakeLabel.font.pointSize
             property int textHeight: fakeLabelSized.height
             property int dialogWindowFlags: Qt.Dialog | Qt.WindowSystemMenuHint | Qt.WindowTitleHint | Qt.WindowCloseButtonHint
-        },
-
-        Timer {
-            interval: 2000
-            running: true
-            repeat: false
-            onTriggered: {
-                var pendingRequests = userIdentity.contacts.incomingRequests.requests
-                for (var i = 0; i < pendingRequests.length; i++) {
-                    var object = createDialog("ContactRequestDialog.qml", { 'request': pendingRequests[i] })
-                    object.visible = true
-                }
-            }
         },
 
         Loader {
