@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QRegularExpressionValidator>
+
 namespace shims
 {
     class ContactUser;

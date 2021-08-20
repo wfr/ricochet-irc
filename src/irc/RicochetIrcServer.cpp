@@ -39,25 +39,33 @@
 #include "IrcChannel.h"
 #include "IrcConnection.h"
 
-#include "core/IdentityManager.h"
-#include "core/ConversationModel.h"
-#include "core/ContactsManager.h"
-#include "core/ContactUser.h"
-#include "core/UserIdentity.h"
-#include "core/IncomingRequestManager.h"
-#include "core/ContactIDValidator.h"
-#include "tor/TorManager.h"
-#include "tor/TorControl.h"
-#include "tor/TorProcess.h"
+#include "shims/ContactIDValidator.h"
+#include "shims/IncomingContactRequest.h"
+#include "shims/TorControl.h"
+#include "shims/TorManager.h"
 
 #include <QCoreApplication>
 
 
-RicochetIrcServer::RicochetIrcServer(QObject *parent, uint16_t port, const QString& password, const QString& control_channel_name)
+RicochetIrcServer::RicochetIrcServer(QObject *parent,
+                                     uint16_t port, const QString& password,
+                                     const QString& control_channel_name)
     : IrcServer(parent, port, password),
-      control_channel_name(control_channel_name),
-      first_start(true)
+      control_channel_name(control_channel_name)
 {
+    auto torManager = shims::TorManager::torManager;
+    connect(torManager,
+            &shims::TorManager::configurationNeededChanged,
+            this,
+            &RicochetIrcServer::torConfigurationNeededChanged);
+    connect(torManager,
+            &shims::TorManager::runningChanged,
+            this,
+            &RicochetIrcServer::torRunningChanged);
+    connect(torManager,
+            &shims::TorManager::errorChanged,
+            this,
+            &RicochetIrcServer::torErrorChanged);
 }
 
 
@@ -67,12 +75,52 @@ RicochetIrcServer::~RicochetIrcServer()
 }
 
 
+/**
+ * @brief RicochetIrcServer::initRicochet
+ */
+void RicochetIrcServer::initRicochet()
+{
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    auto contactsManager = shims::UserIdentity::userIdentity->getContacts();
+
+    connect(contactsManager,
+            &shims::ContactsManager::contactAdded,
+            this,
+            &RicochetIrcServer::onContactAdded);
+    connect(contactsManager,
+            &shims::ContactsManager::contactStatusChanged,
+            this,
+            &RicochetIrcServer::onContactStatusChanged);
+    foreach(shims::ContactUser* user, contactsManager->contacts())
+    {
+        connect(user->conversation(),
+                &shims::ConversationModel::unreadCountChanged,
+                this,
+                &RicochetIrcServer::onUnreadCountChanged);
+    }
+    connect(userIdentity,
+            &shims::UserIdentity::requestAdded,
+            this,
+            &RicochetIrcServer::requestAdded);
+// TODO: this signal is not available anymore
+//    QObject::connect(contactsManager->incomingRequestManager(),
+//                     SIGNAL(requestRemoved(IncomingContactRequest*)),
+//                     this,
+//                     SLOT(requestRemoved(IncomingContactRequest*)));
+    connect(userIdentity,
+            &shims::UserIdentity::requestsChanged,
+            this,
+            &RicochetIrcServer::requestsChanged);
+}
+
 bool RicochetIrcServer::run()
 {
     if(!IrcServer::run())
     {
         return false;
     }
+
+    initRicochet();
 
     this->welcome_message = QCoreApplication::translate("irc", "Welcome to Ricochet-IRC!");
 
@@ -83,99 +131,29 @@ bool RicochetIrcServer::run()
     ricochet_user->hostname = QStringLiteral("::1");
     ricochet_user->realname = QStringLiteral("Ricochet Control User");
     this->virtual_clients.append(ricochet_user);
-    QObject::connect(ricochet_user,
-                     SIGNAL(privmsg(IrcUser*, const QString&, const QString&)),
-                     this,
-                     SLOT(privmsg(IrcUser*, const QString&, const QString&)));
+    connect(ricochet_user,
+            &IrcUser::privmsg,
+            this,
+            &RicochetIrcServer::privmsg);
 
     // Create the control channel
     IrcChannel *ricochet_channel = getChannel(control_channel_name);
     ricochet_channel->addMember(ricochet_user, QStringLiteral("@"));
     channels.insert(ricochet_channel->name, ricochet_channel);
 
+    torConfigurationNeededChanged();
+
     return true;
 }
-
-
-/**
- * @brief RicochetIrcServer::initRicochet  Prepare the magical intertubes.
- */
-void RicochetIrcServer::initRicochet()
-{
-    if(identityManager->identities().length() != 1)
-    {
-        qWarning() << "not one identity! don't know what to do...";
-        return;
-    }
-    identity = identityManager->identities()[0];
-
-    // Connect Ricochet contact events to IRC
-    ContactsManager *contactsManager = identity->getContacts();
-    QObject::connect(contactsManager,
-                     SIGNAL(contactAdded(ContactUser*)),
-                     this,
-                     SLOT(onContactAdded(ContactUser*)));
-    QObject::connect(contactsManager,
-                     SIGNAL(contactStatusChanged(ContactUser*,int)),
-                     this,
-                     SLOT(onContactStatusChanged(ContactUser*,int)));
-    foreach(ContactUser* user, contactsManager->contacts())
-    {
-        ConversationModel* convo = user->conversation();
-        QObject::connect(convo,
-                         SIGNAL(unreadCountChanged()),
-                         this,
-                         SLOT(onUnreadCountChanged()));
-    }
-    QObject::connect(contactsManager->incomingRequestManager(),
-                     SIGNAL(requestAdded(IncomingContactRequest*)),
-                     this,
-                     SLOT(requestAdded(IncomingContactRequest*)));
-    QObject::connect(contactsManager->incomingRequestManager(),
-                     SIGNAL(requestRemoved(IncomingContactRequest*)),
-                     this,
-                     SLOT(requestRemoved(IncomingContactRequest*)));
-    QObject::connect(contactsManager->incomingRequestManager(),
-                     SIGNAL(requestsChanged()),
-                     this,
-                     SLOT(requestsChanged()));
-}
-
 
 /**
  * @brief RicochetIrcServer::startRicochet  (Re)start Tor
  */
 void RicochetIrcServer::startRicochet()
 {
-    if(first_start) {
-        initRicochet();
-    }
 
-    Tor::TorManager *torManager = Tor::TorManager::instance();
-    Tor::TorProcess *proc = torManager->process();
-    torControl = torManager->control();
-
-    if(!first_start)
-    {
-        torControl->reconnect();
-    }
-
-    if(proc == Q_NULLPTR || proc->state() == Tor::TorProcess::State::NotStarted)
-    {
-        torManager->start();
-        if(first_start)
-        {
-            QObject::connect(torManager,
-                             SIGNAL(configurationNeededChanged()),
-                             this,
-                             SLOT(torConfigurationNeededChanged()));
-            QObject::connect(torManager->control(),
-                             SIGNAL(torStatusChanged(int, int)),
-                             this,
-                             SLOT(torStatusChanged(int, int)));
-        }
-    }
-    first_start = false;
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    userIdentity->setOnline(true);
 }
 
 
@@ -184,12 +162,8 @@ void RicochetIrcServer::startRicochet()
  */
 void RicochetIrcServer::stopRicochet()
 {
-    Tor::TorManager *torManager = Tor::TorManager::instance();
-    Tor::TorProcess *proc = torManager->process();
-    if(proc && proc->state() != Tor::TorProcess::State::NotStarted)
-    {
-        torManager->stop();
-    }
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    userIdentity->setOnline(false);
 }
 
 
@@ -200,81 +174,72 @@ void RicochetIrcServer::stopRicochet()
  */
 void RicochetIrcServer::torConfigurationNeededChanged()
 {
+    qDebug() << "RicochetIrcServer::torConfigurationNeededChanged";
+
+    auto torControl = shims::TorControl::torControl;
+    auto torManager = shims::TorManager::torManager;
+
+//    if (torManager->configurationNeeded() == false) {
+//        return;
+//    }
+
     qDebug() << "==== Tor configuration needed ====";
-    Tor::TorManager *torManager = Tor::TorManager::instance();
     QVariantMap conf;
-    conf.insert(QStringLiteral("FascistFirewall"), 0);
-    conf.insert(QStringLiteral("UseBridges"), 0);
-    conf.insert(QStringLiteral("DisableNetwork"), 0);
-    // conf.insert(QStringLiteral("Socks4Proxy"), 0);
-    // conf.insert(QStringLiteral("Socks5Proxy"), 0);
-    // conf.insert(QStringLiteral("Socks5ProxyUsername"), 0);
-    // conf.insert(QStringLiteral("Socks5ProxyPassword"), 0);
-    // conf.insert(QStringLiteral("HTTPProxy"), 0);
-    // conf.insert(QStringLiteral("HTTPProxyAuthenticator"), 0);
-    // conf.insert(QStringLiteral("FirewallPorts"), 0);
-    // conf.insert(QStringLiteral("Bridge"), 0);
-    connect(torManager->control()->setConfiguration(conf),
-            SIGNAL(finished()), SLOT(torConfigurationFinished()));
+    conf.insert(QStringLiteral("bridges"), QStringList());
+    conf.insert(QStringLiteral("disableNetwork"), 0);
+
+    // see TorConfigurationPage.qml
+    torManager->setRunning("yes");
+
+    auto command = qobject_cast<shims::TorControlCommand*>(torControl->setConfiguration(conf));
+    QObject::connect(command, &shims::TorControlCommand::finished, this, &RicochetIrcServer::torConfigurationFinished);
 }
 
 
 void RicochetIrcServer::torConfigurationFinished()
 {
-    Tor::TorManager *torManager = Tor::TorManager::instance();
-    torManager->control()->saveConfiguration();
+    qDebug() << "RicochetIrcServer::torConfigurationFinished";
+
+    auto torControl = shims::TorControl::torControl;
+    if (torControl->hasOwnership()) {
+        torControl->saveConfiguration();
+    }
 }
 
 
+void RicochetIrcServer::torRunningChanged() {
+    qDebug() << "RicochetIrcServer::torRunningChanged";
 
-void RicochetIrcServer::torStatusChanged(int newStatus, int oldStatus)
-{
-    Q_UNUSED(oldStatus);
-
-    switch(newStatus)
-    {
-        case Tor::TorControl::TorStatus::TorOffline:
-            // Workaround for new profiles
-            if(Tor::TorManager::instance()->configurationNeeded())
-            {
-                torConfigurationNeededChanged();
-            }
-        break;
-
-        case Tor::TorControl::TorStatus::TorReady:
-            qDebug() << "=== Tor ready ===";
-            UserIdentity *identity;
-            foreach(identity, identityManager->identities())
-            {
-                getChannel(control_channel_name)->setTopic(ricochet_user,identity->contactID());
-            }
-        break;
-
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    auto torManager = shims::TorManager::torManager;
+    if (torManager->running() == "No") {
+        if (torManager->configurationNeeded()) {
+            torConfigurationNeededChanged();
+        }
+    } else if (torManager->running() == "Yes") {
+        qDebug() << "=== Tor ready ===";
+        getChannel(control_channel_name)->setTopic(ricochet_user, userIdentity->contactID());
     }
 
-    if(clients.count() > 0)
-    {
-        switch(newStatus) {
-            case Tor::TorControl::TorStatus::TorUnknown:
-                echo(QStringLiteral("Tor status: unknown"));
-                break;
-            case Tor::TorControl::TorStatus::TorOffline:
-                echo(QStringLiteral("Tor status: offline"));
-                break;
-            case Tor::TorControl::TorStatus::TorReady:
-                echo(QStringLiteral("Tor status: ready"));
-
-                // add all contacts to IRC
-                ContactsManager *contactsManager = identity->getContacts();
-                foreach(ContactUser* contact, contactsManager->contacts()) {
-                    emit onContactStatusChanged(contact, ContactUser::Offline);
-                }
-
-                break;
+    if (clients.count() > 0) {
+        auto contactsManager = userIdentity->getContacts();
+        echo(QString("torManager->running() == " + torManager->running()));
+        if (torManager->running() == "Yes") {
+            // add all contacts to IRC
+            foreach(shims::ContactUser* contact, contactsManager->contacts()) {
+                emit onContactStatusChanged(contact, shims::ContactUser::Offline);
+            }
         }
     }
 }
 
+void RicochetIrcServer::torErrorChanged() {
+    qDebug() << "NOT-IMPLEMENTED: RicochetIrcServer::torErrorChanged()";
+}
+
+void RicochetIrcServer::torLogMessage(const QString &message) {
+    qDebug() << "NOT-IMPLEMENTED: RicochetIrcServer::torLogMessage()";
+}
 
 const QString RicochetIrcServer::getWelcomeMessage()
 {
@@ -289,7 +254,6 @@ void RicochetIrcServer::ircUserLoggedIn(IrcConnection* conn)
     getChannel(control_channel_name)->setMemberFlags(conn, QStringLiteral("+o"));
     cmdHelp();
 
-    // start Tor
     if(this->clients.count() == 1)
     {
         startRicochet();
@@ -369,7 +333,7 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
     if(msgtarget == control_channel_name && sender->nick != ricochet_user->nick)
     {
         QStringList args = text.trimmed().split(QLatin1Char(' '));
-        QString cmd = args[0];
+        QString cmd = args.at(0);
         args.pop_front();
 
         if(cmd == QStringLiteral("help"))
@@ -423,24 +387,27 @@ void RicochetIrcServer::privmsgHook(IrcUser* sender, const QString& msgtarget, c
  */
 void RicochetIrcServer::handlePM(IrcConnection *sender, const QString &contact_nick, const QString &text)
 {
-    foreach(ContactUser* contact, usermap.keys())
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    auto contactsManager = userIdentity->getContacts();
+    foreach(shims::ContactUser* contact, contactsManager->contacts())
     {
-        if(contact->nickname() == contact_nick)
+        if(contact->getNickname() == contact_nick)
         {
             contact->conversation()->sendMessage(text);
 
             IrcUser* contact_irc_user = usermap.value(contact);
-            if(!contact->isConnected())
+            if(contact->getStatus() != shims::ContactUser::Status::Online)
             {
                 sender->reply(RPL_AWAY,
                             QStringLiteral("%1 %2 :is offline")
                             .arg(sender->nick)
-                            .arg(contact->nickname())
+                            .arg(contact->getNickname())
                             );
-                sender->reply(contact_irc_user->getPrefix(),
-                            QStringLiteral("PRIVMSG %1 :\x02[Contact is offline. %2 queued message(s).]")
-                            .arg(sender->getPrefix())
-                            .arg(contact->conversation()->queuedCount()));
+                // TODO
+//                sender->reply(contact_irc_user->getPrefix(),
+//                            QStringLiteral("PRIVMSG %1 :\x02[Contact is offline. %2 queued message(s).]")
+//                            .arg(sender->getPrefix())
+//                            .arg(contact->conversation()->queuedCount()));
 
             }
         }
@@ -471,12 +438,15 @@ void RicochetIrcServer::cmdHelp()
 
 void RicochetIrcServer::cmdId()
 {
-    echo(identity->contactID());
+    echo(shims::UserIdentity::userIdentity->contactID());
 }
 
 
 void RicochetIrcServer::cmdAdd(const QStringList& args)
 {
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    auto contactsManager = userIdentity->getContacts();
+
     if(args.length() < 3)
     {
         error(QStringLiteral("Unexpected arguments."));
@@ -490,11 +460,12 @@ void RicochetIrcServer::cmdAdd(const QStringList& args)
         {
             message.append(QStringLiteral(" %1").arg(args[i]));
         }
-        if(ContactIDValidator::isValidID(id))
+        shims::ContactIDValidator contactIdValidator;
+        if(contactIdValidator.isValidID(id))
         {
             echo(QStringLiteral("sending contact request to user `%1` with id: %2 with message: %3").arg(nickname).arg(id).arg(message));
-            ContactsManager *contactsManager = identity->getContacts();
-            contactsManager->createContactRequest(id, nickname, identity->nickname(), message);
+            // TODO: my nickname
+            contactsManager->createContactRequest(id, nickname, "my nickname", message);
         }
         else
         {
@@ -506,10 +477,12 @@ void RicochetIrcServer::cmdAdd(const QStringList& args)
 
 void RicochetIrcServer::cmdDelete(const QStringList& args)
 {
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    auto contactsManager = userIdentity->getContacts();
+
     if(args.length() == 1)
     {
-        ContactsManager *contactsManager = identity->getContacts();
-        ContactUser *contact = contactsManager->lookupNickname(args[0]);
+        shims::ContactUser *contact = contactsManager->getShimContactByNickname(args[0]);
         if(contact)
         {
             contact->deleteContact();
@@ -531,26 +504,27 @@ void RicochetIrcServer::cmdDelete(const QStringList& args)
 
 void RicochetIrcServer::cmdRename(const QStringList& args)
 {
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    auto contactsManager = userIdentity->getContacts();
+
     if(args.length() == 2)
     {
         QString old_nickname = args[0];
         QString new_nickname = args[1];
 
-        ContactsManager *contactsManager = identity->getContacts();
-
-        if(contactsManager->lookupNickname(new_nickname)
+        if(contactsManager->getShimContactByNickname(new_nickname)
                 || findUser(new_nickname) != Q_NULLPTR)
         {
             error(QStringLiteral("Target nickname `%1` already exists.").arg(new_nickname));
         }
         else
         {
-            ContactUser *contact = contactsManager->lookupNickname(old_nickname);
-            if(contact)
+            auto cu = contactsManager->getShimContactByNickname(old_nickname);
+            if(cu)
             {
                 echo(QStringLiteral("renaming user `%1` to `%2`").arg(old_nickname).arg(new_nickname));
-                contact->setNickname(new_nickname);
-                IrcUser* ircuser = usermap.value(contact);
+                cu->setNickname(new_nickname);
+                IrcUser* ircuser = usermap.value(cu);
                 if(ircuser != Q_NULLPTR)
                 {
                     this->rename(ircuser, new_nickname);
@@ -569,40 +543,40 @@ void RicochetIrcServer::cmdRename(const QStringList& args)
 }
 
 
-IncomingContactRequest* RicochetIrcServer::getIncomingRequestByID(const QString& id)
+shims::IncomingContactRequest* RicochetIrcServer::getIncomingRequestByID(const QString& id)
 {
-    IncomingContactRequest *result = Q_NULLPTR;
-    ContactsManager *contactsManager = identity->getContacts();
-    foreach(IncomingContactRequest *request, contactsManager->incomingRequestManager()->requests())
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    foreach(QObject *obj, userIdentity->getRequests())
     {
-        if(request->contactId() == id)
+        auto request = qobject_cast<shims::IncomingContactRequest*>(obj);
+        if(request->getContactId() == id)
         {
-            result = request;
+            return request;
         }
     }
-    return result;
+    return nullptr;
 }
 
 
 void RicochetIrcServer::cmdRequest(const QStringList& args)
 {
     // TODO: validate arguments
-    ContactsManager *contactsManager = identity->getContacts();
-    IncomingRequestManager *irm = contactsManager->incomingRequestManager();
+    auto userIdentity = shims::UserIdentity::userIdentity;
+    auto contactsManager = userIdentity->getContacts();
 
     if(args.length() == 1 && args[0] == QStringLiteral("list"))
     {
-        echo(QStringLiteral("You have %1 incoming contact request(s):").arg(irm->requests().count()));
-        foreach(IncomingContactRequest *inc, irm->requests())
-        {
+        echo(QStringLiteral("You have %1 incoming contact request(s):").arg(userIdentity->getRequests().count()));
+        foreach(QObject *obj, userIdentity->getRequests()) {
+            auto request = qobject_cast<shims::IncomingContactRequest*>(obj);
             echo(QStringLiteral("    %1 (message: %2)")
-                 .arg(inc->contactId()).arg(inc->message()));
+                 .arg(request->getContactId()).arg(request->getMessage()));
         }
     }
     else
     if(args.length() == 3 && args[0] == QStringLiteral("accept"))
     {
-        IncomingContactRequest *request = getIncomingRequestByID(args[1]);
+        shims::IncomingContactRequest* request = getIncomingRequestByID(args[1]);
         if(request)
         {
             request->setNickname(args[2]);
@@ -616,7 +590,7 @@ void RicochetIrcServer::cmdRequest(const QStringList& args)
     else
     if(args.length() == 2 && args[0] == QStringLiteral("reject"))
     {
-        IncomingContactRequest *request = getIncomingRequestByID(args[1]);
+        shims::IncomingContactRequest* request = getIncomingRequestByID(args[1]);
         if(request)
         {
             request->reject();
@@ -633,12 +607,12 @@ void RicochetIrcServer::cmdRequest(const QStringList& args)
 }
 
 
-void RicochetIrcServer::onContactAdded(ContactUser *user)
+void RicochetIrcServer::onContactAdded(shims::ContactUser *user)
 {
-    QObject::connect(user->conversation(),
-                     SIGNAL(unreadCountChanged()),
-                     this,
-                     SLOT(onUnreadCountChanged()));
+    connect(user->conversation(),
+            &shims::ConversationModel::unreadCountChanged,
+            this,
+            &RicochetIrcServer::onUnreadCountChanged);
 }
 
 
@@ -650,21 +624,21 @@ void RicochetIrcServer::onContactAdded(ContactUser *user)
  * => set +v/-v in #ricochet
  * => tell the IRC user about any unsent essages
  */
-void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
+void RicochetIrcServer::onContactStatusChanged(shims::ContactUser* user, int status)
 {
     IrcChannel *ctrlchan = channels[control_channel_name];
     IrcUser *ircuser;
 
-    if(ctrlchan->hasMember(user->nickname()))
+    if(ctrlchan->hasMember(user->getNickname()))
     {
-        ircuser = ctrlchan->getMember(user->nickname());
+        ircuser = ctrlchan->getMember(user->getNickname());
     }
     else
     {
         ircuser = new IrcUser(this);
-        ircuser->nick = user->nickname();
-        ircuser->user = user->nickname();
-        ircuser->hostname = user->contactID();
+        ircuser->nick = user->getNickname();
+        ircuser->user = user->getNickname();
+        ircuser->hostname = user->getContactID();
         ctrlchan->addMember(ircuser, QStringLiteral("+v"));
         joined(ircuser, control_channel_name);
         usermap.insert(user, ircuser);
@@ -673,21 +647,22 @@ void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
 
     switch(status)
     {
-        case ContactUser::Online:
+        case shims::ContactUser::Online:
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("+v"));
 
+            // TODO
             // Notify user in query when there are queued messages.
-            if(user->conversation()->queuedCount() > 0)
-            {
-                foreach(IrcConnection *conn, clients.values())
-                {
-                    conn->reply(ircuser->getPrefix(),
-                                QStringLiteral("PRIVMSG %1 :\x02[Contact is back online. Sending queued messages...]")
-                                .arg(conn->getPrefix()));
-                }
-            }
+//            if(user->conversation()->queuedCount() > 0)
+//            {
+//                foreach(IrcConnection *conn, clients.values())
+//                {
+//                    conn->reply(ircuser->getPrefix(),
+//                                QStringLiteral("PRIVMSG %1 :\x02[Contact is back online. Sending queued messages...]")
+//                                .arg(conn->getPrefix()));
+//                }
+//            }
         break;
-        case ContactUser::Offline:
+        case shims::ContactUser::Offline:
             ctrlchan->setMemberFlags(ircuser, QStringLiteral("-v"));
         break;
     }
@@ -698,13 +673,13 @@ void RicochetIrcServer::onContactStatusChanged(ContactUser* user, int status)
  */
 void RicochetIrcServer::onUnreadCountChanged()
 {
-    ConversationModel* convo = qobject_cast<ConversationModel*>(sender());
+    shims::ConversationModel* convo = qobject_cast<shims::ConversationModel*>(sender());
 
     while(convo->rowCount())
     {
         QModelIndex index = convo->index(0);
         QString text = convo->data(index, Qt::DisplayRole).toString();
-        bool isOutgoing = convo->data(index, ConversationModel::IsOutgoingRole).toBool();
+        bool isOutgoing = convo->data(index, shims::ConversationModel::IsOutgoingRole).toBool();
         convo->clear();
 
         if(!isOutgoing)
@@ -729,22 +704,22 @@ void RicochetIrcServer::onUnreadCountChanged()
  * @brief RicochetIrcServer::requestAdded  There is an incoming contact request.
  * @param request Incoming contact request
  */
-void RicochetIrcServer::requestAdded(IncomingContactRequest *request)
+void RicochetIrcServer::requestAdded(shims::IncomingContactRequest *request)
 {
     highlight();
-    QString notice = QStringLiteral("Incoming contact request from: %1").arg(request->contactId());
-    if(request->message().length() > 0)
+    QString notice = QStringLiteral("Incoming contact request from: %1").arg(request->getContactId());
+    if(request->getMessage().length() > 0)
     {
-        notice += QStringLiteral(" (message: %1)").arg(request->message());
+        notice += QStringLiteral(" (message: %1)").arg(request->getMessage());
     }
     echo(notice);
 }
 
 
-void RicochetIrcServer::requestRemoved(IncomingContactRequest *request)
+void RicochetIrcServer::requestRemoved(shims::IncomingContactRequest *request)
 {
     qDebug() << QStringLiteral("Request removed: %1, message: %2")
-         .arg(request->contactId()).arg(request->message());
+         .arg(request->getContactId()).arg(request->getMessage());
 }
 
 

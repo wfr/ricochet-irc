@@ -693,10 +693,10 @@ private:
 
 PendingOperation *TorControl::saveConfiguration()
 {
-    if (!hasOwnership()) {
-        qWarning() << "torctrl: Ignoring save configuration command for a tor instance I don't own";
-        return 0;
-    }
+//    if (!hasOwnership()) {
+//        qWarning() << "torctrl: Ignoring save configuration command for a tor instance I don't own";
+//        return 0;
+//    }
 
     SaveConfigOperation *operation = new SaveConfigOperation(this);
     QObject::connect(operation, &PendingOperation::finished, operation, &QObject::deleteLater);

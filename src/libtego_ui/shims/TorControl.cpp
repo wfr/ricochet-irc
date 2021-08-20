@@ -15,7 +15,10 @@ namespace shims
 
         // create command shim yuck
         auto setConfigurationCommand = new TorControlCommand();
+
+#ifndef RICOCHET_HEADLESS
         QQmlEngine::setObjectOwnership(setConfigurationCommand, QQmlEngine::CppOwnership);
+#endif
 
         this->m_setConfigurationCommand = setConfigurationCommand;
 

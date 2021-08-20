@@ -73,6 +73,9 @@ public:
 
     virtual const QString getWelcomeMessage();
 
+    uint16_t port();
+    const QString& password() const;
+
 signals:
 
 public slots:
@@ -109,8 +112,8 @@ public slots:
 
 
 protected:
-    uint16_t port;
-    QString password;
+    uint16_t m_port;
+    QString m_password;
     QString welcome_message;
 
     QTcpServer *tcpServer;

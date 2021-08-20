@@ -73,6 +73,16 @@ namespace shims
         return nullptr;
     }
 
+    shims::ContactUser* ContactsManager::getShimContactByNickname(const QString& nickname) const {
+        for(auto cu : contactsList) {
+            if (cu->getNickname() == nickname)
+            {
+                return cu;
+            }
+        }
+        return nullptr;
+    }
+
     const QList<shims::ContactUser*>& ContactsManager::contacts() const
     {
         return contactsList;
