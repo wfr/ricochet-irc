@@ -1,5 +1,8 @@
 #include "error.hpp"
 #include "ed25519.hpp"
+#include <cstddef>
+#include "lib/crypt_ops/crypto_util.h"
+#include "lib/crypt_ops/crypto_rand.h"
 
 // header of ed25519 KeyBlob returned by ADD_ONION comand
 #define TEGO_ED25519_KEYBLOB_HEADER "ED25519-V3:"
@@ -145,9 +148,9 @@ extern "C"
             TEGO_THROW_IF_FALSE(keyBlobLength == TEGO_ED25519_KEYBLOB_LENGTH);
 
             // ensure KeyBlob starts with correct string constant
-            //TEGO_THROW_IF_FALSE(std::string_view(keyBlob).starts_with(TEGO_ED25519_KEYBLOB_HEADER));
+            TEGO_THROW_IF_FALSE(std::string_view(keyBlob).starts_with(TEGO_ED25519_KEYBLOB_HEADER));
             // GCC 8 compatibility
-            TEGO_THROW_IF_FALSE(std::string_view(keyBlob).rfind(TEGO_ED25519_KEYBLOB_HEADER, 0) == 0);
+//            TEGO_THROW_IF_FALSE(std::string_view(keyBlob).rfind(TEGO_ED25519_KEYBLOB_HEADER, 0) == 0);
 
             // get a string_view of the base64 blob
             std::string_view base64(keyBlob + TEGO_ED25519_KEYBLOB_HEADER_LENGTH);

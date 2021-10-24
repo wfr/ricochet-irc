@@ -204,14 +204,14 @@ void TorManager::start()
     d->process->start();
 }
 
-void TorManager::stop()
-{
-    if(d->process->state() == TorProcess::State::Ready) {
-        d->control->shutdownSync();
-        d->process->stop();
-        d->process = 0;
-    }
-}
+//void TorManager::stop()
+//{
+//    if(d->process->state() == TorProcess::State::Ready) {
+//        d->control->shutdownSync();
+//        d->process->stop();
+//        d->process = 0;
+//    }
+//}
 
 void TorManagerPrivate::processStateChanged(int state)
 {

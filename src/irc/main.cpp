@@ -121,10 +121,6 @@ int main(int argc, char *argv[]) try
         tego_context_start_tor(tegoContext, launchConfig.get(), tego::throw_on_error());
     }
 
-    // init the IRC server
-    auto task = new RicochetIrcServerTask(&a);
-    QObject::connect(task, &RicochetIrcServerTask::finished, &a, QCoreApplication::quit);
-
     /* Identities */
 
     // init our shims
@@ -236,6 +232,9 @@ int main(int argc, char *argv[]) try
     }
 
     // Start the IRC server
+    auto task = new RicochetIrcServerTask(&a);
+    QObject::connect(task, &RicochetIrcServerTask::finished, &a, QCoreApplication::quit);
+
     QMetaObject::invokeMethod( task, "run", Qt::QueuedConnection );
 
     return a.exec();

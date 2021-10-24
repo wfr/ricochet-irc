@@ -75,7 +75,7 @@ lupdate_only {
 
 
 # Only build translations when creating the primary makefile.
-!build_pass: {
+{
     contains(QMAKE_HOST.os,Windows):QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease.exe
     else:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
     for (translation, TRANSLATIONS) {

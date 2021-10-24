@@ -53,19 +53,7 @@ RicochetIrcServer::RicochetIrcServer(QObject *parent,
     : IrcServer(parent, port, password),
       control_channel_name(control_channel_name)
 {
-    auto torManager = shims::TorManager::torManager;
-    connect(torManager,
-            &shims::TorManager::configurationNeededChanged,
-            this,
-            &RicochetIrcServer::torConfigurationNeededChanged);
-    connect(torManager,
-            &shims::TorManager::runningChanged,
-            this,
-            &RicochetIrcServer::torRunningChanged);
-    connect(torManager,
-            &shims::TorManager::errorChanged,
-            this,
-            &RicochetIrcServer::torErrorChanged);
+
 }
 
 
@@ -80,6 +68,19 @@ RicochetIrcServer::~RicochetIrcServer()
  */
 void RicochetIrcServer::initRicochet()
 {
+    connect(shims::TorManager::torManager,
+            &shims::TorManager::configurationNeededChanged,
+            this,
+            &RicochetIrcServer::torConfigurationNeededChanged);
+    connect(shims::TorManager::torManager,
+            &shims::TorManager::runningChanged,
+            this,
+            &RicochetIrcServer::torRunningChanged);
+    connect(shims::TorManager::torManager,
+            &shims::TorManager::errorChanged,
+            this,
+            &RicochetIrcServer::torErrorChanged);
+
     auto userIdentity = shims::UserIdentity::userIdentity;
     auto contactsManager = shims::UserIdentity::userIdentity->getContacts();
 
@@ -141,8 +142,6 @@ bool RicochetIrcServer::run()
     ricochet_channel->addMember(ricochet_user, QStringLiteral("@"));
     channels.insert(ricochet_channel->name, ricochet_channel);
 
-    torConfigurationNeededChanged();
-
     return true;
 }
 
@@ -151,9 +150,11 @@ bool RicochetIrcServer::run()
  */
 void RicochetIrcServer::startRicochet()
 {
-
-    auto userIdentity = shims::UserIdentity::userIdentity;
-    userIdentity->setOnline(true);
+    QVariantMap conf = {
+        { QStringLiteral("disableNetwork"), 0 }
+    };
+    auto command = qobject_cast<shims::TorControlCommand*>(shims::TorControl::torControl->setConfiguration(conf));
+    QObject::connect(command, &shims::TorControlCommand::finished, this, &RicochetIrcServer::torConfigurationFinished);
 }
 
 
@@ -162,35 +163,33 @@ void RicochetIrcServer::startRicochet()
  */
 void RicochetIrcServer::stopRicochet()
 {
-    auto userIdentity = shims::UserIdentity::userIdentity;
-    userIdentity->setOnline(false);
+    // Problem: Tor won't restart after this:
+    // tego_context_stop_tor()
+    QVariantMap conf = {
+        { QStringLiteral("disableNetwork"), 1 }
+    };
+    shims::TorControl::torControl->setConfiguration(conf);
 }
 
 
 /**
  * @brief RicochetIrcServer::torConfigurationNeededChanged  Hardcoded Tor configuration
  *
- * TODO: make this configurable
+ * TODO: make Tor configurable
+ *
+ * BUG: This slot is currently never called.
+ *      I suspect it's because the signal in TorManager is emitted in its constructor,
+ *      before this class is instantiated.
  */
 void RicochetIrcServer::torConfigurationNeededChanged()
 {
-    qDebug() << "RicochetIrcServer::torConfigurationNeededChanged";
-
-    auto torControl = shims::TorControl::torControl;
-    auto torManager = shims::TorManager::torManager;
-
-//    if (torManager->configurationNeeded() == false) {
-//        return;
-//    }
-
     qDebug() << "==== Tor configuration needed ====";
-    QVariantMap conf;
-    conf.insert(QStringLiteral("bridges"), QStringList());
-    conf.insert(QStringLiteral("disableNetwork"), 0);
-
-    // see TorConfigurationPage.qml
-    torManager->setRunning("yes");
-
+    auto torControl = shims::TorControl::torControl;
+    QVariantMap conf = {
+        { QStringLiteral("disableNetwork"), 0 },
+        { QStringLiteral("bridges"), QStringList() }
+    };
+//    torControl->setConfiguration(conf);
     auto command = qobject_cast<shims::TorControlCommand*>(torControl->setConfiguration(conf));
     QObject::connect(command, &shims::TorControlCommand::finished, this, &RicochetIrcServer::torConfigurationFinished);
 }
@@ -212,13 +211,20 @@ void RicochetIrcServer::torRunningChanged() {
 
     auto userIdentity = shims::UserIdentity::userIdentity;
     auto torManager = shims::TorManager::torManager;
-    if (torManager->running() == "No") {
-        if (torManager->configurationNeeded()) {
-            torConfigurationNeededChanged();
-        }
-    } else if (torManager->running() == "Yes") {
+    if (torManager->configurationNeeded()) {
+//        torConfigurationNeededChanged();
+    }
+
+    if (torManager->running() == "Yes") {
         qDebug() << "=== Tor ready ===";
         getChannel(control_channel_name)->setTopic(ricochet_user, userIdentity->contactID());
+
+        // TODO: this is a workaround for the problem with torConfigurationNeededChanged
+        QVariantMap conf = {
+            { QStringLiteral("disableNetwork"), 0 },
+            { QStringLiteral("bridges"), QStringList() }
+        };
+        shims::TorControl::torControl->setConfiguration(conf);
     }
 
     if (clients.count() > 0) {

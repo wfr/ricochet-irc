@@ -65,7 +65,7 @@ public:
     QString errorMessage() const;
 public slots:
     void start();
-    void stop();
+//    void stop();
 
 signals:
     void configurationNeededChanged();
