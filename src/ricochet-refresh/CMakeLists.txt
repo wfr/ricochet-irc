@@ -168,6 +168,10 @@ qt_add_resources(
     icons/icons.qrc
     ui/qml.qrc)
 
+if (DEFINED ENV{RICOCHET_REFRESH_VERSION})
+    add_compile_definitions(TEGO_VERSION=$ENV{RICOCHET_REFRESH_VERSION})
+endif ()
+
 target_sources(ricochet-refresh PRIVATE main.cpp ${RICOCHET_QML_RES} ${RICOCHET_QM_RES})
 if (STATIC_QT)
     include(qmake_static)
