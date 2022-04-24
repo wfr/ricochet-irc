@@ -12,7 +12,7 @@ example [WeeChat](https://weechat.org/):
 For an introduction to Ricochet itself, please refer to
 [README-upstream.md](README-upstream.md).
 
-### Building on Debian 11 and Ubuntu 20.04
+### Building on Debian 11 and Ubuntu 22.04
 
 #### Dependencies
 ```
