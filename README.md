@@ -80,7 +80,9 @@ soon as you close your IRC client, you will appear offline to your contacts.
 ### Changes
 2022-04-24:
  * Merged ricochet-refresh v3.0.11.
- * Migrated to CMake
+ * Migrated to CMake.
+ * *NOTE*: The default config dir changed from `~/.local/share/ricochet-refresh` to `~/,config/ricochet-refresh`.
+
 
 2020-11-22:
  * Rebased on Ricochet Refresh, v3-2020-alpha branch.

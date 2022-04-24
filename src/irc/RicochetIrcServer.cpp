@@ -252,7 +252,6 @@ const QString RicochetIrcServer::getWelcomeMessage()
     return welcome_message;
 }
 
-
 void RicochetIrcServer::ircUserLoggedIn(IrcConnection* conn)
 {
     qDebug() << "ircUserLoggedIn -- # of connections: " << this->clients.count();
@@ -428,7 +427,7 @@ void RicochetIrcServer::cmdHelp()
     echo(QStringLiteral("| _ (_)__ ___  __| |_  ___| |_  |_ _| _ \\/ __| __ _|__ /"));
     echo(QStringLiteral("|   / / _/ _ \\/ _| ' \\/ -_)  _|  | ||   / (__  \\ V /|_ \\"));
     echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___|  \\_/|___/ %1").arg(QCoreApplication::applicationVersion()));
-    echo(QStringLiteral(""));
+    echo(QLatin1String(""));
     echo(QStringLiteral("COMMANDS:"));
     echo(QStringLiteral(" * help"));
     echo(QStringLiteral(" * id                            -- print your ricochet id"));
@@ -438,7 +437,7 @@ void RicochetIrcServer::cmdHelp()
     echo(QStringLiteral(" * request list                  -- list incoming requests"));
     echo(QStringLiteral(" * request accept ID NICKNAME    -- accept incoming request"));
     echo(QStringLiteral(" * request reject ID             -- reject incoming request"));
-    echo(QStringLiteral(""));
+    echo(QLatin1String(""));
 }
 
 

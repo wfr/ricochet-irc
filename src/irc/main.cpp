@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) try
         tego_tor_launch_config_set_data_directory(
             launchConfig.get(),
             rawFilePath.data(),
-            rawFilePath.size(),
+            static_cast<size_t>(rawFilePath.size()),
             tego::throw_on_error());
 
         tego_context_start_tor(tegoContext, launchConfig.get(), tego::throw_on_error());
@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) try
         tego_ed25519_private_key_from_ed25519_keyblob(
             tego::out(privateKey),
             keyBlob.data(),
-            keyBlob.size(),
+            static_cast<size_t>(keyBlob.size()),
             tego::throw_on_error());
 
         // load all of our user objects
@@ -179,7 +179,7 @@ int main(int argc, char *argv[]) try
             tego_v3_onion_service_id_from_string(
                 tego::out(serviceId),
                 serviceIdRaw.data(),
-                serviceIdRaw.size(),
+                static_cast<size_t>(serviceIdRaw.size()),
                 tego::throw_on_error());
 
             std::unique_ptr<tego_user_id_t> userId;
@@ -275,9 +275,9 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
 {
     /* ricochet-refresh by default loads and saves configuration files from QStandardPaths::AppLocalDataLocation
      *
-     * Linux: ~/.local/share/ricochet-refresh
+     * Linux: ~/.config/ricochet-refresh
      * Windows: C:/Users/<USER>/AppData/Local/ricochet-refresh
-     * macOS: "~/Library/Application Support/ricochet-refresh"
+     * macOS: ~/Library/Preferences/<APPNAME>
      *
      * ricochet-refresh can also load configuration files from a custom directory passed in as the first argument
      */
@@ -307,7 +307,6 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
         parser.showHelp(1);
     }
 
-
     if(parser.isSet(opt_config_path)) {
         configPath = parser.value(opt_config_path);
     } else {
@@ -327,7 +326,8 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
 #endif
             return configPath;
         }();
-        configPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+        auto v3_0_10ConfigPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+        configPath = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
 
         logger::println("configPath : {}", configPath);
         logger::println("legacyConfigPath : {}", legacyConfigPath);
@@ -351,6 +351,17 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
                     return false;
                 }
                 std::cout << "migrated to the new profile path: " << configPath.toStdString() << std::endl;
+            }
+        // auto migrate if we have a 3.0.10 config but no 3.0.11+ config
+        } else if (// 3.0.10 path exists
+            QFile::exists(v3_0_10ConfigPath) &&
+            // but 3.0.11+ path does not
+            !QFile::exists(configPath)) {
+
+            /// just automatically move the directory
+            if(!QDir().rename(v3_0_10ConfigPath, configPath)) {
+                // on failure use the old path
+                configPath = v3_0_10ConfigPath;
             } else {
                 // use old profile path
                 configPath = legacyConfigPath;
