@@ -17,12 +17,7 @@ if (FORCE_QT5)
         COMPONENTS Core
                 Gui
                 Network
-                Quick
                 Widgets
-                LinguistTools
-                QmlWorkerScript
-                Multimedia
-                MultimediaQuick
         REQUIRED)
 else ()
     find_package(
@@ -33,12 +28,7 @@ else ()
         COMPONENTS Core
                 Gui
                 Network
-                Quick
                 Widgets
-                LinguistTools
-                QmlWorkerScript
-                Multimedia
-                MultimediaQuick
         REQUIRED)
 endif ()
 
@@ -47,12 +37,7 @@ find_package(
     COMPONENTS Core
                Gui
                Network
-               Quick
                Widgets
-               LinguistTools
-               QmlWorkerScript
-               Multimedia
-               MultimediaQuick
     REQUIRED)
 
 # Require Qt >5.15
@@ -113,12 +98,7 @@ target_link_libraries(
     ricochet-irc
     PRIVATE Qt${QT_VERSION_MAJOR}::Core
             Qt${QT_VERSION_MAJOR}::Widgets
-            Qt${QT_VERSION_MAJOR}::Network
-            Qt${QT_VERSION_MAJOR}::Qml
-            Qt${QT_VERSION_MAJOR}::Quick
-            Qt${QT_VERSION_MAJOR}::QmlWorkerScript
-            Qt${QT_VERSION_MAJOR}::Multimedia
-            Qt${QT_VERSION_MAJOR}::MultimediaQuick)
+            Qt${QT_VERSION_MAJOR}::Network)
 if (APPLE)
     target_link_libraries(ricochet-irc PRIVATE Qt${QT_VERSION_MAJOR}::MacExtras)
 endif ()
