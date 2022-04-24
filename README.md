@@ -12,18 +12,18 @@ example [WeeChat](https://weechat.org/):
 For an introduction to Ricochet itself, please refer to
 [README-upstream.md](README-upstream.md).
 
-### Building on Debian 11 (Bullseye)
+### Building on Debian 11 and Ubuntu 20.04
 
 #### Dependencies
 ```
-apt-get install build-essential cmake
-apt-get install qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev qtdeclarative5-dev
+apt-get install build-essential cmake git
+apt-get install qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev qtdeclarative5-dev qtmultimedia5-dev 
 apt-get install protobuf-compiler libssl-dev
 ```
 
 #### Building
 ```
-git clone -b irc https://github.com/wfr/ricochet-irc ricochet-irc
+git clone --recurse-submodules https://github.com/wfr/ricochet-irc
 cd ricochet-irc
 git submodule update --init --recursive
 mkdir build
