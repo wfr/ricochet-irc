@@ -1,22 +1,23 @@
-## IRC gateway to Ricochet v3 (Refresh v3.0.11)
+## ricochet-irc: IRC interface to Ricochet-Refresh (v3.0.11)
 
-`ricochet-irc` is an IRC gateway to the Ricochet v3 network.
+`ricochet-irc` is an IRC interface to the
+[R2: Ricochet-Refresh](https://github.com/blueprint-freespeech/ricochet-refresh/)
+P2P chat network.
 
-It is currently based on [R2: Ricochet Refresh](https://github.com/blueprint-freespeech/ricochet-refresh/),
-specifically its experimental Tego-Core branch that supports v3 onions.
-
-Please refer to [README-upstream.md](README-upstream.md) for a more detailed explanation of Ricochet itself.
-
-Example session with [WeeChat](https://weechat.org/) as a client:
+With this, you can use your favorite IRC client as a UI for Ricochet. Example
+session with [WeeChat](https://weechat.org/) as a client:
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
+
+Please refer to [README-upstream.md](README-upstream.md) for an introduction to
+Ricochet.
 
 ### Building on Debian 11 (Bullseye)
 
 #### Dependencies
 ```
 apt-get install build-essential cmake
-apt-get install qt5-default qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev qtdeclarative5-dev
+apt-get install qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev qtdeclarative5-dev
 apt-get install protobuf-compiler libssl-dev
 ```
 
@@ -31,18 +32,12 @@ cmake ../src/
 make -j$(nproc)
 ```
 
-#### Running
-```
-cd build/irc/ricochet-irc/
-./ricochet-irc
-```
-
 ### Usage
 ```
     ./ricochet-irc
 ```
-The program is now waiting for an IRC connection on localhost:6667.
-Point your IRC client to localhost:6667 and use the password that is provided on stdout.
+The program is now waiting for an IRC connection on localhost:6667.  Point your
+IRC client to localhost:6667 and use the password that is provided on stdout.
 
 For custom options, try:
 ```
@@ -50,13 +45,14 @@ For custom options, try:
 ```
 
 #### IRC interface
-Once you are connected to the IRC server, your client is automatically joined into the `#ricochet` control channel.
+Once you are connected to the IRC server, your client is automatically joined
+into a control channel `#ricochet`:
 
 ```
     @ricochet |  ___ _            _        _     ___ ___  ___       ____
     @ricochet | | _ (_)__ ___  __| |_  ___| |_  |_ _| _ \/ __| __ _|__ /
     @ricochet | |   / / _/ _ \/ _| ' \/ -_)  _|  | ||   / (__  \ V /|_ \
-    @ricochet | |_|_\_\__\___/\__|_||_\___|\__| |___|_|_\\___|  \_/|___/ 1.1.4
+    @ricochet | |_|_\_\__\___/\__|_||_\___|\__| |___|_|_\\___|  \_/|___/ devbuild
     @ricochet |
     @ricochet | COMMANDS:
     @ricochet |  * help
@@ -74,33 +70,15 @@ Once you are connected to the IRC server, your client is automatically joined in
           --> | afriend (~afriend@ricochet:sczutjtt4vobmm2fpc5w5usz5pogrliggdzwmqhgoslvo7zph764sdqd) has joined #ricochet
 ```
 
-Ricochet-IRC connects to the network only when an IRC client is attached. As
-soon as you close your IRC client, you will appear offline to your contacts.
+##### Online/Offline status
+`ricochet-irc` connects to the Ricochet network when an IRC client is
+attached. You will appear offline to your contacts as soon as you disconnect
+from the IRC server.
 
 ### Changes
-2022-04-24:
- * Merged ricochet-refresh v3.0.11.
- * Migrated to CMake.
- * *NOTE*: The default config dir changed from `~/.local/share/ricochet-refresh` to `~/,config/ricochet-refresh`.
+[CHANGES.md](CHANGES.md)
 
-
-2020-11-22:
- * Rebased on Ricochet Refresh, v3-2020-alpha branch.
- * Restored compatibility with GCC 8.
- * Added v3 onion support. Removed v2 onion support.
- * TODO: clean up, remove GUI dependencies.
-
-2017-01-15:
-
- * small UX improvements (input sanitation and validation)
- * prevent nickname conflicts
-
-2017-01-13:
-
- * updated to v1.1.4
-
-
-### Miscellaneous
+### Miscellaneous notes
 #### Convert Hidden Service key to Ricochet format
 ```
 echo $(cut -c 33-95 hs_ed25519_secret_key | base64 -w 0)
@@ -110,7 +88,7 @@ echo $(cut -c 33-95 hs_ed25519_secret_key | base64 -w 0)
 GPLv3
 
 ### Other
-Bugs can be reported on the [issue tracker](https://github.com/wfr/ricochet-irc/issues).
+Please report bugs in the [issue tracker](https://github.com/wfr/ricochet-irc/issues).
 
 
 ### Cash for coffee
