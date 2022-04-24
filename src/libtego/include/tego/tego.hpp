@@ -59,7 +59,7 @@ namespace tego
 
         // std::string expects length as arg, not buffer size
         std::string hashString(hashSize-1, 0);
-        tego_file_hash_to_string(fileHash, hashString.data(), hashSize, tego::throw_on_error());
+        tego_file_hash_to_string(fileHash, const_cast<char*>(hashString.data()), hashSize, tego::throw_on_error());
 
         return hashString;
     }
@@ -80,8 +80,8 @@ TEGO_DEFAULT_DELETE_IMPL(tego_ed25519_private_key)
 TEGO_DEFAULT_DELETE_IMPL(tego_ed25519_public_key)
 TEGO_DEFAULT_DELETE_IMPL(tego_ed25519_signature)
 TEGO_DEFAULT_DELETE_IMPL(tego_v3_onion_service_id)
-TEGO_DEFAULT_DELETE_IMPL(tego_tor_launch_config);
-TEGO_DEFAULT_DELETE_IMPL(tego_tor_daemon_config);
-TEGO_DEFAULT_DELETE_IMPL(tego_user_id);
-TEGO_DEFAULT_DELETE_IMPL(tego_file_hash);
+TEGO_DEFAULT_DELETE_IMPL(tego_tor_launch_config)
+TEGO_DEFAULT_DELETE_IMPL(tego_tor_daemon_config)
+TEGO_DEFAULT_DELETE_IMPL(tego_user_id)
+TEGO_DEFAULT_DELETE_IMPL(tego_file_hash)
 

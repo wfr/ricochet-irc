@@ -64,5 +64,20 @@ public:
 # define TEGO_BUG() qWarning() << "BUG:"
 #endif
 
+/*
+ * helper function for safely casting to QT sizes (generally an int)
+ * throws if the conversion overflows the target conversion type
+ */
+template<typename T, typename F>
+T safe_cast(F from)
+{
+    if (from >= std::numeric_limits<T>::max())
+    {
+        TEGO_BUG() << "Invalid safe_cast. Value: " << from
+                    << "; Max value of target type: " << std::numeric_limits<T>::max();
+    }
+    return static_cast<T>(from);
+}
+
 #endif
 

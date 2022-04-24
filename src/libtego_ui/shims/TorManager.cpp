@@ -1,4 +1,5 @@
 #include "TorManager.h"
+#include "utils/Useful.h"
 
 namespace shims
 {
@@ -43,7 +44,7 @@ namespace shims
             bufferSize,
             tego::throw_on_error());
 
-        return QString::fromUtf8(buffer.get(), written).split('\n');
+        return QString::fromUtf8(buffer.get(), safe_cast<int>(written)).split('\n');
     }
 
     QString TorManager::running() const
