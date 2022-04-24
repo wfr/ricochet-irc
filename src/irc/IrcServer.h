@@ -1,5 +1,5 @@
 /* QtLocalIRCD - part of https://github.com/wfr/ricochet-irc/
- * Copyright (C) 2016, Wolfgang Frisch <wfr@roembden.net>
+ * Copyright (C) 2016, Wolfgang Frisch <wfrisch@riseup.net>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -73,6 +73,9 @@ public:
 
     virtual const QString getWelcomeMessage();
 
+    uint16_t port();
+    const QString& password() const;
+
 signals:
 
 public slots:
@@ -109,8 +112,8 @@ public slots:
 
 
 protected:
-    uint16_t port;
-    QString password;
+    uint16_t m_port;
+    QString m_password;
     QString welcome_message;
 
     QTcpServer *tcpServer;

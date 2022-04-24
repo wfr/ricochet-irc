@@ -31,29 +31,32 @@
  */
 
 #include "ContactsModel.h"
-#include "core/IdentityManager.h"
-#include "core/ContactsManager.h"
 
-inline bool contactSort(const ContactUser *c1, const ContactUser *c2)
+#include "shims/ContactsManager.h"
+#include "shims/ContactUser.h"
+#include "shims/UserIdentity.h"
+
+inline bool contactSort(const shims::ContactUser *c1, const shims::ContactUser *c2)
 {
-    if (c1->status() != c2->status())
-        return c1->status() < c2->status();
-    return c1->nickname().localeAwareCompare(c2->nickname()) < 0;
+    if (c1->getStatus() != c2->getStatus())
+        return c1->getStatus() < c2->getStatus();
+    return c1->getNickname().localeAwareCompare(c2->getNickname()) < 0;
 }
 
 ContactsModel::ContactsModel(QObject *parent)
-    : QAbstractListModel(parent), m_identity(0)
+    : QAbstractListModel(parent)
+    , m_identity(shims::UserIdentity::userIdentity)
 {
+    this->setIdentity();
 }
 
-void ContactsModel::setIdentity(UserIdentity *identity)
+void ContactsModel::setIdentity()
 {
-    if (identity == m_identity)
-        return;
+    Q_ASSERT(m_identity != nullptr);
 
     beginResetModel();
 
-    foreach (ContactUser *user, contacts)
+    foreach (shims::ContactUser *user, contacts)
         user->disconnect(this);
     contacts.clear();
 
@@ -62,15 +65,13 @@ void ContactsModel::setIdentity(UserIdentity *identity)
         disconnect(&m_identity->contacts, 0, this, 0);
     }
 
-    m_identity = identity;
-
     if (m_identity) {
-        connect(&identity->contacts, SIGNAL(contactAdded(ContactUser*)), SLOT(contactAdded(ContactUser*)));
+        connect(&m_identity->contacts, &shims::ContactsManager::contactAdded, this, &ContactsModel::contactAdded);
 
-        contacts = identity->contacts.contacts();
+        contacts = m_identity->contacts.contacts();
         std::sort(contacts.begin(), contacts.end(), contactSort);
 
-        foreach (ContactUser *user, contacts)
+        foreach (shims::ContactUser *user, contacts)
             connectSignals(user);
     }
 
@@ -78,7 +79,7 @@ void ContactsModel::setIdentity(UserIdentity *identity)
     emit identityChanged();
 }
 
-QModelIndex ContactsModel::indexOfContact(ContactUser *user) const
+QModelIndex ContactsModel::indexOfContact(shims::ContactUser *user) const
 {
     int row = contacts.indexOf(user);
     if (row < 0)
@@ -86,16 +87,16 @@ QModelIndex ContactsModel::indexOfContact(ContactUser *user) const
     return index(row, 0);
 }
 
-ContactUser *ContactsModel::contact(int row) const
+shims::ContactUser *ContactsModel::contact(int row) const
 {
     return contacts.value(row);
 }
 
-void ContactsModel::updateUser(ContactUser *user)
+void ContactsModel::updateUser(shims::ContactUser *user)
 {
     if (!user)
     {
-        user = qobject_cast<ContactUser*>(sender());
+        user = qobject_cast<shims::ContactUser*>(sender());
         if (!user)
             return;
     }
@@ -107,7 +108,7 @@ void ContactsModel::updateUser(ContactUser *user)
         return;
     }
 
-    QList<ContactUser*> sorted = contacts;
+    QList<shims::ContactUser*> sorted = contacts;
     std::sort(sorted.begin(), sorted.end(), contactSort);
     int newRow = sorted.indexOf(user);
 
@@ -120,20 +121,20 @@ void ContactsModel::updateUser(ContactUser *user)
     emit dataChanged(index(newRow, 0), index(newRow, 0));
 }
 
-void ContactsModel::connectSignals(ContactUser *user)
+void ContactsModel::connectSignals(shims::ContactUser *user)
 {
     connect(user, SIGNAL(statusChanged()), SLOT(updateUser()));
     connect(user, SIGNAL(nicknameChanged()), SLOT(updateUser()));
-    connect(user, SIGNAL(contactDeleted(ContactUser*)), SLOT(contactRemoved(ContactUser*)));
+    connect(user, &shims::ContactUser::contactDeleted, this, &ContactsModel::contactRemoved);;
 }
 
-void ContactsModel::contactAdded(ContactUser *user)
+void ContactsModel::contactAdded(shims::ContactUser *user)
 {
     Q_ASSERT(!indexOfContact(user).isValid());
 
     connectSignals(user);
 
-    QList<ContactUser*>::Iterator lp = std::lower_bound(contacts.begin(), contacts.end(), user, contactSort);
+    QList<shims::ContactUser*>::Iterator lp = std::lower_bound(contacts.begin(), contacts.end(), user, contactSort);
     int row = lp - contacts.begin();
 
     beginInsertRows(QModelIndex(), row, row);
@@ -141,9 +142,9 @@ void ContactsModel::contactAdded(ContactUser *user)
     endInsertRows();
 }
 
-void ContactsModel::contactRemoved(ContactUser *user)
+void ContactsModel::contactRemoved(shims::ContactUser *user)
 {
-    if (!user && !(user = qobject_cast<ContactUser*>(sender())))
+    if (!user && !(user = qobject_cast<shims::ContactUser*>(sender())))
         return;
 
     int row = contacts.indexOf(user);
@@ -175,17 +176,17 @@ QVariant ContactsModel::data(const QModelIndex &index, int role) const
     if (!index.isValid() || index.row() >= contacts.size())
         return QVariant();
 
-    ContactUser *user = contacts[index.row()];
+    shims::ContactUser *user = contacts[index.row()];
 
     switch (role)
     {
     case Qt::DisplayRole:
     case Qt::EditRole:
-        return user->nickname();
+        return user->getNickname();
     case PointerRole:
         return QVariant::fromValue(user);
     case StatusRole:
-        return user->status();
+        return user->getStatus();
     }
 
     return QVariant();

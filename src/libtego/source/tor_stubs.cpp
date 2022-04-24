@@ -1,3 +1,6 @@
+#include "error.hpp"
+
+#define NOT_USED(...) TEGO_THROW_MSG("{} should never be called", __FUNCTION__)
 
 extern "C"
 {
@@ -53,4 +56,26 @@ extern "C"
 	   return fname;
     }
 #endif
+
+    void crypto_strongest_rand(uint8_t*, size_t)
+    {
+        NOT_USED();
+    }
+
+    void memwipe(void*, uint8_t, size_t)
+    {
+        NOT_USED();
+    }
+
+    size_t crypto_digest_algorithm_get_length(digest_algorithm_t)
+    {
+        NOT_USED();
+        return {};
+    }
+
+    void* tor_memdup_(const void*, size_t)
+    {
+        NOT_USED();
+        return {};
+    }
 }

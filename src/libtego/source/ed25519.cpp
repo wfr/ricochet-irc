@@ -1,5 +1,8 @@
 #include "error.hpp"
 #include "ed25519.hpp"
+#include <cstddef>
+#include "lib/crypt_ops/crypto_util.h"
+#include "lib/crypt_ops/crypto_rand.h"
 
 // header of ed25519 KeyBlob returned by ADD_ONION comand
 #define TEGO_ED25519_KEYBLOB_HEADER "ED25519-V3:"
@@ -66,6 +69,68 @@ namespace tego
     }
 }
 
+tego_v3_onion_service_id::tego_v3_onion_service_id(
+    const char* serviceIdString,
+    size_t serviceIdStringLength)
+{
+    TEGO_THROW_IF_NULL(serviceIdString);
+    TEGO_THROW_IF_FALSE(serviceIdStringLength >= TEGO_V3_ONION_SERVICE_ID_LENGTH);
+
+    std::string_view serviceIdView(serviceIdString, TEGO_V3_ONION_SERVICE_ID_LENGTH);
+    TEGO_THROW_IF_FALSE(is_valid(serviceIdView));
+    // copy to our internal buffer
+    std::copy(
+        std::begin(serviceIdView),
+        std::end(serviceIdView),
+        this->data);
+}
+
+tego_bool_t tego_v3_onion_service_id::is_valid(
+    std::string_view &serviceIdString)
+{
+    if (serviceIdString.size() != TEGO_V3_ONION_SERVICE_ID_LENGTH)
+    {
+        return TEGO_FALSE;
+    }
+
+    uint8_t decodedServiceId[TEGO_V3_ONION_SERVICE_ID_RAW_SIZE] = {0};
+
+    // base32 decode service serviceId
+    const auto bytesDecoded = ::base32_decode(
+        reinterpret_cast<char *>(decodedServiceId),
+        sizeof(decodedServiceId),
+        serviceIdString.data(),
+        serviceIdString.size());
+
+    // check successful base32 decode and correct version byte
+    if (bytesDecoded != sizeof(decodedServiceId) ||
+        decodedServiceId[TEGO_V3_ONION_SERVICE_ID_VERSION_OFFSET] != 0x03)
+    {
+        return TEGO_FALSE;
+    }
+
+    auto& rawPublicKey = reinterpret_cast<uint8_t (&)[ED25519_PUBKEY_LEN]>(decodedServiceId);
+
+    // calculate the truncated checksum for the public key
+    uint8_t truncatedChecksum[TEGO_V3_ONION_SERVICE_ID_CHECKSUM_SIZE] = {0};
+    tego::truncated_checksum_from_ed25519_public_key(truncatedChecksum, rawPublicKey);
+
+    // verify the first two bytes of checksum in service id match our calculated checksum
+    auto validChecksum =    decodedServiceId[TEGO_V3_ONION_SERVICE_ID_CHECKSUM_OFFSET    ] == truncatedChecksum[0] &&
+                            decodedServiceId[TEGO_V3_ONION_SERVICE_ID_CHECKSUM_OFFSET + 1] == truncatedChecksum[1];
+                            
+    if (!validChecksum)
+    {
+        return TEGO_FALSE;
+    }
+
+    return TEGO_TRUE;
+}
+
+//
+// Exports
+//
+
 extern "C"
 {
     void tego_ed25519_private_key_from_ed25519_keyblob(
@@ -83,9 +148,7 @@ extern "C"
             TEGO_THROW_IF_FALSE(keyBlobLength == TEGO_ED25519_KEYBLOB_LENGTH);
 
             // ensure KeyBlob starts with correct string constant
-            //TEGO_THROW_IF_FALSE(std::string_view(keyBlob).starts_with(TEGO_ED25519_KEYBLOB_HEADER));
-            // GCC 8 compatibility
-            TEGO_THROW_IF_FALSE(std::string_view(keyBlob).rfind(TEGO_ED25519_KEYBLOB_HEADER, 0) == 0);
+            TEGO_THROW_IF_FALSE(std::string_view(keyBlob).starts_with(TEGO_ED25519_KEYBLOB_HEADER));
 
             // get a string_view of the base64 blob
             std::string_view base64(keyBlob + TEGO_ED25519_KEYBLOB_HEADER_LENGTH);
@@ -167,6 +230,21 @@ extern "C"
         }, error);
     }
 
+    tego_bool_t tego_v3_onion_service_id_string_is_valid(
+        const char* serviceIdString,
+        size_t serviceIdStringLength,
+        tego_error_t** error)
+    {
+        return tego::translateExceptions([&]() -> tego_bool_t
+        {
+            TEGO_THROW_IF_NULL(serviceIdString);
+            TEGO_THROW_IF_FALSE(serviceIdStringLength >= TEGO_V3_ONION_SERVICE_ID_LENGTH);
+
+            std::string_view serviceIdView(serviceIdString, TEGO_V3_ONION_SERVICE_ID_LENGTH);
+            return tego_v3_onion_service_id::is_valid(serviceIdView);
+        }, error, TEGO_FALSE);
+    }
+
     void tego_v3_onion_service_id_from_string(
         tego_v3_onion_service_id_t** out_serviceId,
         const char* serviceIdString,
@@ -177,41 +255,8 @@ extern "C"
         {
             TEGO_THROW_IF_FALSE(out_serviceId != nullptr);
             TEGO_THROW_IF_FALSE(*out_serviceId == nullptr);
-            TEGO_THROW_IF_FALSE(serviceIdString != nullptr);
-            TEGO_THROW_IF_FALSE(serviceIdStringLength >= TEGO_V3_ONION_SERVICE_ID_LENGTH);
 
-            std::string_view serviceIdView(serviceIdString, TEGO_V3_ONION_SERVICE_ID_LENGTH);
-            uint8_t rawServiceId[TEGO_V3_ONION_SERVICE_ID_RAW_SIZE] = {0};
-
-            // base32 decode service id
-            const auto bytesDecoded = ::base32_decode(
-                reinterpret_cast<char*>(rawServiceId),
-                sizeof(rawServiceId),
-                serviceIdView.data(),
-                serviceIdView.size());
-            TEGO_THROW_IF_FALSE(bytesDecoded == sizeof(rawServiceId));
-
-            // verify correct version byte
-            TEGO_THROW_IF_FALSE(rawServiceId[TEGO_V3_ONION_SERVICE_ID_VERSION_OFFSET] == 0x03);
-
-            // first part of the rawServiceId is the publicKey
-            auto& rawPublicKey = reinterpret_cast<uint8_t (&)[ED25519_PUBKEY_LEN]>(rawServiceId);
-
-            // calculate the truncated checksum for the public key
-            uint8_t truncatedChecksum[TEGO_V3_ONION_SERVICE_ID_CHECKSUM_SIZE] = {0};
-            tego::truncated_checksum_from_ed25519_public_key(truncatedChecksum, rawPublicKey);
-
-            // verify the first two bytes of checksum in service id match our calculated checksum
-            TEGO_THROW_IF_FALSE(
-                rawServiceId[TEGO_V3_ONION_SERVICE_ID_CHECKSUM_OFFSET    ] == truncatedChecksum[0] &&
-                rawServiceId[TEGO_V3_ONION_SERVICE_ID_CHECKSUM_OFFSET + 1] == truncatedChecksum[1]);
-
-            // verified checksum, copy service id string to new service id object
-            auto serviceId = std::make_unique<tego_v3_onion_service_id>();
-            std::copy(std::begin(serviceIdView), std::end(serviceIdView), serviceId->data);
-            // write null terminator
-            serviceId->data[TEGO_V3_ONION_SERVICE_ID_LENGTH] = 0;
-
+            auto serviceId = std::make_unique<tego_v3_onion_service_id>(serviceIdString, serviceIdStringLength);
             *out_serviceId = serviceId.release();
         }, error);
     }

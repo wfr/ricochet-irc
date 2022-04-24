@@ -1,5 +1,5 @@
 /* QtLocalIRCD - part of https://github.com/wfr/ricochet-irc/
- * Copyright (C) 2016, Wolfgang Frisch <wfr@roembden.net>
+ * Copyright (C) 2016, Wolfgang Frisch <wfrisch@riseup.net>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -39,7 +39,7 @@
 #include <QDebug>
 
 IrcServer::IrcServer(QObject *parent, uint16_t port, const QString& password)
-    : QObject(parent), port(port), password(password)
+    : QObject(parent), m_port(port), m_password(password)
 {
 }
 
@@ -62,7 +62,7 @@ IrcServer::~IrcServer()
 bool IrcServer::run()
 {
     tcpServer = new QTcpServer(this);
-    if(tcpServer->listen(QHostAddress::LocalHost, port))
+    if(tcpServer->listen(QHostAddress::LocalHost, m_port))
     {
         connect(tcpServer,
                 SIGNAL(newConnection()),
@@ -84,7 +84,7 @@ void IrcServer::newConnection()
     while (tcpServer->hasPendingConnections())
     {
         QTcpSocket *socket = tcpServer->nextPendingConnection();
-        IrcConnection *conn = new IrcConnection(this, this, socket, password);
+        IrcConnection *conn = new IrcConnection(this, this, socket, m_password);
         clients.insert(socket, conn);
         QObject::connect(conn,
                          SIGNAL(loggedIn()),
@@ -132,6 +132,15 @@ const QString IrcServer::getWelcomeMessage()
 {
     return QString(QStringLiteral("Welcome to a local IRC server!"));
 }
+
+uint16_t IrcServer::port() {
+    return m_port;
+}
+
+const QString& IrcServer::password() const {
+    return m_password;
+}
+
 
 
 IrcChannel* IrcServer::getChannel(QString channel_name)

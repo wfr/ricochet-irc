@@ -1,5 +1,5 @@
-ricochet-refresh (3.0.0) focal; urgency=medium
+ricochet-refresh (3.0.11) unstable; urgency=medium
 
-  * debian packaging
+  * Initial Release.
 
- -- Blueprint For Freespeech <ricochet@blueprintforfreespeech.net>  Wed, 01 Jul 2020 16:14:29 +1000
+ -- Marco Simonelli <marco@blueprintforfreespeech.net>  Thu, 18 Nov 2021 17:54:15 +1100

@@ -30,30 +30,27 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "MainWindow.h"
-#include "core/UserIdentity.h"
-#include "core/IncomingRequestManager.h"
-#include "core/OutgoingContactRequest.h"
-#include "core/IdentityManager.h"
-#include "core/ContactIDValidator.h"
-#include "core/ConversationModel.h"
-#include "tor/TorControl.h"
-#include "tor/TorManager.h"
-#include "tor/TorProcess.h"
-#include "ContactsModel.h"
-#include "ui/LinkedText.h"
-#include "utils/Settings.h"
-#include "utils/PendingOperation.h"
-#include "utils/Useful.h"
+#include "ui/MainWindow.h"
+#include "ui/Clipboard.h"
+#include "ui/ContactsModel.h"
 #include "ui/LanguagesModel.h"
 
+#include "utils/Settings.h"
+#include "utils/Useful.h"
+
+
+// shim replacements
+#include "shims/TorControl.h"
+#include "shims/TorManager.h"
+#include "shims/UserIdentity.h"
+#include "shims/ContactsManager.h"
+#include "shims/ContactUser.h"
+#include "shims/ConversationModel.h"
+#include "shims/OutgoingContactRequest.h"
+#include "shims/ContactIDValidator.h"
+#include "shims/IncomingContactRequest.h"
 
 MainWindow *uiMain = 0;
-
-static QObject *linkedtext_singleton(QQmlEngine *, QJSEngine *)
-{
-    return new LinkedText;
-}
 
 /* Through the QQmlNetworkAccessManagerFactory below, all network requests
  * created via QML will be passed to this object; including, for example,
@@ -69,19 +66,16 @@ public:
     BlockedNetworkAccessManager(QObject *parent)
         : QNetworkAccessManager(parent)
     {
-        /* Either of these is sufficient to cause any network request to fail.
-         * Both of them should be redundant, because createRequest below also
+        /* This will cause any network request to fail.
+         * This should be redundant, because createRequest below also
          * blackholes every request (and crashes for assert builds). */
-        
-        /* XXX: setNetworkAccessible is deprecated */
-        setNetworkAccessible(QNetworkAccessManager::NotAccessible);
         setProxy(QNetworkProxy(QNetworkProxy::Socks5Proxy, QLatin1String("0.0.0.0"), 0));
     }
 
 protected:
     virtual QNetworkReply *createRequest(Operation op, const QNetworkRequest &req, QIODevice *outgoingData = 0)
     {
-        BUG() << "QML attempted to load a network resource from" << req.url() << " - this is potentially an input sanitization flaw.";
+        TEGO_BUG() << "QML attempted to load a network resource from" << req.url() << " - this is potentially an input sanitization flaw.";
         return QNetworkAccessManager::createRequest(op, QNetworkRequest(), outgoingData);
     }
 };
@@ -104,22 +98,18 @@ MainWindow::MainWindow(QObject *parent)
     qml = new QQmlApplicationEngine(this);
     qml->setNetworkAccessManagerFactory(new NetworkAccessBlockingFactory);
 
-    qmlRegisterUncreatableType<ContactUser>("im.ricochet", 1, 0, "ContactUser", QString());
-    qmlRegisterUncreatableType<UserIdentity>("im.ricochet", 1, 0, "UserIdentity", QString());
-    qmlRegisterUncreatableType<ContactsManager>("im.ricochet", 1, 0, "ContactsManager", QString());
-    qmlRegisterUncreatableType<IncomingRequestManager>("im.ricochet", 1, 0, "IncomingRequestManager", QString());
-    qmlRegisterUncreatableType<IncomingContactRequest>("im.ricochet", 1, 0, "IncomingContactRequest", QString());
-    qmlRegisterUncreatableType<OutgoingContactRequest>("im.ricochet", 1, 0, "OutgoingContactRequest", QString());
-    qmlRegisterUncreatableType<Tor::TorControl>("im.ricochet", 1, 0, "TorControl", QString());
-    qmlRegisterUncreatableType<Tor::TorProcess>("im.ricochet", 1, 0, "TorProcess", QString());
-    qmlRegisterType<ConversationModel>("im.ricochet", 1, 0, "ConversationModel");
-    qmlRegisterType<ContactsModel>("im.ricochet", 1, 0, "ContactsModel");
-    qmlRegisterType<ContactIDValidator>("im.ricochet", 1, 0, "ContactIDValidator");
-    qmlRegisterType<SettingsObject>("im.ricochet", 1, 0, "Settings");
-    qmlRegisterSingletonType<LinkedText>("im.ricochet", 1, 0, "LinkedText", linkedtext_singleton);
-    qmlRegisterType<LanguagesModel>("im.ricochet", 1, 0, "LanguagesModel");
-
-    qRegisterMetaType<PendingOperation*>();
+    qmlRegisterUncreatableType<shims::ContactUser>("im.ricochet", 1, 0, "ContactUser", QString());
+    qmlRegisterUncreatableType<shims::UserIdentity>("im.ricochet", 1, 0, "UserIdentity", QString());
+    qmlRegisterUncreatableType<shims::ContactsManager>("im.ricochet", 1, 0, "ContactsManager", QString());
+    qmlRegisterUncreatableType<shims::IncomingContactRequest>("im.ricochet", 1, 0, "IncomingContactRequest", QString());
+    qmlRegisterUncreatableType<shims::OutgoingContactRequest>("im.ricochet", 1, 0, "OutgoingContactRequest", QString());
+    qmlRegisterUncreatableType<shims::TorControl>("im.ricochet", 1, 0, "TorControl", QString());
+    qmlRegisterType<shims::ConversationModel>("im.ricochet", 1, 0, "ConversationModel");
+    qmlRegisterType<::ContactsModel>("im.ricochet", 1, 0, "ContactsModel");
+    qmlRegisterType<shims::ContactIDValidator>("im.ricochet", 1, 0, "ContactIDValidator");
+    qmlRegisterType<::SettingsObject>("im.ricochet", 1, 0, "Settings");
+    qmlRegisterSingletonType<::Clipboard>("im.ricochet", 1, 0, "Clipboard", &Clipboard::singleton_provider);
+    qmlRegisterType<::LanguagesModel>("im.ricochet", 1, 0, "LanguagesModel");
 }
 
 MainWindow::~MainWindow()
@@ -128,10 +118,9 @@ MainWindow::~MainWindow()
 
 bool MainWindow::showUI()
 {
-    Q_ASSERT(!identityManager->identities().isEmpty());
-    qml->rootContext()->setContextProperty(QLatin1String("userIdentity"), identityManager->identities()[0]);
-    qml->rootContext()->setContextProperty(QLatin1String("torControl"), torControl);
-    qml->rootContext()->setContextProperty(QLatin1String("torInstance"), Tor::TorManager::instance());
+    qml->rootContext()->setContextProperty(QLatin1String("userIdentity"), shims::UserIdentity::userIdentity);
+    qml->rootContext()->setContextProperty(QLatin1String("torControl"), shims::TorControl::torControl);
+    qml->rootContext()->setContextProperty(QLatin1String("torInstance"), shims::TorManager::torManager);
     qml->rootContext()->setContextProperty(QLatin1String("uiMain"), this);
 
     qml->load(QUrl(QLatin1String("qrc:/ui/main.qml")));
@@ -150,7 +139,19 @@ bool MainWindow::showUI()
 
 QString MainWindow::version() const
 {
-    return qApp->applicationVersion();
+    const static auto retval = qApp->applicationVersion();
+    return retval;
+}
+
+QString MainWindow::accessibleVersion() const
+{
+    const static auto retval = [this]() -> QString
+    {
+        auto version = this->version();
+        return version.replace('.', QString(" %1 ").arg(tr("Version Seperator")));
+    }();
+
+    return retval;
 }
 
 QString MainWindow::aboutText() const
@@ -176,13 +177,13 @@ QVariantMap MainWindow::screens() const
 }
 
 /* QMessageBox implementation for Qt <5.2 */
-bool MainWindow::showRemoveContactDialog(ContactUser *user)
+bool MainWindow::showRemoveContactDialog(shims::ContactUser *user)
 {
     if (!user)
         return false;
     QMessageBox::StandardButton btn = QMessageBox::question(0,
-        tr("Remove %1").arg(user->nickname()),
-        tr("Do you want to permanently remove %1?").arg(user->nickname()));
+        tr("Remove %1").arg(user->getNickname()),
+        tr("Do you want to permanently remove %1?").arg(user->getNickname()));
     return btn == QMessageBox::Yes;
 }
 

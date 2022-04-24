@@ -1,5 +1,5 @@
 /* Ricochet-IRC - https://github.com/wfr/ricochet-irc/
- * Wolfgang Frisch <wfr@roembden.net>
+ * Wolfgang Frisch <wfrisch@riseup.net>
  *
  * Derived from:
  * Ricochet - https://ricochet.im/
@@ -40,55 +40,54 @@
 #include <QHash>
 #include "IrcServer.h"
 
-class IrcUser;
+#include "shims/UserIdentity.h"
+#include "shims/ConversationModel.h"
 
-class UserIdentity;
-class ContactUser;
-class IncomingContactRequest;
+class IrcUser;
 
 
 class RicochetIrcServer : public IrcServer
 {
     Q_OBJECT
 public:
-    explicit RicochetIrcServer(QObject *parent = 0,
+    explicit RicochetIrcServer(QObject *parent = nullptr,
                                uint16_t port = 6667,
                                const QString& password = QStringLiteral(""),
                                const QString& control_channel_name = QStringLiteral("#ricochet"));
-    ~RicochetIrcServer();
+    ~RicochetIrcServer() override;
 
 public slots:
     bool run();
 
 protected:
-    void ircUserLoggedIn(IrcConnection* conn);
-    void ircUserLeft(IrcConnection* conn);
-    const QString getWelcomeMessage();
+    void ircUserLoggedIn(IrcConnection* conn) override;
+    void ircUserLeft(IrcConnection* conn) override;
+    const QString getWelcomeMessage() override;
 
 private slots:
     void torConfigurationNeededChanged();
     void torConfigurationFinished();
-    void torStatusChanged(int newStatus, int oldStatus);
+    void torLogMessage(const QString &message);
+    void torRunningChanged();
+    void torErrorChanged();
 
-    void onContactAdded(ContactUser *user);
-    void onContactStatusChanged(ContactUser* user, int status);
+    void onContactAdded(shims::ContactUser *user);
+    void onContactStatusChanged(shims::ContactUser* user, int status);
     void onUnreadCountChanged();
-    void requestAdded(IncomingContactRequest *request);
-    void requestRemoved(IncomingContactRequest *request);
+    void requestAdded(shims::IncomingContactRequest *request);
+    void requestRemoved(shims::IncomingContactRequest *request);
     void requestsChanged();
 
 private:
     QString control_channel_name;
     IrcUser *ricochet_user;
-    QHash<ContactUser*, IrcUser*> usermap;
-    UserIdentity *identity;
+    QHash<shims::ContactUser*, IrcUser*> usermap;
 
     void initRicochet();
     void startRicochet();
     void stopRicochet();
-    bool first_start;
 
-    void privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text);
+    void privmsgHook(IrcUser* sender, const QString& msgtarget, const QString& text) override;
     void handlePM(IrcConnection* sender, const QString& contact_nick, const QString& text);
 
     void echo(const QString& text);
@@ -102,7 +101,7 @@ private:
     void cmdRename(const QStringList& args);
     void cmdRequest(const QStringList& args);
 
-    IncomingContactRequest* getIncomingRequestByID(const QString& id);
+    shims::IncomingContactRequest* getIncomingRequestByID(const QString& id);
 };
 
 #endif // RICOCHETIRCSERVER_H
