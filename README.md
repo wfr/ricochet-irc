@@ -11,11 +11,12 @@ Example session with [WeeChat](https://weechat.org/) as a client:
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
-### Building on Debian 10 (Buster)
+### Building on Debian 11 (Bullseye)
 
 #### Dependencies
 ```
-apt-get install qt5-default qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qtdeclarative5-dev
+apt-get install build-essential cmake
+apt-get install qt5-default qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev qtdeclarative5-dev
 apt-get install protobuf-compiler libssl-dev
 ```
 
