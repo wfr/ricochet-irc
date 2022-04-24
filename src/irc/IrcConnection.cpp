@@ -377,7 +377,11 @@ void IrcConnection::join(const QString& channel_name)
             channel->addMember(this);
             emit joined(this, channel_name);
             reply(QStringLiteral("MODE %1 +ns").arg(channel_name));
-            reply(RPL_NOTOPIC, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(QStringLiteral("No topic is set")));
+            if (channel->getTopic() == "") {
+                reply(RPL_NOTOPIC, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(QStringLiteral("No topic is set")));
+            } else {
+                reply(RPL_TOPIC, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(channel->getTopic()));
+            }
             reply(RPL_NAMREPLY, QStringLiteral("%1 @ %2 :%3").arg(nick).arg(channel_name).arg(channel->getMemberListString()));
             reply(RPL_ENDOFNAMES, QStringLiteral("%1 %2 :%3").arg(nick).arg(channel_name).arg(QStringLiteral("End of names list")));
         }

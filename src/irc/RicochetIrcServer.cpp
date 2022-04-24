@@ -223,7 +223,8 @@ void RicochetIrcServer::torRunningChanged() {
 
     if (torManager->running() == "Yes") {
         qDebug() << "=== Tor ready ===";
-        getChannel(control_channel_name)->setTopic(ricochet_user, userIdentity->contactID());
+        QString topic = userIdentity->contactID();
+        getChannel(control_channel_name)->setTopic(ricochet_user, topic);
     }
 
     if (clients.count() > 0) {
