@@ -28,7 +28,10 @@ jobs:
         #sudo apt-get install -y qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev qtdeclarative5-dev qtmultimedia5-dev
         sudo apt-get install -y protobuf-compiler libssl-dev
 
-    - uses: actions/checkout@v3
+    - name: Checkout repository and submodules
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
 
     - name: Print env
       run: |
