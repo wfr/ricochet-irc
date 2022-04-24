@@ -149,7 +149,6 @@ extern "C"
 
             // ensure KeyBlob starts with correct string constant
             TEGO_THROW_IF_FALSE(std::string_view(keyBlob).starts_with(TEGO_ED25519_KEYBLOB_HEADER));
-            TEGO_THROW_IF_FALSE(std::string_view(keyBlob).rfind(TEGO_ED25519_KEYBLOB_HEADER, 0) == 0);
 
             // get a string_view of the base64 blob
             std::string_view base64(keyBlob + TEGO_ED25519_KEYBLOB_HEADER_LENGTH);
