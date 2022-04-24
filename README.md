@@ -32,7 +32,7 @@ make -j$(nproc)
 
 #### Running
 ```
-cd release/irc/
+cd build/irc/ricochet-irc/
 ./ricochet-irc
 ```
 
