@@ -1,16 +1,16 @@
-## ricochet-irc: IRC interface to Ricochet-Refresh (v3.0.11)
-
+# ricochet-irc
+## IRC interface to Ricochet-Refresh (v3.0.11)
 `ricochet-irc` is an IRC interface to the
 [R2: Ricochet-Refresh](https://github.com/blueprint-freespeech/ricochet-refresh/)
 P2P chat network.
 
-With this, you can use your favorite IRC client as a UI for Ricochet. Example
-session with [WeeChat](https://weechat.org/) as a client:
+With this, you can use your favorite IRC client as a UI for Ricochet, for
+example [WeeChat](https://weechat.org/):
 
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
-Please refer to [README-upstream.md](README-upstream.md) for an introduction to
-Ricochet.
+For an introduction to Ricochet itself, please refer to
+[README-upstream.md](README-upstream.md).
 
 ### Building on Debian 11 (Bullseye)
 
