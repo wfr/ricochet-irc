@@ -1,4 +1,4 @@
-## IRC gateway to Ricochet v3
+## IRC gateway to Ricochet v3 (Refresh v3.0.11)
 
 `ricochet-irc` is an IRC gateway to the Ricochet v3 network.
 
@@ -26,7 +26,7 @@ cd ricochet-irc
 git submodule update --init --recursive
 mkdir build
 cd build
-qmake PROTOBUFDIR=/usr/include/google/ ../src/
+cmake ../src/
 make -j$(nproc)
 ```
 
@@ -77,6 +77,10 @@ Ricochet-IRC connects to the network only when an IRC client is attached. As
 soon as you close your IRC client, you will appear offline to your contacts.
 
 ### Changes
+2022-04-24:
+ * Merged ricochet-refresh v3.0.11.
+ * Migrated to CMake
+
 2020-11-22:
  * Rebased on Ricochet Refresh, v3-2020-alpha branch.
  * Restored compatibility with GCC 8.
