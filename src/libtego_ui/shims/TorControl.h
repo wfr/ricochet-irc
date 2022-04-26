@@ -40,6 +40,11 @@ namespace shims
         Q_INVOKABLE QObject *setConfiguration(const QVariantMap &options);
         Q_INVOKABLE void saveConfiguration();
 
+        // QVariant(Map) is not needed here, since QT handles the conversion to
+        // a JS array for us: see https://doc.qt.io/qt-5/qtqml-cppintegration-data.html#sequence-type-to-javascript-array
+        Q_INVOKABLE QList<QString> getBridgeTypes();
+        Q_INVOKABLE QList<QString> getBridgeStringsForType(const QString &bridgeType);
+
         TorControl(tego_context_t* context);
 
         /* Ownership means that tor is managed by this socket, and we

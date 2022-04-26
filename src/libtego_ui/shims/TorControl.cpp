@@ -1,4 +1,5 @@
 #include "TorControl.h"
+#include "pluggables.hpp"
 
 namespace shims
 {
@@ -179,6 +180,66 @@ namespace shims
             tego::throw_on_error());
 
         return this->m_setConfigurationCommand;
+    }
+
+    QList<QString> TorControl::getBridgeTypes()
+    {
+        // Effectively the same as https://gitlab.torproject.org/tpo/applications/tor-browser/-/blob/tor-browser-91.8.0esr-11.0-1/browser/modules/TorSettings.jsm#L112
+        std::set<std::string> bridgeTypes;
+
+        QRegularExpression re("^(.*)\\.([0-9]+)$");
+        for ([[maybe_unused]] const auto& [key, value] : defaultBridges)
+        {
+            QRegularExpressionMatch match = re.match(QString::fromStdString(std::string(key)));
+            if (match.hasMatch())
+            {
+                bridgeTypes.insert(match.captured(1).toStdString());
+            }
+        }
+
+        QList<QString> ret;
+        if (bridgeTypes.contains(std::string(recommendedBridgeType)))
+        {
+            ret.append(QString::fromStdString(std::string(recommendedBridgeType)));
+        }
+
+        for (const auto &bridgeType : bridgeTypes)
+        {
+            if (bridgeType != recommendedBridgeType)
+            {
+                ret.append(QString::fromStdString(std::string(bridgeType)));
+            }
+        }
+
+        return ret;
+    }
+
+    QList<QString> TorControl::getBridgeStringsForType(const QString &bridgeType)
+    {
+        QList<QString> ret;
+
+        // check that this bridge type actually exists in our builtins
+        if (!getBridgeTypes().contains(bridgeType))
+        {
+            return ret;
+        }
+
+        QRegularExpression re("^(.*)\\.([0-9]+)$");
+        for (const auto& [key, value] : defaultBridges)
+        {
+            QRegularExpressionMatch match = re.match(QString::fromStdString(std::string(key)));
+            if (match.hasMatch())
+            {
+                if (match.captured(1) == bridgeType)
+                {
+                    ret.append(QString::fromStdString(value));
+                }
+            }
+        }
+
+        // shuffle the bridge list so that users don't all select the first one
+        std::random_shuffle(ret.begin(), ret.end());
+        return ret;
     }
 
     // for now we just assume we always have ownership,

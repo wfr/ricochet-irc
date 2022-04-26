@@ -38,6 +38,8 @@
 #include "error.hpp"
 #include "signals.hpp"
 #include "globals.hpp"
+
+#include "torrc.hpp"
 using tego::g_globals;
 
 using namespace Tor;
@@ -320,16 +322,17 @@ bool TorManagerPrivate::createDataDir(const QString &path)
 
 bool TorManagerPrivate::createDefaultTorrc(const QString &path)
 {
-    static const char defaultTorrcContent[] =
+    static const std::string defaultTorrcContent =
         "SocksPort auto\n"
         "AvoidDiskWrites 1\n"
         "DisableNetwork 1\n"
-        "__ReloadTorrcOnSIGHUP 0\n";
+        "__ReloadTorrcOnSIGHUP 0\n"
+        + defaultTorrcPluggableConfig;
 
     QFile file(path);
     if (!file.open(QIODevice::WriteOnly))
         return false;
-    if (file.write(defaultTorrcContent) < 0)
+    if (file.write(defaultTorrcContent.c_str()) < 0)
         return false;
     return true;
 }
