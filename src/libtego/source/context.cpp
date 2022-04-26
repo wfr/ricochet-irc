@@ -159,7 +159,7 @@ tego_tor_bootstrap_tag_t tego_context::get_tor_bootstrap_tag() const
         "requesting_descriptors",
         "loading_descriptors",
         "enough_dirinfo",
-        "ap_conn_pt_summary",
+        "ap_conn_pt",
         "ap_conn_done_pt",
         "ap_conn_proxy",
         "ap_conn_done_proxy",
