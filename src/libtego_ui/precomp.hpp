@@ -18,6 +18,7 @@
 #include <fstream>
 #include <iterator>
 #include <set>
+#include <random>
 
 // fmt
 #include <fmt/format.h>

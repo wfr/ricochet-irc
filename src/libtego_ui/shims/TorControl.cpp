@@ -238,7 +238,9 @@ namespace shims
         }
 
         // shuffle the bridge list so that users don't all select the first one
-        std::random_shuffle(ret.begin(), ret.end());
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(ret.begin(), ret.end(), g);
         return ret;
     }
 
