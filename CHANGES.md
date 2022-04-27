@@ -1,3 +1,7 @@
+2022-04-28:
+ * Headless build:
+   `cmake -D ENABLE_GUI=OFF (default)`
+
 2022-04-24:
  * Merged ricochet-refresh v3.0.11:
    - Upgrade tor dependencies to version 0.4.6.10
