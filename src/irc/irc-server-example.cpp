@@ -1,5 +1,5 @@
 #include <QCoreApplication>
-#include "irc/ExampleIrcServer.h"
+#include "ExampleIrcServer.h"
 
 int main(int argc, char *argv[])
 {
