@@ -12,25 +12,26 @@ example [WeeChat](https://weechat.org/):
 For an introduction to Ricochet itself, please refer to
 [README-upstream.md](README-upstream.md).
 
-### Building on Debian 11 and Ubuntu 22.04
+### Building
+#### Debian GNU/Linux 11 (bullseye)
 
-#### Dependencies
 ```
-apt-get install build-essential cmake git
-apt-get install qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev qtdeclarative5-dev qtmultimedia5-dev 
-apt-get install protobuf-compiler libssl-dev
+apt-get install -y build-essential cmake git protobuf-compiler libssl-dev
+apt-get install -y qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev
 ```
 
-#### Building
 ```
 git clone --recurse-submodules https://github.com/wfr/ricochet-irc
 cd ricochet-irc
 git submodule update --init --recursive
-mkdir build
-cd build
+mkdir build && cd build
 cmake ../src/
 make -j$(nproc)
 ```
+
+Note that, while the build deps pull in Xorg, the resulting binary does not
+link against any graphics libraries. It could be packaged for use on headless
+machines.
 
 ### Usage
 ```
