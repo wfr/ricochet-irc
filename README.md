@@ -92,8 +92,8 @@ GPLv3
 Please report bugs in the [issue tracker](https://github.com/wfr/ricochet-irc/issues).
 
 
-### Cash for coffee
-If you feel like inviting me (`Wolfgang Frisch <wfrisch@riseup.net>`) to a coffee...
+### Donations
+If you feel like inviting me (`<wfrisch@riseup.net>`) to a coffee, ...
 
 * [Algorand](https://www.algorand.com): `D3CI5EKC7IRLJMGV74NSKJD6CDXDGS6DT2OQZ4T6NUAB5RIZMTEM37DODI`
 * [Monero/XMR](https://www.getmonero.org/): `4245uqJmyoWbWx7w41TL2scKrgk6MtdiYR8ffFiCenJhDx227AbqbU7enMUjwYkHv9W7K6TKZDCLTEnV8ApXih3uNP1B6B3`
