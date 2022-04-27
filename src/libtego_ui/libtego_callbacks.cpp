@@ -7,6 +7,7 @@
 #include "shims/OutgoingContactRequest.h"
 #ifndef ENABLE_GUI
 #include <QTimer>
+#include <mutex>
 #endif
 
 namespace
