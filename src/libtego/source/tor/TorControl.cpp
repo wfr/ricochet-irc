@@ -583,7 +583,7 @@ QObject *TorControl::getConfiguration(const QString &options)
     GetConfCommand *command = new GetConfCommand(GetConfCommand::GetConf);
     d->socket->sendCommand(command, command->build(options.toLatin1()));
 
-#ifndef RICOCHET_HEADLESS
+#ifdef ENABLE_GUI
     QQmlEngine::setObjectOwnership(command, QQmlEngine::CppOwnership);
 #endif
     return command;
@@ -595,7 +595,7 @@ QObject *TorControl::setConfiguration(const QVariantMap &options)
     command->setResetMode(true);
     d->socket->sendCommand(command, command->build(options));
 
-#ifndef RICOCHET_HEADLESS
+#ifdef ENABLE_GUI
     QQmlEngine::setObjectOwnership(command, QQmlEngine::CppOwnership);
 #endif
     return command;
@@ -703,7 +703,7 @@ PendingOperation *TorControl::saveConfiguration()
     operation->start(d->socket);
 
     // TODO: this macro should be removed
-#ifndef RICOCHET_HEADLESS
+#ifdef ENABLE_GUI
     QQmlEngine::setObjectOwnership(operation, QQmlEngine::CppOwnership);
 #endif
     return operation;

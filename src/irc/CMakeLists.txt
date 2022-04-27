@@ -15,9 +15,7 @@ if (FORCE_QT5)
         NAMES
         Qt5
         COMPONENTS Core
-                Gui
                 Network
-                Widgets
         REQUIRED)
 else ()
     find_package(
@@ -26,18 +24,14 @@ else ()
         Qt6
         Qt5
         COMPONENTS Core
-                Gui
                 Network
-                Widgets
         REQUIRED)
 endif ()
 
 find_package(
     Qt${QT_VERSION_MAJOR}
     COMPONENTS Core
-               Gui
                Network
-               Widgets
     REQUIRED)
 
 # Require Qt >5.15
@@ -70,6 +64,20 @@ target_sources(ricochet-irc PRIVATE
     IrcUser.cpp
     RicochetIrcServer.cpp
     RicochetIrcServerTask.cpp
+    # Not nice, but we can't link against libtego_ui
+    # if we want to avoid GUI dependencies:
+    ../libtego_ui/libtego_callbacks.cpp
+    ../libtego_ui/shims/ContactIDValidator.cpp
+    ../libtego_ui/shims/ContactsManager.cpp
+    ../libtego_ui/shims/ContactUser.cpp
+    ../libtego_ui/shims/ConversationModel.cpp
+    ../libtego_ui/shims/IncomingContactRequest.cpp
+    ../libtego_ui/shims/OutgoingContactRequest.cpp
+    ../libtego_ui/shims/TorCommand.cpp
+    ../libtego_ui/shims/TorControl.cpp
+    ../libtego_ui/shims/TorManager.cpp
+    ../libtego_ui/shims/UserIdentity.cpp
+    ../libtego_ui/utils/Settings.cpp
 )
 if (STATIC_QT)
     include(qmake_static)
@@ -86,7 +94,11 @@ setup_compiler(ricochet-irc)
 
 target_compile_features(ricochet-irc PRIVATE cxx_std_20)
 
-target_link_libraries(ricochet-irc PUBLIC tego tego_ui)
+target_link_libraries(ricochet-irc PUBLIC tego)
+
+# Ugly, but we need bits of libtego_ui without linking to it,
+# in order to avoid GUI dependencies.
+target_include_directories(ricochet-irc PUBLIC ../libtego_ui/)
 
 if (NOT USE_SUBMODULE_FMT)
     find_package(fmt REQUIRED)
@@ -97,7 +109,6 @@ target_link_libraries(ricochet-irc PRIVATE OpenSSL::Crypto)
 target_link_libraries(
     ricochet-irc
     PRIVATE Qt${QT_VERSION_MAJOR}::Core
-            Qt${QT_VERSION_MAJOR}::Widgets
             Qt${QT_VERSION_MAJOR}::Network)
 if (APPLE)
     target_link_libraries(ricochet-irc PRIVATE Qt${QT_VERSION_MAJOR}::MacExtras)

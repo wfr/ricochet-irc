@@ -34,8 +34,6 @@
 #   define TEGO_VERSION_STR "devbuild"
 #endif
 
-#define RICOCHET_HEADLESS
-
 #endif // __cplusplus
 
 

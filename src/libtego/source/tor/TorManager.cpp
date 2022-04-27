@@ -30,6 +30,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef ENABLE_GUI
+#include <QDir>
+#endif
+
 #include "TorManager.h"
 #include "TorProcess.h"
 #include "TorControl.h"

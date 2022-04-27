@@ -40,16 +40,18 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if (ENABLE_GUI)
+    set(TEGO_QT_COMPONENTS Core Network Gui Quick Widgets)
+else()
+    set(TEGO_QT_COMPONENTS Core Network)
+endif()
+
 if (FORCE_QT5)
     find_package(
         QT
         NAMES
         Qt5
-        COMPONENTS Core
-                Gui
-                Network
-                Quick
-                Widgets
+        COMPONENTS $TEGO_QT_COMPONENTS
         REQUIRED)
 else ()
     find_package(
@@ -57,21 +59,13 @@ else ()
         NAMES
         Qt6
         Qt5
-        COMPONENTS Core
-                Gui
-                Network
-                Quick
-                Widgets
+        COMPONENTS $TEGO_QT_COMPONENTS
         REQUIRED)
 endif ()
 
 find_package(
     Qt${QT_VERSION_MAJOR}
-    COMPONENTS Core
-               Widgets
-               Network
-               Qml
-               Quick
+    COMPONENTS ${TEGO_QT_COMPONENTS}
     REQUIRED)
 
 # Require Qt >5.15
@@ -106,6 +100,8 @@ find_package(Threads REQUIRED)
 
 add_library(
     tego STATIC
+    ../nogui-qt/QRegularExpressionValidator.cpp
+    ../nogui-qt/QRegularExpressionValidator.h
     include/tego/logger.hpp
     include/tego/tego.h
     include/tego/tego.hpp
@@ -209,6 +205,7 @@ setup_compiler(tego)
 
 target_compile_features(tego PRIVATE cxx_std_20)
 
+target_include_directories(tego PUBLIC ../nogui-qt/)
 target_include_directories(tego PRIVATE source/)
 target_include_directories(tego PUBLIC include/)
 
@@ -253,13 +250,20 @@ target_link_libraries(tego PRIVATE OpenSSL::Crypto)
 target_link_libraries(tego PRIVATE protobuf::libprotobuf)
 
 # QT
-target_link_libraries(
-    tego
-    PRIVATE Qt${QT_VERSION_MAJOR}::Core
-            Qt${QT_VERSION_MAJOR}::Widgets
-            Qt${QT_VERSION_MAJOR}::Network
-            Qt${QT_VERSION_MAJOR}::Qml
-            Qt${QT_VERSION_MAJOR}::Quick)
+if (ENABLE_GUI)
+    target_link_libraries(
+        tego
+        PRIVATE Qt${QT_VERSION_MAJOR}::Core
+                Qt${QT_VERSION_MAJOR}::Widgets
+                Qt${QT_VERSION_MAJOR}::Network
+                Qt${QT_VERSION_MAJOR}::Qml
+                Qt${QT_VERSION_MAJOR}::Quick)
+else()
+    target_link_libraries(
+        tego
+        PRIVATE Qt${QT_VERSION_MAJOR}::Core
+                Qt${QT_VERSION_MAJOR}::Network)
+endif()
 
 if (APPLE)
     target_link_libraries(tego PRIVATE Qt${QT_VERSION_MAJOR}::MacExtras)
@@ -269,6 +273,10 @@ target_link_libraries(tego PRIVATE Threads::Threads)
 
 if ("${CMAKE_BUILD_TYPE}" MATCHES "Rel.*" OR "${CMAKE_BUILD_TYPE}" STREQUAL "MinSizeRel")
     target_compile_definitions(tego PRIVATE QT_NO_DEBUG_OUTPUT QT_NO_WARNING_OUTPUT)
+endif ()
+
+if (ENABLE_GUI)
+	target_compile_definitions(tego PRIVATE ENABLE_GUI)
 endif ()
 
 add_subdirectory(test)

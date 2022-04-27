@@ -72,10 +72,9 @@ extern "C" {
 #include <QString>
 #include <QByteArray>
 
-// libtego_ui Qt
+// libtego Qt
 #include <QAbstractListModel>
 #include <QBuffer>
-#include <QClipboard>
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QDebug>
@@ -83,7 +82,6 @@ extern "C" {
 #include <QExplicitlySharedDataPointer>
 #include <QFileInfo>
 #include <QFlags>
-#include <QGuiApplication>
 #include <QHash>
 #include <QJsonDocument>
 #include <QJsonParseError>
@@ -98,18 +96,10 @@ extern "C" {
 #include <QPair>
 #include <QPointer>
 #include <QProcess>
-#include <QPushButton>
-#include <QQmlApplicationEngine>
-#include <QQmlContext>
-#include <QQmlEngine>
-#include <QQmlNetworkAccessManagerFactory>
 #include <QQueue>
-#include <QQuickItem>
 #include <QRegularExpression>
-#include <QRegularExpressionValidator>
 #include <QSaveFile>
 #include <QScopedPointer>
-#include <QScreen>
 #include <QSet>
 #include <QSharedData>
 #include <QSharedPointer>
@@ -122,7 +112,9 @@ extern "C" {
 #include <QtGlobal>
 #include <QTime>
 #include <QTimer>
+#ifdef ENABLE_GUI
 #include <QtQml>
+#endif
 #include <QUrl>
 #include <QVariant>
 #include <QVariantMap>

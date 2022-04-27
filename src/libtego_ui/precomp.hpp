@@ -23,16 +23,26 @@
 #include <fmt/ostream.h>
 
 // Qt
-#include <QClipboard>
+
 #include <QDateTime>
 #include <QDir>
-#include <QFileDialog>
-#include <QGuiApplication>
-#include <QMessageBox>
-#include <QQuickItem>
-#include <QRegularExpressionValidator>
-#include <QScreen>
-#include <QtQml>
+#ifdef ENABLE_GUI
+	#include <QClipboard>
+	#include <QFileDialog>
+	#include <QGuiApplication>
+	#include <QMessageBox>
+	#include <QPushButton>
+	#include <QQmlApplicationEngine>
+	#include <QQmlContext>
+	#include <QQmlEngine>
+	#include <QQmlNetworkAccessManagerFactory>
+	#include <QQuickItem>
+	#include <QRegularExpressionValidator>
+	#include <QScreen>
+	#include <QtQml>
+#else
+	#include "QRegularExpressionValidator.h"
+#endif
 #ifdef Q_OS_MAC
 #   include <QtMac>
 #endif // Q_OS_MAC

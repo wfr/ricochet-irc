@@ -1,6 +1,10 @@
 #pragma once
 
-#include <QRegularExpressionValidator>
+#ifdef ENABLE_GUI
+	#include <QRegularExpressionValidator>
+#else
+	#include "QRegularExpressionValidator.h"
+#endif
 
 namespace shims
 {
