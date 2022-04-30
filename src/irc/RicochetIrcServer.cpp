@@ -683,7 +683,15 @@ void RicochetIrcServer::onUnreadCountChanged()
     while(convo->rowCount())
     {
         QModelIndex index = convo->index(0);
-        QString text = convo->data(index, Qt::DisplayRole).toString();
+        QString text;
+        QString type = convo->data(index, shims::ConversationModel::TypeRole).toString();
+        if (type == "text") {
+            text = convo->data(index, Qt::DisplayRole).toString();
+        } else if (type == "transfer") {
+            text = "peer tries to offer file (unsupported)";
+        } else {
+            text = "unsupported message type";
+        }
         bool isOutgoing = convo->data(index, shims::ConversationModel::IsOutgoingRole).toBool();
         convo->clear();
 
