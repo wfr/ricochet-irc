@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import im.ricochet 1.0
 
 Column {
     id: setup
@@ -13,77 +14,113 @@ Column {
     property alias proxyPassword: proxyPasswordField.text
     property alias allowedPorts: allowedPortsField.text
     property alias bridgeType: bridgeTypeField.selectedType
-    property string selectedInbuiltBridgeStrings
-    property alias customBridges: customBridgeStringField.text
+    property alias bridgeStrings: bridgeStringsField.text
 
-    function reset() {
-        proxyTypeField.currentIndex = 0
-        proxyAddress = ''
-        proxyPort = ''
-        proxyUsername = ''
-        proxyPassword = ''
-        allowedPorts = ''
-        customBridges = ''
-        selectedInbuiltBridgeStrings = ''
+    function init() {
+        let config = torControl.getConfiguration();
+
+        if (config.proxy)
+        {
+            switch(config.proxy.type) {
+                default:
+                    proxyTypeField.currentIndex = 0;
+                    break;
+                case "socks4":
+                    proxyTypeField.currentIndex = 1;
+                    break;
+                case "socks5":
+                    proxyTypeField.currentIndex = 2;
+                    break;
+                case "https":
+                    proxyTypeField.currentIndex = 3;
+                    break;
+            }
+            proxyAddress = config.proxy.address ? config.proxy.address : '';
+            proxyPort = config.proxy.port ? config.proxy.port : '';
+            proxyUsername = config.proxy.username ? config.proxy.username : '';
+            proxyPassword = config.proxy.password ? config.proxy.password : '';
+        }
+        else
+        {
+            proxyTypeField.currentIndex = 0;
+            proxyAddress = '';
+            proxyPort = '';
+            proxyUsername = '';
+            proxyPassword = '';
+        }
+
+        allowedPorts = config.allowedPorts ? config.allowedPorts.join(',') : '';
+
+        if (config.bridgeType == "custom")
+        {
+            bridgeTypeField.currentIndex = 1;
+            bridgeStrings = config.bridgeStrings ? config.bridgeStrings.join('\n') : '';
+        }
+        else
+        {
+            let bridgeTypeIndex = torControl.getBridgeTypes().indexOf(config.bridgeType);
+            if (bridgeTypeIndex == -1)
+            {
+                // none
+                bridgeTypeField.currentIndex = 0;
+            }
+            else
+            {
+                // None = 0, Custom = 1, FirstType = 2
+                bridgeTypeField.currentIndex = 2 + bridgeTypeIndex;
+            }
+            bridgeStrings = "";
+        }
     }
 
     function save() {
         var conf = {};
-        conf.disableNetwork = "0";
-        conf.proxyType = proxyType;
-        conf.proxyAddress = proxyAddress;
-        conf.proxyPort = proxyPort;
-        conf.proxyUsername = proxyUsername;
-        conf.proxyPassword = proxyPassword;
-        conf.allowedPorts = allowedPorts.trim().length > 0 ? allowedPorts.trim().split(',') : [];
-        var bridgeStrings = "";
+        conf.disableNetwork = 0;
+        conf.proxy = {};
+        conf.proxy.type = proxyType;
+        conf.proxy.address = proxyAddress;
+        conf.proxy.port = parseInt(proxyPort);
+        conf.proxy.username = proxyUsername;
+        conf.proxy.password = proxyPassword;
+        conf.allowedPorts = (() => {
+            const portStrings = allowedPorts.trim().split(',');
+            const portInts = portStrings.map(p => parseInt(p));
+            const validPortInts = portInts.filter(x => x > 0 && x < 65536);
+            const uniquePorts = [...new Set(validPortInts)].sort((a,b) => a - b);
+            return uniquePorts;
+        })();
+        conf.bridgeType = bridgeType;
         if (bridgeType == "custom") {
-            bridgeStrings = customBridges;
-        } else {
-            bridgeStrings = selectedInbuiltBridgeStrings;
+            conf.bridgeStrings = bridgeStrings.split('\n').map(x => x.trim()).filter(x => x.length > 0);
         }
-        conf.bridges = bridgeStrings.trim().length > 0 ? bridgeStrings.trim().split('\n') : [];
 
-        var command = torControl.setConfiguration(conf)
-        command.finished.connect(function() {
-            if (command.successful) {
-                if (torControl.hasOwnership)
-                    torControl.saveConfiguration()
-                window.openBootstrap()
-            } else
-                console.log("SETCONF error:", command.errorMessage)
-        })
-    }
-
-    Label {
-        width: parent.width
-        text: qsTr("Does this computer need a proxy to access the internet?")
-        wrapMode: Text.Wrap
-
-        Accessible.role: Accessible.StaticText
-        Accessible.name: text
+        let command = torControl.setConfiguration(conf);
+        if (command != null) {
+            command.finished.connect(function(successful) {
+                if (successful) {
+                    window.openBootstrap()
+                } else
+                    console.log("SETCONF error:", command.errorMessage)
+             });
+        }
     }
 
     GroupBox {
         width: setup.width
+        title: "Proxy"
 
         GridLayout {
             anchors.fill: parent
             columns: 2
 
-            /* without this the top of groupbox clips into the first row */
-            Item { height: Qt.platform.os === "linux" ? 15 : 0}
-            Item { height: Qt.platform.os === "linux" ? 15 : 0}
-
             Label {
-                text: qsTr("Proxy type:")
+                text: qsTr("Type:")
                 color: proxyPalette.text
             }
             ComboBox {
                 id: proxyTypeField
-                property string none: qsTr("None")
                 model: [
-                    { "text": qsTr("None"), "type": "" },
+                    { "text": qsTr("None"), "type": "none" },
                     { "text": "SOCKS 4", "type": "socks4" },
                     { "text": "SOCKS 5", "type": "socks5" },
                     { "text": "HTTPS", "type": "https" },
@@ -93,7 +130,7 @@ Column {
 
                 SystemPalette {
                     id: proxyPalette
-                    colorGroup: setup.proxyType == "" ? SystemPalette.Disabled : SystemPalette.Active
+                    colorGroup: setup.proxyType == "none" ? SystemPalette.Disabled : SystemPalette.Active
                 }
 
                 Accessible.role: Accessible.ComboBox
@@ -134,6 +171,7 @@ Column {
                     id: proxyPortField
                     Layout.preferredWidth: 50
                     enabled: setup.proxyType
+                    validator: RegExpValidator{regExp: /^[0-9/]+$/}
 
                     Accessible.role: Accessible.EditableText
                     //: Name of the port label, used by accessibility tech such as screen readers
@@ -194,26 +232,15 @@ Column {
 
     Item { height: 4; width: 1 }
 
-    Label {
-        width: parent.width
-        //: Description for the purpose of the Allowed Ports textbox
-        text: qsTr("Does this computer's Internet connection go through a firewall that only allows connections to certain ports?")
-        wrapMode: Text.Wrap
-
-        Accessible.role: Accessible.StaticText
-        Accessible.name: text
-    }
-
     GroupBox {
         width: parent.width
         // Workaround OS X visual bug
         height: Math.max(implicitHeight, 40)
+        title: "Firewall"
 
         /* without this the top of groupbox clips into the first row */
         ColumnLayout {
             anchors.fill: parent
-
-            Item { height: Qt.platform.os === "linux" ? 15 : 0 }
 
             RowLayout {
                 Label {
@@ -228,6 +255,7 @@ Column {
                     Layout.fillWidth: true
                     //: Textbox showing an example entry for the firewall allowed ports entry
                     placeholderText: qsTr("Example: 80,443")
+                    validator: RegExpValidator{regExp: /^[0-9, /]+$/}
 
                     Accessible.role: Accessible.EditableText
                     //: Name of the allowed ports label, used by accessibility tech such as screen readers
@@ -240,38 +268,27 @@ Column {
 
     Item { height: 4; width: 1 }
 
-    Label {
-        width: parent.width
-
-        text: qsTr("If this computer's Internet connection is censored, you will need to obtain and use bridge relays.")
-        wrapMode: Text.Wrap
-
-        Accessible.role: Accessible.StaticText
-        Accessible.name: text
-    }
-
     GroupBox {
         width: parent.width
+        title: "Bridges"
 
-        GridLayout {
-            columns: 2 
-
+        Column {
+            anchors.fill: parent
+            width: parent.width
             // Stuffing the row layout into a column layout and inserting a bogus
             // item prevents clipping on linux
             Item { height: Qt.platform.os === "linux" ? 15 : 0 }
-            Item { height: Qt.platform.os === "linux" ? 15 : 0 }
 
             RowLayout {
-                width: parent.width
+                Layout.fillWidth: true
 
                 Label {
-                    text: qsTr("Bridge type:")
+                    text: qsTr("Type:")
                 }
 
                 ComboBox {
                     // Displays the selection of a bridge type (obfs4, meek-azure, etc)
                     id: bridgeTypeField
-                    property string none: qsTr("None")
                     model: ListModel {
                         id: bridgeTypeModel
                         ListElement { text: qsTr("None"); type: "none" }
@@ -291,43 +308,6 @@ Column {
 
                     property string selectedType: currentIndex >= 0 ? model.get(currentIndex).type : ""
 
-                    onCurrentIndexChanged: {
-                        setup.selectedInbuiltBridgeStrings = "";
-
-                        var bridgeStrings = torControl.getBridgeStringsForType(bridgeTypeModel.get(currentIndex).type);
-                        // first, clear the bridge string list
-                        for (var i = bridgeStringModel.count; i > 0; i--)
-                        {
-                            bridgeStringModel.remove(i - 1);
-                        }
-
-                        // now, dynamically set the new list
-                        for (var i = 0; i < bridgeStrings.length; i++)
-                        {
-                            // Dynamically construct the list model so that whenever
-                            // new bridge strings are introduced, they'll automatically
-                            // propogate to the dropdown
-
-                            // First, create a "pretty" string for the bridge
-                            // This is just the bridge string with the cert and
-                            // other not so nice things to read removed
-                            //TODO: wherever the UI that displays this is, it'd be nice to have an onHover-type event to display the full bridge string
-                            // displaying the full bridge string is rather clunky and usually overflows the width of the window anyway, and elliding it
-                            // at the end encounters the same issue as creating a shortened pretty string - i.e. no way to manually check the fingerprint
-                            // or cert of a bridge
-                            var index = bridgeStrings[i].indexOf(' ', bridgeStrings[i].indexOf(' ') + 1);
-                            var prettyString = bridgeStrings[i].substr(0, index);
-                            bridgeStringModel.append({"title": prettyString, "bridgeString": bridgeStrings[i]});
-
-                            // Then, update the custom bridge string entry, such
-                            // that when the "connect" button is pressed the bridge
-                            // strings are handled in the same way that custom bridge
-                            // entries are handled
-                            setup.selectedInbuiltBridgeStrings += bridgeStrings[i] + "\n";
-                            console.log(setup.selectedInbuiltBridgeStrings)
-                        }
-                    }
-
                     SystemPalette {
                         id: bridgePalette
                         colorGroup: setup.bridgeType == "" ? SystemPalette.Disabled : SystemPalette.Active
@@ -339,81 +319,28 @@ Column {
                     Accessible.description: qsTr("If you need a bridge to access Tor, select one from this list.")
                 }
             }
-        }
-    }
-
-    GroupBox {
-        width: parent.width
-
-        visible: setup.bridgeType == "custom"
-
-        ColumnLayout {
-            anchors.fill: parent
-
-            Item { height: Qt.platform.os === "linux" ? 15 : 0 }
 
             Label {
+                visible: setup.bridgeType == "custom"
                 text: qsTr("Enter one or more bridge relays (one per line):")
+                width: parent.width
+                wrapMode: Text.Wrap
 
                 Accessible.role: Accessible.StaticText
                 Accessible.name: text
             }
+
             TextArea {
-                id: customBridgeStringField
-                Layout.fillWidth: true
-                Layout.preferredHeight: allowedPortsField.height * 2
+                id: bridgeStringsField
+                visible: setup.bridgeType == "custom"
+                width: parent.width
+                height: allowedPortsField.height * 4;
+                wrapMode: TextEdit.NoWrap
+                textFormat: TextEdit.PlainText
                 tabChangesFocus: true
 
                 Accessible.name: qsTr("Enter one or more bridge relays (one per line):")
                 Accessible.role: Accessible.EditableText
-            }
-        }
-    }
-
-    //FIXME This UI is quite broken
-    // it functions fine, but:
-    //  1) the height is fixed, and that's not aestheticly pleasing
-    //  2) the bridge strings clip through the top /shrug
-    GroupBox {
-        width: parent.width
-
-        visible: setup.bridgeType != "custom" && setup.bridgeType != "none"
-
-        ColumnLayout {
-            Item { height: Qt.platform.os === "linux" ? 15 : 0 }
-
-            Label {
-                text: qsTr("Your bridges:")
-                color: bridgePalette.text
-
-                Accessible.role: Accessible.StaticText
-                Accessible.name: text
-            }
-        }
-    }
-
-    GroupBox {
-        width: parent.width
-
-        visible: setup.bridgeType != "custom" && setup.bridgeType != "none"
-
-        ListView {
-            id: bridgeStringList
-            height: 300
-
-            model: ListModel {
-                id: bridgeStringModel
-                ListElement { title: "None"; bridgeString: "None" }
-                ListElement { title: "None"; bridgeString: "None" }
-            }
-
-            delegate: Row {
-                width: parent.width
-                Text {
-                    text: title
-                    width: setup.width
-                    elide: Text.ElideRight
-                }
             }
         }
     }
@@ -436,7 +363,7 @@ Column {
             //: Button label for connecting to tor
             text: qsTr("Connect")
             isDefault: true
-            enabled: setup.proxyType ? (proxyAddressField.text && proxyPortField.text) : true
+            enabled: (torControl.status == TorControl.Connected) && (setup.proxyType == "none" ? true : (proxyAddressField.text && (() => {const p = parseInt(proxyPortField.text); return p > 0 && p < 65536;})()))
             onClicked: {
                 setup.save()
             }

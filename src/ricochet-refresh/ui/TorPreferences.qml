@@ -103,7 +103,7 @@ Item {
 
         Label {
             text: bootstrap.summary
-            visible: bootstrap.tag !== 'done'
+            visible: bootstrap.done
         }
 
         ProgressBar {
@@ -111,7 +111,7 @@ Item {
             maximumValue: 100
             indeterminate: bootstrap.progress === undefined
             value: bootstrap.progress === undefined ? 0 : bootstrap.progress
-            visible: bootstrap.tag !== 'done'
+            visible: bootstrap.done
         }
 
         Label {

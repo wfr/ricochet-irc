@@ -272,8 +272,14 @@ namespace
         push_task([=]() -> void
         {
             logger::println("bootstrap status : {{ progress : {}, tag : {} }}", progress, static_cast<int>(tag));
+
+            auto tagSummary = tego_tor_bootstrap_tag_to_summary(
+                    tag,
+                    tego::throw_on_error());
+
             auto torControl = shims::TorControl::torControl;
-            emit torControl->bootstrapStatusChanged();
+            torControl->setBootstrapStatus(progress, tag, QString(tagSummary));
+
         });
     }
 
