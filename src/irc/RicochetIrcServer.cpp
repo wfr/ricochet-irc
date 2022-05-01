@@ -402,6 +402,7 @@ void RicochetIrcServer::handlePM(IrcConnection *sender, const QString &contact_n
             contact->conversation()->sendMessage(text);
 
             IrcUser* contact_irc_user = usermap.value(contact);
+            (void)contact_irc_user;
             if(contact->getStatus() != shims::ContactUser::Status::Online)
             {
                 sender->reply(RPL_AWAY,
