@@ -69,7 +69,7 @@ public:
 
 template<typename T> bool Channel::sendMessage(const T &message)
 {
-    int size = message.ByteSize();
+    size_t size = message.ByteSizeLong();
     if (size > ConnectionPrivate::PacketMaxDataSize) {
         TEGO_BUG() << "Message on" << type() << "channel is too big -" << size << "bytes:"
                    << QString::fromStdString(message.DebugString());
@@ -82,7 +82,7 @@ template<typename T> bool Channel::sendMessage(const T &message)
         return false;
     }
 
-    QByteArray packet(size, 0);
+    QByteArray packet(int(size), 0);
     quint8 *end = message.SerializeWithCachedSizesToArray(reinterpret_cast<quint8*>(packet.data()));
     quint8 *expected_end = reinterpret_cast<quint8*>(packet.data() + size);
     if (end != expected_end) {
