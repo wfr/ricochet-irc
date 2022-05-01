@@ -48,9 +48,11 @@ namespace shims
         {
             // find the given user in our internal list and remove, mark for deletion
             auto it = std::find(self->contactsList.begin(), self->contactsList.end(), user);
-            self->contactsList.erase(it);
+            if (it != self->contactsList.end()) {
+                self->contactsList.erase(it);
+                user->deleteLater();
+            }
 
-            user->deleteLater();
         });
 
         emit this->contactAdded(shimContact);
