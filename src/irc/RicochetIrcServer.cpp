@@ -428,7 +428,9 @@ void RicochetIrcServer::cmdHelp()
     echo(QStringLiteral(" ___ _            _        _     ___ ___  ___       ____"));
     echo(QStringLiteral("| _ (_)__ ___  __| |_  ___| |_  |_ _| _ \\/ __| __ _|__ /"));
     echo(QStringLiteral("|   / / _/ _ \\/ _| ' \\/ -_)  _|  | ||   / (__  \\ V /|_ \\"));
-    echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___|  \\_/|___/ %1").arg(QCoreApplication::applicationVersion()));
+    echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___|  \\_/|___/"));
+    echo(QStringLiteral("%1, based on libtego 3.0.11")
+         .arg(QCoreApplication::applicationVersion()));
     echo(QLatin1String(""));
     echo(QStringLiteral("COMMANDS:"));
     echo(QStringLiteral(" * help"));
