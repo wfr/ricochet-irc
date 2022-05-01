@@ -244,6 +244,7 @@ void RicochetIrcServer::torErrorChanged() {
 }
 
 void RicochetIrcServer::torLogMessage(const QString &message) {
+    (void)message;
     qDebug() << "=== NOT-IMPLEMENTED: IRC torLogMessage() ===";
 }
 
@@ -567,7 +568,7 @@ void RicochetIrcServer::cmdRequest(const QStringList& args)
 {
     // TODO: validate arguments
     auto userIdentity = shims::UserIdentity::userIdentity;
-    auto contactsManager = userIdentity->getContacts();
+    //auto contactsManager = userIdentity->getContacts();
 
     if(args.length() == 1 && args[0] == QStringLiteral("list"))
     {

@@ -303,6 +303,8 @@ namespace shims
                                     md.text.toStdString()); break;
         }
         #else
+        (void)event;
+        (void)ofile;
         qWarning() << "ConversationModel::deserializeTextMessageEventToFile not implemented in headless mode";
         #endif
     }
@@ -350,6 +352,8 @@ namespace shims
                 break;
         }
         #else
+        (void)event;
+        (void)ofile;
         qWarning() << "ConversationModel::deserializeTransferMessageEventToFile not implemented in headless mode";
         #endif
     }
@@ -386,6 +390,8 @@ namespace shims
                 break;
         }
         #else
+        (void)event;
+        (void)ofile;
         qWarning() << "ConversationModel::deserializeUserStatusUpdateEventToFile not implemented in headless mode";
         #endif
     }
@@ -490,6 +496,7 @@ namespace shims
             this->addEventFromMessage(row);
         }
         #else
+        (void)id;
         qWarning() << "ConversationModel::tryAcceptFileTransfer not implemented in headless mode";
         #endif
     }
