@@ -185,10 +185,10 @@ void TorProcess::stop()
     if (d->process.state() == QProcess::Running) {
         d->process.terminate();
         if (!d->process.waitForFinished(5000)) {
-            qWarning() << "Tor process" << d->process.pid() << "did not respond to terminate, killing...";
+            qWarning() << "Tor process" << d->process.processId() << "did not respond to terminate, killing...";
             d->process.kill();
             if (!d->process.waitForFinished(2000)) {
-                qCritical() << "Tor process" << d->process.pid() << "did not respond to kill!";
+                qCritical() << "Tor process" << d->process.processId() << "did not respond to kill!";
             }
         }
     }
