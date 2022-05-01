@@ -99,7 +99,7 @@ void IrcConnection::readyRead()
     QString data = QString::fromUtf8(*buffer);
     buffer->clear();
 
-    QStringList lines = data.split(QStringLiteral("\r\n"), QString::SkipEmptyParts);
+    QStringList lines = data.split(QStringLiteral("\r\n"), Qt::SkipEmptyParts);
     foreach(const QString& line, lines)
     {
         handleLine(line);
