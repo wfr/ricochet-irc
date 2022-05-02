@@ -35,13 +35,6 @@ machines.
 
 ### Usage
 ```
-    ./ricochet-irc
-```
-The program is now waiting for an IRC connection on localhost:6667.  Point your
-IRC client to localhost:6667 and use the password that is provided on stdout.
-
-For custom options, try:
-```
     ./ricochet-irc --help
 ```
 ```
