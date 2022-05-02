@@ -44,6 +44,19 @@ For custom options, try:
 ```
     ./ricochet-irc --help
 ```
+```
+Usage: ./ricochet-irc [options]
+Anonymous peer-to-peer instant messaging, IRC gateway
+
+Options:
+  --config <config-path>  Select configuration directory.
+  --port <port>           Set IRC server port.
+  --generate-password     Generate random IRC password.
+  --debug, --verbose      Verbose output
+  -h, --help              Displays help on commandline options.
+  --help-all              Displays help including Qt specific options.
+  -v, --version           Displays version information.
+```
 
 #### IRC interface
 Once you are connected to the IRC server, your client is automatically joined
