@@ -680,6 +680,13 @@ namespace shims
 
     void ConversationModel::messageAcknowledged(tego_message_id_t messageId, bool accepted)
     {
+        if (messages.size() == 0) {
+            // Reached when the model is cleared after an outgoing message was sent,
+            // but before it is acknowledged.
+            // https://github.com/blueprint-freespeech/ricochet-refresh/issues/150
+            return;
+        }
+
         auto row = this->indexOfOutgoingMessage(messageId);
         Q_ASSERT(row >= 0);
 
