@@ -35,7 +35,7 @@ machines.
 
 ### Usage
 ```
-    ./ricochet-irc --help
+./ricochet-irc --help
 ```
 ```
 Usage: ./ricochet-irc [options]
