@@ -65,9 +65,12 @@
 #include <QTime>
 #include <QTranslator>
 
+bool verbose_output = false;
+
 static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &errorMessage);
 static void initTranslation();
 static QString randomPassword(size_t len = 14);
+void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 
 int main(int argc, char *argv[]) try
 {
@@ -88,7 +91,7 @@ int main(int argc, char *argv[]) try
     init_libtego_callbacks(tegoContext);
 
     a.setApplicationVersion(QLatin1String(TEGO_VERSION_STR));
-    qSetMessagePattern(QString::fromLatin1("%{file}(%{line}): %{message}"));
+    qInstallMessageHandler(myMessageOutput);
     QScopedPointer<SettingsFile> settings(new SettingsFile);
     SettingsObject::setDefaultFile(settings.data());
 
@@ -282,7 +285,6 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
      * ricochet-refresh can also load configuration files from a custom directory passed in as the first argument
      */
 
-
     QCommandLineParser parser;
     parser.setApplicationDescription(QCoreApplication::translate("main","Anonymous peer-to-peer instant messaging, IRC gateway"));
     QCommandLineOption opt_config_path(QStringLiteral("config"),
@@ -297,6 +299,9 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     QCommandLineOption opt_irc_password(QStringLiteral("generate-password"),
                                         QCoreApplication::translate("irc", "Generate random IRC password."));
     parser.addOption(opt_irc_password);
+    QCommandLineOption opt_verbose(QStringList() << "debug" << "verbose",
+                                 QCoreApplication::translate("irc", "Verbose output"));
+    parser.addOption(opt_verbose);
     parser.addHelpOption();
     parser.addVersionOption();
     parser.process(qApp->arguments());
@@ -305,6 +310,10 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     const QStringList args = parser.positionalArguments();
     if(args.count() > 0) {
         parser.showHelp(1);
+    }
+
+    if (parser.isSet(opt_verbose)) {
+        ::verbose_output = true;
     }
 
     if(parser.isSet(opt_config_path)) {
@@ -479,4 +488,28 @@ QString randomPassword(size_t len) {
        result.append(alphabet.at(rng.bounded(alphabet.length())));
    }
    return result;
+}
+
+void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
+    QByteArray localMsg = msg.toLocal8Bit();
+    const char *file = context.file ? context.file : "";
+    const char *function = context.function ? context.function : "";
+    switch (type) {
+    case QtDebugMsg:
+        if (::verbose_output) {
+            fprintf(stderr, "%s\n", localMsg.constData());
+        }
+        break;
+    case QtInfoMsg:
+    case QtWarningMsg:
+        fprintf(stderr, "%s\n", localMsg.constData());
+        break;
+    case QtCriticalMsg:
+        fprintf(stderr, "CRITICAL: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
+        break;
+    case QtFatalMsg:
+        fprintf(stderr, "FATAL: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
+        break;
+    }
 }
