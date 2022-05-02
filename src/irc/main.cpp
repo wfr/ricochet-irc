@@ -80,6 +80,7 @@ int main(int argc, char *argv[]) try
     qputenv("QT_ENABLE_REGEXP_JIT",   "0");
 
     QCoreApplication a(argc, argv);
+    qInstallMessageHandler(myMessageOutput);
 
     tego_context_t* tegoContext = nullptr;
     tego_initialize(&tegoContext, tego::throw_on_error());
@@ -91,7 +92,6 @@ int main(int argc, char *argv[]) try
     init_libtego_callbacks(tegoContext);
 
     a.setApplicationVersion(QLatin1String(TEGO_VERSION_STR));
-    qInstallMessageHandler(myMessageOutput);
     QScopedPointer<SettingsFile> settings(new SettingsFile);
     SettingsObject::setDefaultFile(settings.data());
 
