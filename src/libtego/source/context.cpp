@@ -13,6 +13,7 @@ using tego::g_globals;
 #include "core/UserIdentity.h"
 #include "core/ContactUser.h"
 #include "core/ConversationModel.h"
+#include "utils/SecureRNG.h"
 
 //
 // Tego Context
@@ -662,6 +663,22 @@ ContactUser* tego_context::getContactUser(tego_user_id_t const* user) const
 
 extern "C"
 {
+    void tego_get_random_bytes(
+        tego_context_t* context,
+        uint8_t* dest,
+        size_t count,
+        tego_error_t** error)
+    {
+        return tego::translateExceptions([=]() mutable -> void
+        {
+            TEGO_THROW_IF_NULL(context);
+            TEGO_THROW_IF_NULL(dest);
+            TEGO_THROW_IF_FALSE(count <= std::numeric_limits<int>::max());
+
+            SecureRNG::random(reinterpret_cast<char*>(dest), static_cast<int>(count));
+        }, error);
+    }
+
     // Bootstrap Tag
 
     const char* tego_tor_bootstrap_tag_to_summary(
