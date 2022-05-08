@@ -51,6 +51,24 @@ void tego_uninitialize(
     tego_error_t** error);
 
 /*
+ * Utility functions
+ */
+
+/*
+ * Get random bytes from tego's secure random implementation
+ *
+ * @param context: the current tego context
+ * @param dest: buffer to write random bytes to
+ * @param count: the number of bytes to write
+ * @param error: filled on error
+ */
+void tego_get_random_bytes(
+    tego_context_t* context,
+    uint8_t* dest,
+    size_t count,
+    tego_error_t** error);
+
+/*
  * v3 onion/ed25519 functionality
  */
 
