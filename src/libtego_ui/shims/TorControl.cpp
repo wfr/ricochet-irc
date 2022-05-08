@@ -1,5 +1,6 @@
 #include "TorControl.h"
 #include "utils/Settings.h"
+
 #include "pluggables.hpp"
 
 namespace shims
@@ -28,7 +29,7 @@ namespace shims
             tego::throw_on_error());
 
         // generate own json to save to settings
-        QJsonObject network;
+        QJsonObject tor;
 
         // disable network
         if (auto it = config.find("disableNetwork"); it != config.end())
@@ -129,7 +130,7 @@ namespace shims
                         proxy["type"] = "https";
                     }
                 }
-                network["proxy"] = proxy;
+                tor["proxy"] = proxy;
             }
         }
         // firewall
@@ -158,7 +159,7 @@ namespace shims
                     allowedPorts.size(),
                     tego::throw_on_error());
 
-                network["allowedPorts"] = ([&]() -> QJsonArray {
+                tor["allowedPorts"] = ([&]() -> QJsonArray {
                     QJsonArray retval;
                     for(auto port : allowedPorts) {
                         retval.push_back(port);
@@ -211,16 +212,48 @@ namespace shims
                 }
                 tegoTorDaemonConfigSetBridges(bridgeStrings);
 
-                network["bridgeType"] = "custom";
-                network["bridgeStrings"] = bridgeStringsArray;
+                tor["bridgeType"] = "custom";
+                tor["bridgeStrings"] = bridgeStringsArray;
             }
-            else
+            else if (auto bridgeStrings = this->getBridgeStringsForType(bridgeType);
+                     bridgeStrings.size() > 0)
             {
-                auto bridgeStringsIt = defaultBridges.find(bridgeType);
-                TEGO_THROW_IF_EQUAL(bridgeStringsIt, defaultBridges.end());
+                // ensure the bridges are ordered randomly per user to distribute to all users evenly
+                // but keep the seed per user consistent so their individual experience is consistent
+                auto seedJson = SettingsObject().read("tor.seed");
+                uint32_t seed = 0;
 
-                tegoTorDaemonConfigSetBridges(*bridgeStringsIt);
-                network["bridgeType"] = bridgeType;
+                // ensure the signed -> unsigned conversion does as we expect
+                typedef decltype(seedJson.toInt()) json_int_t;
+                static_assert(std::numeric_limits<json_int_t>::max() <= std::numeric_limits<uint32_t>::max());
+
+                if (auto val = seedJson.toInt(-1); val >= 0)
+                {
+                    seed = static_cast<uint32_t>(val);
+                }
+                else
+                {
+                    // fill seed w/ random bytes
+                    tego_get_random_bytes(
+                        this->context,
+                        reinterpret_cast<uint8_t*>(&seed),
+                        sizeof(seed),
+                        tego::throw_on_error());
+
+                    // now ensure we can save this value as an json_int_t
+                    seed = seed % static_cast<uint32_t>(std::numeric_limits<json_int_t>::max());
+                }
+
+                // save seed to settings
+                tor["seed"] = static_cast<json_int_t>(seed);
+
+                // shuffle the bridge list so that users don't all select the first one
+                std::minstd_rand rand;
+                rand.seed(seed);
+                std::shuffle(bridgeStrings.begin(), bridgeStrings.end(), rand);
+
+                tegoTorDaemonConfigSetBridges(bridgeStrings);
+                tor["bridgeType"] = bridgeType;
             }
         }
         tego_context_update_tor_daemon_config(
@@ -236,13 +269,13 @@ namespace shims
         connect(
             this->m_setConfigurationCommand,
             &shims::TorControlCommand::finished,
-            [network=std::move(network)](bool successful) -> void {
+            [tor=std::move(tor)](bool successful) -> void {
                 SettingsObject settings;
                 // only persist settings if config was set successfully
                 if (successful) {
-                    settings.write("network", network);
+                    settings.write("tor", tor);
                 } else {
-                    settings.unset("network");
+                    settings.unset("tor");
                 }
             });
 
@@ -254,7 +287,7 @@ namespace shims
 
     QJsonObject TorControl::getConfiguration()
     {
-        return SettingsObject().read("network").toObject();
+        return SettingsObject().read("tor").toObject();
     }
 
     QObject* TorControl::beginBootstrap()
@@ -276,12 +309,7 @@ namespace shims
     std::vector<std::string> TorControl::getBridgeStringsForType(const QString &bridgeType)
     {
         if (auto it = defaultBridges.find(bridgeType); it != defaultBridges.end()) {
-            auto ret = *it;
-            // shuffle the bridge list so that users don't all select the first one
-            std::random_device rd;
-            std::mt19937 g(rd());
-            std::shuffle(ret.begin(), ret.end(), g);
-            return ret;
+            return *it;
         }
         return {};
     }
@@ -297,7 +325,7 @@ namespace shims
 
     bool TorControl::hasBootstrappedSuccessfully() const
     {
-        auto value= SettingsObject().read("network.bootstrappedSuccessfully");
+        auto value= SettingsObject().read("tor.bootstrappedSuccessfully");
         return value.isBool() ? value.toBool() : false;
     }
 
@@ -394,7 +422,7 @@ namespace shims
         emit torControl->bootstrapStatusChanged();
 
         if (tag == tego_tor_bootstrap_tag_done) {
-            SettingsObject().write("network.bootstrappedSuccessfully", true);
+            SettingsObject().write("tor.bootstrappedSuccessfully", true);
         }
     }
 }

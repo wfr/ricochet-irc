@@ -130,7 +130,7 @@ int main(int argc, char *argv[]) try
             if (newStatus == tego_tor_control_status_connected) {
 
                 // send configuration down to tor daemon
-                auto networkSettings = SettingsObject().read("network").toObject();
+                auto networkSettings = SettingsObject().read("tor").toObject();
                 networkSettings["disableNetwork"] = TEGO_TRUE;
 
                 shims::TorControl::torControl->setConfiguration(networkSettings);
