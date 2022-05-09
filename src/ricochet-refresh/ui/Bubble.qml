@@ -48,11 +48,17 @@ Rectangle {
         color: parent.color
     }
 
+    SystemPalette {
+        id: paletteActive
+        colorGroup: SystemPalette.Active
+    }
+
     Label {
         id: label
         wrapMode: Text.Wrap
         width: maximumWidth - 16
         textFormat: Text.PlainText
+        color: paletteActive.text
         x: 6
         y: 6
 

@@ -55,7 +55,7 @@ namespace shims
         return state == tego_host_user_state_online;
     }
 
-    QString UserIdentity::contactID() const
+    QString UserIdentity::contactID() const try
     {
         // get host user id and convert to the ricochet:blahlah format
         std::unique_ptr<tego_user_id_t> userId;
@@ -71,6 +71,9 @@ namespace shims
         QTextStream(&contactId) << "ricochet:" << serviceIdString;
 
         return contactId;
+    } catch (const std::exception& ex){
+        qDebug() << "Exception:" << ex.what();
+        return QString("<null>");
     }
 
     shims::ContactsManager* UserIdentity::getContacts()

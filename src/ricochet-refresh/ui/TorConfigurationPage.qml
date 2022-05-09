@@ -1,11 +1,11 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.0
-import QtQuick.Layouts 1.0
+import QtQuick 2.15
+import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.2
 import im.ricochet 1.0
 
 Column {
     id: setup
-    spacing: 8
+    spacing: 12
 
     property alias proxyType: proxyTypeField.selectedType
     property alias proxyAddress: proxyAddressField.text
@@ -75,7 +75,7 @@ Column {
 
     function save() {
         var conf = {};
-        conf.disableNetwork = 0;
+        conf.disableNetwork = 1;
         conf.proxy = {};
         conf.proxy.type = proxyType;
         conf.proxy.address = proxyAddress;
@@ -97,10 +97,10 @@ Column {
         let command = torControl.setConfiguration(conf);
         if (command != null) {
             command.finished.connect(function(successful) {
-                if (successful) {
-                    window.openBootstrap()
-                } else
+                if (!successful)
+                {
                     console.log("SETCONF error:", command.errorMessage)
+                }
              });
         }
     }
@@ -109,50 +109,77 @@ Column {
         width: setup.width
         title: "Proxy"
 
-        GridLayout {
-            anchors.fill: parent
-            columns: 2
+        ColumnLayout {
+            width: parent.width
 
             Label {
-                text: qsTr("Type:")
-                color: proxyPalette.text
-            }
-            ComboBox {
-                id: proxyTypeField
-                model: [
-                    { "text": qsTr("None"), "type": "none" },
-                    { "text": "SOCKS 4", "type": "socks4" },
-                    { "text": "SOCKS 5", "type": "socks5" },
-                    { "text": "HTTPS", "type": "https" },
-                ]
-                textRole: "text"
-                property string selectedType: currentIndex >= 0 ? model[currentIndex].type : ""
-
-                SystemPalette {
-                    id: proxyPalette
-                    colorGroup: setup.proxyType == "none" ? SystemPalette.Disabled : SystemPalette.Active
-                }
-
-                Accessible.role: Accessible.ComboBox
-                Accessible.name: selectedType
-                //: Description used by accessibility tech, such as screen readers
-                Accessible.description: qsTr("If you need a proxy to access the internet, select one from this list.")
-            }
-
-            Label {
-                //: Label indicating the textbox to place a proxy IP or URL
-                text: qsTr("Address:")
-                color: proxyPalette.text
+                text: qsTr("Do you use a proxy to connect to the internet?")
+                wrapMode: Text.Wrap
+                Layout.fillWidth: true
+                Layout.topMargin: 4
+                Layout.bottomMargin: 8
 
                 Accessible.role: Accessible.StaticText
-                Accessible.name: text
+                Accessible.name: qsTr("Proxy")
             }
+
             RowLayout {
-                Layout.fillWidth: true
+                Label {
+                    text: qsTr("Type:")
+                }
+                ComboBox {
+                    id: proxyTypeField
+                    model: [
+                        { "text": qsTr("None"), "type": "none" },
+                        { "text": "SOCKS 4", "type": "socks4" },
+                        { "text": "SOCKS 5", "type": "socks5" },
+                        { "text": "HTTPS", "type": "https" },
+                    ]
+                    textRole: "text"
+                    property string selectedType: currentIndex >= 0 ? model[currentIndex].type : ""
+
+                    SystemPalette {
+                        id: proxyPalette
+                        colorGroup: setup.proxyType == "none" ? SystemPalette.Disabled : SystemPalette.Active
+                    }
+
+                    onActivated: function(index) {
+                        // 'none'
+                        if (index == 0) {
+                            proxyAddress = "";
+                            proxyPort = "";
+                            proxyUsername = "";
+                            proxyPassword = "";
+                        // socks4
+                        } else if (index == 1) {
+                            proxyUsername = "";
+                            proxyPassword = "";
+                        }
+                    }
+
+                    Accessible.role: Accessible.ComboBox
+                    Accessible.name: selectedType
+                    //: Description used by accessibility tech, such as screen readers
+                    Accessible.description: qsTr("If you need a proxy to access the internet, select one from this list.")
+                }
+            }
+
+            RowLayout {
+                width: parent.width
+
+                Label {
+                    //: Label indicating the textbox to place a proxy IP or URL
+                    text: qsTr("Address:")
+                    color: proxyPalette.text
+
+                    Accessible.role: Accessible.StaticText
+                    Accessible.name: text
+                }
+
                 TextField {
                     id: proxyAddressField
                     Layout.fillWidth: true
-                    enabled: setup.proxyType
+                    enabled: setup.proxyType != "none"
                     //: Placeholder text of text box expecting an IP or URL for proxy
                     placeholderText: qsTr("IP address or hostname")
 
@@ -167,11 +194,20 @@ Column {
                     color: proxyPalette.text
 
                 }
+
+                TextMetrics {
+                    id: proxyPortFieldTextMetrics
+                    text: "0000000"
+                    font: proxyPortField.font
+                }
+
                 TextField {
                     id: proxyPortField
-                    Layout.preferredWidth: 50
-                    enabled: setup.proxyType
-                    validator: RegExpValidator{regExp: /^[0-9/]+$/}
+                    Layout.fillWidth: false;
+                    Layout.minimumWidth: proxyPortFieldTextMetrics.width;
+                    Layout.maximumWidth: proxyPortFieldTextMetrics.width;
+                    enabled: setup.proxyType != "none"
+                    validator: RegExpValidator{regExp: /^[1-9][0-9]{1,4}$/}
 
                     Accessible.role: Accessible.EditableText
                     //: Name of the port label, used by accessibility tech such as screen readers
@@ -181,21 +217,21 @@ Column {
                 }
             }
 
-            Label {
-                //: Label indicating the textbox to place the proxy username
-                text: qsTr("Username:")
-                color: proxyPalette.text
-
-                Accessible.role: Accessible.StaticText
-                Accessible.name: text
-            }
             RowLayout {
                 Layout.fillWidth: true
 
+                Label {
+                    //: Label indicating the textbox to place the proxy username
+                    text: qsTr("Username:")
+                    color: proxyPalette.text
+
+                    Accessible.role: Accessible.StaticText
+                    Accessible.name: text
+                }
                 TextField {
                     id: proxyUsernameField
                     Layout.fillWidth: true
-                    enabled: setup.proxyType
+                    enabled: ["socks5", "https"].includes(setup.proxyType)
                     //: Textbox placeholder text indicating the field is not required
                     placeholderText: qsTr("Optional")
 
@@ -216,7 +252,7 @@ Column {
                 TextField {
                     id: proxyPasswordField
                     Layout.fillWidth: true
-                    enabled: setup.proxyType
+                    enabled: ["socks5", "https"].includes(setup.proxyType)
                     //: Textbox placeholder text indicating the field is not required
                     placeholderText: qsTr("Optional")
 
@@ -230,19 +266,26 @@ Column {
         }
     }
 
-    Item { height: 4; width: 1 }
-
     GroupBox {
         width: parent.width
-        // Workaround OS X visual bug
-        height: Math.max(implicitHeight, 40)
         title: "Firewall"
 
-        /* without this the top of groupbox clips into the first row */
         ColumnLayout {
-            anchors.fill: parent
+            width: parent.width
+
+            Label {
+                text: qsTr("Does your computer go through a firewall that only allows connections to certain ports?")
+                wrapMode: Text.Wrap
+                Layout.fillWidth: true
+                Layout.topMargin: 4
+                Layout.bottomMargin: 8
+
+                Accessible.role: Accessible.StaticText
+                Accessible.name: qsTr("Firewall")
+            }
 
             RowLayout {
+                width: parent.width
                 Label {
                     //: Label indicating the textbox to place the allowed ports
                     text: qsTr("Allowed ports:")
@@ -266,22 +309,26 @@ Column {
         }
     }
 
-    Item { height: 4; width: 1 }
-
     GroupBox {
         width: parent.width
         title: "Bridges"
 
-        Column {
-            anchors.fill: parent
-            width: parent.width
-            // Stuffing the row layout into a column layout and inserting a bogus
-            // item prevents clipping on linux
-            Item { height: Qt.platform.os === "linux" ? 15 : 0 }
+        ColumnLayout {
+        width: parent.width
+
+            Label {
+                text: qsTr("Bridges help you access the Tor Network in places where Tor is blocked. Depending on where you are, one bridge may work better than another.")
+                wrapMode: Text.Wrap
+                Layout.fillWidth: true
+                Layout.topMargin: 4
+                Layout.bottomMargin: 8
+
+                Accessible.role: Accessible.StaticText
+                Accessible.name: qsTr("Bridges")
+            }
+
 
             RowLayout {
-                Layout.fillWidth: true
-
                 Label {
                     text: qsTr("Type:")
                 }
@@ -323,7 +370,7 @@ Column {
             Label {
                 visible: setup.bridgeType == "custom"
                 text: qsTr("Enter one or more bridge relays (one per line):")
-                width: parent.width
+                Layout.fillWidth: true
                 wrapMode: Text.Wrap
 
                 Accessible.role: Accessible.StaticText
@@ -333,8 +380,9 @@ Column {
             TextArea {
                 id: bridgeStringsField
                 visible: setup.bridgeType == "custom"
-                width: parent.width
-                height: allowedPortsField.height * 4;
+                Layout.fillWidth: true
+                Layout.minimumHeight: allowedPortsField.height * 4;
+                Layout.maximumHeight: allowedPortsField.height * 4;
                 wrapMode: TextEdit.NoWrap
                 textFormat: TextEdit.PlainText
                 tabChangesFocus: true
@@ -361,15 +409,19 @@ Column {
 
         Button {
             //: Button label for connecting to tor
-            text: qsTr("Connect")
+            text: qsTr("Save")
             isDefault: true
             enabled: (torControl.status == TorControl.Connected) && (setup.proxyType == "none" ? true : (proxyAddressField.text && (() => {const p = parseInt(proxyPortField.text); return p > 0 && p < 65536;})()))
             onClicked: {
-                setup.save()
+                setup.save();
+                window.back();
             }
 
             Accessible.name: text
-            Accessible.onPressAction: setup.save()
+            Accessible.onPressAction: {
+                setup.save();
+                window.back();
+            }
         }
     }
 }
