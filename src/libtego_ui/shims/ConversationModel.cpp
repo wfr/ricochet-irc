@@ -719,6 +719,13 @@ namespace shims
         }
 
         auto row = this->indexOfOutgoingMessage(messageId);
+        // irc clears the history very frequently, which can lead to outgoing messages
+        // disappearing before they're acknowledged. In the long run the irc branch
+        // should get rid off libtego_ui entirely. Until then simply
+        // ignore ACKs for unknown messages.
+        if (row == -1) {
+            return;
+        }
         Q_ASSERT(row >= 0);
 
         MessageData &data = messages[row];
