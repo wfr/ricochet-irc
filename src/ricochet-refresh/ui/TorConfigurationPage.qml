@@ -75,7 +75,6 @@ Column {
 
     function save() {
         var conf = {};
-        conf.disableNetwork = 1;
         conf.proxy = {};
         conf.proxy.type = proxyType;
         conf.proxy.address = proxyAddress;

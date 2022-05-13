@@ -31,18 +31,6 @@ namespace shims
         // generate own json to save to settings
         QJsonObject tor;
 
-        // disable network
-        if (auto it = config.find("disableNetwork"); it != config.end())
-        {
-            const auto disableNetwork = config.value("disableNetwork").toInt();
-            Q_ASSERT(disableNetwork == TEGO_FALSE || disableNetwork == TEGO_TRUE);
-
-            tego_tor_daemon_config_set_disable_network(
-                daemonConfig.get(),
-                static_cast<tego_bool_t>(disableNetwork),
-                tego::throw_on_error());
-        }
-
         // proxy
         if (auto proxyIt = config.find("proxy"); proxyIt != config.end())
         {
@@ -290,11 +278,21 @@ namespace shims
         return SettingsObject().read("tor").toObject();
     }
 
-    QObject* TorControl::beginBootstrap()
+    QObject* TorControl::beginBootstrap() try
     {
-        auto curentConfiguration = this->getConfiguration();
-        curentConfiguration["disableNetwork"] = TEGO_FALSE;
-        return this->setConfiguration(curentConfiguration);
+        tego_context_update_disable_network_flag(
+            context,
+            TEGO_FALSE,
+            tego::throw_on_error());
+
+        auto setConfigurationCommand = std::make_unique<TorControlCommand>();
+        QQmlEngine::setObjectOwnership(setConfigurationCommand.get(), QQmlEngine::CppOwnership);
+        this->m_setConfigurationCommand = setConfigurationCommand.release();
+
+        return this->m_setConfigurationCommand;
+    } catch (std::exception& ex) {
+        logger::println("Exception: {}", ex.what());
+        return nullptr;
     }
 
     QList<QString> TorControl::getBridgeTypes()

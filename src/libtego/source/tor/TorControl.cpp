@@ -492,7 +492,6 @@ void TorControlPrivate::updateBootstrap(const QList<QByteArray> &data)
         progress,
         tag);
 
-    qDebug() << bootstrapStatus;
     emit q->bootstrapStatusChanged();
 }
 

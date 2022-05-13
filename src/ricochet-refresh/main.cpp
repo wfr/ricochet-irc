@@ -131,8 +131,6 @@ int main(int argc, char *argv[]) try
 
                 // send configuration down to tor daemon
                 auto networkSettings = SettingsObject().read("tor").toObject();
-                networkSettings["disableNetwork"] = TEGO_TRUE;
-
                 shims::TorControl::torControl->setConfiguration(networkSettings);
 
                 // start up our onion service
