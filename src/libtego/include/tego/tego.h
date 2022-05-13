@@ -487,19 +487,6 @@ void tego_tor_daemon_config_initialize(
     tego_error_t** error);
 
 /*
- * Set the DisableNetwork flag (see Tor Manual :
- *  www.torproject.org/docs/tor-manual.html )
- *
- * @param config : config to update
- * @param disableNetwork : TEGO_TRUE or TEGO_FALSE
- * @param error : filled on error
- */
-void tego_tor_daemon_config_set_disable_network(
-    tego_tor_daemon_config_t* config,
-    tego_bool_t disableNetwork,
-    tego_error_t** error);
-
-/*
  * Set up SOCKS4 proxy params, overwrites any existing
  * proxy settings
  *
@@ -620,6 +607,19 @@ void tego_tor_daemon_config_set_bridges(
 void tego_context_update_tor_daemon_config(
     tego_context_t* context,
     const tego_tor_daemon_config_t* torConfig,
+    tego_error_t** error);
+
+/*
+ * Set the DisableNetwork flag of running instance of tor associated
+ * with a given tego context
+ *
+ * @param context : the current tego context
+ * @param disableNetwork : TEGO_TRUE or TEGO_FALSE
+ * @param error : filled on error
+ */
+void tego_context_update_disable_network_flag(
+    tego_context_t* context,
+    tego_bool_t disableNetwork,
     tego_error_t** error);
 
 /*

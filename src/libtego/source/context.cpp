@@ -278,7 +278,6 @@ void tego_context::update_tor_daemon_config(const tego_tor_daemon_config_t* daem
     // init the tor settings we can modify here
     constexpr static auto configKeys =
     {
-        "DisableNetwork",
         "Socks4Proxy",
         "Socks5Proxy",
         "Socks5ProxyUsername",
@@ -292,11 +291,6 @@ void tego_context::update_tor_daemon_config(const tego_tor_daemon_config_t* daem
     for(const auto& currentKey : configKeys)
     {
         vm[currentKey] = "";
-    }
-
-    // set disable network flag
-    if (config.disableNetwork.has_value()) {
-        vm["DisableNetwork"] = (config.disableNetwork.value() ? "1" : "0");
     }
 
     // set proxy info
@@ -359,6 +353,14 @@ void tego_context::update_tor_daemon_config(const tego_tor_daemon_config_t* daem
         vm["Bridge"] = bridges;
         vm["UseBridges"] = "1";
     }
+
+    this->torControl->setConfiguration(vm);
+}
+
+void tego_context::update_disable_network_flag(bool disableNetwork)
+{
+    QVariantMap vm;
+    vm["DisableNetwork"] = (disableNetwork ? "1" : "0");
 
     this->torControl->setConfiguration(vm);
 }
@@ -963,6 +965,21 @@ extern "C"
             TEGO_THROW_IF_FALSE(context->threadId == std::this_thread::get_id());
 
             context->update_tor_daemon_config(torConfig);
+        }, error);
+    }
+
+    void tego_context_update_disable_network_flag(
+        tego_context_t* context,
+        tego_bool_t disableNetwork,
+        tego_error_t** error)
+    {
+        return tego::translateExceptions([=]() -> void
+        {
+            TEGO_THROW_IF_NULL(context);
+            TEGO_THROW_IF_FALSE(context->threadId == std::this_thread::get_id());
+            TEGO_THROW_IF_FALSE(disableNetwork == TEGO_TRUE || disableNetwork == TEGO_FALSE);
+
+            context->update_disable_network_flag(disableNetwork == TEGO_TRUE ? true : false);
         }, error);
     }
 
