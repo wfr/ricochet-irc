@@ -70,8 +70,6 @@ UserIdentity *UserIdentity::createIdentity(int uniqueID)
 // TODO: Handle the error cases of this function in a useful way
 void UserIdentity::setupService(const QString& serviceID)
 {
-    g_globals.context->set_host_user_state(tego_host_user_state_offline);
-
     QString keyData = serviceID;
 
     if (!keyData.isEmpty()) {
@@ -101,10 +99,7 @@ void UserIdentity::setupService(const QString& serviceID)
         );
     }
 
-    g_globals.context->set_host_user_state(tego_host_user_state_connecting);
-
     Q_ASSERT(m_hiddenService);
-    connect(m_hiddenService, SIGNAL(statusChanged(int,int)), SLOT(onStatusChanged(int,int)));
 
     m_incomingServer = new QTcpServer(this);
     if (!m_incomingServer->listen(QHostAddress::LocalHost, 0)) {
@@ -129,20 +124,6 @@ QString UserIdentity::hostname() const
 QString UserIdentity::contactID() const
 {
     return ContactIDValidator::idFromHostname(hostname());
-}
-
-void UserIdentity::onStatusChanged(int newStatus, int oldStatus)
-{
-    if (oldStatus == Tor::HiddenService::NotCreated && newStatus > oldStatus)
-    {
-        emit contactIDChanged();
-    }
-    emit statusChanged();
-}
-
-bool UserIdentity::isServiceOnline() const
-{
-    return m_hiddenService && m_hiddenService->status() == Tor::HiddenService::Online;
 }
 
 /* Handle an incoming connection to this service

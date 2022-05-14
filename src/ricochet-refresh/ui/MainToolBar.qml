@@ -16,7 +16,7 @@ ToolBar {
     data: [
         Action {
             id: addContactAction
-            enabled: userIdentity.isOnline
+            enabled: userIdentity.hostOnionServiceState != UserIdentity.HostOnionServiceState_None
             //: Tooltip text for the button that launches the dialog box for adding a new contact
             text: qsTr("Add Contact")
             onTriggered: {
@@ -92,7 +92,7 @@ ToolBar {
             id: addContactButton
             implicitHeight: 24
             action: addContactAction
-            style: userIdentity.isOnline ? iconButtonStyle : iconDisabledButtonStyle
+            style:  userIdentity.hostOnionServiceState == UserIdentity.HostOnionServiceState_None ? iconDisabledButtonStyle : iconButtonStyle
             text: "\ue810" // iconFont plus symbol
 
             Loader {
