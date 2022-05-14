@@ -36,6 +36,6 @@
         <file>utils.js</file>
     </qresource>
     <qresource prefix="/text">
-        <file>../../LICENSE</file>
+        <file>../../../LICENSE</file>
     </qresource>
 </RCC>
