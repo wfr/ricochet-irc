@@ -9,8 +9,6 @@ namespace shims
     UserIdentity::UserIdentity(tego_context_t* context_)
     : contacts(context_)
     , context(context_)
-    , online(false)
-
     { }
 
     void UserIdentity::createIncomingContactRequest(const QString& hostname, const QString& message)
@@ -47,12 +45,10 @@ namespace shims
 
     bool UserIdentity::isServiceOnline() const
     {
-        logger::trace();
+        auto state = tego_host_onion_service_state_none;
+        tego_context_get_host_onion_service_state(this->context, &state, tego::throw_on_error());
 
-        auto state = tego_host_user_state_unknown;
-        tego_context_get_host_user_state(this->context, &state, tego::throw_on_error());
-
-        return state == tego_host_user_state_online;
+        return state == tego_host_onion_service_state_service_published;
     }
 
     QString UserIdentity::contactID() const try
@@ -82,9 +78,16 @@ namespace shims
         return &contacts;
     }
 
-    void UserIdentity::setOnline(bool isOnline)
-    {
-        this->online = isOnline;
-        emit this->statusChanged();
+    void UserIdentity::setHostOnionServiceState(tego_host_onion_service_state_t state) {
+        TEGO_THROW_IF_FALSE(
+            state == tego_host_onion_service_state_none ||
+            state == tego_host_onion_service_state_service_added ||
+            state == tego_host_onion_service_state_service_published);
+
+        const auto newState = static_cast<UserIdentity::HostOnionServiceState>(state);
+        if (newState != this->hostOnionServiceState) {
+            this->hostOnionServiceState = newState;
+            emit this->hostOnionServiceStateChanged(newState);
+        }
     }
 }

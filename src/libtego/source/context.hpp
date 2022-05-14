@@ -36,9 +36,9 @@ public:
     void update_tor_daemon_config(const tego_tor_daemon_config_t* config);
     void update_disable_network_flag(bool disableNetwork);
     void save_tor_daemon_config();
-    void set_host_user_state(tego_host_user_state_t state);
+    void set_host_onion_service_state(tego_host_onion_service_state_t state);
     std::unique_ptr<tego_user_id_t> get_host_user_id() const;
-    tego_host_user_state_t get_host_user_state() const;
+    tego_host_onion_service_state_t get_host_onion_service_state() const;
     void send_chat_request(
         const tego_user_id_t* user,
         const char* message,
@@ -87,5 +87,5 @@ private:
 
     mutable std::string torVersion;
     mutable std::vector<std::string> torLogs;
-    tego_host_user_state_t hostUserState = tego_host_user_state_unknown;
+    tego_host_onion_service_state_t hostUserState = tego_host_onion_service_state_none;
 };

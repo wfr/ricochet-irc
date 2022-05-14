@@ -36,32 +36,20 @@
 #include "utils/CryptoKey.h"
 #include "utils/Useful.h"
 
+#include "globals.hpp"
+using tego::g_globals;
+
 using namespace Tor;
 
 HiddenService::HiddenService(QObject *parent)
-    : QObject(parent), m_status(NotCreated)
+    : QObject(parent)
 {
 }
 
 HiddenService::HiddenService(const CryptoKey &privateKey, QObject *parent)
-    : QObject(parent), m_status(NotCreated)
+    : QObject(parent)
 {
     setPrivateKey(privateKey);
-    m_status = Offline;
-}
-
-void HiddenService::setStatus(Status newStatus)
-{
-    if (m_status == newStatus)
-        return;
-
-    Status old = m_status;
-    m_status = newStatus;
-
-    emit statusChanged(m_status, old);
-
-    if (m_status == Online)
-        emit serviceOnline();
 }
 
 void HiddenService::addTarget(const Target &target)
@@ -92,14 +80,15 @@ void HiddenService::setPrivateKey(const CryptoKey &key)
     emit privateKeyChanged();
 }
 
-void HiddenService::servicePublished()
+void HiddenService::serviceAdded()
 {
     if (m_hostname.isEmpty()) {
         qDebug() << "Failed to read hidden service hostname";
         return;
     }
 
-    qDebug() << "Hidden service published successfully";
-    setStatus(Online);
+    g_globals.context->set_host_onion_service_state(tego_host_onion_service_state_service_added);
+
+    qDebug() << "Hidden service added successfully";
 }
 

@@ -77,7 +77,6 @@ public:
     ContactsManager *getContacts() { return &contacts; }
 
     /* State */
-    bool isServiceOnline() const;
     Tor::HiddenService *hiddenService() const { return m_hiddenService; }
 
     /* Take ownership of an inbound connection. Returns the shared pointer to
@@ -85,12 +84,9 @@ public:
     QSharedPointer<Protocol::Connection> takeIncomingConnection(Protocol::Connection *connection);
 
 signals:
-    void statusChanged();
-    void contactIDChanged(); // only possible during creation
     void incomingConnection(Protocol::Connection *connection);
 
 private slots:
-    void onStatusChanged(int newStatus, int oldStatus);
     void onIncomingConnection();
 
 private:

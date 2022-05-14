@@ -365,7 +365,7 @@ void tego_context::update_disable_network_flag(bool disableNetwork)
     this->torControl->setConfiguration(vm);
 }
 
-void tego_context::set_host_user_state(tego_host_user_state_t state)
+void tego_context::set_host_onion_service_state(tego_host_onion_service_state_t state)
 {
     if (state == hostUserState)
     {
@@ -373,7 +373,7 @@ void tego_context::set_host_user_state(tego_host_user_state_t state)
     }
 
     this->hostUserState = state;
-    this->callback_registry_.emit_host_user_state_changed(state);
+    this->callback_registry_.emit_host_onion_service_state_changed(state);
 }
 
 std::unique_ptr<tego_user_id_t> tego_context::get_host_user_id() const
@@ -387,7 +387,7 @@ std::unique_ptr<tego_user_id_t> tego_context::get_host_user_id() const
     return std::make_unique<tego_user_id_t>(serviceId);
 }
 
-tego_host_user_state_t tego_context::get_host_user_state() const
+tego_host_onion_service_state_t tego_context::get_host_onion_service_state() const
 {
     return this->hostUserState;
 }
@@ -938,9 +938,9 @@ extern "C"
         }, error);
     }
 
-    void tego_context_get_host_user_state(
+    void tego_context_get_host_onion_service_state(
         const tego_context_t* context,
-        tego_host_user_state_t* out_state,
+        tego_host_onion_service_state_t* out_state,
         tego_error_t** error)
     {
         return tego::translateExceptions([=]() -> void
@@ -949,7 +949,7 @@ extern "C"
             TEGO_THROW_IF_FALSE(context->threadId == std::this_thread::get_id());
             TEGO_THROW_IF_NULL(out_state);
 
-            auto state = context->get_host_user_state();
+            auto state = context->get_host_onion_service_state();
             *out_state = state;
         }, error);
     }

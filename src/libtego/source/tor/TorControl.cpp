@@ -89,6 +89,7 @@ public slots:
     void setError(const QString &message);
 
     void statusEvent(int code, const QByteArray &data);
+    void hsDescEvent(int code, const QByteArray &data);
     void updateBootstrap(const QList<QByteArray> &data);
 };
 
@@ -170,10 +171,6 @@ void TorControlPrivate::setTorStatus(TorControl::TorStatus n)
         {
             // Request info again to read the SOCKS port
             getTorInfo();
-        }
-        else
-        {
-            g_globals.context->set_host_user_state(tego_host_user_state_online);
         }
     }
 }
@@ -297,6 +294,9 @@ void TorControlPrivate::authenticateReply()
     TorControlCommand *clientEvents = new TorControlCommand;
     connect(clientEvents, &TorControlCommand::replyLine, this, &TorControlPrivate::statusEvent);
     socket->registerEvent("STATUS_CLIENT", clientEvents);
+    TorControlCommand *hsDescEvents = new TorControlCommand;
+    connect(hsDescEvents, &TorControlCommand::replyLine, this, &TorControlPrivate::hsDescEvent);
+    socket->registerEvent("HS_DESC", hsDescEvents);
 
     getTorInfo();
 }
@@ -380,7 +380,6 @@ void TorControlPrivate::getTorInfoReply()
 
     if (command->get(QByteArray("status/circuit-established")).toInt() == 1) {
         qDebug() << "torctrl: Tor indicates that circuits have been established; state is TorReady";
-        g_globals.context->set_host_user_state(tego_host_user_state_online);
         setTorStatus(TorControl::TorReady);
     } else {
         setTorStatus(TorControl::TorOffline);
@@ -420,7 +419,7 @@ void TorControlPrivate::publishService()
     else
         qDebug() << "torctrl: Publishing hidden service" << service->hostname();
     AddOnionCommand *onionCommand = new AddOnionCommand(service);
-    QObject::connect(onionCommand, &AddOnionCommand::succeeded, service, &HiddenService::servicePublished);
+    QObject::connect(onionCommand, &AddOnionCommand::succeeded, service, &HiddenService::serviceAdded);
     socket->sendCommand(onionCommand, onionCommand->build());
 }
 
@@ -467,6 +466,27 @@ void TorControlPrivate::statusEvent(int code, const QByteArray &data)
         tokens.takeFirst();
         updateBootstrap(tokens);
     }
+}
+
+void TorControlPrivate::hsDescEvent(int code, const QByteArray &data)
+{
+    Q_UNUSED(code);
+
+    QList<QByteArray> tokens = splitQuotedStrings(data.trimmed(), ' ');
+    if (tokens.size() < 3)
+        return;
+
+    if (service != nullptr) {
+        qDebug() << "hostname:" << service->serviceId();
+    }
+
+    if (service != nullptr &&
+        tokens[1] == "UPLOADED" && tokens[2] == service->serviceId()) {
+        qDebug() << "SERVICE PUBLISHED";
+        g_globals.context->set_host_onion_service_state(tego_host_onion_service_state_service_published);
+    }
+
+    qDebug() << "torctrl: hs_desc event:" << data.trimmed();
 }
 
 void TorControlPrivate::updateBootstrap(const QList<QByteArray> &data)

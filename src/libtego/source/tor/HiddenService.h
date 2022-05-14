@@ -54,19 +54,11 @@ public:
         quint16 servicePort, targetPort;
     };
 
-    enum Status
-    {
-        NotCreated = -1, /* Service has not been created yet */
-        Offline = 0, /* Data exists, but service is not published */
-        Online /* Published */
-    };
-
     HiddenService(QObject *parent = 0);
     HiddenService(const CryptoKey &privateKey, QObject *parent = 0);
 
-    Status status() const { return m_status; }
-
     const QString &hostname() const { return m_hostname; }
+    const QString serviceId() const { return m_hostname.left(TEGO_V3_ONION_SERVICE_ID_LENGTH); }
 
     CryptoKey privateKey() { return m_privateKey; }
     void setPrivateKey(const CryptoKey &privateKey);
@@ -76,20 +68,15 @@ public:
     void addTarget(quint16 servicePort, QHostAddress targetAddress, quint16 targetPort);
 
 signals:
-    void statusChanged(int newStatus, int oldStatus);
-    void serviceOnline();
     void privateKeyChanged();
 
 private slots:
-    void servicePublished();
+    void serviceAdded();
 
 private:
     QList<Target> m_targets;
     QString m_hostname;
-    Status m_status;
     CryptoKey m_privateKey;
-
-    void setStatus(Status newStatus);
 };
 
 }

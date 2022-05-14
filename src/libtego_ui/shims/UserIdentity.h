@@ -9,15 +9,24 @@ namespace shims
         Q_OBJECT
         Q_DISABLE_COPY(UserIdentity)
 
+        Q_ENUMS(HostOnionServiceState)
+
         // needed by createDialog("ContactRequestDialog.qml",...) in main.qml
         Q_PROPERTY(QList<QObject*> requests READ getRequests NOTIFY requestsChanged)
         // used in TorPreferences.qml
-        Q_PROPERTY(bool isOnline READ isServiceOnline NOTIFY statusChanged)
+        Q_PROPERTY(HostOnionServiceState hostOnionServiceState READ getHostOnionServiceState NOTIFY hostOnionServiceStateChanged)
         // this originally had a contactIDChanged signal
         Q_PROPERTY(QString contactID READ contactID CONSTANT)
         // needed in MainWindow.qml
         Q_PROPERTY(shims::ContactsManager *contacts READ getContacts CONSTANT)
     public:
+        enum HostOnionServiceState
+        {
+            HostOnionServiceState_None,
+            HostOnionServiceState_Added,
+            HostOnionServiceState_Published,
+        };
+
         UserIdentity(tego_context_t* context);
 
         void createIncomingContactRequest(const QString& hostname, const QString& message);
@@ -33,8 +42,13 @@ namespace shims
         shims::ContactsManager contacts;
 
         tego_context_t* getContext() { return context; }
+
+        void setHostOnionServiceState(tego_host_onion_service_state_t state);
+        HostOnionServiceState getHostOnionServiceState() const {return this->hostOnionServiceState;}
+
     signals:
-        void statusChanged();
+        void hostOnionServiceStateChanged(HostOnionServiceState newState);
+
         // used in main.qml
         void requestAdded(shims::IncomingContactRequest *request);
         void requestsChanged();
@@ -46,6 +60,6 @@ namespace shims
         QList<shims::IncomingContactRequest*> requests;
 
         tego_context_t *context;
-        bool online;
+        HostOnionServiceState hostOnionServiceState = HostOnionServiceState_None;
     };
 }

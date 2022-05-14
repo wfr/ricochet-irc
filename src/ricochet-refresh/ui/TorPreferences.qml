@@ -76,7 +76,14 @@ Item {
             }
             Label {
                 font.bold: true
-                text: (userIdentity.isOnline ? qsTr("Online") : qsTr("Offline"))
+                text: {
+                    switch(userIdentity.hostOnionServiceState) {
+                        case UserIdentity.HostOnionServiceState_None: return qsTr("Offline");
+                        case UserIdentity.HostOnionServiceState_Added: return qsTr("Added");
+                        case UserIdentity.HostOnionServiceState_Published: return qsTr("Online");
+			default: return qsTr("Unknown");
+                    }
+                }
 
                 Accessible.role: Accessible.StaticText
                 Accessible.name: text
