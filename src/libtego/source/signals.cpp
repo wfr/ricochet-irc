@@ -139,7 +139,7 @@ extern "C"
     TEGO_DEFINE_CALLBACK_SETTER(tor_network_status_changed)
     TEGO_DEFINE_CALLBACK_SETTER(tor_bootstrap_status_changed)
     TEGO_DEFINE_CALLBACK_SETTER(tor_log_received)
-    TEGO_DEFINE_CALLBACK_SETTER(host_user_state_changed)
+    TEGO_DEFINE_CALLBACK_SETTER(host_onion_service_state_changed)
     TEGO_DEFINE_CALLBACK_SETTER(chat_request_received)
     TEGO_DEFINE_CALLBACK_SETTER(chat_request_response_received)
     TEGO_DEFINE_CALLBACK_SETTER(message_received)

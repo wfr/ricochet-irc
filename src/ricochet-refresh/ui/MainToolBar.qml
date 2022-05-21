@@ -16,6 +16,7 @@ ToolBar {
     data: [
         Action {
             id: addContactAction
+            enabled: userIdentity.hostOnionServiceState != UserIdentity.HostOnionServiceState_None
             //: Tooltip text for the button that launches the dialog box for adding a new contact
             text: qsTr("Add Contact")
             onTriggered: {
@@ -32,6 +33,16 @@ ToolBar {
         }
     ]
 
+    SystemPalette {
+        id: paletteActive
+        colorGroup: SystemPalette.Active
+    }
+
+    SystemPalette {
+        id: paletteDisabled
+        colorGroup: SystemPalette.Disabled
+    }
+
     Component {
         id: iconButtonStyle
 
@@ -43,7 +54,23 @@ ToolBar {
                 font.pixelSize: height
                 horizontalAlignment: Qt.AlignHCenter
                 renderType: Text.QtRendering
-                color: "black"
+                color: paletteActive.text
+            }
+        }
+    }
+
+    Component {
+        id: iconDisabledButtonStyle
+
+        ButtonStyle {
+            background: Item { }
+            label: Text {
+                text: control.text
+                font.family: iconFont.name
+                font.pixelSize: height
+                horizontalAlignment: Qt.AlignHCenter
+                renderType: Text.QtRendering
+                color: paletteDisabled.text
             }
         }
     }
@@ -65,7 +92,7 @@ ToolBar {
             id: addContactButton
             implicitHeight: 24
             action: addContactAction
-            style: iconButtonStyle
+            style:  userIdentity.hostOnionServiceState == UserIdentity.HostOnionServiceState_None ? iconDisabledButtonStyle : iconButtonStyle
             text: "\ue810" // iconFont plus symbol
 
             Loader {

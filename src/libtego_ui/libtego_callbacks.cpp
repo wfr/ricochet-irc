@@ -276,8 +276,14 @@ namespace
         push_task([=]() -> void
         {
             logger::println("bootstrap status : {{ progress : {}, tag : {} }}", progress, static_cast<int>(tag));
+
+            auto tagSummary = tego_tor_bootstrap_tag_to_summary(
+                    tag,
+                    tego::throw_on_error());
+
             auto torControl = shims::TorControl::torControl;
-            emit torControl->bootstrapStatusChanged();
+            torControl->setBootstrapStatus(progress, tag, QString(tagSummary));
+
         });
     }
 
@@ -294,25 +300,14 @@ namespace
         });
     }
 
-    void on_host_user_state_changed(
+    void on_host_onion_service_state_changed(
         tego_context_t*,
-        tego_host_user_state_t state)
+        tego_host_onion_service_state_t state)
     {
-        logger::println("new host user state : {}", state);
         push_task([=]() -> void
         {
             auto userIdentity = shims::UserIdentity::userIdentity;
-            switch(state)
-            {
-                case tego_host_user_state_offline:
-                    userIdentity->setOnline(false);
-                    break;
-                case tego_host_user_state_online:
-                    userIdentity->setOnline(true);
-                    break;
-                default:
-                    break;
-            }
+            userIdentity->setHostOnionServiceState(state);
         });
     }
 
@@ -624,9 +619,9 @@ void init_libtego_callbacks(tego_context_t* context)
         &on_tor_log_received,
         tego::throw_on_error());
 
-    tego_context_set_host_user_state_changed_callback(
+    tego_context_set_host_onion_service_state_changed_callback(
         context,
-        &on_host_user_state_changed,
+        &on_host_onion_service_state_changed,
         tego::throw_on_error());
 
     tego_context_set_chat_request_received_callback(

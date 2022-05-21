@@ -51,7 +51,6 @@ public:
     class UserIdentity *createIdentity();
 
 signals:
-    void identityAdded(class UserIdentity *identity);
     void contactDeleted(class ContactUser *user, class UserIdentity *identity);
     void outgoingRequestAdded(class OutgoingContactRequest *request, class UserIdentity *identity);
     void incomingRequestAdded(class IncomingContactRequest *request, class UserIdentity *identity);

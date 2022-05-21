@@ -63,7 +63,7 @@ QtObject {
             return re
         }
 
-        if (torInstance.configurationNeeded) {
+        if (!torControl.hasBootstrappedSuccessfully) {
             var object = createDialog("NetworkSetupWizard.qml")
             object.networkReady.connect(function() {
                 mainWindow.visible = true
@@ -71,7 +71,22 @@ QtObject {
             })
             object.visible = true
         } else {
+            // auto forward to main screen
             mainWindow.visible = true
+            //  begin bootstrap once we have a control port connection
+            torControl.statusChanged.connect(function(newStatus, oldStatus) {
+                if (newStatus == TorControl.Connected) {
+                    let command = torControl.beginBootstrap();
+                    if (command != null) {
+                        command.finished.connect(function(successful)
+                        {
+                            if (!successful) {
+                                console.log("SETCONF error:", command.errorMessage)
+                            }
+                        });
+                    };
+                }
+            });
         }
     }
 
@@ -81,17 +96,6 @@ QtObject {
             function onRequestAdded(request) {
                 var object = createDialog("ContactRequestDialog.qml", { 'request': request })
                 object.visible = true
-            }
-        },
-
-        Connections {
-            target: torInstance
-            function onConfigurationNeededChanged() {
-                if (torInstance.configurationNeeded) {
-                    var object = createDialog("NetworkSetupWizard.qml", { 'modality': Qt.ApplicationModal }, mainWindow)
-                    object.networkReady.connect(function() { object.visible = false })
-                    object.visible = true
-                }
             }
         },
 

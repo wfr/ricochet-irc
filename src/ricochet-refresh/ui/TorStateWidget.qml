@@ -28,10 +28,10 @@ Label {
 
         if (torControl.torStatus === TorControl.TorReady) {
             // Indicates whether we've verified that the hidden services is connectable
-            if (userIdentity.isOnline)
-                return qsTr("Online")
-            else
-                return qsTr("Connected")
+            switch(userIdentity.hostUserState) {
+                default: return qsTr("Connected");
+                case UserIdentity.HostUserState_Published: return qsTr("Online");
+            }
         }
     }
 

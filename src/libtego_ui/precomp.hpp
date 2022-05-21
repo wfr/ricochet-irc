@@ -17,32 +17,25 @@
 #include <functional>
 #include <fstream>
 #include <iterator>
+#include <set>
+#include <random>
 
 // fmt
 #include <fmt/format.h>
 #include <fmt/ostream.h>
 
 // Qt
-
+#include <QClipboard>
 #include <QDateTime>
 #include <QDir>
-#ifdef ENABLE_GUI
-	#include <QClipboard>
-	#include <QFileDialog>
-	#include <QGuiApplication>
-	#include <QMessageBox>
-	#include <QPushButton>
-	#include <QQmlApplicationEngine>
-	#include <QQmlContext>
-	#include <QQmlEngine>
-	#include <QQmlNetworkAccessManagerFactory>
-	#include <QQuickItem>
-	#include <QRegularExpressionValidator>
-	#include <QScreen>
-	#include <QtQml>
-#else
-	#include "QRegularExpressionValidator.h"
-#endif
+#include <QFileDialog>
+#include <QGuiApplication>
+#include <QMessageBox>
+#include <QQuickItem>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
+#include <QScreen>
+#include <QtQml>
 #ifdef Q_OS_MAC
 #   include <QtMac>
 #endif // Q_OS_MAC

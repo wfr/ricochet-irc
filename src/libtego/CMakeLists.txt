@@ -167,8 +167,6 @@ add_library(
     source/tor/GetConfCommand.h
     source/tor/HiddenService.cpp
     source/tor/HiddenService.h
-    source/tor/ProtocolInfoCommand.cpp
-    source/tor/ProtocolInfoCommand.h
     source/tor/SetConfCommand.cpp
     source/tor/SetConfCommand.h
     source/tor/TorControl.cpp

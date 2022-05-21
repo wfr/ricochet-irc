@@ -68,8 +68,6 @@ void IdentityManager::addIdentity(UserIdentity *identity)
             SLOT(onIncomingRequest(IncomingContactRequest*)));
     connect(&identity->contacts.incomingRequests, SIGNAL(requestRemoved(IncomingContactRequest*)),
             SLOT(onIncomingRequestRemoved(IncomingContactRequest*)));
-
-    emit identityAdded(identity);
 }
 
 UserIdentity *IdentityManager::createIdentity()

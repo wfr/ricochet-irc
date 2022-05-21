@@ -1,4 +1,7 @@
 #include "TorControl.h"
+#include "utils/Settings.h"
+
+#include "pluggables.hpp"
 
 namespace shims
 {
@@ -8,163 +11,170 @@ namespace shims
     : context(context_)
     { }
 
+    // callable from QML
+    // see TorConfigurationPage.qml
     QObject* TorControl::setConfiguration(const QVariantMap &options)
     {
-        logger::trace();
+        QJsonObject json = QJsonObject::fromVariantMap(options);
+        return this->setConfiguration(json);
+    }
+
+    QObject* TorControl::setConfiguration(const QJsonObject &config) try
+    {
         Q_ASSERT(this->m_setConfigurationCommand == nullptr);
-
-        // create command shim yuck
-        auto setConfigurationCommand = new TorControlCommand();
-
-#ifdef ENABLE_GUI
-        QQmlEngine::setObjectOwnership(setConfigurationCommand, QQmlEngine::CppOwnership);
-#endif
-
-        this->m_setConfigurationCommand = setConfigurationCommand;
 
         std::unique_ptr<tego_tor_daemon_config_t> daemonConfig;
         tego_tor_daemon_config_initialize(
             tego::out(daemonConfig),
             tego::throw_on_error());
 
-        //
-        // see TorConfigurationPage.xml
-        //
-
-        // disable network
-        if (auto it = options.find("disableNetwork"); it != options.end())
-        {
-            const auto disableNetwork = options.value("disableNetwork").toInt();
-            Q_ASSERT(disableNetwork == TEGO_FALSE || disableNetwork == TEGO_TRUE);
-
-            tego_tor_daemon_config_set_disable_network(
-                daemonConfig.get(),
-                static_cast<tego_bool_t>(disableNetwork),
-                tego::throw_on_error());
-        }
+        // generate own json to save to settings
+        QJsonObject tor;
 
         // proxy
-        if (auto it = options.find("proxyType"); it != options.end() && *it != "")
+        if (auto proxyIt = config.find("proxy"); proxyIt != config.end())
         {
-            Q_ASSERT(options.contains("proxyAddress"));
-            Q_ASSERT(options.contains("proxyPort"));
+            auto proxyObj = proxyIt->toObject();
+            auto typeIt = proxyObj.find("type");
+            TEGO_THROW_IF_EQUAL(typeIt, proxyObj.end());
 
-            // we always need these params
-            const auto proxyAddress = options.value("proxyAddress").toString().toUtf8();
-            const auto proxyPort = options.value("proxyPort").toInt();
-
-            // ensure vali proxy type
-            const auto& proxyType = *it;
-            Q_ASSERT(proxyType == "socks4" || proxyType == "socks5" || proxyType == "https");
-
-            // handle socks4
-            if (proxyType == "socks4") {
-
-                Q_ASSERT(proxyPort > 0 && proxyPort < 65536);
-
-                tego_tor_daemon_config_set_proxy_socks4(
-                    daemonConfig.get(),
-                    proxyAddress.data(),
-                    static_cast<size_t>(proxyAddress.size()),
-                    static_cast<uint16_t>(proxyPort),
-                    tego::throw_on_error());
-            }
-            // handle socks5 and https
-            else if (proxyType == "socks5" || proxyType == "https")
+            auto typeString = typeIt->toString().toStdString();
+            if (typeString != "none")
             {
-                Q_ASSERT(options.contains("proxyUsername"));
-                Q_ASSERT(options.contains("proxyPassword"));
+                TEGO_THROW_IF_FALSE(
+                    typeString == "socks4" ||
+                    typeString == "socks5" ||
+                    typeString == "https");
 
-                const auto proxyUsername = options.value("proxyUsername").toString().toUtf8();
-                const auto proxyPassword = options.value("proxyPassword").toString().toUtf8();
+                auto addressIt = proxyObj.find("address");
+                TEGO_THROW_IF_EQUAL(addressIt, proxyObj.end());
+                auto addressQString = addressIt->toString();
+                auto address = addressQString.toStdString();
+                TEGO_THROW_IF(address.size() == 0);
 
-                if (proxyType == "socks5")
+                auto portIt = proxyObj.find("port");
+                TEGO_THROW_IF_EQUAL(portIt, proxyObj.end());
+                auto port = portIt->toInt();
+                TEGO_THROW_IF_FALSE(port > 0 && port < 65536);
+
+                QJsonObject proxy;
+                proxy["address"] = addressQString;
+                proxy["port"] = port;
+
+                if (typeString == "socks4")
                 {
-                    tego_tor_daemon_config_set_proxy_socks5(
+                    tego_tor_daemon_config_set_proxy_socks4(
                         daemonConfig.get(),
-                        proxyAddress.data(),
-                        static_cast<size_t>(proxyAddress.size()),
-                        static_cast<uint16_t>(proxyPort),
-                        proxyUsername.data(),
-                        static_cast<size_t>(proxyUsername.size()),
-                        proxyPassword.data(),
-                        static_cast<size_t>(proxyPassword.size()),
+                        address.data(),
+                        address.size(),
+                        static_cast<uint16_t>(port),
                         tego::throw_on_error());
+
+                    proxy["type"] = "socks4";
                 }
-                else if (proxyType == "https")
+                else
                 {
-                    tego_tor_daemon_config_set_proxy_https(
-                        daemonConfig.get(),
-                        proxyAddress.data(),
-                        static_cast<size_t>(proxyAddress.size()),
-                        static_cast<uint16_t>(proxyPort),
-                        proxyUsername.data(),
-                        static_cast<size_t>(proxyUsername.size()),
-                        proxyPassword.data(),
-                        static_cast<size_t>(proxyPassword.size()),
-                        tego::throw_on_error());
+                    auto usernameIt = proxyObj.find("username");
+                    auto passwordIt = proxyObj.find("password");
+
+                    auto usernameQString = (usernameIt == proxyObj.end()) ? QString() : usernameIt->toString();
+                    auto passwordQString = (passwordIt == proxyObj.end()) ? QString() : passwordIt->toString();
+                    auto username = usernameQString.toStdString();
+                    auto password = passwordQString.toStdString();
+
+                    proxy["username"] = usernameQString;
+                    proxy["password"] = passwordQString;
+
+                    if (typeString == "socks5")
+                    {
+                        tego_tor_daemon_config_set_proxy_socks5(
+                            daemonConfig.get(),
+                            address.data(),
+                            address.size(),
+                            static_cast<uint16_t>(port),
+                            username.data(),
+                            username.size(),
+                            password.data(),
+                            password.size(),
+                            tego::throw_on_error());
+
+                        proxy["type"] = "socks5";
+
+                    }
+                    else
+                    {
+                        TEGO_THROW_IF_FALSE(typeString == "https");
+                        tego_tor_daemon_config_set_proxy_https(
+                            daemonConfig.get(),
+                            address.data(),
+                            address.size(),
+                            static_cast<uint16_t>(port),
+                            username.data(),
+                            username.size(),
+                            password.data(),
+                            password.size(),
+                            tego::throw_on_error());
+
+                        proxy["type"] = "https";
+                    }
                 }
+                tor["proxy"] = proxy;
             }
         }
-
-        // allowed ports
-        if (auto it = options.find("allowedPorts"); it != options.end())
+        // firewall
+        if (auto allowedPortsIt = config.find("allowedPorts"); allowedPortsIt != config.end())
         {
-            auto portList = it->toList();
+            auto allowedPortsArray = allowedPortsIt->toArray();
 
-            if (portList.size() > 0)
-            {
-                std::vector<uint16_t> ports;
-                ports.reserve(static_cast<size_t>(portList.size()));
+            std::vector<uint16_t> allowedPorts;
+            for(auto value : allowedPortsArray) {
+                auto port = value.toInt();
+                TEGO_THROW_IF_FALSE(port > 0 && port < 65536);
 
-                // convert port list
-                for(const auto& v : portList)
+                // don't add duplicates
+                if (std::find(allowedPorts.begin(), allowedPorts.end(), port) == allowedPorts.end())
                 {
-                    auto currentPort = v.toInt();
-                    Q_ASSERT(currentPort > 0 && currentPort < 65536);
-                    ports.push_back(static_cast<uint16_t>(currentPort));
+                    allowedPorts.push_back(static_cast<uint16_t>(port));
                 }
+            }
+            std::sort(allowedPorts.begin(), allowedPorts.end());
 
+            if (allowedPorts.size() > 0)
+            {
                 tego_tor_daemon_config_set_allowed_ports(
                     daemonConfig.get(),
-                    ports.data(),
-                    ports.size(),
+                    allowedPorts.data(),
+                    allowedPorts.size(),
                     tego::throw_on_error());
+
+                tor["allowedPorts"] = ([&]() -> QJsonArray {
+                    QJsonArray retval;
+                    for(auto port : allowedPorts) {
+                        retval.push_back(port);
+                    }
+                    return retval;
+                })();
             }
         }
-
         // bridges
-        if (auto it = options.find("bridges"); it != options.end())
+        if (auto bridgeTypeIt = config.find("bridgeType"); bridgeTypeIt != config.end() && *bridgeTypeIt != "none")
         {
-            // get the bridge list
-            auto bridgeList = it->toList();
+            auto bridgeType = bridgeTypeIt->toString();
 
-            if (bridgeList.size() > 0)
-            {
-                // convert the bridges to strings
-                std::vector<std::string> bridgeStrings;
-                bridgeStrings.reserve(static_cast<size_t>(bridgeList.size()));
+            // sets list of bridge strings
+            const auto tegoTorDaemonConfigSetBridges = [&](const std::vector<std::string>& bridgeStrings) -> void {
 
-                // create a vector of said strings, so that the raw pointers have a lifetime for the rest of this scope
-                for(auto& v : bridgeList)
-                {
-                    auto currentBridge = v.toString();
-                    bridgeStrings.push_back(currentBridge.toStdString());
-                }
-                const size_t bridgeCount = bridgeStrings.size();
+                // convert strings to std::string
+                const auto bridgeCount = static_cast<size_t>(bridgeStrings.size());
 
-                // copy over raw
-                auto rawBridges = std::make_unique<char* []>(bridgeCount);
+                // allocate buffers to pass to tego
+                auto rawBridges = std::make_unique<const char* []>(bridgeCount);
                 auto rawBridgeLengths = std::make_unique<size_t[]>(bridgeCount);
 
-                std::fill(rawBridges.get(), rawBridges.get() + bridgeCount, nullptr);
-                std::fill(rawBridgeLengths.get(), rawBridgeLengths.get()+ bridgeCount, 0);
-
-                for(size_t i = 0; i < bridgeStrings.size(); ++i)
-                {
-                    const auto& currentBridgeString = bridgeStrings[i];
-                    rawBridges[i] = const_cast<char*>(currentBridgeString.data());
-                    rawBridgeLengths[i] = currentBridgeString.size();
+                for(size_t i = 0; i < bridgeCount; ++i) {
+                    const auto& bridgeString = bridgeStrings[i];
+                    rawBridges[i] = bridgeString.c_str();
+                    rawBridgeLengths[i] = bridgeString.size();
                 }
 
                 tego_tor_daemon_config_set_bridges(
@@ -173,15 +183,133 @@ namespace shims
                     rawBridgeLengths.get(),
                     bridgeCount,
                     tego::throw_on_error());
+            };
+
+            if (bridgeType == "custom")
+            {
+                auto bridgeStringsIt = config.find("bridgeStrings");
+                TEGO_THROW_IF_EQUAL(bridgeStringsIt, config.end());
+
+                std::vector<std::string> bridgeStrings;
+                QJsonArray bridgeStringsArray;
+                for(auto entry : bridgeStringsIt->toArray()) {
+                    auto bridgeString = entry.toString();
+                    logger::println("adding: {}", bridgeString);
+                    bridgeStrings.push_back(bridgeString.toStdString());
+                    bridgeStringsArray.push_back(bridgeString);
+                }
+                tegoTorDaemonConfigSetBridges(bridgeStrings);
+
+                tor["bridgeType"] = "custom";
+                tor["bridgeStrings"] = bridgeStringsArray;
+            }
+            else if (auto bridgeStrings = this->getBridgeStringsForType(bridgeType);
+                     bridgeStrings.size() > 0)
+            {
+                // ensure the bridges are ordered randomly per user to distribute to all users evenly
+                // but keep the seed per user consistent so their individual experience is consistent
+                auto seedJson = SettingsObject().read("tor.seed");
+                uint32_t seed = 0;
+
+                // ensure the signed -> unsigned conversion does as we expect
+                typedef decltype(seedJson.toInt()) json_int_t;
+                static_assert(std::numeric_limits<json_int_t>::max() <= std::numeric_limits<uint32_t>::max());
+
+                if (auto val = seedJson.toInt(-1); val >= 0)
+                {
+                    seed = static_cast<uint32_t>(val);
+                }
+                else
+                {
+                    // fill seed w/ random bytes
+                    tego_get_random_bytes(
+                        this->context,
+                        reinterpret_cast<uint8_t*>(&seed),
+                        sizeof(seed),
+                        tego::throw_on_error());
+
+                    // now ensure we can save this value as an json_int_t
+                    seed = seed % static_cast<uint32_t>(std::numeric_limits<json_int_t>::max());
+                }
+
+                // save seed to settings
+                tor["seed"] = static_cast<json_int_t>(seed);
+
+                // shuffle the bridge list so that users don't all select the first one
+                std::minstd_rand rand;
+                rand.seed(seed);
+                std::shuffle(bridgeStrings.begin(), bridgeStrings.end(), rand);
+
+                tegoTorDaemonConfigSetBridges(bridgeStrings);
+                tor["bridgeType"] = bridgeType;
             }
         }
-
         tego_context_update_tor_daemon_config(
             context,
             daemonConfig.get(),
             tego::throw_on_error());
 
+        // after config is confirmed updated then save our settings
+        auto setConfigurationCommand = std::make_unique<TorControlCommand>();
+        QQmlEngine::setObjectOwnership(setConfigurationCommand.get(), QQmlEngine::CppOwnership);
+
+        this->m_setConfigurationCommand = setConfigurationCommand.release();
+        connect(
+            this->m_setConfigurationCommand,
+            &shims::TorControlCommand::finished,
+            [tor=std::move(tor)](bool successful) -> void {
+                SettingsObject settings;
+                // only persist settings if config was set successfully
+                if (successful) {
+                    settings.write("tor", tor);
+                } else {
+                    settings.unset("tor");
+                }
+            });
+
         return this->m_setConfigurationCommand;
+    } catch (std::exception& ex) {
+        logger::println("Exception: {}", ex.what());
+        return nullptr;
+    }
+
+    QJsonObject TorControl::getConfiguration()
+    {
+        return SettingsObject().read("tor").toObject();
+    }
+
+    QObject* TorControl::beginBootstrap() try
+    {
+        tego_context_update_disable_network_flag(
+            context,
+            TEGO_FALSE,
+            tego::throw_on_error());
+
+        auto setConfigurationCommand = std::make_unique<TorControlCommand>();
+        QQmlEngine::setObjectOwnership(setConfigurationCommand.get(), QQmlEngine::CppOwnership);
+        this->m_setConfigurationCommand = setConfigurationCommand.release();
+
+        return this->m_setConfigurationCommand;
+    } catch (std::exception& ex) {
+        logger::println("Exception: {}", ex.what());
+        return nullptr;
+    }
+
+    QList<QString> TorControl::getBridgeTypes()
+    {
+        auto types = defaultBridges.keys();
+        if (auto it = std::find(types.begin(), types.end(), recommendedBridgeType); it != types.end()) {
+            std::iter_swap(it, types.begin());
+        }
+        return types;
+    }
+
+    std::vector<std::string> TorControl::getBridgeStringsForType(const QString &bridgeType)
+    {
+        if (auto it = defaultBridges.find(bridgeType); it != defaultBridges.end()) {
+            return *it;
+        }
+        return {};
     }
 
     // for now we just assume we always have ownership,
@@ -193,12 +321,10 @@ namespace shims
         return true;
     }
 
-    void TorControl::saveConfiguration()
+    bool TorControl::hasBootstrappedSuccessfully() const
     {
-        logger::trace();
-        tego_context_save_tor_daemon_config(
-            context,
-            tego::throw_on_error());
+        auto value= SettingsObject().read("tor.bootstrappedSuccessfully");
+        return value.isBool() ? value.toBool() : false;
     }
 
     QString TorControl::torVersion() const
@@ -229,7 +355,6 @@ namespace shims
             &status,
             tego::throw_on_error());
 
-        logger::trace();
         switch(status)
         {
             case tego_tor_network_status_unknown:
@@ -246,29 +371,9 @@ namespace shims
     QVariantMap TorControl::bootstrapStatus() const
     {
         QVariantMap retval;
-        try
-        {
-            int32_t progress;
-            tego_tor_bootstrap_tag_t tag;
-            tego_context_get_tor_bootstrap_status(
-                context,
-                &progress,
-                &tag,
-                tego::throw_on_error());
-
-            auto tagSummary = tego_tor_bootstrap_tag_to_summary(
-                    tag,
-                    tego::throw_on_error());
-
-            retval["severity"] = "mock severity";
-            retval["progress"] = progress;
-            retval["tag"] = (tag == tego_tor_bootstrap_tag_done) ? "done" : "mock_tag";
-            retval["summary"] = QString(tagSummary);
-        }
-        catch(const std::exception& ex)
-        {
-            logger::println("Exception thrown : {}", ex.what());
-        }
+        retval["progress"] = this->m_bootstrapProgress;
+        retval["done"] = (this->m_bootstrapTag == tego_tor_bootstrap_tag_done);
+        retval["summary"] = this->m_bootstrapSummary;
         return retval;
     }
 
@@ -303,5 +408,19 @@ namespace shims
     {
         m_errorMessage = msg;
         this->setStatus(TorControl::Error);
+    }
+
+    void TorControl::setBootstrapStatus(int32_t progress, tego_tor_bootstrap_tag_t tag, QString&& summary)
+    {
+        TEGO_THROW_IF_FALSE(progress >= 0 && progress <= 100);
+        this->m_bootstrapProgress = static_cast<int>(progress);
+        this->m_bootstrapTag = tag;
+        this->m_bootstrapSummary = std::move(summary);
+
+        emit torControl->bootstrapStatusChanged();
+
+        if (tag == tego_tor_bootstrap_tag_done) {
+            SettingsObject().write("tor.bootstrappedSuccessfully", true);
+        }
     }
 }

@@ -76,7 +76,14 @@ Item {
             }
             Label {
                 font.bold: true
-                text: (userIdentity.isOnline ? qsTr("Online") : qsTr("Offline"))
+                text: {
+                    switch(userIdentity.hostOnionServiceState) {
+                        case UserIdentity.HostOnionServiceState_None: return qsTr("Offline");
+                        case UserIdentity.HostOnionServiceState_Added: return qsTr("Added");
+                        case UserIdentity.HostOnionServiceState_Published: return qsTr("Online");
+			default: return qsTr("Unknown");
+                    }
+                }
 
                 Accessible.role: Accessible.StaticText
                 Accessible.name: text
@@ -103,7 +110,7 @@ Item {
 
         Label {
             text: bootstrap.summary
-            visible: bootstrap.tag !== 'done'
+            visible: bootstrap.done
         }
 
         ProgressBar {
@@ -111,7 +118,7 @@ Item {
             maximumValue: 100
             indeterminate: bootstrap.progress === undefined
             value: bootstrap.progress === undefined ? 0 : bootstrap.progress
-            visible: bootstrap.tag !== 'done'
+            visible: bootstrap.done
         }
 
         Label {

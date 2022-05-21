@@ -70,8 +70,6 @@ UserIdentity *UserIdentity::createIdentity(int uniqueID)
 // TODO: Handle the error cases of this function in a useful way
 void UserIdentity::setupService(const QString& serviceID)
 {
-    g_globals.context->set_host_user_state(tego_host_user_state_offline);
-
     QString keyData = serviceID;
 
     if (!keyData.isEmpty()) {
@@ -101,18 +99,10 @@ void UserIdentity::setupService(const QString& serviceID)
         );
     }
 
-    g_globals.context->set_host_user_state(tego_host_user_state_connecting);
-
     Q_ASSERT(m_hiddenService);
-    connect(m_hiddenService, SIGNAL(statusChanged(int,int)), SLOT(onStatusChanged(int,int)));
-
-    // Generally, these are not used, and we bind to localhost and port 0
-    // for an automatic (and portable) selection.
-    QHostAddress address = QHostAddress::LocalHost;
-    quint16 port = 0;
 
     m_incomingServer = new QTcpServer(this);
-    if (!m_incomingServer->listen(address, port)) {
+    if (!m_incomingServer->listen(QHostAddress::LocalHost, 0)) {
         // XXX error case
         qWarning() << "Failed to open incoming socket:" << m_incomingServer->errorString();
         return;
@@ -121,7 +111,9 @@ void UserIdentity::setupService(const QString& serviceID)
     connect(m_incomingServer, &QTcpServer::newConnection, this, &UserIdentity::onIncomingConnection);
 
     m_hiddenService->addTarget(9878, m_incomingServer->serverAddress(), m_incomingServer->serverPort());
-    g_globals.context->torControl->addHiddenService(m_hiddenService);
+
+    g_globals.context->torControl->setHiddenService(m_hiddenService);
+    g_globals.context->torControl->publishHiddenService();
 }
 
 QString UserIdentity::hostname() const
@@ -132,20 +124,6 @@ QString UserIdentity::hostname() const
 QString UserIdentity::contactID() const
 {
     return ContactIDValidator::idFromHostname(hostname());
-}
-
-void UserIdentity::onStatusChanged(int newStatus, int oldStatus)
-{
-    if (oldStatus == Tor::HiddenService::NotCreated && newStatus > oldStatus)
-    {
-        emit contactIDChanged();
-    }
-    emit statusChanged();
-}
-
-bool UserIdentity::isServiceOnline() const
-{
-    return m_hiddenService && m_hiddenService->status() == Tor::HiddenService::Online;
 }
 
 /* Handle an incoming connection to this service

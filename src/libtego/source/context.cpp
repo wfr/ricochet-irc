@@ -13,6 +13,7 @@ using tego::g_globals;
 #include "core/UserIdentity.h"
 #include "core/ContactUser.h"
 #include "core/ConversationModel.h"
+#include "utils/SecureRNG.h"
 
 //
 // Tego Context
@@ -34,13 +35,6 @@ void tego_context::start_tor(const tego_tor_launch_config_t* config)
 
     this->torManager->setDataDirectory(config->dataDirectory.data());
     this->torManager->start();
-}
-
-bool tego_context::get_tor_daemon_configured() const
-{
-    TEGO_THROW_IF_NULL(this->torManager);
-
-    return !this->torManager->configurationNeeded();
 }
 
 size_t tego_context::get_tor_logs_size() const
@@ -159,7 +153,7 @@ tego_tor_bootstrap_tag_t tego_context::get_tor_bootstrap_tag() const
         "requesting_descriptors",
         "loading_descriptors",
         "enough_dirinfo",
-        "ap_conn_pt_summary",
+        "ap_conn_pt",
         "ap_conn_done_pt",
         "ap_conn_proxy",
         "ap_conn_done_proxy",
@@ -284,7 +278,6 @@ void tego_context::update_tor_daemon_config(const tego_tor_daemon_config_t* daem
     // init the tor settings we can modify here
     constexpr static auto configKeys =
     {
-        "DisableNetwork",
         "Socks4Proxy",
         "Socks5Proxy",
         "Socks5ProxyUsername",
@@ -298,11 +291,6 @@ void tego_context::update_tor_daemon_config(const tego_tor_daemon_config_t* daem
     for(const auto& currentKey : configKeys)
     {
         vm[currentKey] = "";
-    }
-
-    // set disable network flag
-    if (config.disableNetwork.has_value()) {
-        vm["DisableNetwork"] = (config.disableNetwork.value() ? "1" : "0");
     }
 
     // set proxy info
@@ -369,14 +357,15 @@ void tego_context::update_tor_daemon_config(const tego_tor_daemon_config_t* daem
     this->torControl->setConfiguration(vm);
 }
 
-void tego_context::save_tor_daemon_config()
+void tego_context::update_disable_network_flag(bool disableNetwork)
 {
-    TEGO_THROW_IF_NULL(this->torControl);
-    logger::trace();
-    this->torControl->saveConfiguration();
+    QVariantMap vm;
+    vm["DisableNetwork"] = (disableNetwork ? "1" : "0");
+
+    this->torControl->setConfiguration(vm);
 }
 
-void tego_context::set_host_user_state(tego_host_user_state_t state)
+void tego_context::set_host_onion_service_state(tego_host_onion_service_state_t state)
 {
     if (state == hostUserState)
     {
@@ -384,7 +373,7 @@ void tego_context::set_host_user_state(tego_host_user_state_t state)
     }
 
     this->hostUserState = state;
-    this->callback_registry_.emit_host_user_state_changed(state);
+    this->callback_registry_.emit_host_onion_service_state_changed(state);
 }
 
 std::unique_ptr<tego_user_id_t> tego_context::get_host_user_id() const
@@ -398,7 +387,7 @@ std::unique_ptr<tego_user_id_t> tego_context::get_host_user_id() const
     return std::make_unique<tego_user_id_t>(serviceId);
 }
 
-tego_host_user_state_t tego_context::get_host_user_state() const
+tego_host_onion_service_state_t tego_context::get_host_onion_service_state() const
 {
     return this->hostUserState;
 }
@@ -676,6 +665,22 @@ ContactUser* tego_context::getContactUser(tego_user_id_t const* user) const
 
 extern "C"
 {
+    void tego_get_random_bytes(
+        tego_context_t* context,
+        uint8_t* dest,
+        size_t count,
+        tego_error_t** error)
+    {
+        return tego::translateExceptions([=]() mutable -> void
+        {
+            TEGO_THROW_IF_NULL(context);
+            TEGO_THROW_IF_NULL(dest);
+            TEGO_THROW_IF_FALSE(count <= std::numeric_limits<int>::max());
+
+            SecureRNG::random(reinterpret_cast<char*>(dest), static_cast<int>(count));
+        }, error);
+    }
+
     // Bootstrap Tag
 
     const char* tego_tor_bootstrap_tag_to_summary(
@@ -736,26 +741,6 @@ extern "C"
             TEGO_THROW_IF_FALSE(context->threadId == std::this_thread::get_id());
 
             context->start_tor(launchConfig);
-        }, error);
-    }
-
-    void tego_context_get_tor_daemon_configured(
-        const tego_context_t* context,
-        tego_bool_t* out_configured,
-        tego_error_t** error)
-    {
-        return tego::translateExceptions([=]() -> void
-        {
-            TEGO_THROW_IF_NULL(context);
-            TEGO_THROW_IF_FALSE(context->threadId == std::this_thread::get_id());
-            TEGO_THROW_IF_NULL(out_configured);
-
-            *out_configured = TEGO_FALSE;
-
-            if(context->get_tor_daemon_configured())
-            {
-                *out_configured = TEGO_TRUE;
-            }
         }, error);
     }
 
@@ -953,9 +938,9 @@ extern "C"
         }, error);
     }
 
-    void tego_context_get_host_user_state(
+    void tego_context_get_host_onion_service_state(
         const tego_context_t* context,
-        tego_host_user_state_t* out_state,
+        tego_host_onion_service_state_t* out_state,
         tego_error_t** error)
     {
         return tego::translateExceptions([=]() -> void
@@ -964,7 +949,7 @@ extern "C"
             TEGO_THROW_IF_FALSE(context->threadId == std::this_thread::get_id());
             TEGO_THROW_IF_NULL(out_state);
 
-            auto state = context->get_host_user_state();
+            auto state = context->get_host_onion_service_state();
             *out_state = state;
         }, error);
     }
@@ -983,16 +968,18 @@ extern "C"
         }, error);
     }
 
-    void tego_context_save_tor_daemon_config(
+    void tego_context_update_disable_network_flag(
         tego_context_t* context,
+        tego_bool_t disableNetwork,
         tego_error_t** error)
     {
         return tego::translateExceptions([=]() -> void
         {
             TEGO_THROW_IF_NULL(context);
             TEGO_THROW_IF_FALSE(context->threadId == std::this_thread::get_id());
+            TEGO_THROW_IF_FALSE(disableNetwork == TEGO_TRUE || disableNetwork == TEGO_FALSE);
 
-            context->save_tor_daemon_config();
+            context->update_disable_network_flag(disableNetwork == TEGO_TRUE ? true : false);
         }, error);
     }
 

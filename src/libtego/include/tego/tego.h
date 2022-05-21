@@ -51,6 +51,24 @@ void tego_uninitialize(
     tego_error_t** error);
 
 /*
+ * Utility functions
+ */
+
+/*
+ * Get random bytes from tego's secure random implementation
+ *
+ * @param context: the current tego context
+ * @param dest: buffer to write random bytes to
+ * @param count: the number of bytes to write
+ * @param error: filled on error
+ */
+void tego_get_random_bytes(
+    tego_context_t* context,
+    uint8_t* dest,
+    size_t count,
+    tego_error_t** error);
+
+/*
  * v3 onion/ed25519 functionality
  */
 
@@ -313,27 +331,24 @@ void tego_context_get_host_user_id(
     tego_user_id_t** out_hostUser,
     tego_error_t** error);
 
-// state of the host user, encapsulates all of the tor daemon launch,
-// network connection, and onion service creation into 'connecting'
-// TODO: squish these into the tego_user_status_t ?
+// state of the host user's onion service
 typedef enum
 {
-    tego_host_user_state_unknown,
-    tego_host_user_state_offline,
-    tego_host_user_state_connecting,
-    tego_host_user_state_online,
-} tego_host_user_state_t;
+    tego_host_onion_service_state_none,
+    tego_host_onion_service_state_service_added,
+    tego_host_onion_service_state_service_published,
+} tego_host_onion_service_state_t;
 
 /*
- * Get the current state of the host user
+ * Get the current state of the host's onion service
  *
  * @param context : the current tego context
  * @param out_state : destination to save state
  * @param error : filled  on error
  */
-void tego_context_get_host_user_state(
+void tego_context_get_host_onion_service_state(
     const tego_context_t* context,
-    tego_host_user_state_t* out_state,
+    tego_host_onion_service_state_t* out_state,
     tego_error_t** error);
 
 // TODO: figure out which statuses we need later
@@ -459,19 +474,6 @@ void tego_context_start_tor(
 typedef struct tego_tor_daemon_config tego_tor_daemon_config_t;
 
 /*
- * Determine whether the tor daemon has an existing torrc and
- * is already configured
- *
- * @param context : the current tego context
- * @param out_configured : destination for result, TEGO_TRUE if has config, else TEGO_FALSE
- * @param error : filled on error
- */
-void tego_context_get_tor_daemon_configured(
-    const tego_context_t* context,
-    tego_bool_t* out_configured,
-    tego_error_t** error);
-
-/*
  * Returns a tor daemon config struct with default params
  *
  * @param out_config : destination for config
@@ -479,19 +481,6 @@ void tego_context_get_tor_daemon_configured(
  */
 void tego_tor_daemon_config_initialize(
     tego_tor_daemon_config_t** out_config,
-    tego_error_t** error);
-
-/*
- * Set the DisableNetwork flag (see Tor Manual :
- *  www.torproject.org/docs/tor-manual.html )
- *
- * @param config : config to update
- * @param disableNetwork : TEGO_TRUE or TEGO_FALSE
- * @param error : filled on error
- */
-void tego_tor_daemon_config_set_disable_network(
-    tego_tor_daemon_config_t* config,
-    tego_bool_t disableNetwork,
     tego_error_t** error);
 
 /*
@@ -618,14 +607,18 @@ void tego_context_update_tor_daemon_config(
     tego_error_t** error);
 
 /*
- * Save the courrent tor configuration to disk
+ * Set the DisableNetwork flag of running instance of tor associated
+ * with a given tego context
  *
  * @param context : the current tego context
+ * @param disableNetwork : TEGO_TRUE or TEGO_FALSE
  * @param error : filled on error
  */
-void tego_context_save_tor_daemon_config(
+void tego_context_update_disable_network_flag(
     tego_context_t* context,
+    tego_bool_t disableNetwork,
     tego_error_t** error);
+
 /*
  * Stops tor daemon associated with a given tego context
  *
@@ -1117,9 +1110,9 @@ typedef void (*tego_tor_log_received_callback_t)(
  * @param context : the current tego context
  * @param state : the current host user state
  */
-typedef void (*tego_host_user_state_changed_callback_t)(
+typedef void (*tego_host_onion_service_state_changed_callback_t)(
     tego_context_t* context,
-    tego_host_user_state_t state);
+    tego_host_onion_service_state_t state);
 
 /*
  * Callback fired when the host receives a chat request from another user
@@ -1349,9 +1342,9 @@ void tego_context_set_tor_log_received_callback(
     tego_tor_log_received_callback_t,
     tego_error_t** error);
 
-void tego_context_set_host_user_state_changed_callback(
+void tego_context_set_host_onion_service_state_changed_callback(
     tego_context_t* context,
-    tego_host_user_state_changed_callback_t,
+    tego_host_onion_service_state_changed_callback_t,
     tego_error_t** error);
 
 void tego_context_set_chat_request_received_callback(

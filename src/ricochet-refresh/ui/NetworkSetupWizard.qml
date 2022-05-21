@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
+import im.ricochet 1.0
 
 ApplicationWindow {
     id: window
@@ -22,6 +23,7 @@ ApplicationWindow {
     function back() {
         if (pageLoader.visible) {
             pageLoader.visible = false
+            configPage.init();
             configPage.visible = true
         } else {
             openBeginning()
@@ -29,14 +31,14 @@ ApplicationWindow {
     }
 
     function openBeginning() {
-        configPage.visible = false
-        configPage.reset()
+        configPage.visible = false;
         pageLoader.sourceComponent = firstPage
         pageLoader.visible = true
     }
 
     function openConfig() {
         pageLoader.visible = false
+        configPage.init();
         configPage.visible = true
     }
 
@@ -110,15 +112,23 @@ ApplicationWindow {
                 //: Label for button to connect to the Tor network
                 text: qsTr("Connect")
                 isDefault: true
+                enabled: torControl.status == TorControl.Connected
                 onClicked: {
-                    // Reset to defaults and proceed to bootstrap page
-                    configPage.reset()
-                    configPage.save()
+                    let command = torControl.beginBootstrap();
+                    if (command != null) {
+                        command.finished.connect(function(successful)
+                        {
+                            if (successful) {
+                                window.openBootstrap()
+                            } else {
+                                console.log("SETCONF error:", command.errorMessage)
+                            }
+                        });
+                    };
                 }
                 Accessible.role: Accessible.Button
                 Accessible.name: text
                 Accessible.onPressAction: {
-                    configPage.reset()
                     configPage.save()
                 }
             }
@@ -144,6 +154,7 @@ ApplicationWindow {
                 //: Label for button to configure the Tor daemon beore connecting to the Tor network
                 text: qsTr("Configure")
                 onClicked: window.openConfig()
+                enabled: torControl.status == TorControl.Connected
 
                 Accessible.role: Accessible.Button
                 Accessible.name: text
