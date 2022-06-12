@@ -76,7 +76,6 @@ public:
     void setStatus(TorControl::Status status);
     void setTorStatus(TorControl::TorStatus status);
 
-    void getTorInfo();
     void publishService();
 
 public slots:
@@ -162,16 +161,6 @@ void TorControlPrivate::setTorStatus(TorControl::TorStatus n)
         case TorControl::TorReady:
             g_globals.context->callback_registry_.emit_tor_network_status_changed(tego_tor_network_status_ready);
             break;
-    }
-
-
-    if (torStatus == TorControl::TorReady)
-{
-        if (socksAddress.isNull())
-        {
-            // Request info again to read the SOCKS port
-            getTorInfo();
-        }
     }
 }
 
@@ -275,6 +264,7 @@ void TorControl::reconnect()
 
 void TorControlPrivate::authenticateReply()
 {
+    // verify authentication succeeded
     AuthenticateCommand *command = qobject_cast<AuthenticateCommand*>(sender());
     Q_ASSERT(command);
     Q_ASSERT(status == TorControl::Authenticating);
@@ -287,10 +277,10 @@ void TorControlPrivate::authenticateReply()
     }
 
     qDebug() << "torctrl: Authentication successful";
-    setStatus(TorControl::Connected);
 
     setTorStatus(TorControl::TorUnknown);
 
+    // register for events
     TorControlCommand *clientEvents = new TorControlCommand;
     connect(clientEvents, &TorControlCommand::replyLine, this, &TorControlPrivate::statusEvent);
     socket->registerEvent("STATUS_CLIENT", clientEvents);
@@ -298,7 +288,17 @@ void TorControlPrivate::authenticateReply()
     connect(hsDescEvents, &TorControlCommand::replyLine, this, &TorControlPrivate::hsDescEvent);
     socket->registerEvent("HS_DESC", hsDescEvents);
 
-    getTorInfo();
+    // get info
+    GetConfCommand *getConfCommand = new GetConfCommand(GetConfCommand::GetInfo);
+    connect(getConfCommand, &TorControlCommand::finished, this, &TorControlPrivate::getTorInfoReply);
+
+    QList<QByteArray> keys;
+    keys << QByteArray("status/circuit-established");
+    keys << QByteArray("status/bootstrap-phase");
+    keys << QByteArray("net/listeners/socks");
+    keys << QByteArray("version");
+
+    socket->sendCommand(getConfCommand, getConfCommand->build(keys));
 }
 
 void TorControlPrivate::socketConnected()
@@ -330,26 +330,10 @@ void TorControlPrivate::socketError()
     setError(QStringLiteral("Connection failed: %1").arg(socket->errorString()));
 }
 
-void TorControlPrivate::getTorInfo()
-{
-    Q_ASSERT(q->isConnected());
-
-    GetConfCommand *command = new GetConfCommand(GetConfCommand::GetInfo);
-    connect(command, &TorControlCommand::finished, this, &TorControlPrivate::getTorInfoReply);
-
-    QList<QByteArray> keys;
-    keys << QByteArray("status/circuit-established");
-    keys << QByteArray("status/bootstrap-phase");
-    keys << QByteArray("net/listeners/socks");
-    keys << QByteArray("version");
-
-    socket->sendCommand(command, command->build(keys));
-}
-
 void TorControlPrivate::getTorInfoReply()
 {
     GetConfCommand *command = qobject_cast<GetConfCommand*>(sender());
-    if (!command || !q->isConnected())
+    if (!command)
         return;
 
     QList<QByteArray> listenAddresses = splitQuotedStrings(command->get(QByteArray("net/listeners/socks")).toString().toLatin1(), ' ');
@@ -392,6 +376,13 @@ void TorControlPrivate::getTorInfoReply()
     QString version = command->get(QByteArray("version")).toString();
     qDebug() << "version: " << version;
     torVersion = version;
+
+    // v3 works in all supported tor versions:
+    // https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/CoreTorReleases
+    Q_ASSERT(q->torVersionAsNewAs(QStringLiteral("0.3.5")));
+
+    // only send connected signal once we have received out tor info
+    setStatus(TorControl::Connected);
 }
 
 void TorControl::setHiddenService(HiddenService *service)
@@ -409,10 +400,6 @@ void TorControlPrivate::publishService()
 {
     Q_ASSERT(q->isConnected());
     Q_ASSERT(this->service != nullptr);
-
-    // v3 works in all supported tor versions:
-    // https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/CoreTorReleases
-    Q_ASSERT(q->torVersionAsNewAs(QStringLiteral("0.3.5")));
 
     if (service->hostname().isEmpty())
         qDebug() << "torctrl: Creating a new hidden service";
