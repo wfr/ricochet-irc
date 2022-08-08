@@ -54,6 +54,7 @@ if (FORCE_QT5)
                 QmlWorkerScript
                 Multimedia
                 MultimediaQuick
+                QuickControls2
         REQUIRED)
 else ()
     find_package(
@@ -70,6 +71,7 @@ else ()
                 QmlWorkerScript
                 Multimedia
                 MultimediaQuick
+                QuickControls2
         REQUIRED)
 endif ()
 
@@ -84,6 +86,7 @@ find_package(
                QmlWorkerScript
                Multimedia
                MultimediaQuick
+               QuickControls2
     REQUIRED)
 
 # Require Qt >5.15
@@ -205,7 +208,8 @@ target_link_libraries(
             Qt${QT_VERSION_MAJOR}::Quick
             Qt${QT_VERSION_MAJOR}::QmlWorkerScript
             Qt${QT_VERSION_MAJOR}::Multimedia
-            Qt${QT_VERSION_MAJOR}::MultimediaQuick)
+            Qt${QT_VERSION_MAJOR}::MultimediaQuick
+            Qt${QT_VERSION_MAJOR}::QuickControls2)
 if (APPLE)
     target_link_libraries(ricochet-refresh PRIVATE Qt${QT_VERSION_MAJOR}::MacExtras)
 endif ()
