@@ -162,6 +162,21 @@ void TorControlPrivate::setTorStatus(TorControl::TorStatus n)
             g_globals.context->callback_registry_.emit_tor_network_status_changed(tego_tor_network_status_ready);
             break;
     }
+
+    if (torStatus == TorControl::TorReady)
+    {
+        if (socksAddress.isNull())
+        {
+            // get info
+            GetConfCommand *getConfCommand = new GetConfCommand(GetConfCommand::GetInfo);
+            connect(getConfCommand, &TorControlCommand::finished, this, &TorControlPrivate::getTorInfoReply);
+
+            QList<QByteArray> keys;
+            keys << QByteArray("net/listeners/socks");
+
+            socket->sendCommand(getConfCommand, getConfCommand->build(keys));
+        }
+    }
 }
 
 void TorControlPrivate::setError(const QString &message)
@@ -295,7 +310,6 @@ void TorControlPrivate::authenticateReply()
     QList<QByteArray> keys;
     keys << QByteArray("status/circuit-established");
     keys << QByteArray("status/bootstrap-phase");
-    keys << QByteArray("net/listeners/socks");
     keys << QByteArray("version");
 
     socket->sendCommand(getConfCommand, getConfCommand->build(keys));
@@ -336,50 +350,58 @@ void TorControlPrivate::getTorInfoReply()
     if (!command)
         return;
 
-    QList<QByteArray> listenAddresses = splitQuotedStrings(command->get(QByteArray("net/listeners/socks")).toString().toLatin1(), ' ');
-    for (QList<QByteArray>::Iterator it = listenAddresses.begin(); it != listenAddresses.end(); ++it) {
-        QByteArray value = unquotedString(*it);
-        int sepp = value.indexOf(':');
-        QHostAddress address(QString::fromLatin1(value.mid(0, sepp)));
-        quint16 port = static_cast<quint16>(value.mid(sepp+1).toUInt());
+    if (auto val = command->get(QByteArray("net/listeners/socks")); val.isValid()) {
+        QList<QByteArray> listenAddresses = splitQuotedStrings(val.toString().toLatin1(), ' ');
+        for (QList<QByteArray>::Iterator it = listenAddresses.begin(); it != listenAddresses.end(); ++it) {
+            QByteArray value = unquotedString(*it);
+            int sepp = value.indexOf(':');
+            QHostAddress address(QString::fromLatin1(value.mid(0, sepp)));
+            quint16 port = static_cast<quint16>(value.mid(sepp+1).toUInt());
 
-        /* Use the first address that matches the one used for this control connection. If none do,
-         * just use the first address and rely on the user to reconfigure if necessary (not a problem;
-         * their setup is already very customized) */
-        if (socksAddress.isNull() || address == socket->peerAddress()) {
-            socksAddress = address;
-            socksPort = port;
-            if (address == socket->peerAddress())
-                break;
+            /* Use the first address that matches the one used for this control connection. If none do,
+             * just use the first address and rely on the user to reconfigure if necessary (not a problem;
+             * their setup is already very customized) */
+            if (socksAddress.isNull() || address == socket->peerAddress()) {
+                socksAddress = address;
+                socksPort = port;
+                if (address == socket->peerAddress())
+                    break;
+            }
+        }
+
+        /* It is not immediately an error to have no SOCKS address; when DisableNetwork is set there won't be a
+         * listener yet. To handle that situation, we'll try to read the socks address again when TorReady state
+         * is reached. */
+        if (!socksAddress.isNull()) {
+            qDebug().nospace() << "torctrl: SOCKS address is " << socksAddress.toString() << ":" << socksPort;
+            emit q->connectivityChanged();
         }
     }
 
-    /* It is not immediately an error to have no SOCKS address; when DisableNetwork is set there won't be a
-     * listener yet. To handle that situation, we'll try to read the socks address again when TorReady state
-     * is reached. */
-    if (!socksAddress.isNull()) {
-        qDebug().nospace() << "torctrl: SOCKS address is " << socksAddress.toString() << ":" << socksPort;
-        emit q->connectivityChanged();
+    if (auto val = command->get(QByteArray("status/circuit-established")); val.isValid()) {
+        if (val.toInt() == 1) {
+            qDebug() << "torctrl: Tor indicates that circuits have been established; state is TorReady";
+            setTorStatus(TorControl::TorReady);
+        } else {
+            setTorStatus(TorControl::TorOffline);
+        }
     }
 
-    if (command->get(QByteArray("status/circuit-established")).toInt() == 1) {
-        qDebug() << "torctrl: Tor indicates that circuits have been established; state is TorReady";
-        setTorStatus(TorControl::TorReady);
-    } else {
-        setTorStatus(TorControl::TorOffline);
+    if (auto val = command->get(QByteArray("status/bootstrap-phase")); val.isValid()) {
+        QByteArray bootstrap = val.toString().toLatin1();
+        if (!bootstrap.isEmpty())
+            updateBootstrap(splitQuotedStrings(bootstrap, ' '));
     }
 
-    QByteArray bootstrap = command->get(QByteArray("status/bootstrap-phase")).toString().toLatin1();
-    if (!bootstrap.isEmpty())
-        updateBootstrap(splitQuotedStrings(bootstrap, ' '));
+    if (auto val = command->get(QByteArray("version")); val.isValid()) {
+        QString version = val.toString();
+        qDebug() << "version: " << version;
+        torVersion = version;
 
-    QString version = command->get(QByteArray("version")).toString();
-    qDebug() << "version: " << version;
-    torVersion = version;
-
-    // v3 works in all supported tor versions:
-    // https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/CoreTorReleases
-    Q_ASSERT(q->torVersionAsNewAs(QStringLiteral("0.3.5")));
+        // v3 works in all supported tor versions:
+        // https://trac.torproject.org/projects/tor/wiki/org/teams/NetworkTeam/CoreTorReleases
+        Q_ASSERT(q->torVersionAsNewAs(QStringLiteral("0.3.5")));
+    }
 
     // only send connected signal once we have received out tor info
     setStatus(TorControl::Connected);
