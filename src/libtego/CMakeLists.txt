@@ -189,6 +189,7 @@ add_library(
     source/tor_stubs.cpp
     source/user.cpp
     source/user.hpp
+    source/utilities.cpp
     source/utils/CryptoKey.cpp
     source/utils/CryptoKey.h
     source/utils/PendingOperation.cpp

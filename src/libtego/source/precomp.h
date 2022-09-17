@@ -39,9 +39,6 @@ extern "C" {
 #ifdef __cplusplus
 }
 
-// include our public header
-#include <tego/tego.hpp>
-
 #endif // __cplusplus
 
 // C++ headers
@@ -66,6 +63,7 @@ extern "C" {
 
 // fmt
 #include <fmt/format.h>
+#include <fmt/std.h>
 #include <fmt/ostream.h>
 
 // Qt
@@ -137,4 +135,8 @@ namespace tego
     }
 }
 
-#endif //__cplusplus#i
+// include our public header
+#include <tego/tego.hpp>
+
+#endif //__cplusplus#
+

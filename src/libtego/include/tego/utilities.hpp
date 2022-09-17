@@ -1,5 +1,10 @@
 #pragma once
 
+// fmt
+#include <fmt/format.h>
+#include <fmt/ostream.h>
+#include <fmt/std.h>
+
 #define TEGO_STRINGIFY_IMPL(X) #X
 #define TEGO_STRINGIFY(X) TEGO_STRINGIFY_IMPL(X)
 
@@ -16,6 +21,16 @@
 #define TEGO_THROW_IF_NOT_NULL(PTR) TEGO_THROW_IF_FALSE_MSG((PTR == nullptr), "{} must be null", TEGO_STRINGIFY(PTR))
 
 #define TEGO_THROW_IF_EQUAL(A, B) if((A) == (B)) { TEGO_THROW_MSG("{} and {} must not be equal", TEGO_STRINGIFY(A), TEGO_STRINGIFY(B)); }
+
+// always provide these overloads
+std::ostream& operator<<(std::ostream& out, const class QString& str);
+std::ostream& operator<<(std::ostream& out, const class QByteArray& blob);
+
+namespace fmt
+{
+    template <> struct formatter<class QString> : ostream_formatter {};
+    template <> struct formatter<class QByteArray> : ostream_formatter {};
+}
 
 namespace tego
 {
