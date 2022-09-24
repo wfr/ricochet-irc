@@ -17,48 +17,47 @@ namespace shims
 
     QValidator::State ContactIDValidator::validate(QString &text, int &pos) const
     {
-        logger::trace();
         fixup(text);
 
-        QValidator::State re = QRegularExpressionValidator::validate(text, pos);
-        if (re != QValidator::Acceptable)
-        {
-            if (re == QValidator::Invalid)
-            {
-                emit failed();
+        const auto result = QRegularExpressionValidator::validate(text, pos);
+        switch(result) {
+        case QValidator::Acceptable:
+            if(isValidID(text)) {
+                if (auto contact = matchingContact(text); contact != nullptr) {
+                    emit matchesContact(contact->getNickname());
+                    logger::println(" - matches contact");
+                    return QValidator::Invalid;
+                }
+                if (matchesIdentity(text)) {
+                    emit matchesSelf();
+                    logger::println(" - matches self");
+                    return QValidator::Invalid;
+                }
+                emit acceptable();
+                logger::println(" - valid service id!");
+                return QValidator::Acceptable;
+            } else {
+                emit invalidServiceId();
+                logger::println(" - invalid service id!");
+                return QValidator::Invalid;
             }
-            else
-            {
-                emit success(); // removes the popup when the id returns to being valid
-            }
-            return re;
+        case QValidator::Intermediate:
+            emit intermediate();
+            return QValidator::Intermediate;
+        default:
+            return result;
         }
-
-        if (!isValidID(text) || matchingContact(text) || matchesIdentity(text))
-        {
-            emit failed();
-            return QValidator::Invalid;
-        }
-
-        emit success();
-        return re;
     }
 
     shims::ContactUser* ContactIDValidator::matchingContact(const QString &text) const
     {
-        logger::trace();
-        logger::println("UserIdentity instance : {}", static_cast<void*>(UserIdentity::userIdentity));
         auto contactsManager = UserIdentity::userIdentity->getContacts();
-        logger::println("ContactsManager : {}", static_cast<void*>(contactsManager));
         return contactsManager->getShimContactByContactId(text);
     }
 
     bool ContactIDValidator::matchesIdentity(const QString &text) const
     {
-        logger::trace();
-        logger::println("UserIdentity instance : {}", static_cast<void*>(UserIdentity::userIdentity));
         auto context = UserIdentity::userIdentity->getContext();
-        logger::println("context : {}", static_cast<void*>(UserIdentity::userIdentity->getContext()));
 
         std::unique_ptr<tego_user_id_t> userId;
         tego_context_get_host_user_id(context, tego::out(userId), tego::throw_on_error());
@@ -77,11 +76,8 @@ namespace shims
 
     bool ContactIDValidator::isValidID(const QString &serviceID) const
     {
-        auto strippedID = serviceID.mid(tego::static_strlen("ricochet:"));
-        logger::println("strippedID : {}", strippedID.toUtf8().constData(), strippedID.size());
-
-        bool valid = tego_v3_onion_service_id_string_is_valid(strippedID.toUtf8().constData(), static_cast<size_t>(strippedID.size()), nullptr) == TEGO_TRUE;
-        logger::println("valid: {}", valid);
+        auto strippedID = serviceID.mid(tego::static_strlen("ricochet:")).toUtf8();
+        bool valid = tego_v3_onion_service_id_string_is_valid(strippedID.constData(), static_cast<size_t>(strippedID.size()), nullptr) == TEGO_TRUE;
 
         return valid;
     }
