@@ -1,5 +1,5 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.0
+import QtQuick 2.15
+import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.0
 import im.ricochet 1.0
 
@@ -65,12 +65,14 @@ GridLayout {
         Accessible.name: text
         //: Description of textbox for setting a new contact's initial greeting message for accessibility tech like screen readers
         Accessible.description: qsTr("Field for the contact's greeting message")
-        placeholderText: qsTr("Hi, I'm <yourname>")
-        // For some reason the TextArea background vanishes when upgrading from QtQuick.Controls 1 to 2. Workaround:
-        background: Rectangle {
-            SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
-            color: myPalette.base
-            border { color: myPalette.mid; width: 1 }
+        property string placeholderText: qsTr("Hi, I'm <yourname>")
+
+        Text {
+            padding: 5
+            text: messageField.placeholderText
+            SystemPalette { id: myPalette; colorGroup: SystemPalette.Disabled }
+            color: myPalette.text
+            visible: !messageField.text && !messageField.focus
         }
     }
 }

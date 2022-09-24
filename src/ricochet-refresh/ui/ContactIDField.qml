@@ -24,7 +24,6 @@ FocusScope {
         TextField {
             id: field
             Layout.fillWidth: true
-            font.family: "Courier"
             validator: readOnly ? null : idValidator
             placeholderText: "ricochet:"
             focus: true
