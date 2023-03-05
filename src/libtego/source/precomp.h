@@ -45,6 +45,7 @@ extern "C" {
 #ifdef __cplusplus
 
 // standard library
+#include <array>
 #include <string_view>
 #include <cstdio>
 #include <stdexcept>
