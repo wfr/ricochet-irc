@@ -103,8 +103,6 @@ if (APPLE)
         REQUIRED)
 endif ()
 
-include(FindOpenSSL)
-
 if (APPLE)
     add_executable(ricochet-refresh MACOSX_BUNDLE)
     set_target_properties(ricochet-refresh PROPERTIES MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/resources/darwin/Info.plist.in)

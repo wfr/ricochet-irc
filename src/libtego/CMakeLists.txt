@@ -99,7 +99,6 @@ if (NOT ${Protobuf_ROOT_DIR} STREQUAL "")
 endif ()
 
 include(FindProtobuf)
-include(FindOpenSSL)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
