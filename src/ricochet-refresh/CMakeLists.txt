@@ -220,16 +220,16 @@ endif ()
 if (UNIX)
     # Again, not sure if this needs to be UNIX AND NOT WIN32, or if we should
     # install to /bin on Cygwin like it does now
-    install(TARGETS ricochet-refresh DESTINATION usr/bin)
+    install(TARGETS ricochet-refresh DESTINATION bin)
 endif ()
 
 # Linux
 if (UNIX AND NOT WIN32)
     option (RICOCHET_REFRESH_INSTALL_DESKTOP "Install desktop integration files + icons" OFF)
     if (RICOCHET_REFRESH_INSTALL_DESKTOP)
-        install(FILES resources/linux/ricochet-refresh.desktop DESTINATION usr/share/applications)
-        install(FILES resources/linux/icons/48x48/ricochet-refresh.png DESTINATION usr/share/icons/hicolor/48x48/apps/)
-        install(FILES resources/linux/icons/scalable/ricochet-refresh.svg DESTINATION usr/share/icons/hicolor/scalable/apps/)
+        install(FILES resources/linux/ricochet-refresh.desktop DESTINATION share/applications)
+        install(FILES resources/linux/icons/48x48/ricochet-refresh.png DESTINATION share/icons/hicolor/48x48/apps/)
+        install(FILES resources/linux/icons/scalable/ricochet-refresh.svg DESTINATION share/icons/hicolor/scalable/apps/)
     endif ()
 endif ()
 
