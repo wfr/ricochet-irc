@@ -5945,8 +5945,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 622,
-                            "y": 1388,
+                            "x": 619,
+                            "y": 1221,
                             "w": 800,
                             "h": 600,
                             "r": 0
@@ -5969,8 +5969,8 @@
                         },
                         "renderer": "Tabs",
                         "transform": {
-                            "x": 622,
-                            "y": 1423,
+                            "x": 619,
+                            "y": 1256,
                             "w": 800,
                             "h": 530,
                             "r": 0
@@ -5986,8 +5986,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 623,
-                            "y": 1073,
+                            "x": 620,
+                            "y": 906,
                             "w": 136,
                             "h": 30,
                             "r": 0
@@ -6010,8 +6010,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 622,
-                            "y": 1107,
+                            "x": 619,
+                            "y": 940,
                             "w": 800,
                             "h": 38,
                             "r": 0
@@ -6034,8 +6034,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 244.5,
-                            "y": 1107,
+                            "x": 241.5,
+                            "y": 940,
                             "w": 45,
                             "h": 38,
                             "r": 0
@@ -6058,8 +6058,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 372,
-                            "y": 1107,
+                            "x": 369,
+                            "y": 940,
                             "w": 86,
                             "h": 38,
                             "r": 0
@@ -6082,8 +6082,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 495.5,
-                            "y": 1107,
+                            "x": 492.5,
+                            "y": 940,
                             "w": 59,
                             "h": 38,
                             "r": 0
@@ -6106,8 +6106,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 553.5,
-                            "y": 1107,
+                            "x": 550.5,
+                            "y": 940,
                             "w": 57,
                             "h": 38,
                             "r": 0
@@ -6130,8 +6130,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 338.5,
-                            "y": 1439,
+                            "x": 335.5,
+                            "y": 1272,
                             "w": 233,
                             "h": 498,
                             "r": 0
@@ -6147,8 +6147,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 259,
-                            "y": 1208,
+                            "x": 256,
+                            "y": 1041,
                             "w": 82,
                             "h": 42,
                             "r": 0
@@ -6169,8 +6169,8 @@
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 329.5,
-                            "y": 1307,
+                            "x": 326.5,
+                            "y": 1140,
                             "w": 213,
                             "h": 162,
                             "r": 0
@@ -6187,8 +6187,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 238,
-                            "y": 1307,
+                            "x": 235,
+                            "y": 1140,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6208,8 +6208,8 @@
                         },
                         "renderer": "ComboBox",
                         "transform": {
-                            "x": 314.5,
-                            "y": 1666.5,
+                            "x": 311.5,
+                            "y": 1499.5,
                             "w": 187,
                             "h": 43,
                             "r": 0
@@ -6225,8 +6225,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 262,
-                            "y": 1401,
+                            "x": 259,
+                            "y": 1234,
                             "w": 88,
                             "h": 42,
                             "r": 0
@@ -6247,8 +6247,8 @@
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 337,
-                            "y": 1482,
+                            "x": 334,
+                            "y": 1315,
                             "w": 228,
                             "h": 134,
                             "r": 0
@@ -6265,8 +6265,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 237,
-                            "y": 1439,
+                            "x": 234,
+                            "y": 1272,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6288,8 +6288,8 @@
                         },
                         "renderer": "VerticalScrollbar",
                         "transform": {
-                            "x": 443,
-                            "y": 1417,
+                            "x": 440,
+                            "y": 1250,
                             "w": 20,
                             "h": 454,
                             "r": 0
@@ -6306,8 +6306,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 732,
-                            "y": 1388.5,
+                            "x": 729,
+                            "y": 1221.5,
                             "w": 540,
                             "h": 403,
                             "r": 0
@@ -6329,8 +6329,8 @@
                         },
                         "renderer": "VerticalScrollbar",
                         "transform": {
-                            "x": 1011,
-                            "y": 1391,
+                            "x": 1008,
+                            "y": 1224,
                             "w": 20,
                             "h": 402,
                             "r": 0
@@ -6350,8 +6350,8 @@
                         },
                         "renderer": "TextArea",
                         "transform": {
-                            "x": 706.5,
-                            "y": 1655,
+                            "x": 703.5,
+                            "y": 1488,
                             "w": 503,
                             "h": 66,
                             "r": 0
@@ -6371,8 +6371,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 984.5,
-                            "y": 1655,
+                            "x": 981.5,
+                            "y": 1488,
                             "w": 75,
                             "h": 66,
                             "r": 0
@@ -6395,8 +6395,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 740,
-                            "y": 1606,
+                            "x": 737,
+                            "y": 1439,
                             "w": 564,
                             "h": 32,
                             "r": 0
@@ -6416,8 +6416,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 474,
-                            "y": 1607,
+                            "x": 471,
+                            "y": 1440,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6437,8 +6437,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 507,
-                            "y": 1607,
+                            "x": 504,
+                            "y": 1440,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6458,8 +6458,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 540,
-                            "y": 1607,
+                            "x": 537,
+                            "y": 1440,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6476,8 +6476,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 474,
-                            "y": 1608,
+                            "x": 471,
+                            "y": 1441,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6494,8 +6494,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 507,
-                            "y": 1608,
+                            "x": 504,
+                            "y": 1441,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6512,8 +6512,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 539,
-                            "y": 1608,
+                            "x": 536,
+                            "y": 1441,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6533,8 +6533,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 573,
-                            "y": 1607,
+                            "x": 570,
+                            "y": 1440,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6551,8 +6551,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 573,
-                            "y": 1608,
+                            "x": 570,
+                            "y": 1441,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6572,8 +6572,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 606,
-                            "y": 1607,
+                            "x": 603,
+                            "y": 1440,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6590,8 +6590,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 606,
-                            "y": 1608,
+                            "x": 603,
+                            "y": 1441,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6608,8 +6608,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 401,
-                            "y": 1256,
+                            "x": 398,
+                            "y": 1089,
                             "w": 48,
                             "h": 48,
                             "r": 0
@@ -6626,8 +6626,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 401,
-                            "y": 1307,
+                            "x": 398,
+                            "y": 1140,
                             "w": 48,
                             "h": 48,
                             "r": 0
@@ -6644,8 +6644,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 401,
-                            "y": 1356,
+                            "x": 398,
+                            "y": 1189,
                             "w": 48,
                             "h": 48,
                             "r": 0
@@ -6668,8 +6668,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 622,
-                            "y": 1142,
+                            "x": 619,
+                            "y": 975,
                             "w": 800,
                             "h": 32,
                             "r": 0
@@ -6689,8 +6689,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 477,
-                            "y": 1142,
+                            "x": 474,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6707,8 +6707,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 984,
-                            "y": 1655,
+                            "x": 981,
+                            "y": 1488,
                             "w": 40,
                             "h": 40,
                             "r": 0
@@ -6728,8 +6728,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 510,
-                            "y": 1142,
+                            "x": 507,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6746,8 +6746,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 509,
-                            "y": 1142,
+                            "x": 506,
+                            "y": 975,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -6770,8 +6770,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 438,
-                            "y": 1107,
+                            "x": 435,
+                            "y": 940,
                             "w": 58,
                             "h": 38,
                             "r": 0
@@ -6791,8 +6791,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 342,
-                            "y": 1142,
+                            "x": 339,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6812,8 +6812,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 375,
-                            "y": 1142,
+                            "x": 372,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6833,8 +6833,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 408,
-                            "y": 1142,
+                            "x": 405,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6851,8 +6851,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 342,
-                            "y": 1143,
+                            "x": 339,
+                            "y": 976,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6869,8 +6869,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 374,
-                            "y": 1143,
+                            "x": 371,
+                            "y": 976,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6887,8 +6887,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 408,
-                            "y": 1143,
+                            "x": 405,
+                            "y": 976,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -6904,8 +6904,8 @@
                         },
                         "renderer": "VerticalLine",
                         "transform": {
-                            "x": 455,
-                            "y": 1439,
+                            "x": 452,
+                            "y": 1272,
                             "w": 4,
                             "h": 498,
                             "r": 0
@@ -6928,8 +6928,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 300.5,
-                            "y": 1107,
+                            "x": 297.5,
+                            "y": 940,
                             "w": 65,
                             "h": 38,
                             "r": 0
@@ -6949,8 +6949,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 238,
-                            "y": 1142,
+                            "x": 235,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6970,8 +6970,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 271,
-                            "y": 1142,
+                            "x": 268,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -6991,8 +6991,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 304,
-                            "y": 1142,
+                            "x": 301,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -7009,8 +7009,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 478,
-                            "y": 1142,
+                            "x": 475,
+                            "y": 975,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -7027,8 +7027,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 237,
-                            "y": 1141,
+                            "x": 234,
+                            "y": 974,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -7045,8 +7045,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 271,
-                            "y": 1141,
+                            "x": 268,
+                            "y": 974,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -7062,8 +7062,8 @@
                         },
                         "renderer": "VerticalLine",
                         "transform": {
-                            "x": 323,
-                            "y": 1142,
+                            "x": 320,
+                            "y": 975,
                             "w": 2,
                             "h": 32,
                             "r": 0
@@ -7079,8 +7079,8 @@
                         },
                         "renderer": "VerticalLine",
                         "transform": {
-                            "x": 459,
-                            "y": 1142,
+                            "x": 456,
+                            "y": 975,
                             "w": 2,
                             "h": 32,
                             "r": 0
@@ -7097,8 +7097,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 306,
-                            "y": 1142,
+                            "x": 303,
+                            "y": 975,
                             "w": 30,
                             "h": 30,
                             "r": 0
@@ -7118,8 +7118,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 431.5,
-                            "y": 1666.5,
+                            "x": 428.5,
+                            "y": 1499.5,
                             "w": 47,
                             "h": 43,
                             "r": 0
@@ -7136,8 +7136,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 432,
-                            "y": 1668,
+                            "x": 429,
+                            "y": 1501,
                             "w": 48,
                             "h": 48,
                             "r": 0
@@ -7154,8 +7154,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 237,
-                            "y": 1667,
+                            "x": 234,
+                            "y": 1500,
                             "w": 30,
                             "h": 30,
                             "r": 0
@@ -7172,8 +7172,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 238,
-                            "y": 1356,
+                            "x": 235,
+                            "y": 1189,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -7208,28 +7208,10 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 238,
-                            "y": 1256,
+                            "x": 235,
+                            "y": 1089,
                             "w": 32,
                             "h": 40,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060246767",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: How the heck do we expose disconnecting from a contact when in hidden mode? an 'end conversation' function"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 335.5,
-                            "y": 933,
-                            "w": 227,
-                            "h": 170,
                             "r": 0
                         },
                         "type": "Shape"
@@ -7572,42 +7554,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060248884",
-                        "appearance": {
-                            "BACKGROUND_COLOR": 0,
-                            "TEXT_DISABLED": true,
-                            "TEXT": "",
-                            "ICON_FONT_FAMILY": "Material Icons"
-                        },
-                        "renderer": "Icon",
-                        "transform": {
-                            "x": 497,
-                            "y": 877,
-                            "w": 40,
-                            "h": 40,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060248889",
-                        "appearance": {
-                            "BACKGROUND_COLOR": 0,
-                            "TEXT_DISABLED": true,
-                            "TEXT": "",
-                            "ICON_FONT_FAMILY": "Material Icons"
-                        },
-                        "renderer": "Icon",
-                        "transform": {
-                            "x": 495,
-                            "y": 933,
-                            "w": 40,
-                            "h": 40,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060249903",
                         "appearance": {
                             "FOREGROUND_COLOR": 15790320,
@@ -7659,8 +7605,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 441,
-                            "y": 1142,
+                            "x": 438,
+                            "y": 975,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -7677,10 +7623,28 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 440,
-                            "y": 1143,
+                            "x": 437,
+                            "y": 976,
                             "w": 28,
                             "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060250599",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "- Double-click on contact could connect/disconnect individual use when in Hidden or Restricted mode"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 107.5,
+                            "y": 558,
+                            "w": 173,
+                            "h": 470,
                             "r": 0
                         },
                         "type": "Shape"
@@ -7803,7 +7767,6 @@
                     "1713060220173",
                     "1713060241544",
                     "1713060246637",
-                    "1713060246767",
                     "1713060246972",
                     "1713060246973",
                     "1713060246974",
@@ -7821,12 +7784,11 @@
                     "1713060246986",
                     "1713060246987",
                     "1713060246988",
-                    "1713060248884",
-                    "1713060248889",
                     "1713060249903",
                     "1713060250016",
                     "1713060250193",
-                    "1713060250249"
+                    "1713060250249",
+                    "1713060250599"
                 ],
                 "title": "Main Window - Conversations (Hidden)"
             }
@@ -7850,154 +7812,6 @@
         }
     },
     "actions": [
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
-                "timestamp": 1713638869341,
-                "itemIds": [
-                    "1713060246767",
-                    "1713060248884",
-                    "1713060248889"
-                ]
-            }
-        },
-        {
-            "type": "items/paste",
-            "payload": {
-                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
-                "timestamp": 1713639011411,
-                "json": "{\"visuals\":[{\"id\":\"1713060250599\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"- Hide a conversation by clicking on a user entry again to unselect\\n\\n- Per-contact context menu will have all the per-contact commands from the Contacts menu\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":102.5,\"y\":754,\"w\":173,\"h\":470,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
-                "offset": 50
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
-                "timestamp": 1713639014078,
-                "oldBounds": {
-                    "x": 152.5,
-                    "y": 804,
-                    "w": 173,
-                    "h": 470,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 107.5,
-                    "y": 558,
-                    "w": 173,
-                    "h": 470,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060250599"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
-                "timestamp": 1713639038428,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "- Double-click on contact could connect/disconnect individual use when in Hidden or Restricted mode"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060250599"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
-                "timestamp": 1713643161511,
-                "oldBounds": {
-                    "x": 620,
-                    "y": 1375,
-                    "w": 804,
-                    "h": 634,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 617,
-                    "y": 1208,
-                    "w": 804,
-                    "h": 634,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060220112",
-                    "1713060220113",
-                    "1713060220114",
-                    "1713060220115",
-                    "1713060220116",
-                    "1713060220117",
-                    "1713060220118",
-                    "1713060220119",
-                    "1713060220120",
-                    "1713060220121",
-                    "1713060220122",
-                    "1713060220123",
-                    "1713060220124",
-                    "1713060220125",
-                    "1713060220126",
-                    "1713060220127",
-                    "1713060220128",
-                    "1713060220129",
-                    "1713060220130",
-                    "1713060220131",
-                    "1713060220132",
-                    "1713060220133",
-                    "1713060220134",
-                    "1713060220135",
-                    "1713060220136",
-                    "1713060220137",
-                    "1713060220138",
-                    "1713060220139",
-                    "1713060220140",
-                    "1713060220141",
-                    "1713060220142",
-                    "1713060220143",
-                    "1713060220144",
-                    "1713060220145",
-                    "1713060220146",
-                    "1713060220147",
-                    "1713060220148",
-                    "1713060220149",
-                    "1713060220150",
-                    "1713060220151",
-                    "1713060220152",
-                    "1713060220153",
-                    "1713060220154",
-                    "1713060220155",
-                    "1713060220156",
-                    "1713060220157",
-                    "1713060220158",
-                    "1713060220159",
-                    "1713060220160",
-                    "1713060220161",
-                    "1713060220162",
-                    "1713060220163",
-                    "1713060220164",
-                    "1713060220165",
-                    "1713060220166",
-                    "1713060220167",
-                    "1713060220168",
-                    "1713060220169",
-                    "1713060220170",
-                    "1713060220171",
-                    "1713060220172",
-                    "1713060220173",
-                    "1713060246637",
-                    "1713060250193",
-                    "1713060250249"
-                ]
-            }
-        },
         {
             "type": "items/appearance",
             "payload": {
@@ -8221,6 +8035,144 @@
                 "itemIds": [
                     "1713060212050"
                 ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "fc9d805b-58fd-458f-6c6c-5dab97e8fc5b",
+                "timestamp": 1713643972577,
+                "itemIds": [
+                    "1708271085846",
+                    "1708271086777",
+                    "1708271090616",
+                    "1708271107372",
+                    "1708271107499",
+                    "1708271114348",
+                    "1708271114349",
+                    "1713060194380",
+                    "1713060194414"
+                ]
+            }
+        },
+        {
+            "type": "items/paste",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713643977527,
+                "json": "{\"visuals\":[{\"id\":\"1713060253046\",\"appearance\":{\"FOREGROUND_COLOR\":\"#f8f8f8\",\"TEXT_DISABLED\":true,\"LINK\":null},\"renderer\":\"Window\",\"transform\":{\"x\":518,\"y\":378,\"w\":600,\"h\":304,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253047\",\"appearance\":{\"FONT_SIZE\":24,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Establishing a Connection\"},\"renderer\":\"Heading\",\"transform\":{\"x\":389,\"y\":278,\"w\":302,\"h\":48,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253048\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Ricochet Refresh - Connecting\"},\"renderer\":\"Label\",\"transform\":{\"x\":519,\"y\":211,\"w\":232,\"h\":30,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253049\",\"appearance\":{\"ACCENT_COLOR\":2191797,\"VALUE\":50,\"FOREGROUND_COLOR\":15790320,\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":16777215,\"STROKE_COLOR\":13224393,\"STROKE_THICKNESS\":1,\"TEXT_DISABLED\":true},\"renderer\":\"Progress\",\"transform\":{\"x\":520.5,\"y\":334,\"w\":537,\"h\":16,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253050\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Downloading mcguffins...\"},\"renderer\":\"Label\",\"transform\":{\"x\":341,\"y\":367,\"w\":192,\"h\":30,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253051\",\"appearance\":{\"FOREGROUND_COLOR\":\"#f0f0f0\",\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"STROKE_COLOR\":13224393,\"STROKE_THICKNESS\":1,\"TEXT_ALIGNMENT\":\"center\",\"TEXT\":\"Cancel\"},\"renderer\":\"Button\",\"transform\":{\"x\":747,\"y\":495,\"w\":100,\"h\":30,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253052\",\"appearance\":{\"FOREGROUND_COLOR\":\"#f0f0f0\",\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"STROKE_COLOR\":13224393,\"STROKE_THICKNESS\":1,\"TEXT_ALIGNMENT\":\"center\",\"TEXT\":\"View Logs...\",\"LINK\":\"page://1708271092125\"},\"renderer\":\"Button\",\"transform\":{\"x\":612,\"y\":495,\"w\":130,\"h\":30,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253053\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"Jump to the Tor logs section of the preferences page\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":617.5,\"y\":609,\"w\":119,\"h\":140,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713060253054\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"Cancel current bootstrap attempt\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":755.5,\"y\":606,\"w\":125,\"h\":134,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713643980694,
+                "oldBounds": {
+                    "x": 568,
+                    "y": 487.5,
+                    "w": 600,
+                    "h": 483,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 518,
+                    "y": 949.5,
+                    "w": 600,
+                    "h": 483,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060253046",
+                    "1713060253047",
+                    "1713060253048",
+                    "1713060253049",
+                    "1713060253050",
+                    "1713060253051",
+                    "1713060253052",
+                    "1713060253053",
+                    "1713060253054"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713643983827,
+                "oldBounds": {
+                    "x": 518,
+                    "y": 949.5,
+                    "w": 600,
+                    "h": 483,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 563,
+                    "y": 854.5,
+                    "w": 600,
+                    "h": 483,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060253046",
+                    "1713060253047",
+                    "1713060253048",
+                    "1713060253049",
+                    "1713060253050",
+                    "1713060253051",
+                    "1713060253052",
+                    "1713060253053",
+                    "1713060253054"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713643988610,
+                "oldBounds": {
+                    "x": 563,
+                    "y": 854.5,
+                    "w": 600,
+                    "h": 483,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 518,
+                    "y": 940.5,
+                    "w": 600,
+                    "h": 483,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060253046",
+                    "1713060253047",
+                    "1713060253048",
+                    "1713060253049",
+                    "1713060253050",
+                    "1713060253051",
+                    "1713060253052",
+                    "1713060253053",
+                    "1713060253054"
+                ]
+            }
+        },
+        {
+            "type": "diagram/remove",
+            "payload": {
+                "diagramId": "fc9d805b-58fd-458f-6c6c-5dab97e8fc5b",
+                "timestamp": 1713643996811
+            }
+        },
+        {
+            "type": "diagram/rename",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713644003261,
+                "title": "Bootstrapping"
             }
         }
     ]
