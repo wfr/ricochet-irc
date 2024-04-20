@@ -397,46 +397,6 @@
                 "id": "1708271107626",
                 "items": [
                     {
-                        "id": "1708271107634",
-                        "appearance": {
-                            "FOREGROUND_COLOR": "#f8f8f8",
-                            "TEXT_DISABLED": true
-                        },
-                        "renderer": "Window",
-                        "transform": {
-                            "x": 595,
-                            "y": 1244,
-                            "w": 800,
-                            "h": 600,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1708271108331",
-                        "appearance": {
-                            "BORDER_RADIUS": 0,
-                            "FOREGROUND_COLOR": "#f0f0f0",
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 0,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 0,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "",
-                            "PADDING_HORIZONTAL2": 10,
-                            "PADDING_VERTICAL2": 10
-                        },
-                        "renderer": "Rectangle",
-                        "transform": {
-                            "x": 595,
-                            "y": 963,
-                            "w": 800,
-                            "h": 38,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1711155020198",
                         "appearance": {
                             "BORDER_RADIUS": 0,
@@ -452,8 +412,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 599.5,
-                            "y": 1293,
+                            "x": 604.5,
+                            "y": 762,
                             "w": 647,
                             "h": 188,
                             "r": 0
@@ -469,8 +429,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 438,
-                            "y": 1151,
+                            "x": 448,
+                            "y": 604,
                             "w": 342,
                             "h": 48,
                             "r": 0
@@ -486,8 +446,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 374,
-                            "y": 1244,
+                            "x": 379,
+                            "y": 713,
                             "w": 128,
                             "h": 30,
                             "r": 0
@@ -507,8 +467,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 599.5,
-                            "y": 1279,
+                            "x": 604.5,
+                            "y": 748,
                             "w": 577,
                             "h": 30,
                             "r": 0
@@ -524,8 +484,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 354,
-                            "y": 1179,
+                            "x": 359,
+                            "y": 648,
                             "w": 164,
                             "h": 30,
                             "r": 0
@@ -545,8 +505,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 838,
-                            "y": 1330,
+                            "x": 843,
+                            "y": 799,
                             "w": 100,
                             "h": 30,
                             "r": 0
@@ -566,34 +526,10 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 726,
-                            "y": 1330,
+                            "x": 731,
+                            "y": 799,
                             "w": 100,
                             "h": 30,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1711155024002",
-                        "appearance": {
-                            "BACKGROUND_COLOR": 2434341,
-                            "FOREGROUND_COLOR": "#ffffff",
-                            "TEXT": "Bob.rrprofile 🗙,Alice.rrprofile 🗙*",
-                            "TEXT_ALIGNMENT": "center",
-                            "FONT_SIZE": 16,
-                            "STROKE_COLOR": "#969696",
-                            "STROKE_THICKNESS": 1,
-                            "TAB_COLOR": 15790320,
-                            "TAB_ALIGNMENT": "Left",
-                            "TAB_POSITION": "Top"
-                        },
-                        "renderer": "Tabs",
-                        "transform": {
-                            "x": 595,
-                            "y": 1263,
-                            "w": 800,
-                            "h": 562,
                             "r": 0
                         },
                         "type": "Shape"
@@ -617,150 +553,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060193085",
-                        "appearance": {
-                            "BORDER_RADIUS": 0,
-                            "FOREGROUND_COLOR": "#f0f0f0",
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 0,
-                            "STROKE_COLOR": "#f0f0f0",
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "File",
-                            "PADDING_HORIZONTAL2": 10,
-                            "PADDING_VERTICAL2": 10
-                        },
-                        "renderer": "Rectangle",
-                        "transform": {
-                            "x": 217.5,
-                            "y": 963,
-                            "w": 45,
-                            "h": 38,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060193086",
-                        "appearance": {
-                            "BORDER_RADIUS": 0,
-                            "FOREGROUND_COLOR": "#f0f0f0",
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 0,
-                            "STROKE_COLOR": "#f0f0f0",
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Contacts",
-                            "PADDING_HORIZONTAL2": 10,
-                            "PADDING_VERTICAL2": 10
-                        },
-                        "renderer": "Rectangle",
-                        "transform": {
-                            "x": 345,
-                            "y": 963,
-                            "w": 86,
-                            "h": 38,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060193087",
-                        "appearance": {
-                            "BORDER_RADIUS": 0,
-                            "FOREGROUND_COLOR": "#f0f0f0",
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 0,
-                            "STROKE_COLOR": "#f0f0f0",
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Tools",
-                            "PADDING_HORIZONTAL2": 10,
-                            "PADDING_VERTICAL2": 10
-                        },
-                        "renderer": "Rectangle",
-                        "transform": {
-                            "x": 468.5,
-                            "y": 963,
-                            "w": 59,
-                            "h": 38,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060193088",
-                        "appearance": {
-                            "BORDER_RADIUS": 0,
-                            "FOREGROUND_COLOR": "#f0f0f0",
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 0,
-                            "STROKE_COLOR": "#f0f0f0",
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Help",
-                            "PADDING_HORIZONTAL2": 10,
-                            "PADDING_VERTICAL2": 10
-                        },
-                        "renderer": "Rectangle",
-                        "transform": {
-                            "x": 526.5,
-                            "y": 963,
-                            "w": 57,
-                            "h": 38,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060193089",
-                        "appearance": {
-                            "BORDER_RADIUS": 0,
-                            "FOREGROUND_COLOR": "#f0f0f0",
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 0,
-                            "STROKE_COLOR": "#f0f0f0",
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Chat",
-                            "PADDING_HORIZONTAL2": 10,
-                            "PADDING_VERTICAL2": 10
-                        },
-                        "renderer": "Rectangle",
-                        "transform": {
-                            "x": 411,
-                            "y": 963,
-                            "w": 58,
-                            "h": 38,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060193090",
-                        "appearance": {
-                            "BORDER_RADIUS": 0,
-                            "FOREGROUND_COLOR": "#f0f0f0",
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 0,
-                            "STROKE_COLOR": "#f0f0f0",
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Profile",
-                            "PADDING_HORIZONTAL2": 10,
-                            "PADDING_VERTICAL2": 10
-                        },
-                        "renderer": "Rectangle",
-                        "transform": {
-                            "x": 273.5,
-                            "y": 963,
-                            "w": 65,
-                            "h": 38,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060213854",
                         "appearance": {
                             "FONT_SIZE": 16,
@@ -770,8 +562,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 1121,
-                            "y": 1329,
+                            "x": 1115,
+                            "y": 864,
                             "w": 200,
                             "h": 140,
                             "r": 0
@@ -956,45 +748,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060215517",
-                        "appearance": {
-                            "BACKGROUND_COLOR": "#41ab5d",
-                            "TEXT_DISABLED": true,
-                            "TEXT": "",
-                            "ICON_FONT_FAMILY": "FontAwesome"
-                        },
-                        "renderer": "Icon",
-                        "transform": {
-                            "x": 219,
-                            "y": 967,
-                            "w": 32,
-                            "h": 32,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060215525",
-                        "appearance": {
-                            "FOREGROUND_COLOR": 15790320,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": ""
-                        },
-                        "renderer": "Button",
-                        "transform": {
-                            "x": 964.5,
-                            "y": 956,
-                            "w": 75,
-                            "h": 66,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060215540",
                         "appearance": {
                             "BORDER_RADIUS": 0,
@@ -1063,7 +816,7 @@
                     {
                         "id": "1713060215544",
                         "appearance": {
-                            "BACKGROUND_COLOR": 0,
+                            "BACKGROUND_COLOR": "#bdbdbd",
                             "TEXT_DISABLED": true,
                             "TEXT": "",
                             "ICON_FONT_FAMILY": "FontAwesome"
@@ -1168,7 +921,7 @@
                     {
                         "id": "1713060215549",
                         "appearance": {
-                            "BACKGROUND_COLOR": 0,
+                            "BACKGROUND_COLOR": "#bdbdbd",
                             "TEXT_DISABLED": true,
                             "TEXT": "",
                             "ICON_FONT_FAMILY": "FontAwesome"
@@ -1186,7 +939,7 @@
                     {
                         "id": "1713060215550",
                         "appearance": {
-                            "BACKGROUND_COLOR": 0,
+                            "BACKGROUND_COLOR": "#bdbdbd",
                             "TEXT_DISABLED": true,
                             "TEXT": "",
                             "ICON_FONT_FAMILY": "FontAwesome"
@@ -1204,7 +957,7 @@
                     {
                         "id": "1713060215551",
                         "appearance": {
-                            "BACKGROUND_COLOR": 0,
+                            "BACKGROUND_COLOR": "#bdbdbd",
                             "TEXT_DISABLED": true,
                             "TEXT": "",
                             "ICON_FONT_FAMILY": "FontAwesome"
@@ -1309,7 +1062,7 @@
                     {
                         "id": "1713060215557",
                         "appearance": {
-                            "BACKGROUND_COLOR": 0,
+                            "BACKGROUND_COLOR": "#bdbdbd",
                             "TEXT_DISABLED": true,
                             "TEXT": "",
                             "ICON_FONT_FAMILY": "Material Icons"
@@ -1345,7 +1098,7 @@
                     {
                         "id": "1713060215559",
                         "appearance": {
-                            "BACKGROUND_COLOR": 0,
+                            "BACKGROUND_COLOR": "#bdbdbd",
                             "TEXT_DISABLED": true,
                             "TEXT": "",
                             "ICON_FONT_FAMILY": "FontAwesome"
@@ -1397,7 +1150,7 @@
                     {
                         "id": "1713060215562",
                         "appearance": {
-                            "BACKGROUND_COLOR": 0,
+                            "BACKGROUND_COLOR": "#bdbdbd",
                             "TEXT_DISABLED": true,
                             "TEXT": "",
                             "ICON_FONT_FAMILY": "FontAwesome"
@@ -1414,23 +1167,7 @@
                     }
                 ],
                 "rootIds": [
-                    "1708271107634",
-                    "1711155024002",
-                    "1708271108331",
-                    "1711155020198",
-                    "1711155020550",
-                    "1711155020629",
-                    "1711155020749",
-                    "1711155021428",
-                    "1711155021662",
-                    "1711155021667",
                     "1713060190285",
-                    "1713060193085",
-                    "1713060193086",
-                    "1713060193087",
-                    "1713060193088",
-                    "1713060193089",
-                    "1713060193090",
                     "1713060213854",
                     "1713060215502",
                     "1713060215503",
@@ -1440,8 +1177,6 @@
                     "1713060215507",
                     "1713060215508",
                     "1713060215509",
-                    "1713060215517",
-                    "1713060215525",
                     "1713060215540",
                     "1713060215541",
                     "1713060215543",
@@ -1462,7 +1197,14 @@
                     "1713060215559",
                     "1713060215560",
                     "1713060215561",
-                    "1713060215562"
+                    "1713060215562",
+                    "1711155020198",
+                    "1711155020629",
+                    "1711155020749",
+                    "1711155021428",
+                    "1711155021662",
+                    "1711155021667",
+                    "1711155020550"
                 ],
                 "title": "Main Window"
             },
@@ -4236,7 +3978,7 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 424,
+                            "x": 457,
                             "y": 443,
                             "w": 32,
                             "h": 32,
@@ -4311,7 +4053,7 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 457,
+                            "x": 490,
                             "y": 443,
                             "w": 32,
                             "h": 32,
@@ -4329,7 +4071,7 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 456,
+                            "x": 489,
                             "y": 443,
                             "w": 28,
                             "h": 28,
@@ -4361,14 +4103,14 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Contacts:\n- Add Friend...\n- Delete Contact\n- Block Contact\n---\n- Show/Hide Blocked Contacts\n"
+                            "TEXT": "Contacts:\n- Add Friend...\n- Delete Contact\n- Block Contact\n- Connect/Disconnect Contact\n---\n- Show/Hide Blocked Contacts\n"
                         },
                         "renderer": "Paragraph",
                         "transform": {
                             "x": 602.5,
-                            "y": 126,
+                            "y": 150,
                             "w": 157,
-                            "h": 180,
+                            "h": 228,
                             "r": 0
                         },
                         "type": "Shape"
@@ -4691,8 +4433,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 991,
-                            "y": 229.5,
+                            "x": 1129,
+                            "y": 208.5,
                             "w": 180,
                             "h": 91,
                             "r": 0
@@ -4808,7 +4550,7 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 425,
+                            "x": 458,
                             "y": 443,
                             "w": 28,
                             "h": 28,
@@ -4878,7 +4620,7 @@
                         },
                         "renderer": "VerticalLine",
                         "transform": {
-                            "x": 406,
+                            "x": 439,
                             "y": 443,
                             "w": 2,
                             "h": 32,
@@ -4935,8 +4677,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 788,
-                            "y": 238.5,
+                            "x": 1129,
+                            "y": 322.5,
                             "w": 180,
                             "h": 87,
                             "r": 0
@@ -4984,7 +4726,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "- Hide a conversation by clicking on a user entry again to unselect"
+                            "TEXT": "- Hide a conversation by clicking on a user entry again to unselect\n\n- Per-contact context menu will have all the per-contact commands from the Contacts menu"
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -4992,6 +4734,81 @@
                             "y": 754,
                             "w": 173,
                             "h": 470,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060249060",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: not sure we explicitly need a 'Save Profile', the profile will be autosaving. Maybe instead of Save Profile As we should frame it as Backup"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 103.5,
+                            "y": 198.5,
+                            "w": 153,
+                            "h": 255,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060249515",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: We *could* implement 'shadow-banning' whereby we disable a particular users' endpoint server; trivially detectable though if in Online mode"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 779,
+                            "y": 217,
+                            "w": 196,
+                            "h": 208,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060250353",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 420,
+                            "y": 444,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060250429",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 421,
+                            "y": 443,
+                            "w": 32,
+                            "h": 32,
                             "r": 0
                         },
                         "type": "Shape"
@@ -5083,9 +4900,2935 @@
                     "1713060210606",
                     "1713060210931",
                     "1713060212050",
-                    "1713060212980"
+                    "1713060212980",
+                    "1713060249060",
+                    "1713060249515",
+                    "1713060250429",
+                    "1713060250353"
                 ],
-                "title": "Main Window - Conversations (toolbar)"
+                "title": "Main Window - Conversations (Online)"
+            },
+            {
+                "id": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "items": [
+                    {
+                        "id": "1708271107634",
+                        "appearance": {
+                            "FOREGROUND_COLOR": "#f8f8f8",
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 622,
+                            "y": 503,
+                            "w": 800,
+                            "h": 600,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1708271107681",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 623,
+                            "y": 188,
+                            "w": 136,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1708271108331",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 622,
+                            "y": 222,
+                            "w": 800,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1708271110358",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "File",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 244.5,
+                            "y": 222,
+                            "w": 45,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1708271110635",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Contacts",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 372,
+                            "y": 222,
+                            "w": 86,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1708271110726",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Tools",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 495.5,
+                            "y": 222,
+                            "w": 59,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1708271110919",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Help",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 553.5,
+                            "y": 222,
+                            "w": 57,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1711155024002",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 2434341,
+                            "FOREGROUND_COLOR": "#ffffff",
+                            "TEXT": "Bob.rrprofile 🗙,Alice.rrprofile 🗙*",
+                            "TEXT_ALIGNMENT": "center",
+                            "FONT_SIZE": 16,
+                            "STROKE_COLOR": "#969696",
+                            "STROKE_THICKNESS": 1,
+                            "TAB_COLOR": 15790320,
+                            "TAB_ALIGNMENT": "Left",
+                            "TAB_POSITION": "Top"
+                        },
+                        "renderer": "Tabs",
+                        "transform": {
+                            "x": 622,
+                            "y": 538,
+                            "w": 800,
+                            "h": 530,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1712077854111",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": "#525252",
+                            "TEXT": "Friends"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 259,
+                            "y": 323,
+                            "w": 82,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1712077854189",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 338.5,
+                            "y": 554,
+                            "w": 233,
+                            "h": 498,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1712077854821",
+                        "appearance": {
+                            "ACCENT_COLOR": 2191797,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀Cameron*\n⠀⠀Diego\n⠀⠀Elizabeth"
+                        },
+                        "renderer": "List",
+                        "transform": {
+                            "x": 329.5,
+                            "y": 422,
+                            "w": 213,
+                            "h": 162,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1712077855342",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 238,
+                            "y": 422,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1712077855873",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀Hidden"
+                        },
+                        "renderer": "ComboBox",
+                        "transform": {
+                            "x": 314.5,
+                            "y": 781.5,
+                            "w": 187,
+                            "h": 43,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1712077856201",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "⠀"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 49,
+                            "y": 46,
+                            "w": 22,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1712077856206",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "⠀"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 49,
+                            "y": 46,
+                            "w": 22,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060155073",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": "#525252",
+                            "TEXT": "Pending"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 262,
+                            "y": 516,
+                            "w": 88,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060155122",
+                        "appearance": {
+                            "ACCENT_COLOR": 2191797,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀Frederick\n⠀⠀\n⠀⠀"
+                        },
+                        "renderer": "List",
+                        "transform": {
+                            "x": 337,
+                            "y": 597,
+                            "w": 228,
+                            "h": 134,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060155223",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "⠀⠀"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 138,
+                            "y": 81,
+                            "w": 34,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060155230",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "⠀⠀"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 150,
+                            "y": 63,
+                            "w": 34,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060155244",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 237,
+                            "y": 554,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060155488",
+                        "appearance": {
+                            "ARROW_COLOR": 12434877,
+                            "FOREGROUND_COLOR": 15790320,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 15790320,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true,
+                            "BAR_COLOR": 12434877,
+                            "BAR_POSITION": 0,
+                            "BAR_SIZE": 84
+                        },
+                        "renderer": "VerticalScrollbar",
+                        "transform": {
+                            "x": 443,
+                            "y": 532,
+                            "w": 20,
+                            "h": 454,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060159418",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 401,
+                            "y": 371,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060159498",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 401,
+                            "y": 422,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060159542",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 401,
+                            "y": 471,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060160298",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 432,
+                            "y": 783,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060161318",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#bdbdbd",
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 622,
+                            "y": 257,
+                            "w": 800,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060161448",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 477,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060184068",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 510,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060184503",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 509,
+                            "y": 257,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060188609",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Chat",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 438,
+                            "y": 222,
+                            "w": 58,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060189372",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 342,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060189406",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 375,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060189458",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 408,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060189752",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 342,
+                            "y": 258,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060189817",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 374,
+                            "y": 258,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060189888",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 408,
+                            "y": 258,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060191516",
+                        "appearance": {
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 4,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "VerticalLine",
+                        "transform": {
+                            "x": 455,
+                            "y": 554,
+                            "w": 4,
+                            "h": 498,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060192233",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Profile",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 300.5,
+                            "y": 222,
+                            "w": 65,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060205391",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 238,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060205453",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 271,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060205496",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 304,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060205578",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 478,
+                            "y": 257,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060205670",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 237,
+                            "y": 256,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060205767",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 271,
+                            "y": 256,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060205915",
+                        "appearance": {
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "VerticalLine",
+                        "transform": {
+                            "x": 323,
+                            "y": 257,
+                            "w": 2,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060206858",
+                        "appearance": {
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "VerticalLine",
+                        "transform": {
+                            "x": 459,
+                            "y": 257,
+                            "w": 2,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060207327",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 306,
+                            "y": 257,
+                            "w": 30,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060209824",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 431.5,
+                            "y": 781.5,
+                            "w": 47,
+                            "h": 43,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060219910",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 237,
+                            "y": 782,
+                            "w": 30,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060219979",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Layout\nx\nw\ny\nh\nr\nVisual\nFont Size\nStroke Thickness\nStroke Color\nForeground Color\nBackground Color\nText Alignment\nMore\nLink\nPage\nCustom\nThumb Size\nThumb Size\n"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 802,
+                            "y": 21,
+                            "w": 1200,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060219991",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 238,
+                            "y": 471,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220025",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 238,
+                            "y": 371,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220112",
+                        "appearance": {
+                            "FOREGROUND_COLOR": "#f8f8f8",
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 622,
+                            "y": 1388,
+                            "w": 800,
+                            "h": 600,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220113",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 2434341,
+                            "FOREGROUND_COLOR": "#ffffff",
+                            "TEXT": "Bob.rrprofile 🗙,Alice.rrprofile 🗙*",
+                            "TEXT_ALIGNMENT": "center",
+                            "FONT_SIZE": 16,
+                            "STROKE_COLOR": "#969696",
+                            "STROKE_THICKNESS": 1,
+                            "TAB_COLOR": 15790320,
+                            "TAB_ALIGNMENT": "Left",
+                            "TAB_POSITION": "Top"
+                        },
+                        "renderer": "Tabs",
+                        "transform": {
+                            "x": 622,
+                            "y": 1423,
+                            "w": 800,
+                            "h": 530,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220114",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 623,
+                            "y": 1073,
+                            "w": 136,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220115",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 622,
+                            "y": 1107,
+                            "w": 800,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220116",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "File",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 244.5,
+                            "y": 1107,
+                            "w": 45,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220117",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Contacts",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 372,
+                            "y": 1107,
+                            "w": 86,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220118",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Tools",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 495.5,
+                            "y": 1107,
+                            "w": 59,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220119",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Help",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 553.5,
+                            "y": 1107,
+                            "w": 57,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220120",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 338.5,
+                            "y": 1439,
+                            "w": 233,
+                            "h": 498,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220121",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": "#525252",
+                            "TEXT": "Friends"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 259,
+                            "y": 1208,
+                            "w": 82,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220122",
+                        "appearance": {
+                            "ACCENT_COLOR": 2191797,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀Cameron*\n⠀⠀Diego\n⠀⠀Elizabeth"
+                        },
+                        "renderer": "List",
+                        "transform": {
+                            "x": 329.5,
+                            "y": 1307,
+                            "w": 213,
+                            "h": 162,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220123",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 238,
+                            "y": 1307,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220124",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀Hidden"
+                        },
+                        "renderer": "ComboBox",
+                        "transform": {
+                            "x": 314.5,
+                            "y": 1666.5,
+                            "w": 187,
+                            "h": 43,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220125",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": "#525252",
+                            "TEXT": "Pending"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 262,
+                            "y": 1401,
+                            "w": 88,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220126",
+                        "appearance": {
+                            "ACCENT_COLOR": 2191797,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀Frederick\n⠀⠀\n⠀⠀"
+                        },
+                        "renderer": "List",
+                        "transform": {
+                            "x": 337,
+                            "y": 1482,
+                            "w": 228,
+                            "h": 134,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220127",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 237,
+                            "y": 1439,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220128",
+                        "appearance": {
+                            "ARROW_COLOR": 12434877,
+                            "FOREGROUND_COLOR": 15790320,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 15790320,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true,
+                            "BAR_COLOR": 12434877,
+                            "BAR_POSITION": 0,
+                            "BAR_SIZE": 84
+                        },
+                        "renderer": "VerticalScrollbar",
+                        "transform": {
+                            "x": 443,
+                            "y": 1417,
+                            "w": 20,
+                            "h": 454,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220129",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#000000",
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "(2024-04-14 10:00) Alice: Hey Cameron! You into dinosaurs?\n(2024-04-14 10:02) Cameron: Hey Alice! Yeah, I think they're pretty fascinating. Velociraptors are especially cool.\n(2024-04-14 10:05) Alice: Agreed! They were like the ultimate predators, so sleek and deadly.\n(2024-04-14 10:07) Cameron: Definitely. Plus, the whole pack hunting thing adds another level of awesomeness.\n(2024-04-14 10:10) Alice: Exactly! So, do you have any other favorite dinos?\n(2024-04-14 10:13) Cameron: Hmm, tough call. T-Rex is a classic choice, but I'm also intrigued by the smaller ones like Compsognathus.\n(2024-04-14 10:15) Alice: Nice choices! Hey, did you know birds are technically descendants of dinosaurs?\n(2024-04-14 10:18) Cameron: Yeah, it's mind-blowing to think about. Evolution is wild!\n\n"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 732,
+                            "y": 1388.5,
+                            "w": 540,
+                            "h": 403,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220130",
+                        "appearance": {
+                            "ARROW_COLOR": 12434877,
+                            "FOREGROUND_COLOR": 15790320,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 15790320,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true,
+                            "BAR_COLOR": 12434877,
+                            "BAR_POSITION": 0,
+                            "BAR_SIZE": 100
+                        },
+                        "renderer": "VerticalScrollbar",
+                        "transform": {
+                            "x": 1011,
+                            "y": 1391,
+                            "w": 20,
+                            "h": 402,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220131",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "It really is|"
+                        },
+                        "renderer": "TextArea",
+                        "transform": {
+                            "x": 706.5,
+                            "y": 1655,
+                            "w": 503,
+                            "h": 66,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220132",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 984.5,
+                            "y": 1655,
+                            "w": 75,
+                            "h": 66,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220133",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 740,
+                            "y": 1606,
+                            "w": 564,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220134",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 474,
+                            "y": 1607,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220135",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 507,
+                            "y": 1607,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220136",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 540,
+                            "y": 1607,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220137",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 474,
+                            "y": 1608,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220138",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 507,
+                            "y": 1608,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220139",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 539,
+                            "y": 1608,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220140",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 573,
+                            "y": 1607,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220141",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 573,
+                            "y": 1608,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220142",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 606,
+                            "y": 1607,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220143",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 606,
+                            "y": 1608,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220144",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 401,
+                            "y": 1256,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220145",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 401,
+                            "y": 1307,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220146",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 401,
+                            "y": 1356,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220147",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#bdbdbd",
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 622,
+                            "y": 1142,
+                            "w": 800,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220148",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 477,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220149",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 984,
+                            "y": 1655,
+                            "w": 40,
+                            "h": 40,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220150",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 510,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220151",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 509,
+                            "y": 1142,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220152",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Chat",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 438,
+                            "y": 1107,
+                            "w": 58,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220153",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 342,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220154",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 375,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220155",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 408,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220156",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 342,
+                            "y": 1143,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220157",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 374,
+                            "y": 1143,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220158",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 408,
+                            "y": 1143,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220159",
+                        "appearance": {
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 4,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "VerticalLine",
+                        "transform": {
+                            "x": 455,
+                            "y": 1439,
+                            "w": 4,
+                            "h": 498,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220160",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Profile",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 300.5,
+                            "y": 1107,
+                            "w": 65,
+                            "h": 38,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220161",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 238,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220162",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 271,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220163",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 304,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220164",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 478,
+                            "y": 1142,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220165",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 237,
+                            "y": 1141,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220166",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 271,
+                            "y": 1141,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220167",
+                        "appearance": {
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "VerticalLine",
+                        "transform": {
+                            "x": 323,
+                            "y": 1142,
+                            "w": 2,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220168",
+                        "appearance": {
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "VerticalLine",
+                        "transform": {
+                            "x": 459,
+                            "y": 1142,
+                            "w": 2,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220169",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 306,
+                            "y": 1142,
+                            "w": 30,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220170",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 431.5,
+                            "y": 1666.5,
+                            "w": 47,
+                            "h": 43,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220171",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 432,
+                            "y": 1668,
+                            "w": 48,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220172",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 237,
+                            "y": 1667,
+                            "w": 30,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060220173",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 238,
+                            "y": 1356,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060241544",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Users opt-in to connecting to contacts when in Hidden mode"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 1135,
+                            "y": 797,
+                            "w": 192,
+                            "h": 120,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246637",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#41ab5d",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 238,
+                            "y": 1256,
+                            "w": 32,
+                            "h": 40,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246767",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: How the heck do we expose disconnecting from a contact when in hidden mode? an 'end conversation' function"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 335.5,
+                            "y": 933,
+                            "w": 227,
+                            "h": 170,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246972",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#000000",
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "(2024-04-14 10:00) Alice: Hey Cameron! You into dinosaurs?\n(2024-04-14 10:02) Cameron: Hey Alice! Yeah, I think they're pretty fascinating. Velociraptors are especially cool.\n(2024-04-14 10:05) Alice: Agreed! They were like the ultimate predators, so sleek and deadly.\n(2024-04-14 10:07) Cameron: Definitely. Plus, the whole pack hunting thing adds another level of awesomeness.\n(2024-04-14 10:10) Alice: Exactly! So, do you have any other favorite dinos?\n(2024-04-14 10:13) Cameron: Hmm, tough call. T-Rex is a classic choice, but I'm also intrigued by the smaller ones like Compsognathus.\n(2024-04-14 10:15) Alice: Nice choices! Hey, did you know birds are technically descendants of dinosaurs?\n(2024-04-14 10:18) Cameron: Yeah, it's mind-blowing to think about. Evolution is wild!\n\n"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 732,
+                            "y": 503.5,
+                            "w": 540,
+                            "h": 403,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246973",
+                        "appearance": {
+                            "ARROW_COLOR": 12434877,
+                            "FOREGROUND_COLOR": 15790320,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 15790320,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true,
+                            "BAR_COLOR": 12434877,
+                            "BAR_POSITION": 0,
+                            "BAR_SIZE": 100
+                        },
+                        "renderer": "VerticalScrollbar",
+                        "transform": {
+                            "x": 1011,
+                            "y": 506,
+                            "w": 20,
+                            "h": 402,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246974",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#969696",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "You must connect to this contact before you can send messages"
+                        },
+                        "renderer": "TextArea",
+                        "transform": {
+                            "x": 706.5,
+                            "y": 770,
+                            "w": 503,
+                            "h": 66,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246975",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 984.5,
+                            "y": 770,
+                            "w": 75,
+                            "h": 66,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246976",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": "#f0f0f0",
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": "#f0f0f0",
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 740,
+                            "y": 721,
+                            "w": 564,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246977",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 474,
+                            "y": 722,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246978",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#969696",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 507,
+                            "y": 722,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246979",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#969696",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 540,
+                            "y": 722,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246980",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 474,
+                            "y": 723,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246981",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 507,
+                            "y": 723,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246982",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 539,
+                            "y": 723,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246983",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#969696",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 573,
+                            "y": 722,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246984",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 573,
+                            "y": 723,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246985",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#969696",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 606,
+                            "y": 722,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246986",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 606,
+                            "y": 723,
+                            "w": 26,
+                            "h": 26,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246987",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#969696",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 984,
+                            "y": 770,
+                            "w": 40,
+                            "h": 40,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060246988",
+                        "appearance": {
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 4,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "VerticalLine",
+                        "transform": {
+                            "x": 455,
+                            "y": 554,
+                            "w": 4,
+                            "h": 498,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060248884",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 497,
+                            "y": 877,
+                            "w": 40,
+                            "h": 40,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060248889",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 495,
+                            "y": 933,
+                            "w": 40,
+                            "h": 40,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060249903",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 441,
+                            "y": 257,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060250016",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 442,
+                            "y": 258,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060250193",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": ""
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 441,
+                            "y": 1142,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060250249",
+                        "appearance": {
+                            "BACKGROUND_COLOR": 0,
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 440,
+                            "y": 1143,
+                            "w": 28,
+                            "h": 28,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    }
+                ],
+                "rootIds": [
+                    "1708271107634",
+                    "1711155024002",
+                    "1708271107681",
+                    "1708271108331",
+                    "1708271110358",
+                    "1708271110635",
+                    "1708271110726",
+                    "1708271110919",
+                    "1712077854189",
+                    "1712077854111",
+                    "1712077854821",
+                    "1712077855342",
+                    "1712077855873",
+                    "1712077856201",
+                    "1712077856206",
+                    "1713060155073",
+                    "1713060155122",
+                    "1713060155223",
+                    "1713060155230",
+                    "1713060155244",
+                    "1713060155488",
+                    "1713060159418",
+                    "1713060159498",
+                    "1713060159542",
+                    "1713060161318",
+                    "1713060161448",
+                    "1713060184068",
+                    "1713060184503",
+                    "1713060188609",
+                    "1713060189372",
+                    "1713060189406",
+                    "1713060189458",
+                    "1713060189752",
+                    "1713060189817",
+                    "1713060189888",
+                    "1713060191516",
+                    "1713060192233",
+                    "1713060205391",
+                    "1713060205453",
+                    "1713060205496",
+                    "1713060205578",
+                    "1713060205670",
+                    "1713060205767",
+                    "1713060205915",
+                    "1713060206858",
+                    "1713060207327",
+                    "1713060209824",
+                    "1713060160298",
+                    "1713060219910",
+                    "1713060219979",
+                    "1713060219991",
+                    "1713060220025",
+                    "1713060220112",
+                    "1713060220113",
+                    "1713060220114",
+                    "1713060220115",
+                    "1713060220116",
+                    "1713060220117",
+                    "1713060220118",
+                    "1713060220119",
+                    "1713060220120",
+                    "1713060220121",
+                    "1713060220122",
+                    "1713060220123",
+                    "1713060220124",
+                    "1713060220125",
+                    "1713060220126",
+                    "1713060220127",
+                    "1713060220128",
+                    "1713060220129",
+                    "1713060220130",
+                    "1713060220131",
+                    "1713060220132",
+                    "1713060220133",
+                    "1713060220134",
+                    "1713060220135",
+                    "1713060220136",
+                    "1713060220137",
+                    "1713060220138",
+                    "1713060220139",
+                    "1713060220140",
+                    "1713060220141",
+                    "1713060220142",
+                    "1713060220143",
+                    "1713060220144",
+                    "1713060220145",
+                    "1713060220146",
+                    "1713060220147",
+                    "1713060220148",
+                    "1713060220149",
+                    "1713060220150",
+                    "1713060220151",
+                    "1713060220152",
+                    "1713060220153",
+                    "1713060220154",
+                    "1713060220155",
+                    "1713060220156",
+                    "1713060220157",
+                    "1713060220158",
+                    "1713060220159",
+                    "1713060220160",
+                    "1713060220161",
+                    "1713060220162",
+                    "1713060220163",
+                    "1713060220164",
+                    "1713060220165",
+                    "1713060220166",
+                    "1713060220167",
+                    "1713060220168",
+                    "1713060220169",
+                    "1713060220170",
+                    "1713060220171",
+                    "1713060220172",
+                    "1713060220173",
+                    "1713060241544",
+                    "1713060246637",
+                    "1713060246767",
+                    "1713060246972",
+                    "1713060246973",
+                    "1713060246974",
+                    "1713060246975",
+                    "1713060246976",
+                    "1713060246977",
+                    "1713060246978",
+                    "1713060246979",
+                    "1713060246980",
+                    "1713060246981",
+                    "1713060246982",
+                    "1713060246983",
+                    "1713060246984",
+                    "1713060246985",
+                    "1713060246986",
+                    "1713060246987",
+                    "1713060246988",
+                    "1713060248884",
+                    "1713060248889",
+                    "1713060249903",
+                    "1713060250016",
+                    "1713060250193",
+                    "1713060250249"
+                ],
+                "title": "Main Window - Conversations (Hidden)"
             }
         ],
         "diagramIds": [
@@ -5097,7 +7840,8 @@
             "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
             "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
             "1708271107626",
-            "2bbbacdc-15be-9c5b-1a19-e04902aff5ef"
+            "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+            "aded38e4-f279-58df-12ed-8d8a929a1fdd"
         ],
         "id": "feb8641a-cf0f-278a-4c51-7398b33263f4",
         "size": {
@@ -5109,303 +7853,373 @@
         {
             "type": "items/remove",
             "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557177958,
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713638869341,
                 "itemIds": [
-                    "1713060215525"
+                    "1713060246767",
+                    "1713060248884",
+                    "1713060248889"
                 ]
             }
         },
         {
-            "type": "items/remove",
+            "type": "items/paste",
             "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557179841,
-                "itemIds": [
-                    "1713060215517"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557183174,
-                "oldBounds": {
-                    "x": 595,
-                    "y": 1263,
-                    "w": 800,
-                    "h": 562,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 840,
-                    "y": 1456,
-                    "w": 800,
-                    "h": 562,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1711155024002"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557183458,
-                "itemIds": [
-                    "1711155024002"
-                ]
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713639011411,
+                "json": "{\"visuals\":[{\"id\":\"1713060250599\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"- Hide a conversation by clicking on a user entry again to unselect\\n\\n- Per-contact context menu will have all the per-contact commands from the Contacts menu\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":102.5,\"y\":754,\"w\":173,\"h\":470,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557187691,
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713639014078,
                 "oldBounds": {
-                    "x": 597.5,
-                    "y": 1275.5,
-                    "w": 651,
-                    "h": 223,
+                    "x": 152.5,
+                    "y": 804,
+                    "w": 173,
+                    "h": 470,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 625.5,
-                    "y": 689.5,
-                    "w": 651,
-                    "h": 223,
+                    "x": 107.5,
+                    "y": 558,
+                    "w": 173,
+                    "h": 470,
                     "r": 0
                 },
                 "itemIds": [
-                    "1711155020198",
-                    "1711155020629",
-                    "1711155020749",
-                    "1711155021428",
-                    "1711155021662",
-                    "1711155021667"
-                ]
-            }
-        },
-        {
-            "type": "items/order",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557194191,
-                "mode": "BRING_TO_FRONT",
-                "itemIds": [
-                    "1711155020198",
-                    "1711155020629",
-                    "1711155020749",
-                    "1711155021428",
-                    "1711155021662",
-                    "1711155021667"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557213875,
-                "oldBounds": {
-                    "x": 625.5,
-                    "y": 689.5,
-                    "w": 651,
-                    "h": 223,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 602.5,
-                    "y": 744.5,
-                    "w": 651,
-                    "h": 223,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1711155020198",
-                    "1711155020629",
-                    "1711155020749",
-                    "1711155021428",
-                    "1711155021662",
-                    "1711155021667"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557220392,
-                "oldBounds": {
-                    "x": 438,
-                    "y": 1151,
-                    "w": 342,
-                    "h": 48,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 448,
-                    "y": 604,
-                    "w": 342,
-                    "h": 48,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1711155020550"
-                ]
-            }
-        },
-        {
-            "type": "items/order",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557223909,
-                "mode": "BRING_TO_FRONT",
-                "itemIds": [
-                    "1711155020550"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557226159,
-                "itemIds": [
-                    "1708271107634"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557234275,
-                "itemIds": [
-                    "1708271108331",
-                    "1713060193085",
-                    "1713060193086",
-                    "1713060193087",
-                    "1713060193088",
-                    "1713060193089",
-                    "1713060193090"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557241859,
-                "oldBounds": {
-                    "x": 1121,
-                    "y": 1329,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1166,
-                    "y": 786,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060213854"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557244659,
-                "oldBounds": {
-                    "x": 1166,
-                    "y": 786,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1120,
-                    "y": 429,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060213854"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713557341778,
-                "oldBounds": {
-                    "x": 1120,
-                    "y": 429,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1115,
-                    "y": 864,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060213854"
+                    "1713060250599"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713558321164,
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713639038428,
                 "appearance": {
-                    "key": "BACKGROUND_COLOR",
-                    "value": "#969696"
+                    "key": "TEXT",
+                    "value": "- Double-click on contact could connect/disconnect individual use when in Hidden or Restricted mode"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060215544",
-                    "1713060215549",
-                    "1713060215550",
-                    "1713060215551",
-                    "1713060215557",
-                    "1713060215559",
-                    "1713060215562"
+                    "1713060250599"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643161511,
+                "oldBounds": {
+                    "x": 620,
+                    "y": 1375,
+                    "w": 804,
+                    "h": 634,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 617,
+                    "y": 1208,
+                    "w": 804,
+                    "h": 634,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060220112",
+                    "1713060220113",
+                    "1713060220114",
+                    "1713060220115",
+                    "1713060220116",
+                    "1713060220117",
+                    "1713060220118",
+                    "1713060220119",
+                    "1713060220120",
+                    "1713060220121",
+                    "1713060220122",
+                    "1713060220123",
+                    "1713060220124",
+                    "1713060220125",
+                    "1713060220126",
+                    "1713060220127",
+                    "1713060220128",
+                    "1713060220129",
+                    "1713060220130",
+                    "1713060220131",
+                    "1713060220132",
+                    "1713060220133",
+                    "1713060220134",
+                    "1713060220135",
+                    "1713060220136",
+                    "1713060220137",
+                    "1713060220138",
+                    "1713060220139",
+                    "1713060220140",
+                    "1713060220141",
+                    "1713060220142",
+                    "1713060220143",
+                    "1713060220144",
+                    "1713060220145",
+                    "1713060220146",
+                    "1713060220147",
+                    "1713060220148",
+                    "1713060220149",
+                    "1713060220150",
+                    "1713060220151",
+                    "1713060220152",
+                    "1713060220153",
+                    "1713060220154",
+                    "1713060220155",
+                    "1713060220156",
+                    "1713060220157",
+                    "1713060220158",
+                    "1713060220159",
+                    "1713060220160",
+                    "1713060220161",
+                    "1713060220162",
+                    "1713060220163",
+                    "1713060220164",
+                    "1713060220165",
+                    "1713060220166",
+                    "1713060220167",
+                    "1713060220168",
+                    "1713060220169",
+                    "1713060220170",
+                    "1713060220171",
+                    "1713060220172",
+                    "1713060220173",
+                    "1713060246637",
+                    "1713060250193",
+                    "1713060250249"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1713558324447,
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643183011,
                 "appearance": {
-                    "key": "BACKGROUND_COLOR",
-                    "value": "#bdbdbd"
+                    "key": "TEXT",
+                    "value": "Users opt-in to connecting to contacts when in Hidden mode using the chat icon or connect action in the contacts menu"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060215544",
-                    "1713060215549",
-                    "1713060215550",
-                    "1713060215551",
-                    "1713060215557",
-                    "1713060215559",
-                    "1713060215562"
+                    "1713060241544"
+                ]
+            }
+        },
+        {
+            "type": "items/paste",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643501817,
+                "json": "{\"visuals\":[{\"id\":\"1713060252751\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"Users opt-in to connecting to contacts when in Hidden mode using the chat icon or connect action in the contacts menu\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":1135,\"y\":797,\"w\":192,\"h\":120,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643503134,
+                "itemIds": [
+                    "1713060252751"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643519768,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "- Chat input widgets are disabled if the user is not connected\n- Users opt-in to connecting to contacts when in Hidden mode using the chat icon or connect action in the contacts menu"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060241544"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643522701,
+                "oldBounds": {
+                    "x": 1135,
+                    "y": 797,
+                    "w": 192,
+                    "h": 120,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1135,
+                    "y": 746,
+                    "w": 192,
+                    "h": 222,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060241544"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643527585,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "- Chat input widgets are disabled if the user is not connected\n\n- Users opt-in to connecting to contacts when in Hidden mode using the chat icon or connect action in the contacts menu"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060241544"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643532268,
+                "oldBounds": {
+                    "x": 1135,
+                    "y": 746,
+                    "w": 192,
+                    "h": 222,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1135,
+                    "y": 746,
+                    "w": 192,
+                    "h": 222,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060241544"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "aded38e4-f279-58df-12ed-8d8a929a1fdd",
+                "timestamp": 1713643541818,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "- Chat input widgets are disabled if the user is not connected\n\n- User must opt-in to connecting to contacts when in Hidden mode using the chat icon or connect action in the contacts menu"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060241544"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713643565052,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Toolbar: New Profile, Save Profile, Logout | Add Contact, Delete Contact, Block Contact, Connect/Disconnect Contact | Export Logs, Delete Logs"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060210931"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713643572102,
+                "oldBounds": {
+                    "x": 710,
+                    "y": 336,
+                    "w": 1042,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 617,
+                    "y": 336,
+                    "w": 1042,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060210931"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713643580152,
+                "oldBounds": {
+                    "x": 1129,
+                    "y": 264.5,
+                    "w": 180,
+                    "h": 203,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1140,
+                    "y": 208.5,
+                    "w": 180,
+                    "h": 203,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060203608",
+                    "1713060210606"
+                ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713643587552,
+                "itemIds": [
+                    "1713060193434"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713643590686,
+                "oldBounds": {
+                    "x": 1119,
+                    "y": 1414.5,
+                    "w": 180,
+                    "h": 87,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1109,
+                    "y": 1223.5,
+                    "w": 180,
+                    "h": 87,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060212050"
                 ]
             }
         }
