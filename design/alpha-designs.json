@@ -360,6 +360,41 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713723753928",
+                        "appearance": {
+                            "FONT_SIZE": 48,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Connection Dialog"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 206,
+                            "y": 39,
+                            "w": 412,
+                            "h": 78,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723753929",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "This is the first window that will appear if Ricochet Refresh is managing its owned own Tor instance (versus using a system-owned Tor or Arti instance)"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 323,
+                            "y": 148,
+                            "w": 612,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -381,9 +416,11 @@
                     "1713060253051",
                     "1713060253052",
                     "1713060253053",
-                    "1713060253054"
+                    "1713060253054",
+                    "1713723753928",
+                    "1713723753929"
                 ],
-                "title": "Bootstrapping"
+                "title": "Connection"
             },
             {
                 "id": "1708271107626",
@@ -4649,10 +4686,10 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1129,
-                            "y": 263,
-                            "w": 180,
-                            "h": 58,
+                            "x": 1104,
+                            "y": 241,
+                            "w": 190,
+                            "h": 70,
                             "r": 0
                         },
                         "type": "Shape"
@@ -11311,6 +11348,59 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713723753395",
+                        "appearance": {
+                            "FONT_SIZE": 48,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Changelog Dialog"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 200,
+                            "y": 39,
+                            "w": 400,
+                            "h": 78,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723753541",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Accessed via the Help > Changelog... menu item, will display the most recent changelog."
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 323,
+                            "y": 148,
+                            "w": 612,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723753649",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Alternatively, we could open the folder containing shipped changelog file and let tjhe user open it in their preferred text editor"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 1129,
+                            "y": 121,
+                            "w": 180,
+                            "h": 206,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -11325,7 +11415,10 @@
                     "1713723752474",
                     "1713723752509",
                     "1713723752872",
-                    "1713723753022"
+                    "1713723753022",
+                    "1713723753395",
+                    "1713723753541",
+                    "1713723753649"
                 ],
                 "title": "Changelog"
             }
@@ -11354,441 +11447,372 @@
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713727034838,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727681884,
                 "oldBounds": {
-                    "x": 1129,
-                    "y": 263,
-                    "w": 180,
-                    "h": 58,
+                    "x": 968,
+                    "y": 274,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1099,
-                    "y": 235,
-                    "w": 180,
-                    "h": 58,
+                    "x": 942,
+                    "y": 274,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060276912"
+                    "1713060194058"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713727038621,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727693451,
                 "oldBounds": {
-                    "x": 1099,
-                    "y": 235,
-                    "w": 180,
-                    "h": 58,
+                    "x": 617.5,
+                    "y": 629,
+                    "w": 119,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1104,
-                    "y": 241,
-                    "w": 190,
-                    "h": 70,
+                    "x": 606.5,
+                    "y": 610,
+                    "w": 119,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060276912"
+                    "1713060194112"
                 ]
             }
         },
         {
-            "type": "items/addShape",
+            "type": "items/transform",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727111423,
-                "id": "1713723753395",
-                "renderer": "Heading",
-                "position": {
-                    "x": 185,
-                    "y": 38.66668701171875
-                }
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727114973,
-                "appearance": {
-                    "key": "FONT_SIZE",
-                    "value": 36
+                "diagramId": "1708271085757",
+                "timestamp": 1713727695735,
+                "oldBounds": {
+                    "x": 760,
+                    "y": 619.5,
+                    "w": 126,
+                    "h": 121,
+                    "r": 0
                 },
-                "force": false,
+                "newBounds": {
+                    "x": 755,
+                    "y": 600.5,
+                    "w": 126,
+                    "h": 121,
+                    "r": 0
+                },
                 "itemIds": [
-                    "1713723753395"
+                    "1713060194200"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713727697885,
+                "oldBounds": {
+                    "x": 755,
+                    "y": 600.5,
+                    "w": 126,
+                    "h": 121,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 760,
+                    "y": 600.5,
+                    "w": 126,
+                    "h": 121,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060194200"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727119106,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727725219,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Changlog Dialog"
+                    "value": "This is the first window that will appear if Ricochet Refresh is managing its owned own Tor provider (versus using a system-owned Tor or Arti instance). If we are using an external Tor provider, we will go directly to the Main window"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723753395"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727120856,
-                "oldBounds": {
-                    "x": 329,
-                    "y": 71,
-                    "w": 288,
-                    "h": 64,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 142,
-                    "y": 32,
-                    "w": 288,
-                    "h": 64,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723753395"
+                    "1713723753929"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727126757,
-                "appearance": {
-                    "key": "FONT_SIZE",
-                    "value": 48
-                },
-                "force": false,
-                "itemIds": [
-                    "1713723753395"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727130207,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727738952,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Changelog Dialog"
+                    "value": "This is the first window that will appear if Ricochet Refresh is managing its owned own Tor provider (versus using a system-owned Tor or Arti instance). If we are using an external Tor provider, we will go directly to the Main window."
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723753395"
+                    "1713723753929"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727132823,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727750986,
                 "oldBounds": {
-                    "x": 198,
-                    "y": 39,
-                    "w": 400,
-                    "h": 78,
+                    "x": 617.5,
+                    "y": 1073,
+                    "w": 119,
+                    "h": 62,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 200,
-                    "y": 39,
-                    "w": 400,
-                    "h": 78,
+                    "x": 606.5,
+                    "y": 1073,
+                    "w": 119,
+                    "h": 62,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713723753395"
-                ]
-            }
-        },
-        {
-            "type": "items/addShape",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727139240,
-                "id": "1713723753541",
-                "renderer": "Paragraph",
-                "position": {
-                    "x": 100,
-                    "y": 138
-                }
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727141057,
-                "oldBounds": {
-                    "x": 200,
-                    "y": 208,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 100,
-                    "y": 139,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723753541"
+                    "1713060253053"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727143957,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727752586,
                 "oldBounds": {
-                    "x": 100,
-                    "y": 139,
-                    "w": 200,
-                    "h": 140,
+                    "x": 755.5,
+                    "y": 1109,
+                    "w": 125,
+                    "h": 134,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 100,
-                    "y": 148,
-                    "w": 200,
-                    "h": 140,
+                    "x": 759.5,
+                    "y": 1109,
+                    "w": 125,
+                    "h": 134,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713723753541"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727146457,
-                "oldBounds": {
-                    "x": 100,
-                    "y": 148,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 287,
-                    "y": 148,
-                    "w": 574,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723753541"
+                    "1713060253054"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727206558,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727767703,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Accessed via the Help > Changelog... menu item, will display the most recent changelog."
+                    "value": "Configure opens the Preferences dialog"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723753541"
+                    "1713060194112"
                 ]
             }
         },
         {
-            "type": "items/addShape",
+            "type": "items/transform",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727211125,
-                "id": "1713723753649",
-                "renderer": "Comment",
-                "position": {
-                    "x": 45.883331298828125,
-                    "y": 247
-                }
+                "diagramId": "1708271085757",
+                "timestamp": 1713727772836,
+                "oldBounds": {
+                    "x": 606.5,
+                    "y": 610,
+                    "w": 119,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 612,
+                    "y": 610,
+                    "w": 130,
+                    "h": 140,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060194112"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713727777486,
+                "oldBounds": {
+                    "x": 760,
+                    "y": 600.5,
+                    "w": 126,
+                    "h": 121,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 747,
+                    "y": 600.5,
+                    "w": 100,
+                    "h": 121,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060194200"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713727784170,
+                "oldBounds": {
+                    "x": 747,
+                    "y": 600.5,
+                    "w": 100,
+                    "h": 121,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 757,
+                    "y": 600.5,
+                    "w": 120,
+                    "h": 121,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060194200"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713727786553,
+                "oldBounds": {
+                    "x": 757,
+                    "y": 600.5,
+                    "w": 120,
+                    "h": 121,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 757,
+                    "y": 583.5,
+                    "w": 120,
+                    "h": 87,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060194200"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713727788886,
+                "oldBounds": {
+                    "x": 942,
+                    "y": 274,
+                    "w": 200,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 942,
+                    "y": 301,
+                    "w": 200,
+                    "h": 140,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060194058"
+                ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727302560,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727800370,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "TODO: Alternatively, we could open the folder containing shipped changelog file and let tjhe user open it in their preferred text editor"
+                    "value": "We will try to follow a desktop'ified version of Tor Browser's about:torconnect page here"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723753649"
+                    "1713060194058"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727310894,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727806103,
                 "oldBounds": {
-                    "x": 135,
-                    "y": 332,
-                    "w": 180,
-                    "h": 170,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 135,
-                    "y": 350,
-                    "w": 180,
-                    "h": 206,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723753649"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727313160,
-                "oldBounds": {
-                    "x": 135,
-                    "y": 350,
-                    "w": 180,
-                    "h": 206,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 128,
-                    "y": 426,
-                    "w": 180,
-                    "h": 206,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723753649"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727322894,
-                "oldBounds": {
-                    "x": 287,
-                    "y": 148,
-                    "w": 574,
+                    "x": 942,
+                    "y": 301,
+                    "w": 200,
                     "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 319,
-                    "y": 148,
-                    "w": 574,
+                    "x": 968.5,
+                    "y": 301,
+                    "w": 253,
                     "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713723753541"
+                    "1713060194058"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727331044,
+                "diagramId": "1708271085757",
+                "timestamp": 1713727812920,
                 "oldBounds": {
-                    "x": 319,
-                    "y": 148,
-                    "w": 574,
-                    "h": 140,
+                    "x": 606.5,
+                    "y": 1073,
+                    "w": 119,
+                    "h": 62,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 303,
-                    "y": 148,
-                    "w": 574,
-                    "h": 140,
+                    "x": 612,
+                    "y": 1073,
+                    "w": 130,
+                    "h": 62,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713723753541"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727333527,
-                "oldBounds": {
-                    "x": 128,
-                    "y": 426,
-                    "w": 180,
-                    "h": 206,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 715,
-                    "y": 131,
-                    "w": 180,
-                    "h": 206,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723753649"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713727336427,
-                "oldBounds": {
-                    "x": 715,
-                    "y": 131,
-                    "w": 180,
-                    "h": 206,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1129,
-                    "y": 121,
-                    "w": 180,
-                    "h": 206,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723753649"
+                    "1713060253053"
                 ]
             }
         }
