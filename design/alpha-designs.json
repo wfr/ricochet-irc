@@ -2745,7 +2745,7 @@
                         "renderer": "RadioButton",
                         "transform": {
                             "x": 538,
-                            "y": 1417,
+                            "y": 1402,
                             "w": 294,
                             "h": 36,
                             "r": 0
@@ -2767,7 +2767,7 @@
                         "renderer": "RadioButton",
                         "transform": {
                             "x": 479,
-                            "y": 1453,
+                            "y": 1438,
                             "w": 176,
                             "h": 36,
                             "r": 0
@@ -2789,7 +2789,7 @@
                         "renderer": "RadioButton",
                         "transform": {
                             "x": 460,
-                            "y": 1489,
+                            "y": 1474,
                             "w": 138,
                             "h": 36,
                             "r": 0
@@ -2806,7 +2806,7 @@
                         "renderer": "Heading",
                         "transform": {
                             "x": 422,
-                            "y": 1330,
+                            "y": 1315,
                             "w": 92,
                             "h": 42,
                             "r": 0
@@ -2824,7 +2824,7 @@
                         "renderer": "Paragraph",
                         "transform": {
                             "x": 670,
-                            "y": 1377.5,
+                            "y": 1362.5,
                             "w": 562,
                             "h": 53,
                             "r": 0
@@ -2843,6 +2843,27 @@
                             "x": 451,
                             "y": 1279,
                             "w": 134,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060274620",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "View Logs..."
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 871,
+                            "y": 1287,
+                            "w": 146,
                             "h": 30,
                             "r": 0
                         },
@@ -2898,7 +2919,8 @@
                     "1713060273130",
                     "1713060273575",
                     "1713060273995",
-                    "1713060274432"
+                    "1713060274432",
+                    "1713060274620"
                 ],
                 "title": "Preferences - Connection"
             },
@@ -10761,145 +10783,13 @@
             "aded38e4-f279-58df-12ed-8d8a929a1fdd",
             "544a9ad8-9a02-4fd4-b179-0e177bd09248"
         ],
-        "id": "feb8641a-cf0f-278a-4c51-7398b33263f4",
+        "id": "41465b7f-d633-fe48-2296-efb6ecd41836",
         "size": {
             "x": 1240,
             "y": 1754
         }
     },
     "actions": [
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715770946,
-                "oldBounds": {
-                    "x": 663.5,
-                    "y": 1408,
-                    "w": 575,
-                    "h": 198,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 663.5,
-                    "y": 1398,
-                    "w": 575,
-                    "h": 198,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060273575",
-                    "1713060273995",
-                    "1713060273128",
-                    "1713060273129",
-                    "1713060273130"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715774063,
-                "oldBounds": {
-                    "x": 663.5,
-                    "y": 1398,
-                    "w": 575,
-                    "h": 198,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 663.5,
-                    "y": 1393,
-                    "w": 575,
-                    "h": 198,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060273575",
-                    "1713060273995",
-                    "1713060273128",
-                    "1713060273129",
-                    "1713060273130"
-                ]
-            }
-        },
-        {
-            "type": "items/addShape",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715777830,
-                "id": "1713060274620",
-                "renderer": "Button",
-                "position": {
-                    "x": 1060,
-                    "y": 1187
-                }
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715784913,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "View Logs..."
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060274620"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715786763,
-                "oldBounds": {
-                    "x": 1110,
-                    "y": 1202,
-                    "w": 100,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1087,
-                    "y": 1202,
-                    "w": 146,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060274620"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715790280,
-                "oldBounds": {
-                    "x": 1087,
-                    "y": 1202,
-                    "w": 146,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 871,
-                    "y": 1287,
-                    "w": 146,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060274620"
-                ]
-            }
-        },
         {
             "type": "items/align",
             "payload": {
@@ -11130,6 +11020,175 @@
                 "force": false,
                 "itemIds": [
                     "1713060179529"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713717544948,
+                "id": "1713060276002",
+                "renderer": "Paragraph",
+                "position": {
+                    "x": 997,
+                    "y": 352
+                }
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713717562865,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Logs are stored in the encrypted profile"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060276002"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713717565649,
+                "oldBounds": {
+                    "x": 1097,
+                    "y": 422,
+                    "w": 200,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1097,
+                    "y": 387,
+                    "w": 200,
+                    "h": 70,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060276002"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713717567415,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Logs are stored in the encrypted profile file"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060276002"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713717571682,
+                "oldBounds": {
+                    "x": 1100,
+                    "y": 266,
+                    "w": 178,
+                    "h": 120,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1097,
+                    "y": 482,
+                    "w": 178,
+                    "h": 120,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060190442"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713717572699,
+                "oldBounds": {
+                    "x": 1097,
+                    "y": 387,
+                    "w": 200,
+                    "h": 70,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1097,
+                    "y": 237,
+                    "w": 200,
+                    "h": 70,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060276002"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713717573849,
+                "oldBounds": {
+                    "x": 1097,
+                    "y": 482,
+                    "w": 178,
+                    "h": 120,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1080,
+                    "y": 332,
+                    "w": 178,
+                    "h": 120,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060190442"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717602933,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Tools:\n- Downloads\n- Preferences\n- Tor logs"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060187932"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717613600,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Tools:\n- Downloads\n- Tor logs\n- Preferences\n"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060187932"
                 ]
             }
         }
