@@ -2870,7 +2870,7 @@
                         "renderer": "RadioButton",
                         "transform": {
                             "x": 528,
-                            "y": 272,
+                            "y": 346,
                             "w": 294,
                             "h": 36,
                             "r": 0
@@ -2892,7 +2892,7 @@
                         "renderer": "RadioButton",
                         "transform": {
                             "x": 469,
-                            "y": 305,
+                            "y": 379,
                             "w": 176,
                             "h": 36,
                             "r": 0
@@ -2914,7 +2914,7 @@
                         "renderer": "RadioButton",
                         "transform": {
                             "x": 449,
-                            "y": 341,
+                            "y": 415,
                             "w": 138,
                             "h": 36,
                             "r": 0
@@ -2931,7 +2931,7 @@
                         "renderer": "Heading",
                         "transform": {
                             "x": 428,
-                            "y": 383,
+                            "y": 457,
                             "w": 114,
                             "h": 48,
                             "r": 0
@@ -2952,7 +2952,7 @@
                         "renderer": "TextArea",
                         "transform": {
                             "x": 665,
-                            "y": 544,
+                            "y": 618,
                             "w": 568,
                             "h": 274,
                             "r": 0
@@ -2975,7 +2975,7 @@
                         "renderer": "VerticalScrollbar",
                         "transform": {
                             "x": 939,
-                            "y": 544,
+                            "y": 618,
                             "w": 20,
                             "h": 274,
                             "r": 0
@@ -2996,7 +2996,7 @@
                         "renderer": "Button",
                         "transform": {
                             "x": 491,
-                            "y": 707,
+                            "y": 781,
                             "w": 220,
                             "h": 30,
                             "r": 0
@@ -3038,6 +3038,23 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713060267598",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Changing the Tor backend requires an application restart"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 581,
+                            "y": 269,
+                            "w": 418,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -3053,7 +3070,8 @@
                     "1713060181934",
                     "1713060181935",
                     "1713060203192",
-                    "1713060203259"
+                    "1713060203259",
+                    "1713060267598"
                 ],
                 "title": "Preferences - Advanced"
             },
@@ -9624,14 +9642,14 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "- Chat input widgets are disabled if the user is not connected\n\n- User must opt-in to connecting to contacts when in Hidden mode using the chat icon or connect action in the contacts menu"
+                            "TEXT": "- Chat input widgets are disabled if the user is not connected\n\n- User must opt-in to connecting to contacts when in Hidden mode using the chat icon in the toolbar or connect action in the contacts menu"
                         },
                         "renderer": "Paragraph",
                         "transform": {
                             "x": 1135,
-                            "y": 763,
+                            "y": 762,
                             "w": 192,
-                            "h": 256,
+                            "h": 254,
                             "r": 0
                         },
                         "type": "Shape"
@@ -9642,7 +9660,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": "#000000",
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "(2024-04-14 10:00) Alice: Hey Cameron! You into dinosaurs?\n(2024-04-14 10:02) Cameron: Hey Alice! Yeah, I think they're pretty fascinating. Velociraptors are especially cool.\n(2024-04-14 10:05) Alice: Agreed! They were like the ultimate predators, so sleek and deadly.\n(2024-04-14 10:07) Cameron: Definitely. Plus, the whole pack hunting thing adds another level of awesomeness.\n(2024-04-14 10:10) Alice: Exactly! So, do you have any other favorite dinos?\n(2024-04-14 10:13) Cameron: Hmm, tough call. T-Rex is a classic choice, but I'm also intrigued by the smaller ones like Compsognathus.\n(2024-04-14 10:15) Alice: Nice choices! Hey, did you know birds are technically descendants of dinosaurs?\n(2024-04-14 10:18) Cameron: Yeah, it's mind-blowing to think about. Evolution is wild!\n\n"
+                            "TEXT": "(2024-04-18 12:01) Alice: o/\n(2024-04-18 12:02) Elizabeth has disconnected"
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -10519,6 +10537,24 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713060266845",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "- Contact goes into Connecting... group when connect is initiated\n- Once a user reaches Connected, then chat can happen"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 109,
+                            "y": 1113.5,
+                            "w": 192,
+                            "h": 165,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -10660,7 +10696,8 @@
                     "1713060262052",
                     "1713060263334",
                     "1713060264765",
-                    "1713060261673"
+                    "1713060261673",
+                    "1713060266845"
                 ],
                 "title": "Main Window - Conversations (Hidden)"
             }
@@ -10685,275 +10722,472 @@
     },
     "actions": [
         {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713656995887,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "(2024-04-18 12:01) Alice: Hey Elizabeth!"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060246972"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657002821,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "(2024-04-18 12:01) Alice: o/"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060246972"
-                ]
-            }
-        },
-        {
-            "type": "items/paste",
-            "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657063939,
-                "json": "{\"visuals\":[{\"id\":\"1713060266845\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"- Chat input widgets are disabled if the user is not connected\\n\\n- User must opt-in to connecting to contacts when in Hidden mode using the chat icon or connect action in the contacts menu\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":1135,\"y\":763,\"w\":192,\"h\":256,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
-                "offset": 50
-            }
-        },
-        {
             "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657064039,
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712584332,
                 "oldBounds": {
-                    "x": 1185,
-                    "y": 813,
-                    "w": 192,
-                    "h": 256,
+                    "x": 528,
+                    "y": 346,
+                    "w": 294,
+                    "h": 36,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1135,
-                    "y": 813,
-                    "w": 192,
-                    "h": 256,
+                    "x": 525,
+                    "y": 302,
+                    "w": 294,
+                    "h": 36,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060266845"
+                    "1713060181929"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657066905,
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712592349,
                 "oldBounds": {
-                    "x": 1135,
-                    "y": 813,
-                    "w": 192,
-                    "h": 256,
+                    "x": 469,
+                    "y": 379,
+                    "w": 176,
+                    "h": 36,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 110,
-                    "y": 1151,
-                    "w": 192,
-                    "h": 256,
+                    "x": 474,
+                    "y": 338,
+                    "w": 176,
+                    "h": 36,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060266845"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657077906,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "- Contact goes into Connecting... group when connect is initiated"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060266845"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657588966,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "(2024-04-18 12:01) Alice: o/\n(2024-04-18 12:02) Elizabeth has disconnected"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060246972"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657629867,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "- Chat input widgets are disabled if the user is not connected\n\n- User must opt-in to connecting to contacts when in Hidden mode using the chat icon in the toolbar or connect action in the contacts menu"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060241544"
+                    "1713060181930"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657635667,
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712594166,
                 "oldBounds": {
-                    "x": 1135,
-                    "y": 763,
-                    "w": 192,
-                    "h": 256,
+                    "x": 474,
+                    "y": 338,
+                    "w": 176,
+                    "h": 36,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1135,
-                    "y": 762,
-                    "w": 192,
-                    "h": 254,
+                    "x": 469,
+                    "y": 338,
+                    "w": 176,
+                    "h": 36,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060241544"
+                    "1713060181930"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657643867,
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712600799,
                 "oldBounds": {
-                    "x": 110,
-                    "y": 1151,
-                    "w": 192,
-                    "h": 256,
+                    "x": 449,
+                    "y": 415,
+                    "w": 138,
+                    "h": 36,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 109,
-                    "y": 1159,
-                    "w": 192,
-                    "h": 256,
+                    "x": 469,
+                    "y": 374,
+                    "w": 138,
+                    "h": 36,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060266845"
+                    "1713060181931"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657648750,
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712604133,
                 "oldBounds": {
-                    "x": 109,
-                    "y": 1159,
-                    "w": 192,
-                    "h": 256,
+                    "x": 469,
+                    "y": 374,
+                    "w": 138,
+                    "h": 36,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 109,
-                    "y": 1073,
-                    "w": 192,
-                    "h": 84,
+                    "x": 447,
+                    "y": 374,
+                    "w": 138,
+                    "h": 36,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060266845"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657837087,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "- Contact goes into Connecting... group when connect is initiated\n- Once it reaches connected, then chat can happen"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060266845"
+                    "1713060181931"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657839921,
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712608833,
                 "oldBounds": {
-                    "x": 109,
-                    "y": 1073,
-                    "w": 192,
-                    "h": 84,
+                    "x": 469,
+                    "y": 338,
+                    "w": 176,
+                    "h": 36,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 109,
-                    "y": 1113.5,
-                    "w": 192,
-                    "h": 165,
+                    "x": 466,
+                    "y": 338,
+                    "w": 176,
+                    "h": 36,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060266845"
+                    "1713060181930"
                 ]
             }
         },
         {
-            "type": "items/appearance",
+            "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657844638,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "- Contact goes into Connecting... group when connect is initiated\n- Once a user reaches connected, then chat can happen"
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712618733,
+                "oldBounds": {
+                    "x": 428,
+                    "y": 457,
+                    "w": 114,
+                    "h": 48,
+                    "r": 0
                 },
-                "force": false,
+                "newBounds": {
+                    "x": 428,
+                    "y": 413,
+                    "w": 114,
+                    "h": 48,
+                    "r": 0
+                },
                 "itemIds": [
-                    "1713060266845"
+                    "1713060181932"
                 ]
             }
         },
         {
-            "type": "items/appearance",
+            "type": "items/transform",
             "payload": {
-                "diagramId": "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-                "timestamp": 1713657850004,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "- Contact goes into Connecting... group when connect is initiated\n- Once a user reaches Connected, then chat can happen"
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712626700,
+                "oldBounds": {
+                    "x": 665,
+                    "y": 618,
+                    "w": 568,
+                    "h": 274,
+                    "r": 0
                 },
-                "force": false,
+                "newBounds": {
+                    "x": 672,
+                    "y": 574,
+                    "w": 568,
+                    "h": 274,
+                    "r": 0
+                },
                 "itemIds": [
-                    "1713060266845"
+                    "1713060181933"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712631717,
+                "oldBounds": {
+                    "x": 491,
+                    "y": 781,
+                    "w": 220,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 497,
+                    "y": 740,
+                    "w": 220,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060181935"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712636117,
+                "oldBounds": {
+                    "x": 497,
+                    "y": 740,
+                    "w": 220,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 503,
+                    "y": 735,
+                    "w": 220,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060181935"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712643850,
+                "oldBounds": {
+                    "x": 503,
+                    "y": 735,
+                    "w": 220,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 498,
+                    "y": 735,
+                    "w": 220,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060181935"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712655384,
+                "oldBounds": {
+                    "x": 525,
+                    "y": 338,
+                    "w": 294,
+                    "h": 108,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 150,
+                    "y": 338,
+                    "w": 294,
+                    "h": 108,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060181929",
+                    "1713060181930",
+                    "1713060181931"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712656200,
+                "oldBounds": {
+                    "x": 150,
+                    "y": 338,
+                    "w": 294,
+                    "h": 108,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 535,
+                    "y": 338,
+                    "w": 294,
+                    "h": 108,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060181929",
+                    "1713060181930",
+                    "1713060181931"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712662434,
+                "oldBounds": {
+                    "x": 581,
+                    "y": 269,
+                    "w": 418,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 212,
+                    "y": 269,
+                    "w": 418,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060267598"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712663067,
+                "oldBounds": {
+                    "x": 212,
+                    "y": 269,
+                    "w": 418,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 597,
+                    "y": 269,
+                    "w": 418,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060267598"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712673101,
+                "oldBounds": {
+                    "x": 939,
+                    "y": 618,
+                    "w": 20,
+                    "h": 274,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 946,
+                    "y": 583,
+                    "w": 20,
+                    "h": 274,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060181934"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712678701,
+                "oldBounds": {
+                    "x": 946,
+                    "y": 583,
+                    "w": 20,
+                    "h": 274,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 946,
+                    "y": 574,
+                    "w": 20,
+                    "h": 274,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060181934"
+                ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712696568,
+                "itemIds": [
+                    "1713060203192"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712697718,
+                "oldBounds": {
+                    "x": 126.5,
+                    "y": 389.5,
+                    "w": 185,
+                    "h": 185,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 129.5,
+                    "y": 346.5,
+                    "w": 185,
+                    "h": 185,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060203259"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+                "timestamp": 1713712698785,
+                "oldBounds": {
+                    "x": 129.5,
+                    "y": 346.5,
+                    "w": 185,
+                    "h": 185,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 127.5,
+                    "y": 281.5,
+                    "w": 185,
+                    "h": 185,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060203259"
                 ]
             }
         }
