@@ -130,7 +130,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 519,
+                            "x": 518,
                             "y": 211,
                             "w": 210,
                             "h": 30,
@@ -235,7 +235,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 519,
+                            "x": 518,
                             "y": 714,
                             "w": 232,
                             "h": 30,
@@ -331,14 +331,14 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Jump to the Tor logs section of the preferences page"
+                            "TEXT": "Open the Tor Logs dialog"
                         },
                         "renderer": "Paragraph",
                         "transform": {
                             "x": 617.5,
-                            "y": 1112,
+                            "y": 1073,
                             "w": 119,
-                            "h": 140,
+                            "h": 62,
                             "r": 0
                         },
                         "type": "Shape"
@@ -611,7 +611,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 603,
+                            "x": 602,
                             "y": 374,
                             "w": 136,
                             "h": 30,
@@ -1229,7 +1229,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 672,
+                            "x": 607,
                             "y": 191,
                             "w": 236,
                             "h": 30,
@@ -1360,7 +1360,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 672,
+                            "x": 607,
                             "y": 191,
                             "w": 236,
                             "h": 30,
@@ -1732,7 +1732,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 672,
+                            "x": 607,
                             "y": 191,
                             "w": 236,
                             "h": 30,
@@ -1905,10 +1905,10 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 607.5,
-                            "y": 507.5,
+                            "x": 612.5,
+                            "y": 463.5,
                             "w": 727,
-                            "h": 603,
+                            "h": 791,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1922,8 +1922,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 672,
-                            "y": 191,
+                            "x": 612,
+                            "y": 53,
                             "w": 236,
                             "h": 30,
                             "r": 0
@@ -1944,10 +1944,10 @@
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 307.5,
-                            "y": 507.5,
+                            "x": 312.5,
+                            "y": 463.5,
                             "w": 127,
-                            "h": 603,
+                            "h": 791,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1961,8 +1961,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 436,
-                            "y": 230,
+                            "x": 441,
+                            "y": 92,
                             "w": 130,
                             "h": 48,
                             "r": 0
@@ -1983,8 +1983,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 647,
-                            "y": 325,
+                            "x": 652,
+                            "y": 187,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -2001,8 +2001,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 673.5,
-                            "y": 280.5,
+                            "x": 678.5,
+                            "y": 142.5,
                             "w": 575,
                             "h": 53,
                             "r": 0
@@ -2018,8 +2018,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 423,
-                            "y": 367,
+                            "x": 428,
+                            "y": 229,
                             "w": 104,
                             "h": 48,
                             "r": 0
@@ -2036,8 +2036,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 673.5,
-                            "y": 430.5,
+                            "x": 678.5,
+                            "y": 292.5,
                             "w": 575,
                             "h": 79,
                             "r": 0
@@ -2058,8 +2058,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 647,
-                            "y": 489,
+                            "x": 652,
+                            "y": 351,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -2075,8 +2075,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 430,
-                            "y": 528,
+                            "x": 435,
+                            "y": 390,
                             "w": 118,
                             "h": 42,
                             "r": 0
@@ -2097,8 +2097,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 586,
-                            "y": 562,
+                            "x": 591,
+                            "y": 424,
                             "w": 414,
                             "h": 36,
                             "r": 0
@@ -2119,8 +2119,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 426,
-                            "y": 598,
+                            "x": 431,
+                            "y": 460,
                             "w": 72,
                             "h": 36,
                             "r": 0
@@ -2141,8 +2141,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 440,
-                            "y": 677,
+                            "x": 445,
+                            "y": 539,
                             "w": 106,
                             "h": 36,
                             "r": 0
@@ -2163,8 +2163,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 445,
-                            "y": 762,
+                            "x": 450,
+                            "y": 624,
                             "w": 118,
                             "h": 36,
                             "r": 0
@@ -2181,8 +2181,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 662.5,
-                            "y": 640.5,
+                            "x": 667.5,
+                            "y": 502.5,
                             "w": 493,
                             "h": 49,
                             "r": 0
@@ -2199,8 +2199,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 662.5,
-                            "y": 719.5,
+                            "x": 667.5,
+                            "y": 581.5,
                             "w": 493,
                             "h": 49,
                             "r": 0
@@ -2213,14 +2213,14 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Makes it look like you’re connected to a Microsoft website, instead of"
+                            "TEXT": "Makes it look like you’re connected to a Microsoft website, instead of using Tor. May work in heavily censored regions, but is usually very slow."
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 662.5,
-                            "y": 794.5,
+                            "x": 667.5,
+                            "y": 677.5,
                             "w": 493,
-                            "h": 29,
+                            "h": 71,
                             "r": 0
                         },
                         "type": "Shape"
@@ -2239,8 +2239,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 543,
-                            "y": 986,
+                            "x": 555,
+                            "y": 731,
                             "w": 328,
                             "h": 36,
                             "r": 0
@@ -2260,8 +2260,8 @@
                         },
                         "renderer": "TextArea",
                         "transform": {
-                            "x": 666.5,
-                            "y": 1048.5,
+                            "x": 678.5,
+                            "y": 793.5,
                             "w": 547,
                             "h": 89,
                             "r": 0
@@ -2277,8 +2277,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 607.5,
-                            "y": 1220.5,
+                            "x": 612.5,
+                            "y": 1235.5,
                             "w": 727,
                             "h": 603,
                             "r": 0
@@ -2299,28 +2299,10 @@
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 307.5,
-                            "y": 1220.5,
+                            "x": 312.5,
+                            "y": 1235.5,
                             "w": 127,
                             "h": 603,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060177853",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "using Tor. May work in heavily censored regions, but is usually very slow."
-                        },
-                        "renderer": "Paragraph",
-                        "transform": {
-                            "x": 662.5,
-                            "y": 958,
-                            "w": 493,
-                            "h": 78,
                             "r": 0
                         },
                         "type": "Shape"
@@ -2334,8 +2316,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 473,
-                            "y": 1117,
+                            "x": 479,
+                            "y": 958,
                             "w": 204,
                             "h": 48,
                             "r": 0
@@ -2356,8 +2338,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 644,
-                            "y": 1159,
+                            "x": 650,
+                            "y": 1000,
                             "w": 530,
                             "h": 36,
                             "r": 0
@@ -2373,8 +2355,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 445,
-                            "y": 1198,
+                            "x": 451,
+                            "y": 1039,
                             "w": 92,
                             "h": 30,
                             "r": 0
@@ -2394,8 +2376,8 @@
                         },
                         "renderer": "ComboBox",
                         "transform": {
-                            "x": 870,
-                            "y": 1196,
+                            "x": 876,
+                            "y": 1037,
                             "w": 140,
                             "h": 30,
                             "r": 0
@@ -2411,8 +2393,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 434,
-                            "y": 1237,
+                            "x": 440,
+                            "y": 1078,
                             "w": 70,
                             "h": 30,
                             "r": 0
@@ -2432,8 +2414,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 630.5,
-                            "y": 1237,
+                            "x": 636.5,
+                            "y": 1078,
                             "w": 293,
                             "h": 30,
                             "r": 0
@@ -2453,8 +2435,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 891,
-                            "y": 1237,
+                            "x": 897,
+                            "y": 1078,
                             "w": 94,
                             "h": 30,
                             "r": 0
@@ -2470,8 +2452,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 810,
-                            "y": 1237,
+                            "x": 816,
+                            "y": 1078,
                             "w": 42,
                             "h": 30,
                             "r": 0
@@ -2487,8 +2469,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 442,
-                            "y": 1278,
+                            "x": 448,
+                            "y": 1119,
                             "w": 86,
                             "h": 30,
                             "r": 0
@@ -2508,8 +2490,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 573,
-                            "y": 1278,
+                            "x": 579,
+                            "y": 1119,
                             "w": 178,
                             "h": 30,
                             "r": 0
@@ -2525,8 +2507,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 708,
-                            "y": 1278,
+                            "x": 714,
+                            "y": 1119,
                             "w": 82,
                             "h": 30,
                             "r": 0
@@ -2546,8 +2528,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 849,
-                            "y": 1278,
+                            "x": 855,
+                            "y": 1119,
                             "w": 178,
                             "h": 30,
                             "r": 0
@@ -2568,8 +2550,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 658.5,
-                            "y": 1322,
+                            "x": 664.5,
+                            "y": 1163,
                             "w": 559,
                             "h": 36,
                             "r": 0
@@ -2585,8 +2567,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 454,
-                            "y": 1355,
+                            "x": 460,
+                            "y": 1196,
                             "w": 110,
                             "h": 30,
                             "r": 0
@@ -2606,8 +2588,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 724,
-                            "y": 1355,
+                            "x": 730,
+                            "y": 1196,
                             "w": 428,
                             "h": 30,
                             "r": 0
@@ -2629,10 +2611,10 @@
                         },
                         "renderer": "VerticalScrollbar",
                         "transform": {
-                            "x": 961,
-                            "y": 507.5,
+                            "x": 966,
+                            "y": 463.5,
                             "w": 20,
-                            "h": 603,
+                            "h": 791,
                             "r": 0
                         },
                         "type": "Shape"
@@ -2652,8 +2634,8 @@
                         },
                         "renderer": "VerticalScrollbar",
                         "transform": {
-                            "x": 961,
-                            "y": 1220.5,
+                            "x": 966,
+                            "y": 1235.5,
                             "w": 20,
                             "h": 603,
                             "r": 0
@@ -2669,8 +2651,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 662,
-                            "y": 904,
+                            "x": 612,
+                            "y": 919,
                             "w": 236,
                             "h": 30,
                             "r": 0
@@ -2730,6 +2712,141 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713060273127",
+                        "appearance": {
+                            "FONT_SIZE": 24,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Advanced"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 441,
+                            "y": 1240,
+                            "w": 130,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060273128",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": "#525252",
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Out-of-Process Tor daemon (default)",
+                            "STATE": "Checked"
+                        },
+                        "renderer": "RadioButton",
+                        "transform": {
+                            "x": 538,
+                            "y": 1417,
+                            "w": 294,
+                            "h": 36,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060273129",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "System Tor daemon",
+                            "STATE": "Normal"
+                        },
+                        "renderer": "RadioButton",
+                        "transform": {
+                            "x": 479,
+                            "y": 1453,
+                            "w": 176,
+                            "h": 36,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060273130",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "In-Process Arti",
+                            "STATE": "Normal"
+                        },
+                        "renderer": "RadioButton",
+                        "transform": {
+                            "x": 460,
+                            "y": 1489,
+                            "w": 138,
+                            "h": 36,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060273575",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Backend"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 422,
+                            "y": 1330,
+                            "w": 92,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060273995",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Select which Tor client implementation to use. Changing requires an application restart."
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 670,
+                            "y": 1377.5,
+                            "w": 562,
+                            "h": 53,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060274432",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "View the Tor logs"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 451,
+                            "y": 1279,
+                            "w": 134,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -2754,7 +2871,6 @@
                     "1713060172821",
                     "1713060172822",
                     "1713060172823",
-                    "1713060177853",
                     "1713060178218",
                     "1713060178219",
                     "1713060178220",
@@ -2775,7 +2891,14 @@
                     "1713060180666",
                     "1713060190548",
                     "1713060190629",
-                    "1713060190681"
+                    "1713060190681",
+                    "1713060273127",
+                    "1713060273128",
+                    "1713060273129",
+                    "1713060273130",
+                    "1713060273575",
+                    "1713060273995",
+                    "1713060274432"
                 ],
                 "title": "Preferences - Connection"
             },
@@ -2808,7 +2931,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 672,
+                            "x": 607,
                             "y": 191,
                             "w": 236,
                             "h": 30,
@@ -2837,241 +2960,12 @@
                             "r": 0
                         },
                         "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181928",
-                        "appearance": {
-                            "FONT_SIZE": 24,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Backend"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 429,
-                            "y": 230,
-                            "w": 116,
-                            "h": 48,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181929",
-                        "appearance": {
-                            "FOREGROUND_COLOR": 15790320,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": "#525252",
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Out-of-Process Tor daemon (default)",
-                            "STATE": "Checked"
-                        },
-                        "renderer": "RadioButton",
-                        "transform": {
-                            "x": 528,
-                            "y": 346,
-                            "w": 294,
-                            "h": 36,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181930",
-                        "appearance": {
-                            "FOREGROUND_COLOR": 15790320,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "System Tor daemon",
-                            "STATE": "Normal"
-                        },
-                        "renderer": "RadioButton",
-                        "transform": {
-                            "x": 469,
-                            "y": 379,
-                            "w": 176,
-                            "h": 36,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181931",
-                        "appearance": {
-                            "FOREGROUND_COLOR": 15790320,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "In-Process Arti",
-                            "STATE": "Normal"
-                        },
-                        "renderer": "RadioButton",
-                        "transform": {
-                            "x": 449,
-                            "y": 415,
-                            "w": 138,
-                            "h": 36,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181932",
-                        "appearance": {
-                            "FONT_SIZE": 24,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Tor Logs"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 428,
-                            "y": 457,
-                            "w": 114,
-                            "h": 48,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181933",
-                        "appearance": {
-                            "FOREGROUND_COLOR": 16777215,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Feb 18 16:33:36.142 [notice] Tor 0.4.8.10 (git-680415826c5fd786) running on Linux with Libevent 2.1.12-stable, OpenSSL 3.0.12, Zlib 1.3.1, Liblzma N/A, Libzstd N/A and Glibc 2.36 as libc."
-                        },
-                        "renderer": "TextArea",
-                        "transform": {
-                            "x": 665,
-                            "y": 618,
-                            "w": 568,
-                            "h": 274,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181934",
-                        "appearance": {
-                            "ARROW_COLOR": 12434877,
-                            "FOREGROUND_COLOR": 15790320,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 15790320,
-                            "STROKE_THICKNESS": 2,
-                            "TEXT_DISABLED": true,
-                            "BAR_COLOR": 12434877,
-                            "BAR_POSITION": 0,
-                            "BAR_SIZE": 50
-                        },
-                        "renderer": "VerticalScrollbar",
-                        "transform": {
-                            "x": 939,
-                            "y": 618,
-                            "w": 20,
-                            "h": 274,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060181935",
-                        "appearance": {
-                            "FOREGROUND_COLOR": 15790320,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Copy Tor Log to Clipboard"
-                        },
-                        "renderer": "Button",
-                        "transform": {
-                            "x": 491,
-                            "y": 781,
-                            "w": 220,
-                            "h": 30,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060203192",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: Switching backends will require a restart"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 129,
-                            "y": 233,
-                            "w": 180,
-                            "h": 114,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060203259",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: should logs be in a separate dialog instead? We *could* put the logs just in the connection/bootstrap dialog."
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 126.5,
-                            "y": 389.5,
-                            "w": 185,
-                            "h": 185,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060267598",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Changing the Tor backend requires an application restart"
-                        },
-                        "renderer": "Label",
-                        "transform": {
-                            "x": 581,
-                            "y": 269,
-                            "w": 418,
-                            "h": 30,
-                            "r": 0
-                        },
-                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
                     "1713060162631",
                     "1713060162632",
-                    "1713060163550",
-                    "1713060181928",
-                    "1713060181929",
-                    "1713060181930",
-                    "1713060181931",
-                    "1713060181932",
-                    "1713060181933",
-                    "1713060181934",
-                    "1713060181935",
-                    "1713060203192",
-                    "1713060203259",
-                    "1713060267598"
+                    "1713060163550"
                 ],
                 "title": "Preferences - Advanced"
             },
@@ -3103,7 +2997,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 603,
+                            "x": 602,
                             "y": 374,
                             "w": 136,
                             "h": 30,
@@ -4929,7 +4823,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 623,
+                            "x": 622,
                             "y": 188,
                             "w": 136,
                             "h": 30,
@@ -5740,7 +5634,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 620,
+                            "x": 619,
                             "y": 906,
                             "w": 136,
                             "h": 30,
@@ -7799,7 +7693,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 623,
+                            "x": 622,
                             "y": 188,
                             "w": 136,
                             "h": 30,
@@ -8628,7 +8522,7 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 620,
+                            "x": 619,
                             "y": 906,
                             "w": 136,
                             "h": 30,
@@ -10700,6 +10594,158 @@
                     "1713060266845"
                 ],
                 "title": "Main Window - Conversations (Hidden)"
+            },
+            {
+                "id": "1713060268309",
+                "items": [
+                    {
+                        "id": "1713060268322",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Feb 18 16:33:36.142 [notice] Tor 0.4.8.10 (git-680415826c5fd786) running on Linux with Libevent 2.1.12-stable, OpenSSL 3.0.12, Zlib 1.3.1, Liblzma N/A, Libzstd N/A and Glibc 2.36 as libc."
+                        },
+                        "renderer": "TextArea",
+                        "transform": {
+                            "x": 572,
+                            "y": 358.5,
+                            "w": 774,
+                            "h": 525,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060268323",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Copy Tor Log to Clipboard"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 295,
+                            "y": 650,
+                            "w": 220,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060268370",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 572,
+                            "y": 379,
+                            "w": 800,
+                            "h": 600,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060268720",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Ok"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 912.5,
+                            "y": 650,
+                            "w": 93,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060268909",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh - Tor Logs"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 572,
+                            "y": 64,
+                            "w": 212,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060269147",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "This dialog should match layout of Tor Browser's about:preferences#connection Tor Logs dialog"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 1098,
+                            "y": 106,
+                            "w": 220,
+                            "h": 104,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060269319",
+                        "appearance": {
+                            "ARROW_COLOR": 12434877,
+                            "FOREGROUND_COLOR": 15790320,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 15790320,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true,
+                            "BAR_COLOR": 12434877,
+                            "BAR_POSITION": 0,
+                            "BAR_SIZE": 50
+                        },
+                        "renderer": "VerticalScrollbar",
+                        "transform": {
+                            "x": 949,
+                            "y": 358.5,
+                            "w": 20,
+                            "h": 525,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    }
+                ],
+                "rootIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269147",
+                    "1713060269319"
+                ],
+                "title": "Tor Logs"
             }
         ],
         "diagramIds": [
@@ -10709,6 +10755,7 @@
             "0382783f-c8bf-e022-cd34-e60113d84b72",
             "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
             "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
+            "1713060268309",
             "1708271107626",
             "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
             "aded38e4-f279-58df-12ed-8d8a929a1fdd",
@@ -10724,470 +10771,365 @@
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712584332,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715770946,
                 "oldBounds": {
-                    "x": 528,
-                    "y": 346,
-                    "w": 294,
-                    "h": 36,
+                    "x": 663.5,
+                    "y": 1408,
+                    "w": 575,
+                    "h": 198,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 525,
-                    "y": 302,
-                    "w": 294,
-                    "h": 36,
+                    "x": 663.5,
+                    "y": 1398,
+                    "w": 575,
+                    "h": 198,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060181929"
+                    "1713060273575",
+                    "1713060273995",
+                    "1713060273128",
+                    "1713060273129",
+                    "1713060273130"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712592349,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715774063,
                 "oldBounds": {
-                    "x": 469,
-                    "y": 379,
-                    "w": 176,
-                    "h": 36,
+                    "x": 663.5,
+                    "y": 1398,
+                    "w": 575,
+                    "h": 198,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 474,
-                    "y": 338,
-                    "w": 176,
-                    "h": 36,
+                    "x": 663.5,
+                    "y": 1393,
+                    "w": 575,
+                    "h": 198,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060181930"
+                    "1713060273575",
+                    "1713060273995",
+                    "1713060273128",
+                    "1713060273129",
+                    "1713060273130"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715777830,
+                "id": "1713060274620",
+                "renderer": "Button",
+                "position": {
+                    "x": 1060,
+                    "y": 1187
+                }
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715784913,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "View Logs..."
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060274620"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712594166,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715786763,
                 "oldBounds": {
-                    "x": 474,
-                    "y": 338,
-                    "w": 176,
-                    "h": 36,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 469,
-                    "y": 338,
-                    "w": 176,
-                    "h": 36,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060181930"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712600799,
-                "oldBounds": {
-                    "x": 449,
-                    "y": 415,
-                    "w": 138,
-                    "h": 36,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 469,
-                    "y": 374,
-                    "w": 138,
-                    "h": 36,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060181931"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712604133,
-                "oldBounds": {
-                    "x": 469,
-                    "y": 374,
-                    "w": 138,
-                    "h": 36,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 447,
-                    "y": 374,
-                    "w": 138,
-                    "h": 36,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060181931"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712608833,
-                "oldBounds": {
-                    "x": 469,
-                    "y": 338,
-                    "w": 176,
-                    "h": 36,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 466,
-                    "y": 338,
-                    "w": 176,
-                    "h": 36,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060181930"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712618733,
-                "oldBounds": {
-                    "x": 428,
-                    "y": 457,
-                    "w": 114,
-                    "h": 48,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 428,
-                    "y": 413,
-                    "w": 114,
-                    "h": 48,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060181932"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712626700,
-                "oldBounds": {
-                    "x": 665,
-                    "y": 618,
-                    "w": 568,
-                    "h": 274,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 672,
-                    "y": 574,
-                    "w": 568,
-                    "h": 274,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060181933"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712631717,
-                "oldBounds": {
-                    "x": 491,
-                    "y": 781,
-                    "w": 220,
+                    "x": 1110,
+                    "y": 1202,
+                    "w": 100,
                     "h": 30,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 497,
-                    "y": 740,
-                    "w": 220,
+                    "x": 1087,
+                    "y": 1202,
+                    "w": 146,
                     "h": 30,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060181935"
+                    "1713060274620"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712636117,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715790280,
                 "oldBounds": {
-                    "x": 497,
-                    "y": 740,
-                    "w": 220,
+                    "x": 1087,
+                    "y": 1202,
+                    "w": 146,
                     "h": 30,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 503,
-                    "y": 735,
-                    "w": 220,
+                    "x": 871,
+                    "y": 1287,
+                    "w": 146,
                     "h": 30,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060181935"
+                    "1713060274620"
+                ]
+            }
+        },
+        {
+            "type": "items/align",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715801580,
+                "mode": "ALIGN_V_CENTER",
+                "itemIds": [
+                    "1713060274432",
+                    "1713060274620"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712643850,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715803963,
                 "oldBounds": {
-                    "x": 503,
-                    "y": 735,
-                    "w": 220,
+                    "x": 664,
+                    "y": 1283,
+                    "w": 560,
                     "h": 30,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 498,
-                    "y": 735,
-                    "w": 220,
+                    "x": 664,
+                    "y": 1279,
+                    "w": 560,
                     "h": 30,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060181935"
+                    "1713060274432",
+                    "1713060274620"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712655384,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715812147,
                 "oldBounds": {
-                    "x": 525,
-                    "y": 338,
-                    "w": 294,
-                    "h": 108,
+                    "x": 422,
+                    "y": 1315,
+                    "w": 92,
+                    "h": 42,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 150,
-                    "y": 338,
-                    "w": 294,
-                    "h": 108,
+                    "x": 424,
+                    "y": 1315,
+                    "w": 92,
+                    "h": 42,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060181929",
-                    "1713060181930",
-                    "1713060181931"
+                    "1713060273575"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "diagram/remove",
             "payload": {
                 "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712656200,
-                "oldBounds": {
-                    "x": 150,
-                    "y": 338,
-                    "w": 294,
-                    "h": 108,
-                    "r": 0
+                "timestamp": 1713715874465
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
+                "timestamp": 1713715879848,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "General\nInterface\nChatting*\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                 },
-                "newBounds": {
-                    "x": 535,
-                    "y": 338,
-                    "w": 294,
-                    "h": 108,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713060181929",
-                    "1713060181930",
-                    "1713060181931"
+                    "1713060163550"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712662434,
-                "oldBounds": {
-                    "x": 581,
-                    "y": 269,
-                    "w": 418,
-                    "h": 30,
-                    "r": 0
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715885132,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                 },
-                "newBounds": {
-                    "x": 212,
-                    "y": 269,
-                    "w": 418,
-                    "h": 30,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713060267598"
+                    "1713060163550"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712663067,
-                "oldBounds": {
-                    "x": 212,
-                    "y": 269,
-                    "w": 418,
-                    "h": 30,
-                    "r": 0
+                "diagramId": "3ea4032a-0bf8-058c-ca48-279759f15cce",
+                "timestamp": 1713715892715,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "General\nInterface*\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                 },
-                "newBounds": {
-                    "x": 597,
-                    "y": 269,
-                    "w": 418,
-                    "h": 30,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713060267598"
+                    "1713060163550"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712673101,
-                "oldBounds": {
-                    "x": 939,
-                    "y": 618,
-                    "w": 20,
-                    "h": 274,
-                    "r": 0
+                "diagramId": "7dcfb6a5-477d-07db-0156-6b42cba5d355",
+                "timestamp": 1713715897065,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "General*\nInterface\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                 },
-                "newBounds": {
-                    "x": 946,
-                    "y": 583,
-                    "w": 20,
-                    "h": 274,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713060181934"
+                    "1713060163550"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712678701,
-                "oldBounds": {
-                    "x": 946,
-                    "y": 583,
-                    "w": 20,
-                    "h": 274,
-                    "r": 0
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715902182,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                 },
-                "newBounds": {
-                    "x": 946,
-                    "y": 574,
-                    "w": 20,
-                    "h": 274,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713060181934"
+                    "1713060177536"
                 ]
             }
         },
         {
-            "type": "items/remove",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712696568,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715910849,
+                "appearance": {
+                    "key": "BAR_SIZE",
+                    "value": 0
+                },
+                "force": false,
                 "itemIds": [
-                    "1713060203192"
+                    "1713060179529"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712697718,
-                "oldBounds": {
-                    "x": 126.5,
-                    "y": 389.5,
-                    "w": 185,
-                    "h": 185,
-                    "r": 0
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715912566,
+                "appearance": {
+                    "key": "BAR_SIZE",
+                    "value": 100
                 },
-                "newBounds": {
-                    "x": 129.5,
-                    "y": 346.5,
-                    "w": 185,
-                    "h": 185,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713060203259"
+                    "1713060179529"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713712698785,
-                "oldBounds": {
-                    "x": 129.5,
-                    "y": 346.5,
-                    "w": 185,
-                    "h": 185,
-                    "r": 0
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715917282,
+                "appearance": {
+                    "key": "BAR_SIZE",
+                    "value": 84
                 },
-                "newBounds": {
-                    "x": 127.5,
-                    "y": 281.5,
-                    "w": 185,
-                    "h": 185,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713060203259"
+                    "1713060179529"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715923049,
+                "appearance": {
+                    "key": "BAR_SIZE",
+                    "value": 100
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060179529"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715925316,
+                "appearance": {
+                    "key": "BAR_SIZE",
+                    "value": 35
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060179529"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713715928216,
+                "appearance": {
+                    "key": "BAR_SIZE",
+                    "value": 50
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060179529"
                 ]
             }
         }
