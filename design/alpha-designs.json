@@ -4114,24 +4114,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060203608",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: Check for updates dialog"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 1145,
-                            "y": 68.5,
-                            "w": 180,
-                            "h": 91,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060203819",
                         "appearance": {
                             "FONT_SIZE": 16,
@@ -4658,24 +4640,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060276795",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: Changelog dialog"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 1150,
-                            "y": 170.5,
-                            "w": 180,
-                            "h": 91,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060276912",
                         "appearance": {
                             "FONT_SIZE": 16,
@@ -4752,7 +4716,6 @@
                     "1713060192233",
                     "1713060192575",
                     "1713060203423",
-                    "1713060203608",
                     "1713060203819",
                     "1713060203907",
                     "1713060205391",
@@ -4783,7 +4746,6 @@
                     "1713060258052",
                     "1713060258196",
                     "1713060261470",
-                    "1713060276795",
                     "1713060276912"
                 ],
                 "title": "Main Window - Conversations (Online)"
@@ -10744,24 +10706,6 @@
                 "id": "1713060276314",
                 "items": [
                     {
-                        "id": "1713060276440",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Requirements:\n\n- Connect to onion-service endpoint to determine latest version\n- Download correct package/installer over Tor\n - Ricochet Refresh will need to know which package/arch it is running as so it can download right update"
-                        },
-                        "renderer": "Paragraph",
-                        "transform": {
-                            "x": 305,
-                            "y": 1035,
-                            "w": 442,
-                            "h": 170,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060277605",
                         "appearance": {
                             "FOREGROUND_COLOR": 16777215,
@@ -11067,21 +11011,71 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Download the correct package based on the current insalled version (eg a deb, appimage, dmg, windows installer, etc"
+                            "TEXT": "- Download the correct package based on the current insalled version (eg a deb, appimage, dmg, windows installer, etc\n\n- Download button will open Downloads dialog"
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 783,
-                            "y": 893,
-                            "w": 200,
-                            "h": 140,
+                            "x": 889.5,
+                            "y": 913.5,
+                            "w": 413,
+                            "h": 181,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060280082",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh - Check for Updates"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 246,
+                            "y": 304,
+                            "w": 284,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060280127",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh - Check for Updates"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 868,
+                            "y": 43,
+                            "w": 284,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060280182",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh - Check for Updates"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 880,
+                            "y": 573,
+                            "w": 284,
+                            "h": 30,
                             "r": 0
                         },
                         "type": "Shape"
                     }
                 ],
                 "rootIds": [
-                    "1713060276440",
                     "1713060277605",
                     "1713060277606",
                     "1713060277741",
@@ -11098,9 +11092,242 @@
                     "1713060279395",
                     "1713060279628",
                     "1713060279794",
-                    "1713060280011"
+                    "1713060280011",
+                    "1713060280082",
+                    "1713060280127",
+                    "1713060280182"
                 ],
                 "title": "Check for Updates"
+            },
+            {
+                "id": "1713723751325",
+                "items": [
+                    {
+                        "id": "1713723751380",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 675,
+                            "y": 647,
+                            "w": 800,
+                            "h": 600,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723751439",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh - Changelog"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 675,
+                            "y": 332,
+                            "w": 228,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723751708",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "\n- Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n- Fusce fermentum semper est, vel tempor risus venenatis ac.\n- Nullam ultricies justo vitae elit consectetur, id luctus nisi vestibulum.\n\n- Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n- Phasellus quis velit sed est ultricies scelerisque nec ac nulla.\n\n\n- Curabitur condimentum ligula sed nibh laoreet, nec viverra ex luctus.\n- Praesent nec ex nec est accumsan suscipit.\n- Integer aliquet odio sit amet ex vestibulum, at malesuada sapien tempor.\n\n- Sed convallis odio eu scelerisque rutrum.\n- Nam id tellus sit amet eros pellentesque tristique.\n\n- Integer posuere justo ac risus facilisis, eget elementum justo sodales.\n\n- Vestibulum eget libero nec mi vehicula dapibus eget id leo."
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 680.5,
+                            "y": 694,
+                            "w": 789,
+                            "h": 506,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723751794",
+                        "appearance": {
+                            "FONT_SIZE": 24,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "4.0.2-stable"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 349,
+                            "y": 379,
+                            "w": 148,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723752119",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "All Platforms"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 336,
+                            "y": 454,
+                            "w": 122,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723752208",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "macOS"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 316,
+                            "y": 550,
+                            "w": 82,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723752258",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Build System"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 334,
+                            "y": 645,
+                            "w": 126,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723752396",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Windows"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 322,
+                            "y": 740,
+                            "w": 94,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723752474",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "macOS"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 316,
+                            "y": 812,
+                            "w": 82,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723752509",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Linux"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 307,
+                            "y": 862,
+                            "w": 64,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723752872",
+                        "appearance": {
+                            "ARROW_COLOR": 12434877,
+                            "FOREGROUND_COLOR": 15790320,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 15790320,
+                            "STROKE_THICKNESS": 2,
+                            "TEXT_DISABLED": true,
+                            "BAR_COLOR": 12434877,
+                            "BAR_POSITION": 0,
+                            "BAR_SIZE": 50
+                        },
+                        "renderer": "VerticalScrollbar",
+                        "transform": {
+                            "x": 1065,
+                            "y": 647,
+                            "w": 20,
+                            "h": 600,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723753022",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "November 1st, 2025"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 513,
+                            "y": 381,
+                            "w": 184,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    }
+                ],
+                "rootIds": [
+                    "1713723751380",
+                    "1713723751439",
+                    "1713723751708",
+                    "1713723751794",
+                    "1713723752119",
+                    "1713723752208",
+                    "1713723752258",
+                    "1713723752396",
+                    "1713723752474",
+                    "1713723752509",
+                    "1713723752872",
+                    "1713723753022"
+                ],
+                "title": "Changelog"
             }
         ],
         "diagramIds": [
@@ -11114,9 +11341,10 @@
             "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
             "aded38e4-f279-58df-12ed-8d8a929a1fdd",
             "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-            "1713060276314"
+            "1713060276314",
+            "1713723751325"
         ],
-        "id": "41465b7f-d633-fe48-2296-efb6ecd41836",
+        "id": "8e4a73cb-bb16-15c8-bcb6-78a76134103c",
         "size": {
             "x": 1240,
             "y": 1754
@@ -11126,463 +11354,441 @@
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722043138,
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713727034838,
                 "oldBounds": {
-                    "x": 783,
-                    "y": 893,
+                    "x": 1129,
+                    "y": 263,
+                    "w": 180,
+                    "h": 58,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1099,
+                    "y": 235,
+                    "w": 180,
+                    "h": 58,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060276912"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713727038621,
+                "oldBounds": {
+                    "x": 1099,
+                    "y": 235,
+                    "w": 180,
+                    "h": 58,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1104,
+                    "y": 241,
+                    "w": 190,
+                    "h": 70,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060276912"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727111423,
+                "id": "1713723753395",
+                "renderer": "Heading",
+                "position": {
+                    "x": 185,
+                    "y": 38.66668701171875
+                }
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727114973,
+                "appearance": {
+                    "key": "FONT_SIZE",
+                    "value": 36
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723753395"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727119106,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Changlog Dialog"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723753395"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727120856,
+                "oldBounds": {
+                    "x": 329,
+                    "y": 71,
+                    "w": 288,
+                    "h": 64,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 142,
+                    "y": 32,
+                    "w": 288,
+                    "h": 64,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723753395"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727126757,
+                "appearance": {
+                    "key": "FONT_SIZE",
+                    "value": 48
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723753395"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727130207,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Changelog Dialog"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723753395"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727132823,
+                "oldBounds": {
+                    "x": 198,
+                    "y": 39,
+                    "w": 400,
+                    "h": 78,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 200,
+                    "y": 39,
+                    "w": 400,
+                    "h": 78,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723753395"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727139240,
+                "id": "1713723753541",
+                "renderer": "Paragraph",
+                "position": {
+                    "x": 100,
+                    "y": 138
+                }
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713723751325",
+                "timestamp": 1713727141057,
+                "oldBounds": {
+                    "x": 200,
+                    "y": 208,
                     "w": 200,
                     "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 889.5,
-                    "y": 875,
-                    "w": 413,
-                    "h": 104,
+                    "x": 100,
+                    "y": 139,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280011"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722045722,
-                "itemIds": [
-                    "1713060276440"
-                ]
-            }
-        },
-        {
-            "type": "items/addShape",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722774186,
-                "id": "1713060280082",
-                "renderer": "Label",
-                "position": {
-                    "x": 15.800003051757812,
-                    "y": 140.86669921875
-                }
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722783286,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Ricochet Refresh - Check for Updates"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060280082"
+                    "1713723753541"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722785853,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727143957,
                 "oldBounds": {
-                    "x": 157,
-                    "y": 155,
-                    "w": 284,
-                    "h": 30,
+                    "x": 100,
+                    "y": 139,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 253,
-                    "y": 304,
-                    "w": 284,
-                    "h": 30,
+                    "x": 100,
+                    "y": 148,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280082"
+                    "1713723753541"
                 ]
-            }
-        },
-        {
-            "type": "items/paste",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722786670,
-                "json": "{\"visuals\":[{\"id\":\"1713060280127\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Ricochet Refresh - Check for Updates\"},\"renderer\":\"Label\",\"transform\":{\"x\":253,\"y\":304,\"w\":284,\"h\":30,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
-                "offset": 50
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722788886,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727146457,
                 "oldBounds": {
-                    "x": 303,
-                    "y": 354,
-                    "w": 284,
-                    "h": 30,
+                    "x": 100,
+                    "y": 148,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 880,
-                    "y": 43,
-                    "w": 284,
-                    "h": 30,
+                    "x": 287,
+                    "y": 148,
+                    "w": 574,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280127"
-                ]
-            }
-        },
-        {
-            "type": "items/paste",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722789970,
-                "json": "{\"visuals\":[{\"id\":\"1713060280182\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Ricochet Refresh - Check for Updates\"},\"renderer\":\"Label\",\"transform\":{\"x\":253,\"y\":304,\"w\":284,\"h\":30,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
-                "offset": 100
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722792103,
-                "oldBounds": {
-                    "x": 353,
-                    "y": 404,
-                    "w": 284,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 868,
-                    "y": 573,
-                    "w": 284,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060280182"
-                ]
-            }
-        },
-        {
-            "type": "items/align",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722805720,
-                "mode": "ALIGN_H_CENTER",
-                "itemIds": [
-                    "1713060277605",
-                    "1713060280082"
-                ]
-            }
-        },
-        {
-            "type": "items/align",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722809004,
-                "mode": "ALIGN_H_CENTER",
-                "itemIds": [
-                    "1713060278727",
-                    "1713060280127"
-                ]
-            }
-        },
-        {
-            "type": "items/align",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722812254,
-                "mode": "ALIGN_H_CENTER",
-                "itemIds": [
-                    "1713060278956",
-                    "1713060280182"
+                    "1713723753541"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722843304,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727206558,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "- Download the correct package based on the current insalled version (eg a deb, appimage, dmg, windows installer, etc\n\n- Download button will open Downloads dialog"
+                    "value": "Accessed via the Help > Changelog... menu item, will display the most recent changelog."
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060280011"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722845371,
-                "oldBounds": {
-                    "x": 889.5,
-                    "y": 875,
-                    "w": 413,
-                    "h": 104,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 889.5,
-                    "y": 913.5,
-                    "w": 413,
-                    "h": 181,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060280011"
+                    "1713723753541"
                 ]
             }
         },
         {
             "type": "items/addShape",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722990124,
-                "id": "1713060280320",
+                "diagramId": "1713723751325",
+                "timestamp": 1713727211125,
+                "id": "1713723753649",
                 "renderer": "Comment",
                 "position": {
-                    "x": 390.8833312988281,
-                    "y": 676
+                    "x": 45.883331298828125,
+                    "y": 247
                 }
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722994724,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727302560,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Maybe we want the changelogs?"
+                    "value": "TODO: Alternatively, we could open the folder containing shipped changelog file and let tjhe user open it in their preferred text editor"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060280320"
+                    "1713723753649"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713722998241,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727310894,
                 "oldBounds": {
-                    "x": 480,
-                    "y": 761,
+                    "x": 135,
+                    "y": 332,
                     "w": 180,
                     "h": 170,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 480,
-                    "y": 720,
+                    "x": 135,
+                    "y": 350,
                     "w": 180,
-                    "h": 88,
+                    "h": 206,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280320"
+                    "1713723753649"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723000391,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727313160,
                 "oldBounds": {
-                    "x": 480,
-                    "y": 720,
+                    "x": 135,
+                    "y": 350,
                     "w": 180,
-                    "h": 88,
+                    "h": 206,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 465,
-                    "y": 759,
+                    "x": 128,
+                    "y": 426,
                     "w": 180,
-                    "h": 88,
+                    "h": 206,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280320"
+                    "1713723753649"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723001474,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727322894,
                 "oldBounds": {
-                    "x": 465,
-                    "y": 759,
-                    "w": 180,
-                    "h": 88,
+                    "x": 287,
+                    "y": 148,
+                    "w": 574,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 485,
-                    "y": 747,
-                    "w": 180,
-                    "h": 88,
+                    "x": 319,
+                    "y": 148,
+                    "w": 574,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280320"
+                    "1713723753541"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723003191,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727331044,
                 "oldBounds": {
-                    "x": 485,
-                    "y": 747,
-                    "w": 180,
-                    "h": 88,
+                    "x": 319,
+                    "y": 148,
+                    "w": 574,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 485,
-                    "y": 731,
-                    "w": 180,
-                    "h": 88,
+                    "x": 303,
+                    "y": 148,
+                    "w": 574,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280320"
+                    "1713723753541"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723043042,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727333527,
                 "oldBounds": {
-                    "x": 485,
-                    "y": 731,
+                    "x": 128,
+                    "y": 426,
                     "w": 180,
-                    "h": 88,
+                    "h": 206,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 485,
-                    "y": 733,
+                    "x": 715,
+                    "y": 131,
                     "w": 180,
-                    "h": 88,
+                    "h": 206,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280320"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723045308,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "TODO: Maybe we want the changelogs?"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060280320"
+                    "1713723753649"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723048808,
+                "diagramId": "1713723751325",
+                "timestamp": 1713727336427,
                 "oldBounds": {
-                    "x": 485,
-                    "y": 733,
+                    "x": 715,
+                    "y": 131,
                     "w": 180,
-                    "h": 88,
+                    "h": 206,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 532,
-                    "y": 740,
+                    "x": 1129,
+                    "y": 121,
                     "w": 180,
-                    "h": 88,
+                    "h": 206,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060280320"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723053158,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "TODO: Maybe we want the changelogs accessible here?"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060280320"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713060276314",
-                "timestamp": 1713723055958,
-                "oldBounds": {
-                    "x": 532,
-                    "y": 740,
-                    "w": 180,
-                    "h": 88,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 532,
-                    "y": 749,
-                    "w": 180,
-                    "h": 106,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060280320"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713723071675,
-                "itemIds": [
-                    "1713060203608"
+                    "1713723753649"
                 ]
             }
         }
