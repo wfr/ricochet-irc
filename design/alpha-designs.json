@@ -2880,24 +2880,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060190548",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "This tab will be left blank or somehow disabled if configured to use TOR_FRIENDLY_APPLICATIONS whatever for system tor"
-                        },
-                        "renderer": "Paragraph",
-                        "transform": {
-                            "x": 1113,
-                            "y": 256.5,
-                            "w": 220,
-                            "h": 143,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060190629",
                         "appearance": {
                             "FONT_SIZE": 16,
@@ -2907,26 +2889,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 1103,
-                            "y": 395,
-                            "w": 200,
-                            "h": 140,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060190681",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Mirrors the network settings portion of Tor Browser's about:preferences"
-                        },
-                        "renderer": "Paragraph",
-                        "transform": {
-                            "x": 1103,
-                            "y": 500,
+                            "x": 1123,
+                            "y": 692,
                             "w": 200,
                             "h": 140,
                             "r": 0
@@ -3112,6 +3076,77 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713723768010",
+                        "appearance": {
+                            "FONT_SIZE": 48,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Preferences (Connection) Dialog"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 358,
+                            "y": 39,
+                            "w": 716,
+                            "h": 78,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723768011",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "The Connection section provides users with Tor Provider related options. This page may vary a lot depending on which Tor Provider is selected. For instance, a System Tor Daemon Tor Provider (eg on Tails) would have this section almost entirely empty. For now let's have this mostly mirror about:preferences#connection in Tor Browser."
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 323,
+                            "y": 148,
+                            "w": 612,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723768208",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Bridge Card support"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 135,
+                            "y": 567,
+                            "w": 180,
+                            "h": 86,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723768326",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Maybe Backend should be the *first* configurable item in the list?"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 135,
+                            "y": 1542.5,
+                            "w": 180,
+                            "h": 135,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -3149,9 +3184,7 @@
                     "1713060178231",
                     "1713060178232",
                     "1713060179415",
-                    "1713060190548",
                     "1713060190629",
-                    "1713060190681",
                     "1713060273127",
                     "1713060273128",
                     "1713060273129",
@@ -3161,7 +3194,11 @@
                     "1713060274432",
                     "1713060274620",
                     "1713723765032",
-                    "1713060163550"
+                    "1713060163550",
+                    "1713723768010",
+                    "1713723768011",
+                    "1713723768208",
+                    "1713723768326"
                 ],
                 "title": "Preferences - Connection"
             },
@@ -11630,349 +11667,311 @@
     },
     "actions": [
         {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060268309",
+                "timestamp": 1713729908529,
+                "oldBounds": {
+                    "x": 690,
+                    "y": 364,
+                    "w": 1036,
+                    "h": 630,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 690,
+                    "y": 657,
+                    "w": 1036,
+                    "h": 630,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269147",
+                    "1713060269319"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060268309",
+                "timestamp": 1713729911696,
+                "oldBounds": {
+                    "x": 690,
+                    "y": 657,
+                    "w": 1036,
+                    "h": 630,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 755,
+                    "y": 651,
+                    "w": 1036,
+                    "h": 630,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269147",
+                    "1713060269319"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060268309",
+                "timestamp": 1713729926279,
+                "oldBounds": {
+                    "x": 637,
+                    "y": 651,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 637,
+                    "y": 693,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269319"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060268309",
+                "timestamp": 1713729938196,
+                "oldBounds": {
+                    "x": 637,
+                    "y": 693,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 672,
+                    "y": 693,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269319"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060268309",
+                "timestamp": 1713729940229,
+                "oldBounds": {
+                    "x": 672,
+                    "y": 693,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 637,
+                    "y": 693,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269319"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060268309",
+                "timestamp": 1713729948830,
+                "oldBounds": {
+                    "x": 637,
+                    "y": 693,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 637,
+                    "y": 654,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269319"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060268309",
+                "timestamp": 1713729975730,
+                "oldBounds": {
+                    "x": 637,
+                    "y": 654,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 637,
+                    "y": 624,
+                    "w": 800,
+                    "h": 630,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060268370",
+                    "1713060268322",
+                    "1713060268323",
+                    "1713060268720",
+                    "1713060268909",
+                    "1713060269319"
+                ]
+            }
+        },
+        {
             "type": "items/paste",
             "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729240082,
-                "json": "{\"visuals\":[{\"id\":\"1713723768010\",\"appearance\":{\"FONT_SIZE\":48,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Preferences (Chatting) Dialog\"},\"renderer\":\"Heading\",\"transform\":{\"x\":326,\"y\":39,\"w\":652,\"h\":78,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713723768011\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"The Chatting section provides users with conversation-related options.\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":323,\"y\":148,\"w\":612,\"h\":140,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "diagramId": "1713060268309",
+                "timestamp": 1713729980530,
+                "json": "{\"visuals\":[{\"id\":\"1713723769247\",\"appearance\":{\"FONT_SIZE\":48,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Preferences (Connection) Dialog\"},\"renderer\":\"Heading\",\"transform\":{\"x\":358,\"y\":39,\"w\":716,\"h\":78,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713723769248\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"The Connection section provides users with Tor Provider related options. This page may vary a lot depending on which Tor Provider is selected. For instance, a System Tor Daemon Tor Provider (eg on Tails) would have this section almost entirely empty. For now let's have this mostly mirror about:preferences#connection in Tor Browser.\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":323,\"y\":148,\"w\":612,\"h\":140,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
                 "offset": 50
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729241982,
+                "diagramId": "1713060268309",
+                "timestamp": 1713729982447,
                 "oldBounds": {
-                    "x": 376,
+                    "x": 408,
                     "y": 159,
-                    "w": 652,
+                    "w": 716,
                     "h": 218,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 326,
+                    "x": 358,
                     "y": 109,
-                    "w": 652,
+                    "w": 716,
                     "h": 218,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713723768010",
-                    "1713723768011"
+                    "1713723769247",
+                    "1713723769248"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729247282,
+                "diagramId": "1713060268309",
+                "timestamp": 1713729989397,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Preferences (Connection) Dialog"
+                    "value": "Tor Logs Dialog"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723768010"
+                    "1713723769247"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729319417,
+                "diagramId": "1713060268309",
+                "timestamp": 1713730019631,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "The Connection section provides users with Tor Provider related options. This page may vary a lot depending on which Tor Provider is selected. For instance, a System Tor Daemon Tor Provider (eg on Tails) would have this section almost entirely empty."
+                    "value": "Provide logs from the underlying Tor Provider. This dialog should match layout of Tor Browser's about:preferences#connection Tor Logs dialog"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723768011"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729325217,
-                "oldBounds": {
-                    "x": 1103,
-                    "y": 500,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1113,
-                    "y": 612,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060190681"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729342051,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "The Connection section provides users with Tor Provider related options. This page may vary a lot depending on which Tor Provider is selected. For instance, a System Tor Daemon Tor Provider (eg on Tails) would have this section almost entirely empty. For now let's have this mostly mirror about:preferences#connection in Tor Browser."
-                },
-                "force": false,
-                "itemIds": [
-                    "1713723768011"
+                    "1713723769248"
                 ]
             }
         },
         {
             "type": "items/remove",
             "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729344684,
+                "diagramId": "1713060268309",
+                "timestamp": 1713730021414,
                 "itemIds": [
-                    "1713060190681"
+                    "1713060269147"
                 ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729347834,
-                "oldBounds": {
-                    "x": 1103,
-                    "y": 395,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1123,
-                    "y": 692,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060190629"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729349884,
-                "oldBounds": {
-                    "x": 1113,
-                    "y": 256.5,
-                    "w": 220,
-                    "h": 143,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 976,
-                    "y": 190.5,
-                    "w": 220,
-                    "h": 143,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060190548"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729351668,
-                "itemIds": [
-                    "1713060190548"
-                ]
-            }
-        },
-        {
-            "type": "items/addShape",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729366885,
-                "id": "1713723768208",
-                "renderer": "Comment",
-                "position": {
-                    "x": 19.883331298828125,
-                    "y": 312
-                }
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729383685,
+                "diagramId": "1713060268309",
+                "timestamp": 1713730052948,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "TODO: Bridge Card support"
+                    "value": "Provide logs from the underlying Tor Provider. This dialog should match layout of Tor Browser's about:preferences#connection Tor Logs dialog. Some Tor Providers will not have logs to display (eg system Tor daemon)"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723768208"
+                    "1713723769248"
                 ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729386468,
-                "oldBounds": {
-                    "x": 109,
-                    "y": 397,
-                    "w": 180,
-                    "h": 170,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 109,
-                    "y": 355,
-                    "w": 180,
-                    "h": 86,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723768208"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729389768,
-                "oldBounds": {
-                    "x": 109,
-                    "y": 355,
-                    "w": 180,
-                    "h": 86,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 135,
-                    "y": 606,
-                    "w": 180,
-                    "h": 86,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723768208"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729392885,
-                "oldBounds": {
-                    "x": 135,
-                    "y": 606,
-                    "w": 180,
-                    "h": 86,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 135,
-                    "y": 567,
-                    "w": 180,
-                    "h": 86,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723768208"
-                ]
-            }
-        },
-        {
-            "type": "items/addShape",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729407019,
-                "id": "1713723768326",
-                "renderer": "Comment",
-                "position": {
-                    "x": 46.883331298828125,
-                    "y": 1441
-                }
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729424769,
+                "diagramId": "1713060268309",
+                "timestamp": 1713730062965,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "TODO: Maybe Backend should be the *first* configurable item in the list?"
+                    "value": "Provide logs from the underlying Tor Provider. This dialog should match layout of Tor Browser's about:preferences#connection Tor Logs dialog. Some Tor Providers will not have logs to display (eg System Tor Daemon)"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723768326"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729428069,
-                "oldBounds": {
-                    "x": 136,
-                    "y": 1526,
-                    "w": 180,
-                    "h": 170,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 136,
-                    "y": 1508.5,
-                    "w": 180,
-                    "h": 135,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723768326"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713729430853,
-                "oldBounds": {
-                    "x": 136,
-                    "y": 1508.5,
-                    "w": 180,
-                    "h": 135,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 135,
-                    "y": 1542.5,
-                    "w": 180,
-                    "h": 135,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713723768326"
+                    "1713723769248"
                 ]
             }
         }
