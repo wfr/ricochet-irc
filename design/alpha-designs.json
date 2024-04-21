@@ -1308,7 +1308,7 @@
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General*\nInterface\nChatting\nConnection\nAdvanced\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                            "TEXT": "General*\nInterface\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                         },
                         "renderer": "List",
                         "transform": {
@@ -1522,7 +1522,7 @@
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface*\nChatting\nConnection\nAdvanced\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                            "TEXT": "General\nInterface*\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                         },
                         "renderer": "List",
                         "transform": {
@@ -1750,7 +1750,7 @@
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface\nChatting*\nConnection\nAdvanced\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                            "TEXT": "General\nInterface\nChatting*\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                         },
                         "renderer": "List",
                         "transform": {
@@ -1878,6 +1878,24 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713060276002",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Logs are stored in the encrypted profile file"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 1097,
+                            "y": 387,
+                            "w": 200,
+                            "h": 70,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -1889,7 +1907,8 @@
                     "1713060167401",
                     "1713060167402",
                     "1713060167403",
-                    "1713060190442"
+                    "1713060190442",
+                    "1713060276002"
                 ],
                 "title": "Preferences - Chatting"
             },
@@ -1940,7 +1959,7 @@
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface\nChatting\nConnection*\nAdvanced\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                            "TEXT": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                         },
                         "renderer": "List",
                         "transform": {
@@ -2295,7 +2314,7 @@
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface\nChatting\nConnection*\nAdvanced\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                            "TEXT": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
                         },
                         "renderer": "List",
                         "transform": {
@@ -2805,7 +2824,7 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 422,
+                            "x": 424,
                             "y": 1315,
                             "w": 92,
                             "h": 42,
@@ -2862,7 +2881,7 @@
                         "renderer": "Button",
                         "transform": {
                             "x": 871,
-                            "y": 1287,
+                            "y": 1279,
                             "w": 146,
                             "h": 30,
                             "r": 0
@@ -2923,73 +2942,6 @@
                     "1713060274620"
                 ],
                 "title": "Preferences - Connection"
-            },
-            {
-                "id": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "items": [
-                    {
-                        "id": "1713060162631",
-                        "appearance": {
-                            "FOREGROUND_COLOR": "#f8f8f8",
-                            "TEXT_DISABLED": true,
-                            "LINK": "page://1708271085757"
-                        },
-                        "renderer": "Window",
-                        "transform": {
-                            "x": 607.5,
-                            "y": 507.5,
-                            "w": 727,
-                            "h": 603,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060162632",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Ricochet Refresh - Preferences"
-                        },
-                        "renderer": "Label",
-                        "transform": {
-                            "x": 607,
-                            "y": 191,
-                            "w": 236,
-                            "h": 30,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060163550",
-                        "appearance": {
-                            "ACCENT_COLOR": 2191797,
-                            "FOREGROUND_COLOR": 16777215,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface\nChatting\nConnection\nAdvanced*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                        },
-                        "renderer": "List",
-                        "transform": {
-                            "x": 307.5,
-                            "y": 507.5,
-                            "w": 127,
-                            "h": 603,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    }
-                ],
-                "rootIds": [
-                    "1713060162631",
-                    "1713060162632",
-                    "1713060163550"
-                ],
-                "title": "Preferences - Advanced"
             },
             {
                 "id": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
@@ -10776,7 +10728,6 @@
             "3ea4032a-0bf8-058c-ca48-279759f15cce",
             "0382783f-c8bf-e022-cd34-e60113d84b72",
             "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-            "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
             "1713060268309",
             "1708271107626",
             "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
@@ -10790,306 +10741,6 @@
         }
     },
     "actions": [
-        {
-            "type": "items/align",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715801580,
-                "mode": "ALIGN_V_CENTER",
-                "itemIds": [
-                    "1713060274432",
-                    "1713060274620"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715803963,
-                "oldBounds": {
-                    "x": 664,
-                    "y": 1283,
-                    "w": 560,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 664,
-                    "y": 1279,
-                    "w": 560,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060274432",
-                    "1713060274620"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715812147,
-                "oldBounds": {
-                    "x": 422,
-                    "y": 1315,
-                    "w": 92,
-                    "h": 42,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 424,
-                    "y": 1315,
-                    "w": 92,
-                    "h": 42,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060273575"
-                ]
-            }
-        },
-        {
-            "type": "diagram/remove",
-            "payload": {
-                "diagramId": "81bbf55d-0b7b-9bd7-9324-e7aee722b163",
-                "timestamp": 1713715874465
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713715879848,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "General\nInterface\nChatting*\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060163550"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715885132,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060163550"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "3ea4032a-0bf8-058c-ca48-279759f15cce",
-                "timestamp": 1713715892715,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "General\nInterface*\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060163550"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "7dcfb6a5-477d-07db-0156-6b42cba5d355",
-                "timestamp": 1713715897065,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "General*\nInterface\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060163550"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715902182,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060177536"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715910849,
-                "appearance": {
-                    "key": "BAR_SIZE",
-                    "value": 0
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060179529"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715912566,
-                "appearance": {
-                    "key": "BAR_SIZE",
-                    "value": 100
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060179529"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715917282,
-                "appearance": {
-                    "key": "BAR_SIZE",
-                    "value": 84
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060179529"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715923049,
-                "appearance": {
-                    "key": "BAR_SIZE",
-                    "value": 100
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060179529"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715925316,
-                "appearance": {
-                    "key": "BAR_SIZE",
-                    "value": 35
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060179529"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
-                "timestamp": 1713715928216,
-                "appearance": {
-                    "key": "BAR_SIZE",
-                    "value": 50
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060179529"
-                ]
-            }
-        },
-        {
-            "type": "items/addShape",
-            "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713717544948,
-                "id": "1713060276002",
-                "renderer": "Paragraph",
-                "position": {
-                    "x": 997,
-                    "y": 352
-                }
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713717562865,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Logs are stored in the encrypted profile"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060276002"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713717565649,
-                "oldBounds": {
-                    "x": 1097,
-                    "y": 422,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1097,
-                    "y": 387,
-                    "w": 200,
-                    "h": 70,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060276002"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713717567415,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Logs are stored in the encrypted profile file"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060276002"
-                ]
-            }
-        },
         {
             "type": "items/transform",
             "payload": {
@@ -11189,6 +10840,100 @@
                 "force": false,
                 "itemIds": [
                     "1713060187932"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717833154,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "File:\n- New Profile\n- Open Profile...\n- Close Profile\n- Save Profile Backup...\n---\n- Logout\n- Logout All Profiles\n---\n- Quit"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060187930"
+                ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717835537,
+                "itemIds": [
+                    "1713060249060"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717882722,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Toolbar: New Profile, Save Profile Backup, Logout | Add Contact, Delete Contact, Ban Contact, Connect/Disconnect Contact | Export Logs, Delete Logs"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060210931"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717886322,
+                "oldBounds": {
+                    "x": 641,
+                    "y": 336,
+                    "w": 1090,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 586,
+                    "y": 325,
+                    "w": 1090,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060210931"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717923723,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "File:\n- New Profile\n- Open Profile...\n- Close Profile\n- Save Profile As...\n---\n- Logout\n- Logout All Profiles\n---\n- Quit"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060187930"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1713717927189,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Toolbar: New Profile, Save Profile As, Logout | Add Contact, Delete Contact, Ban Contact, Connect/Disconnect Contact | Export Logs, Delete Logs"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060210931"
                 ]
             }
         }
