@@ -1871,8 +1871,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1100,
-                            "y": 266,
+                            "x": 1080,
+                            "y": 332,
                             "w": 178,
                             "h": 120,
                             "r": 0
@@ -1890,7 +1890,7 @@
                         "renderer": "Paragraph",
                         "transform": {
                             "x": 1097,
-                            "y": 387,
+                            "y": 237,
                             "w": 200,
                             "h": 70,
                             "r": 0
@@ -3793,7 +3793,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "File:\n- New Profile\n- Open Profile...\n- Close Profile\n- Save Profile\n- Save Profile As...\n---\n- Logout\n- Logout All Profiles\n---\n- Quit"
+                            "TEXT": "File:\n- New Profile\n- Open Profile...\n- Close Profile\n- Save Profile As...\n---\n- Logout\n- Logout All Profiles\n---\n- Quit"
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -3829,7 +3829,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Tools:\n- Downloads\n- Preferences"
+                            "TEXT": "Tools:\n- Downloads...\n- Tor logs...\n- Preferences...\n"
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -3847,7 +3847,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Help:\n- Manual\n- Licenses\n- Check for Updates...\n- About"
+                            "TEXT": "Help:\n- Manual\n- Licenses\n---\n- Check for Updates...\n- Changelog...\n- About"
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -4123,8 +4123,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1140,
-                            "y": 152.5,
+                            "x": 1145,
+                            "y": 68.5,
                             "w": 180,
                             "h": 91,
                             "r": 0
@@ -4367,8 +4367,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1140,
-                            "y": 266.5,
+                            "x": 784,
+                            "y": 202.5,
                             "w": 180,
                             "h": 87,
                             "r": 0
@@ -4380,13 +4380,13 @@
                         "appearance": {
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Toolbar: New Profile, Save Profile, Logout | Add Contact, Delete Contact, Ban Contact, Connect/Disconnect Contact | Export Logs, Delete Logs"
+                            "TEXT": "Toolbar: New Profile, Save Profile As, Logout | Add Contact, Delete Contact, Ban Contact, Connect/Disconnect Contact | Export Logs, Delete Logs"
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 612,
-                            "y": 336,
-                            "w": 1032,
+                            "x": 568,
+                            "y": 325,
+                            "w": 1054,
                             "h": 30,
                             "r": 0
                         },
@@ -4421,27 +4421,9 @@
                         "renderer": "Paragraph",
                         "transform": {
                             "x": 92.5,
-                            "y": 828,
+                            "y": 854.5,
                             "w": 173,
-                            "h": 680,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060249060",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: not sure we explicitly need a 'Save Profile', the profile will be autosaving. Maybe instead of Save Profile As we should frame it as Backup"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 102.5,
-                            "y": 188.5,
-                            "w": 153,
-                            "h": 255,
+                            "h": 733,
                             "r": 0
                         },
                         "type": "Shape"
@@ -4674,6 +4656,42 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1713060276795",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Changelog dialog"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 1150,
+                            "y": 170.5,
+                            "w": 180,
+                            "h": 91,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060276912",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: About dialog"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 1129,
+                            "y": 263,
+                            "w": 180,
+                            "h": 58,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -4752,7 +4770,6 @@
                     "1713060210931",
                     "1713060212050",
                     "1713060212980",
-                    "1713060249060",
                     "1713060250429",
                     "1713060250353",
                     "1713060256679",
@@ -4765,7 +4782,9 @@
                     "1713060257774",
                     "1713060258052",
                     "1713060258196",
-                    "1713060261470"
+                    "1713060261470",
+                    "1713060276795",
+                    "1713060276912"
                 ],
                 "title": "Main Window - Conversations (Online)"
             },
@@ -10720,6 +10739,368 @@
                     "1713060269319"
                 ],
                 "title": "Tor Logs"
+            },
+            {
+                "id": "1713060276314",
+                "items": [
+                    {
+                        "id": "1713060276440",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Requirements:\n\n- Connect to onion-service endpoint to determine latest version\n- Download correct package/installer over Tor\n - Ricochet Refresh will need to know which package/arch it is running as so it can download right update"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 305,
+                            "y": 1035,
+                            "w": 442,
+                            "h": 170,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060277605",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 246.5,
+                            "y": 420.5,
+                            "w": 431,
+                            "h": 203,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060277606",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀⠀Checking...\n\nCurrent version: 4.0.0\nLatest version: "
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 246.5,
+                            "y": 418.5,
+                            "w": 407,
+                            "h": 133,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060277741",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#969696",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Download"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 395.5,
+                            "y": 495,
+                            "w": 103,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060277749",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Cancel"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 283,
+                            "y": 495,
+                            "w": 88,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278727",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 868.5,
+                            "y": 159.5,
+                            "w": 431,
+                            "h": 203,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278728",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀⠀Up to Date!\n\nCurrent version: 4.0.0\nLatest version: 4.0.0"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 868.5,
+                            "y": 157.5,
+                            "w": 407,
+                            "h": 133,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278729",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#969696",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Download"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 1017.5,
+                            "y": 234,
+                            "w": 103,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278730",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Cancel"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 905,
+                            "y": 234,
+                            "w": 88,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278956",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 880.5,
+                            "y": 689.5,
+                            "w": 431,
+                            "h": 203,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278957",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "⠀⠀⠀Update Available!\n\nCurrent version: 4.0.0\nLatest version: 4.0.2"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 880.5,
+                            "y": 687.5,
+                            "w": 407,
+                            "h": 133,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278958",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": "#000000",
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Download"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 1029.5,
+                            "y": 764,
+                            "w": 103,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060278959",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Cancel"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 917,
+                            "y": 764,
+                            "w": 88,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060279342",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "- Check happens over Tor to Onion Service endpoint\n - Will need some to maintain some update jsons"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 276,
+                            "y": 643,
+                            "w": 442,
+                            "h": 170,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060279395",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#74c476",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "FontAwesome"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 55,
+                            "y": 365,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060279628",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#6baed6",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 678,
+                            "y": 103,
+                            "w": 32,
+                            "h": 40,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060279794",
+                        "appearance": {
+                            "BACKGROUND_COLOR": "#fd8d3c",
+                            "TEXT_DISABLED": true,
+                            "TEXT": "",
+                            "ICON_FONT_FAMILY": "Material Icons"
+                        },
+                        "renderer": "Icon",
+                        "transform": {
+                            "x": 690,
+                            "y": 634,
+                            "w": 32,
+                            "h": 32,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713060280011",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Download the correct package based on the current insalled version (eg a deb, appimage, dmg, windows installer, etc"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 783,
+                            "y": 893,
+                            "w": 200,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    }
+                ],
+                "rootIds": [
+                    "1713060276440",
+                    "1713060277605",
+                    "1713060277606",
+                    "1713060277741",
+                    "1713060277749",
+                    "1713060278727",
+                    "1713060278728",
+                    "1713060278729",
+                    "1713060278730",
+                    "1713060278956",
+                    "1713060278957",
+                    "1713060278958",
+                    "1713060278959",
+                    "1713060279342",
+                    "1713060279395",
+                    "1713060279628",
+                    "1713060279794",
+                    "1713060280011"
+                ],
+                "title": "Check for Updates"
             }
         ],
         "diagramIds": [
@@ -10732,7 +11113,8 @@
             "1708271107626",
             "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
             "aded38e4-f279-58df-12ed-8d8a929a1fdd",
-            "544a9ad8-9a02-4fd4-b179-0e177bd09248"
+            "544a9ad8-9a02-4fd4-b179-0e177bd09248",
+            "1713060276314"
         ],
         "id": "41465b7f-d633-fe48-2296-efb6ecd41836",
         "size": {
@@ -10744,117 +11126,453 @@
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713717571682,
+                "diagramId": "1713060276314",
+                "timestamp": 1713722043138,
                 "oldBounds": {
-                    "x": 1100,
-                    "y": 266,
-                    "w": 178,
-                    "h": 120,
+                    "x": 783,
+                    "y": 893,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1097,
-                    "y": 482,
-                    "w": 178,
-                    "h": 120,
+                    "x": 889.5,
+                    "y": 875,
+                    "w": 413,
+                    "h": 104,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060190442"
+                    "1713060280011"
+                ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722045722,
+                "itemIds": [
+                    "1713060276440"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722774186,
+                "id": "1713060280082",
+                "renderer": "Label",
+                "position": {
+                    "x": 15.800003051757812,
+                    "y": 140.86669921875
+                }
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722783286,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Ricochet Refresh - Check for Updates"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060280082"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713717572699,
+                "diagramId": "1713060276314",
+                "timestamp": 1713722785853,
                 "oldBounds": {
-                    "x": 1097,
-                    "y": 387,
-                    "w": 200,
-                    "h": 70,
+                    "x": 157,
+                    "y": 155,
+                    "w": 284,
+                    "h": 30,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1097,
-                    "y": 237,
-                    "w": 200,
-                    "h": 70,
+                    "x": 253,
+                    "y": 304,
+                    "w": 284,
+                    "h": 30,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060276002"
+                    "1713060280082"
+                ]
+            }
+        },
+        {
+            "type": "items/paste",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722786670,
+                "json": "{\"visuals\":[{\"id\":\"1713060280127\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Ricochet Refresh - Check for Updates\"},\"renderer\":\"Label\",\"transform\":{\"x\":253,\"y\":304,\"w\":284,\"h\":30,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722788886,
+                "oldBounds": {
+                    "x": 303,
+                    "y": 354,
+                    "w": 284,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 880,
+                    "y": 43,
+                    "w": 284,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280127"
+                ]
+            }
+        },
+        {
+            "type": "items/paste",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722789970,
+                "json": "{\"visuals\":[{\"id\":\"1713060280182\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Ricochet Refresh - Check for Updates\"},\"renderer\":\"Label\",\"transform\":{\"x\":253,\"y\":304,\"w\":284,\"h\":30,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 100
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722792103,
+                "oldBounds": {
+                    "x": 353,
+                    "y": 404,
+                    "w": 284,
+                    "h": 30,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 868,
+                    "y": 573,
+                    "w": 284,
+                    "h": 30,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280182"
+                ]
+            }
+        },
+        {
+            "type": "items/align",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722805720,
+                "mode": "ALIGN_H_CENTER",
+                "itemIds": [
+                    "1713060277605",
+                    "1713060280082"
+                ]
+            }
+        },
+        {
+            "type": "items/align",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722809004,
+                "mode": "ALIGN_H_CENTER",
+                "itemIds": [
+                    "1713060278727",
+                    "1713060280127"
+                ]
+            }
+        },
+        {
+            "type": "items/align",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722812254,
+                "mode": "ALIGN_H_CENTER",
+                "itemIds": [
+                    "1713060278956",
+                    "1713060280182"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722843304,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "- Download the correct package based on the current insalled version (eg a deb, appimage, dmg, windows installer, etc\n\n- Download button will open Downloads dialog"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060280011"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "0382783f-c8bf-e022-cd34-e60113d84b72",
-                "timestamp": 1713717573849,
+                "diagramId": "1713060276314",
+                "timestamp": 1713722845371,
                 "oldBounds": {
-                    "x": 1097,
-                    "y": 482,
-                    "w": 178,
-                    "h": 120,
+                    "x": 889.5,
+                    "y": 875,
+                    "w": 413,
+                    "h": 104,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1080,
-                    "y": 332,
-                    "w": 178,
-                    "h": 120,
+                    "x": 889.5,
+                    "y": 913.5,
+                    "w": 413,
+                    "h": 181,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060190442"
+                    "1713060280011"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722990124,
+                "id": "1713060280320",
+                "renderer": "Comment",
+                "position": {
+                    "x": 390.8833312988281,
+                    "y": 676
+                }
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722994724,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Maybe we want the changelogs?"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713060280320"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713722998241,
+                "oldBounds": {
+                    "x": 480,
+                    "y": 761,
+                    "w": 180,
+                    "h": 170,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 480,
+                    "y": 720,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280320"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713723000391,
+                "oldBounds": {
+                    "x": 480,
+                    "y": 720,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 465,
+                    "y": 759,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280320"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713723001474,
+                "oldBounds": {
+                    "x": 465,
+                    "y": 759,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 485,
+                    "y": 747,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280320"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713723003191,
+                "oldBounds": {
+                    "x": 485,
+                    "y": 747,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 485,
+                    "y": 731,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280320"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713723043042,
+                "oldBounds": {
+                    "x": 485,
+                    "y": 731,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 485,
+                    "y": 733,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280320"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717602933,
+                "diagramId": "1713060276314",
+                "timestamp": 1713723045308,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Tools:\n- Downloads\n- Preferences\n- Tor logs"
+                    "value": "TODO: Maybe we want the changelogs?"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060187932"
+                    "1713060280320"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713060276314",
+                "timestamp": 1713723048808,
+                "oldBounds": {
+                    "x": 485,
+                    "y": 733,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 532,
+                    "y": 740,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060280320"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717613600,
+                "diagramId": "1713060276314",
+                "timestamp": 1713723053158,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Tools:\n- Downloads\n- Tor logs\n- Preferences\n"
+                    "value": "TODO: Maybe we want the changelogs accessible here?"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060187932"
+                    "1713060280320"
                 ]
             }
         },
         {
-            "type": "items/appearance",
+            "type": "items/transform",
             "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717833154,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "File:\n- New Profile\n- Open Profile...\n- Close Profile\n- Save Profile Backup...\n---\n- Logout\n- Logout All Profiles\n---\n- Quit"
+                "diagramId": "1713060276314",
+                "timestamp": 1713723055958,
+                "oldBounds": {
+                    "x": 532,
+                    "y": 740,
+                    "w": 180,
+                    "h": 88,
+                    "r": 0
                 },
-                "force": false,
+                "newBounds": {
+                    "x": 532,
+                    "y": 749,
+                    "w": 180,
+                    "h": 106,
+                    "r": 0
+                },
                 "itemIds": [
-                    "1713060187930"
+                    "1713060280320"
                 ]
             }
         },
@@ -10862,78 +11580,9 @@
             "type": "items/remove",
             "payload": {
                 "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717835537,
+                "timestamp": 1713723071675,
                 "itemIds": [
-                    "1713060249060"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717882722,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Toolbar: New Profile, Save Profile Backup, Logout | Add Contact, Delete Contact, Ban Contact, Connect/Disconnect Contact | Export Logs, Delete Logs"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060210931"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717886322,
-                "oldBounds": {
-                    "x": 641,
-                    "y": 336,
-                    "w": 1090,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 586,
-                    "y": 325,
-                    "w": 1090,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060210931"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717923723,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "File:\n- New Profile\n- Open Profile...\n- Close Profile\n- Save Profile As...\n---\n- Logout\n- Logout All Profiles\n---\n- Quit"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060187930"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713717927189,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Toolbar: New Profile, Save Profile As, Logout | Add Contact, Delete Contact, Ban Contact, Connect/Disconnect Contact | Export Logs, Delete Logs"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713060210931"
+                    "1713060203608"
                 ]
             }
         }
