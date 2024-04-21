@@ -13,8 +13,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 518,
-                            "y": 378,
+                            "x": 610,
+                            "y": 445,
                             "w": 600,
                             "h": 304,
                             "r": 0
@@ -30,8 +30,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 327,
-                            "y": 278,
+                            "x": 419,
+                            "y": 345,
                             "w": 178,
                             "h": 48,
                             "r": 0
@@ -51,8 +51,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 747,
-                            "y": 495,
+                            "x": 839,
+                            "y": 562,
                             "w": 100,
                             "h": 30,
                             "r": 0
@@ -73,8 +73,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 612,
-                            "y": 495,
+                            "x": 704,
+                            "y": 562,
                             "w": 130,
                             "h": 30,
                             "r": 0
@@ -95,8 +95,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 387,
-                            "y": 396,
+                            "x": 479,
+                            "y": 463,
                             "w": 274,
                             "h": 36,
                             "r": 0
@@ -113,8 +113,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 523.5,
-                            "y": 344,
+                            "x": 615.5,
+                            "y": 411,
                             "w": 547,
                             "h": 64,
                             "r": 0
@@ -130,8 +130,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 518,
-                            "y": 211,
+                            "x": 610,
+                            "y": 278,
                             "w": 210,
                             "h": 30,
                             "r": 0
@@ -144,13 +144,13 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "We will try to follow a desktop-ified version of Tor Browser's about:torconnect page here"
+                            "TEXT": "We will try to follow a desktop'ified version of Tor Browser's about:torconnect page here"
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 968,
-                            "y": 274,
-                            "w": 200,
+                            "x": 1053.5,
+                            "y": 363,
+                            "w": 253,
                             "h": 140,
                             "r": 0
                         },
@@ -162,13 +162,13 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Configure opens a separate preferences window"
+                            "TEXT": "Configure opens the Preferences dialog"
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 617.5,
-                            "y": 629,
-                            "w": 119,
+                            "x": 704,
+                            "y": 677,
+                            "w": 130,
                             "h": 140,
                             "r": 0
                         },
@@ -184,10 +184,10 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 760,
-                            "y": 619.5,
-                            "w": 126,
-                            "h": 121,
+                            "x": 849,
+                            "y": 650.5,
+                            "w": 120,
+                            "h": 87,
                             "r": 0
                         },
                         "type": "Shape"
@@ -201,8 +201,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 518,
-                            "y": 881,
+                            "x": 610,
+                            "y": 948,
                             "w": 600,
                             "h": 304,
                             "r": 0
@@ -218,8 +218,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 389,
-                            "y": 781,
+                            "x": 481,
+                            "y": 848,
                             "w": 302,
                             "h": 48,
                             "r": 0
@@ -235,8 +235,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 518,
-                            "y": 714,
+                            "x": 610,
+                            "y": 781,
                             "w": 232,
                             "h": 30,
                             "r": 0
@@ -257,8 +257,8 @@
                         },
                         "renderer": "Progress",
                         "transform": {
-                            "x": 520.5,
-                            "y": 837,
+                            "x": 612.5,
+                            "y": 904,
                             "w": 537,
                             "h": 16,
                             "r": 0
@@ -274,8 +274,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 341,
-                            "y": 870,
+                            "x": 433,
+                            "y": 937,
                             "w": 192,
                             "h": 30,
                             "r": 0
@@ -295,8 +295,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 747,
-                            "y": 998,
+                            "x": 839,
+                            "y": 1065,
                             "w": 100,
                             "h": 30,
                             "r": 0
@@ -317,8 +317,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 612,
-                            "y": 998,
+                            "x": 704,
+                            "y": 1065,
                             "w": 130,
                             "h": 30,
                             "r": 0
@@ -335,9 +335,9 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 617.5,
-                            "y": 1073,
-                            "w": 119,
+                            "x": 704,
+                            "y": 1140,
+                            "w": 130,
                             "h": 62,
                             "r": 0
                         },
@@ -353,8 +353,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 755.5,
-                            "y": 1109,
+                            "x": 851.5,
+                            "y": 1176,
                             "w": 125,
                             "h": 134,
                             "r": 0
@@ -384,7 +384,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "This is the first window that will appear if Ricochet Refresh is managing its owned own Tor instance (versus using a system-owned Tor or Arti instance)"
+                            "TEXT": "This is the first window that will appear if Ricochet Refresh is managing its owned own Tor provider (versus using a system-owned Tor or Arti instance). If we are using an external Tor provider, we will go directly to the Main window."
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -392,6 +392,24 @@
                             "y": 148,
                             "w": 612,
                             "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723758380",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: This UI implies a single Tor provider for potentially multiple Ricochet Refresh profiles. Does it make sense for them to all have the same guard?"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 139,
+                            "y": 428.5,
+                            "w": 180,
+                            "h": 237,
                             "r": 0
                         },
                         "type": "Shape"
@@ -418,7 +436,8 @@
                     "1713060253053",
                     "1713060253054",
                     "1713723753928",
-                    "1713723753929"
+                    "1713723753929",
+                    "1713723758380"
                 ],
                 "title": "Connection"
             },
@@ -1249,8 +1268,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 607.5,
-                            "y": 507.5,
+                            "x": 635.5,
+                            "y": 640.5,
                             "w": 727,
                             "h": 603,
                             "r": 0
@@ -1266,8 +1285,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 607,
-                            "y": 191,
+                            "x": 635,
+                            "y": 324,
                             "w": 236,
                             "h": 30,
                             "r": 0
@@ -1283,8 +1302,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 421,
-                            "y": 230,
+                            "x": 449,
+                            "y": 363,
                             "w": 100,
                             "h": 48,
                             "r": 0
@@ -1305,8 +1324,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 652,
-                            "y": 269,
+                            "x": 680,
+                            "y": 402,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -1327,8 +1346,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 652,
-                            "y": 305,
+                            "x": 680,
+                            "y": 438,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -1336,22 +1355,81 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060163550",
+                        "id": "1713723754695",
+                        "appearance": {
+                            "FONT_SIZE": 48,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Preferences (General) Dialog"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 322,
+                            "y": 39,
+                            "w": 644,
+                            "h": 78,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723754696",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "The General section of the Preferences dialog. Should enable configuring general application behaviour that are not specific to the other sections"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 323,
+                            "y": 148,
+                            "w": 612,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723764869",
                         "appearance": {
                             "ACCENT_COLOR": 2191797,
                             "FOREGROUND_COLOR": 16777215,
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
+                            "STROKE_THICKNESS": 0,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General*\nInterface\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                            "TEXT": "General*\nInterface\nChatting\nConnection"
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 307.5,
-                            "y": 507.5,
+                            "x": 335.5,
+                            "y": 403,
                             "w": 127,
+                            "h": 128,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723765583",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 335,
+                            "y": 640.5,
+                            "w": 126,
                             "h": 603,
                             "r": 0
                         },
@@ -1364,7 +1442,10 @@
                     "1713060162650",
                     "1713060162651",
                     "1713060162652",
-                    "1713060163550"
+                    "1713723754695",
+                    "1713723754696",
+                    "1713723765583",
+                    "1713723764869"
                 ],
                 "title": "Preferences - General"
             },
@@ -1380,8 +1461,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 607.5,
-                            "y": 507.5,
+                            "x": 635.5,
+                            "y": 640.5,
                             "w": 727,
                             "h": 603,
                             "r": 0
@@ -1397,8 +1478,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 607,
-                            "y": 191,
+                            "x": 635,
+                            "y": 324,
                             "w": 236,
                             "h": 30,
                             "r": 0
@@ -1414,8 +1495,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 413,
-                            "y": 386,
+                            "x": 441,
+                            "y": 519,
                             "w": 84,
                             "h": 48,
                             "r": 0
@@ -1436,8 +1517,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 647,
-                            "y": 495,
+                            "x": 675,
+                            "y": 628,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -1458,8 +1539,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 647,
-                            "y": 423,
+                            "x": 675,
+                            "y": 556,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -1480,8 +1561,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 647,
-                            "y": 459,
+                            "x": 675,
+                            "y": 592,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -1497,8 +1578,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 431,
-                            "y": 537,
+                            "x": 459,
+                            "y": 670,
                             "w": 120,
                             "h": 48,
                             "r": 0
@@ -1519,8 +1600,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 647,
-                            "y": 574,
+                            "x": 675,
+                            "y": 707,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -1541,32 +1622,10 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 647,
-                            "y": 610,
+                            "x": 675,
+                            "y": 743,
                             "w": 536,
                             "h": 36,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060163550",
-                        "appearance": {
-                            "ACCENT_COLOR": 2191797,
-                            "FOREGROUND_COLOR": 16777215,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface*\nChatting\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                        },
-                        "renderer": "List",
-                        "transform": {
-                            "x": 307.5,
-                            "y": 507.5,
-                            "w": 127,
-                            "h": 603,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1580,8 +1639,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 436,
-                            "y": 230,
+                            "x": 464,
+                            "y": 363,
                             "w": 130,
                             "h": 48,
                             "r": 0
@@ -1597,8 +1656,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 478,
-                            "y": 269,
+                            "x": 506,
+                            "y": 402,
                             "w": 198,
                             "h": 30,
                             "r": 0
@@ -1618,8 +1677,8 @@
                         },
                         "renderer": "ComboBox",
                         "transform": {
-                            "x": 860,
-                            "y": 269,
+                            "x": 888,
+                            "y": 402,
                             "w": 200,
                             "h": 30,
                             "r": 0
@@ -1635,8 +1694,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 428,
-                            "y": 308,
+                            "x": 456,
+                            "y": 441,
                             "w": 114,
                             "h": 48,
                             "r": 0
@@ -1652,8 +1711,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 429,
-                            "y": 347,
+                            "x": 457,
+                            "y": 480,
                             "w": 100,
                             "h": 30,
                             "r": 0
@@ -1673,8 +1732,8 @@
                         },
                         "renderer": "ComboBox",
                         "transform": {
-                            "x": 860,
-                            "y": 347,
+                            "x": 888,
+                            "y": 480,
                             "w": 200,
                             "h": 30,
                             "r": 0
@@ -1691,9 +1750,9 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 1109,
-                            "y": 269,
-                            "w": 238,
+                            "x": 1116,
+                            "y": 402,
+                            "w": 204,
                             "h": 50,
                             "r": 0
                         },
@@ -1705,14 +1764,95 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "- Icon only\n- Text only\n- Text beside icon"
+                            "TEXT": "- Icon only\n- Text only\n- Text beside icon\n\nNOTE: probably paltform-specific"
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 1109,
-                            "y": 360.5,
-                            "w": 238,
-                            "h": 77,
+                            "x": 1113.5,
+                            "y": 556.5,
+                            "w": 185,
+                            "h": 155,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723758701",
+                        "appearance": {
+                            "FONT_SIZE": 48,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Preferences (Interface) Dialog"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 330,
+                            "y": 39,
+                            "w": 660,
+                            "h": 78,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723758702",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "The Interface section provides users with UI customisation options "
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 323,
+                            "y": 148,
+                            "w": 612,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723764814",
+                        "appearance": {
+                            "ACCENT_COLOR": 2191797,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "General\nInterface*\nChatting\nConnection"
+                        },
+                        "renderer": "List",
+                        "transform": {
+                            "x": 335.5,
+                            "y": 403,
+                            "w": 127,
+                            "h": 128,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723765531",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 335,
+                            "y": 640.5,
+                            "w": 126,
+                            "h": 603,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1728,7 +1868,6 @@
                     "1713060162642",
                     "1713060162643",
                     "1713060162644",
-                    "1713060163550",
                     "1713060165752",
                     "1713060165892",
                     "1713060166186",
@@ -1736,7 +1875,11 @@
                     "1713060171041",
                     "1713060171084",
                     "1713060171219",
-                    "1713060171308"
+                    "1713060171308",
+                    "1713723758701",
+                    "1713723758702",
+                    "1713723765531",
+                    "1713723764814"
                 ],
                 "title": "Preferences - Interface"
             },
@@ -1752,8 +1895,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 607.5,
-                            "y": 507.5,
+                            "x": 635.5,
+                            "y": 640.5,
                             "w": 727,
                             "h": 603,
                             "r": 0
@@ -1769,32 +1912,10 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 607,
-                            "y": 191,
+                            "x": 635,
+                            "y": 324,
                             "w": 236,
                             "h": 30,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060163550",
-                        "appearance": {
-                            "ACCENT_COLOR": 2191797,
-                            "FOREGROUND_COLOR": 16777215,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface\nChatting*\nConnection\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                        },
-                        "renderer": "List",
-                        "transform": {
-                            "x": 307.5,
-                            "y": 507.5,
-                            "w": 127,
-                            "h": 603,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1808,8 +1929,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 425,
-                            "y": 230,
+                            "x": 453,
+                            "y": 363,
                             "w": 108,
                             "h": 48,
                             "r": 0
@@ -1830,8 +1951,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 652,
-                            "y": 272,
+                            "x": 680,
+                            "y": 405,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -1852,8 +1973,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 672.5,
-                            "y": 308,
+                            "x": 700.5,
+                            "y": 441,
                             "w": 531,
                             "h": 36,
                             "r": 0
@@ -1869,8 +1990,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 494,
-                            "y": 341,
+                            "x": 522,
+                            "y": 474,
                             "w": 128,
                             "h": 30,
                             "r": 0
@@ -1890,8 +2011,8 @@
                         },
                         "renderer": "Numeric",
                         "transform": {
-                            "x": 916,
-                            "y": 341,
+                            "x": 944,
+                            "y": 474,
                             "w": 90,
                             "h": 30,
                             "r": 0
@@ -1904,14 +2025,14 @@
                             "FONT_SIZE": 16,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: chat formatting options? timestamp options?"
+                            "TEXT": "TODO: Chat formatting/density "
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1080,
-                            "y": 332,
+                            "x": 140,
+                            "y": 351.5,
                             "w": 178,
-                            "h": 120,
+                            "h": 85,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1926,10 +2047,127 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 1097,
-                            "y": 237,
+                            "x": 1118,
+                            "y": 434,
                             "w": 200,
                             "h": 70,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723761951",
+                        "appearance": {
+                            "FONT_SIZE": 48,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Preferences (Chatting) Dialog"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 326,
+                            "y": 39,
+                            "w": 652,
+                            "h": 78,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723761952",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "The Chatting section provides users with conversation-related options."
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 323,
+                            "y": 148,
+                            "w": 612,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723762403",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Timestamp formatting/localisation"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 140,
+                            "y": 465.5,
+                            "w": 178,
+                            "h": 85,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723762436",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Timestamps should be stored in un-localised format"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 1118,
+                            "y": 509,
+                            "w": 200,
+                            "h": 70,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723764735",
+                        "appearance": {
+                            "ACCENT_COLOR": 2191797,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "General\nInterface\nChatting*\nConnection"
+                        },
+                        "renderer": "List",
+                        "transform": {
+                            "x": 335.5,
+                            "y": 403,
+                            "w": 127,
+                            "h": 128,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723765318",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 335,
+                            "y": 640.5,
+                            "w": 126,
+                            "h": 603,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1938,14 +2176,19 @@
                 "rootIds": [
                     "1713060162631",
                     "1713060162632",
-                    "1713060163550",
                     "1713060167399",
                     "1713060167400",
                     "1713060167401",
                     "1713060167402",
                     "1713060167403",
                     "1713060190442",
-                    "1713060276002"
+                    "1713060276002",
+                    "1713723761951",
+                    "1713723761952",
+                    "1713723762403",
+                    "1713723762436",
+                    "1713723765318",
+                    "1713723764735"
                 ],
                 "title": "Preferences - Chatting"
             },
@@ -1961,10 +2204,10 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 612.5,
-                            "y": 463.5,
+                            "x": 635.5,
+                            "y": 1011.5,
                             "w": 727,
-                            "h": 791,
+                            "h": 1345,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1978,8 +2221,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 612,
-                            "y": 53,
+                            "x": 635,
+                            "y": 324,
                             "w": 236,
                             "h": 30,
                             "r": 0
@@ -1994,16 +2237,16 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
+                            "STROKE_THICKNESS": 0,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+                            "TEXT": "General\nInterface\nChatting\nConnection*"
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 312.5,
-                            "y": 463.5,
+                            "x": 334.5,
+                            "y": 403,
                             "w": 127,
-                            "h": 791,
+                            "h": 128,
                             "r": 0
                         },
                         "type": "Shape"
@@ -2017,8 +2260,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 441,
-                            "y": 92,
+                            "x": 464,
+                            "y": 363,
                             "w": 130,
                             "h": 48,
                             "r": 0
@@ -2039,8 +2282,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 652,
-                            "y": 187,
+                            "x": 675,
+                            "y": 458,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -2057,8 +2300,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 678.5,
-                            "y": 142.5,
+                            "x": 701.5,
+                            "y": 413.5,
                             "w": 575,
                             "h": 53,
                             "r": 0
@@ -2074,8 +2317,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 428,
-                            "y": 229,
+                            "x": 451,
+                            "y": 500,
                             "w": 104,
                             "h": 48,
                             "r": 0
@@ -2092,8 +2335,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 678.5,
-                            "y": 292.5,
+                            "x": 701.5,
+                            "y": 563.5,
                             "w": 575,
                             "h": 79,
                             "r": 0
@@ -2114,8 +2357,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 652,
-                            "y": 351,
+                            "x": 675,
+                            "y": 622,
                             "w": 536,
                             "h": 36,
                             "r": 0
@@ -2131,8 +2374,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 435,
-                            "y": 390,
+                            "x": 458,
+                            "y": 661,
                             "w": 118,
                             "h": 42,
                             "r": 0
@@ -2153,8 +2396,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 591,
-                            "y": 424,
+                            "x": 614,
+                            "y": 695,
                             "w": 414,
                             "h": 36,
                             "r": 0
@@ -2175,8 +2418,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 431,
-                            "y": 460,
+                            "x": 454,
+                            "y": 731,
                             "w": 72,
                             "h": 36,
                             "r": 0
@@ -2197,8 +2440,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 445,
-                            "y": 539,
+                            "x": 468,
+                            "y": 810,
                             "w": 106,
                             "h": 36,
                             "r": 0
@@ -2219,8 +2462,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 450,
-                            "y": 624,
+                            "x": 473,
+                            "y": 895,
                             "w": 118,
                             "h": 36,
                             "r": 0
@@ -2237,8 +2480,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 667.5,
-                            "y": 502.5,
+                            "x": 690.5,
+                            "y": 773.5,
                             "w": 493,
                             "h": 49,
                             "r": 0
@@ -2255,8 +2498,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 667.5,
-                            "y": 581.5,
+                            "x": 690.5,
+                            "y": 852.5,
                             "w": 493,
                             "h": 49,
                             "r": 0
@@ -2273,8 +2516,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 667.5,
-                            "y": 677.5,
+                            "x": 690.5,
+                            "y": 948.5,
                             "w": 493,
                             "h": 71,
                             "r": 0
@@ -2295,8 +2538,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 555,
-                            "y": 731,
+                            "x": 578,
+                            "y": 1002,
                             "w": 328,
                             "h": 36,
                             "r": 0
@@ -2316,49 +2559,10 @@
                         },
                         "renderer": "TextArea",
                         "transform": {
-                            "x": 678.5,
-                            "y": 793.5,
+                            "x": 701.5,
+                            "y": 1064.5,
                             "w": 547,
                             "h": 89,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060177535",
-                        "appearance": {
-                            "FOREGROUND_COLOR": "#f8f8f8",
-                            "TEXT_DISABLED": true,
-                            "LINK": "page://1708271085757"
-                        },
-                        "renderer": "Window",
-                        "transform": {
-                            "x": 612.5,
-                            "y": 1235.5,
-                            "w": 727,
-                            "h": 603,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060177536",
-                        "appearance": {
-                            "ACCENT_COLOR": 2191797,
-                            "FOREGROUND_COLOR": 16777215,
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 13224393,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "General\nInterface\nChatting\nConnection*\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                        },
-                        "renderer": "List",
-                        "transform": {
-                            "x": 312.5,
-                            "y": 1235.5,
-                            "w": 127,
-                            "h": 603,
                             "r": 0
                         },
                         "type": "Shape"
@@ -2372,8 +2576,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 479,
-                            "y": 958,
+                            "x": 502,
+                            "y": 1139,
                             "w": 204,
                             "h": 48,
                             "r": 0
@@ -2394,8 +2598,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 650,
-                            "y": 1000,
+                            "x": 673,
+                            "y": 1181,
                             "w": 530,
                             "h": 36,
                             "r": 0
@@ -2411,8 +2615,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 451,
-                            "y": 1039,
+                            "x": 474,
+                            "y": 1220,
                             "w": 92,
                             "h": 30,
                             "r": 0
@@ -2432,8 +2636,8 @@
                         },
                         "renderer": "ComboBox",
                         "transform": {
-                            "x": 876,
-                            "y": 1037,
+                            "x": 899,
+                            "y": 1218,
                             "w": 140,
                             "h": 30,
                             "r": 0
@@ -2449,8 +2653,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 440,
-                            "y": 1078,
+                            "x": 463,
+                            "y": 1259,
                             "w": 70,
                             "h": 30,
                             "r": 0
@@ -2470,8 +2674,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 636.5,
-                            "y": 1078,
+                            "x": 659.5,
+                            "y": 1259,
                             "w": 293,
                             "h": 30,
                             "r": 0
@@ -2491,8 +2695,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 897,
-                            "y": 1078,
+                            "x": 920,
+                            "y": 1259,
                             "w": 94,
                             "h": 30,
                             "r": 0
@@ -2508,8 +2712,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 816,
-                            "y": 1078,
+                            "x": 839,
+                            "y": 1259,
                             "w": 42,
                             "h": 30,
                             "r": 0
@@ -2525,8 +2729,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 448,
-                            "y": 1119,
+                            "x": 471,
+                            "y": 1300,
                             "w": 86,
                             "h": 30,
                             "r": 0
@@ -2546,8 +2750,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 579,
-                            "y": 1119,
+                            "x": 602,
+                            "y": 1300,
                             "w": 178,
                             "h": 30,
                             "r": 0
@@ -2563,8 +2767,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 714,
-                            "y": 1119,
+                            "x": 737,
+                            "y": 1300,
                             "w": 82,
                             "h": 30,
                             "r": 0
@@ -2584,8 +2788,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 855,
-                            "y": 1119,
+                            "x": 878,
+                            "y": 1300,
                             "w": 178,
                             "h": 30,
                             "r": 0
@@ -2606,8 +2810,8 @@
                         },
                         "renderer": "Checkbox",
                         "transform": {
-                            "x": 664.5,
-                            "y": 1163,
+                            "x": 687.5,
+                            "y": 1344,
                             "w": 559,
                             "h": 36,
                             "r": 0
@@ -2623,8 +2827,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 460,
-                            "y": 1196,
+                            "x": 483,
+                            "y": 1377,
                             "w": 110,
                             "h": 30,
                             "r": 0
@@ -2644,8 +2848,8 @@
                         },
                         "renderer": "TextInput",
                         "transform": {
-                            "x": 730,
-                            "y": 1196,
+                            "x": 753,
+                            "y": 1377,
                             "w": 428,
                             "h": 30,
                             "r": 0
@@ -2667,50 +2871,10 @@
                         },
                         "renderer": "VerticalScrollbar",
                         "transform": {
-                            "x": 966,
-                            "y": 463.5,
+                            "x": 989,
+                            "y": 1011.5,
                             "w": 20,
-                            "h": 791,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060179529",
-                        "appearance": {
-                            "ARROW_COLOR": 12434877,
-                            "FOREGROUND_COLOR": 15790320,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 15790320,
-                            "STROKE_THICKNESS": 2,
-                            "TEXT_DISABLED": true,
-                            "BAR_COLOR": 12434877,
-                            "BAR_POSITION": 0,
-                            "BAR_SIZE": 50
-                        },
-                        "renderer": "VerticalScrollbar",
-                        "transform": {
-                            "x": 966,
-                            "y": 1235.5,
-                            "w": 20,
-                            "h": 603,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060180666",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Ricochet Refresh - Preferences"
-                        },
-                        "renderer": "Label",
-                        "transform": {
-                            "x": 612,
-                            "y": 919,
-                            "w": 236,
-                            "h": 30,
+                            "h": 1345,
                             "r": 0
                         },
                         "type": "Shape"
@@ -2778,8 +2942,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 441,
-                            "y": 1240,
+                            "x": 464,
+                            "y": 1421,
                             "w": 130,
                             "h": 48,
                             "r": 0
@@ -2800,8 +2964,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 538,
-                            "y": 1402,
+                            "x": 561,
+                            "y": 1583,
                             "w": 294,
                             "h": 36,
                             "r": 0
@@ -2822,8 +2986,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 479,
-                            "y": 1438,
+                            "x": 502,
+                            "y": 1619,
                             "w": 176,
                             "h": 36,
                             "r": 0
@@ -2844,8 +3008,8 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 460,
-                            "y": 1474,
+                            "x": 483,
+                            "y": 1655,
                             "w": 138,
                             "h": 36,
                             "r": 0
@@ -2861,8 +3025,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 424,
-                            "y": 1315,
+                            "x": 447,
+                            "y": 1496,
                             "w": 92,
                             "h": 42,
                             "r": 0
@@ -2879,8 +3043,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 670,
-                            "y": 1362.5,
+                            "x": 693,
+                            "y": 1543.5,
                             "w": 562,
                             "h": 53,
                             "r": 0
@@ -2896,8 +3060,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 451,
-                            "y": 1279,
+                            "x": 474,
+                            "y": 1460,
                             "w": 134,
                             "h": 30,
                             "r": 0
@@ -2917,21 +3081,42 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 871,
-                            "y": 1279,
+                            "x": 894,
+                            "y": 1460,
                             "w": 146,
                             "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713723765032",
+                        "appearance": {
+                            "BORDER_RADIUS": 0,
+                            "FOREGROUND_COLOR": 16777215,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 0,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 0,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "",
+                            "PADDING_HORIZONTAL2": 10,
+                            "PADDING_VERTICAL2": 10
+                        },
+                        "renderer": "Rectangle",
+                        "transform": {
+                            "x": 335,
+                            "y": 1011.5,
+                            "w": 126,
+                            "h": 1345,
                             "r": 0
                         },
                         "type": "Shape"
                     }
                 ],
                 "rootIds": [
-                    "1713060177535",
-                    "1713060177536",
                     "1713060162631",
                     "1713060162632",
-                    "1713060163550",
                     "1713060167399",
                     "1713060167400",
                     "1713060171988",
@@ -2964,8 +3149,6 @@
                     "1713060178231",
                     "1713060178232",
                     "1713060179415",
-                    "1713060179529",
-                    "1713060180666",
                     "1713060190548",
                     "1713060190629",
                     "1713060190681",
@@ -2976,7 +3159,9 @@
                     "1713060273575",
                     "1713060273995",
                     "1713060274432",
-                    "1713060274620"
+                    "1713060274620",
+                    "1713723765032",
+                    "1713060163550"
                 ],
                 "title": "Preferences - Connection"
             },
@@ -11445,374 +11630,349 @@
     },
     "actions": [
         {
-            "type": "items/transform",
+            "type": "items/paste",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727681884,
-                "oldBounds": {
-                    "x": 968,
-                    "y": 274,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 942,
-                    "y": 274,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060194058"
-                ]
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729240082,
+                "json": "{\"visuals\":[{\"id\":\"1713723768010\",\"appearance\":{\"FONT_SIZE\":48,\"BACKGROUND_COLOR\":2434341,\"TEXT\":\"Preferences (Chatting) Dialog\"},\"renderer\":\"Heading\",\"transform\":{\"x\":326,\"y\":39,\"w\":652,\"h\":78,\"r\":0},\"type\":\"Shape\"},{\"id\":\"1713723768011\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"The Chatting section provides users with conversation-related options.\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":323,\"y\":148,\"w\":612,\"h\":140,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727693451,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729241982,
                 "oldBounds": {
-                    "x": 617.5,
-                    "y": 629,
-                    "w": 119,
-                    "h": 140,
+                    "x": 376,
+                    "y": 159,
+                    "w": 652,
+                    "h": 218,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 606.5,
-                    "y": 610,
-                    "w": 119,
-                    "h": 140,
+                    "x": 326,
+                    "y": 109,
+                    "w": 652,
+                    "h": 218,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060194112"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727695735,
-                "oldBounds": {
-                    "x": 760,
-                    "y": 619.5,
-                    "w": 126,
-                    "h": 121,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 755,
-                    "y": 600.5,
-                    "w": 126,
-                    "h": 121,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060194200"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727697885,
-                "oldBounds": {
-                    "x": 755,
-                    "y": 600.5,
-                    "w": 126,
-                    "h": 121,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 760,
-                    "y": 600.5,
-                    "w": 126,
-                    "h": 121,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060194200"
+                    "1713723768010",
+                    "1713723768011"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727725219,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729247282,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "This is the first window that will appear if Ricochet Refresh is managing its owned own Tor provider (versus using a system-owned Tor or Arti instance). If we are using an external Tor provider, we will go directly to the Main window"
+                    "value": "Preferences (Connection) Dialog"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723753929"
+                    "1713723768010"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727738952,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729319417,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "This is the first window that will appear if Ricochet Refresh is managing its owned own Tor provider (versus using a system-owned Tor or Arti instance). If we are using an external Tor provider, we will go directly to the Main window."
+                    "value": "The Connection section provides users with Tor Provider related options. This page may vary a lot depending on which Tor Provider is selected. For instance, a System Tor Daemon Tor Provider (eg on Tails) would have this section almost entirely empty."
                 },
                 "force": false,
                 "itemIds": [
-                    "1713723753929"
+                    "1713723768011"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727750986,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729325217,
                 "oldBounds": {
-                    "x": 617.5,
-                    "y": 1073,
-                    "w": 119,
-                    "h": 62,
+                    "x": 1103,
+                    "y": 500,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 606.5,
-                    "y": 1073,
-                    "w": 119,
-                    "h": 62,
+                    "x": 1113,
+                    "y": 612,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060253053"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727752586,
-                "oldBounds": {
-                    "x": 755.5,
-                    "y": 1109,
-                    "w": 125,
-                    "h": 134,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 759.5,
-                    "y": 1109,
-                    "w": 125,
-                    "h": 134,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060253054"
+                    "1713060190681"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727767703,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729342051,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Configure opens the Preferences dialog"
+                    "value": "The Connection section provides users with Tor Provider related options. This page may vary a lot depending on which Tor Provider is selected. For instance, a System Tor Daemon Tor Provider (eg on Tails) would have this section almost entirely empty. For now let's have this mostly mirror about:preferences#connection in Tor Browser."
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060194112"
+                    "1713723768011"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/remove",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727772836,
-                "oldBounds": {
-                    "x": 606.5,
-                    "y": 610,
-                    "w": 119,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 612,
-                    "y": 610,
-                    "w": 130,
-                    "h": 140,
-                    "r": 0
-                },
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729344684,
                 "itemIds": [
-                    "1713060194112"
+                    "1713060190681"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727777486,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729347834,
                 "oldBounds": {
-                    "x": 760,
-                    "y": 600.5,
-                    "w": 126,
-                    "h": 121,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 747,
-                    "y": 600.5,
-                    "w": 100,
-                    "h": 121,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060194200"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727784170,
-                "oldBounds": {
-                    "x": 747,
-                    "y": 600.5,
-                    "w": 100,
-                    "h": 121,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 757,
-                    "y": 600.5,
-                    "w": 120,
-                    "h": 121,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060194200"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727786553,
-                "oldBounds": {
-                    "x": 757,
-                    "y": 600.5,
-                    "w": 120,
-                    "h": 121,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 757,
-                    "y": 583.5,
-                    "w": 120,
-                    "h": 87,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060194200"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727788886,
-                "oldBounds": {
-                    "x": 942,
-                    "y": 274,
+                    "x": 1103,
+                    "y": 395,
                     "w": 200,
                     "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 942,
-                    "y": 301,
+                    "x": 1123,
+                    "y": 692,
                     "w": 200,
                     "h": 140,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060194058"
+                    "1713060190629"
                 ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729349884,
+                "oldBounds": {
+                    "x": 1113,
+                    "y": 256.5,
+                    "w": 220,
+                    "h": 143,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 976,
+                    "y": 190.5,
+                    "w": 220,
+                    "h": 143,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713060190548"
+                ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729351668,
+                "itemIds": [
+                    "1713060190548"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729366885,
+                "id": "1713723768208",
+                "renderer": "Comment",
+                "position": {
+                    "x": 19.883331298828125,
+                    "y": 312
+                }
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727800370,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729383685,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "We will try to follow a desktop'ified version of Tor Browser's about:torconnect page here"
+                    "value": "TODO: Bridge Card support"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713060194058"
+                    "1713723768208"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727806103,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729386468,
                 "oldBounds": {
-                    "x": 942,
-                    "y": 301,
-                    "w": 200,
-                    "h": 140,
+                    "x": 109,
+                    "y": 397,
+                    "w": 180,
+                    "h": 170,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 968.5,
-                    "y": 301,
-                    "w": 253,
-                    "h": 140,
+                    "x": 109,
+                    "y": 355,
+                    "w": 180,
+                    "h": 86,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060194058"
+                    "1713723768208"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1708271085757",
-                "timestamp": 1713727812920,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729389768,
                 "oldBounds": {
-                    "x": 606.5,
-                    "y": 1073,
-                    "w": 119,
-                    "h": 62,
+                    "x": 109,
+                    "y": 355,
+                    "w": 180,
+                    "h": 86,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 612,
-                    "y": 1073,
-                    "w": 130,
-                    "h": 62,
+                    "x": 135,
+                    "y": 606,
+                    "w": 180,
+                    "h": 86,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713060253053"
+                    "1713723768208"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729392885,
+                "oldBounds": {
+                    "x": 135,
+                    "y": 606,
+                    "w": 180,
+                    "h": 86,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 135,
+                    "y": 567,
+                    "w": 180,
+                    "h": 86,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723768208"
+                ]
+            }
+        },
+        {
+            "type": "items/addShape",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729407019,
+                "id": "1713723768326",
+                "renderer": "Comment",
+                "position": {
+                    "x": 46.883331298828125,
+                    "y": 1441
+                }
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729424769,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "TODO: Maybe Backend should be the *first* configurable item in the list?"
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723768326"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729428069,
+                "oldBounds": {
+                    "x": 136,
+                    "y": 1526,
+                    "w": 180,
+                    "h": 170,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 136,
+                    "y": 1508.5,
+                    "w": 180,
+                    "h": 135,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723768326"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1713729430853,
+                "oldBounds": {
+                    "x": 136,
+                    "y": 1508.5,
+                    "w": 180,
+                    "h": 135,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 135,
+                    "y": 1542.5,
+                    "w": 180,
+                    "h": 135,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723768326"
                 ]
             }
         }
