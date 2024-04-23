@@ -130,9 +130,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 610,
+                            "x": 609,
                             "y": 278,
-                            "w": 210,
+                            "w": 208,
                             "h": 30,
                             "r": 0
                         },
@@ -218,9 +218,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 481,
+                            "x": 480,
                             "y": 848,
-                            "w": 302,
+                            "w": 300,
                             "h": 48,
                             "r": 0
                         },
@@ -235,9 +235,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 610,
+                            "x": 609,
                             "y": 781,
-                            "w": 232,
+                            "w": 230,
                             "h": 30,
                             "r": 0
                         },
@@ -274,9 +274,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 433,
+                            "x": 432,
                             "y": 937,
-                            "w": 192,
+                            "w": 190,
                             "h": 30,
                             "r": 0
                         },
@@ -370,9 +370,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 206,
+                            "x": 207,
                             "y": 39,
-                            "w": 412,
+                            "w": 414,
                             "h": 78,
                             "r": 0
                         },
@@ -477,9 +477,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 446,
+                            "x": 445,
                             "y": 554,
-                            "w": 342,
+                            "w": 340,
                             "h": 48,
                             "r": 0
                         },
@@ -532,9 +532,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 361,
+                            "x": 360,
                             "y": 598,
-                            "w": 164,
+                            "w": 162,
                             "h": 30,
                             "r": 0
                         },
@@ -667,9 +667,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 604,
+                            "x": 603,
                             "y": 324,
-                            "w": 136,
+                            "w": 134,
                             "h": 30,
                             "r": 0
                         },
@@ -1222,9 +1222,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 154,
+                            "x": 155,
                             "y": 39,
-                            "w": 308,
+                            "w": 310,
                             "h": 78,
                             "r": 0
                         },
@@ -1341,9 +1341,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 635,
+                            "x": 634,
                             "y": 324,
-                            "w": 236,
+                            "w": 234,
                             "h": 30,
                             "r": 0
                         },
@@ -1358,9 +1358,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 449,
+                            "x": 448,
                             "y": 363,
-                            "w": 100,
+                            "w": 98,
                             "h": 48,
                             "r": 0
                         },
@@ -1419,9 +1419,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 322,
+                            "x": 323,
                             "y": 39,
-                            "w": 644,
+                            "w": 646,
                             "h": 78,
                             "r": 0
                         },
@@ -1553,9 +1553,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 635,
+                            "x": 634,
                             "y": 324,
-                            "w": 236,
+                            "w": 234,
                             "h": 30,
                             "r": 0
                         },
@@ -1570,9 +1570,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 441,
+                            "x": 440,
                             "y": 519,
-                            "w": 84,
+                            "w": 82,
                             "h": 48,
                             "r": 0
                         },
@@ -1714,9 +1714,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 464,
+                            "x": 463,
                             "y": 363,
-                            "w": 130,
+                            "w": 128,
                             "h": 48,
                             "r": 0
                         },
@@ -1731,9 +1731,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 506,
+                            "x": 505,
                             "y": 402,
-                            "w": 198,
+                            "w": 196,
                             "h": 30,
                             "r": 0
                         },
@@ -1769,9 +1769,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 456,
+                            "x": 455,
                             "y": 441,
-                            "w": 114,
+                            "w": 112,
                             "h": 48,
                             "r": 0
                         },
@@ -1860,9 +1860,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 330,
+                            "x": 331,
                             "y": 39,
-                            "w": 660,
+                            "w": 662,
                             "h": 78,
                             "r": 0
                         },
@@ -2006,9 +2006,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 635,
+                            "x": 634,
                             "y": 324,
-                            "w": 236,
+                            "w": 234,
                             "h": 30,
                             "r": 0
                         },
@@ -2023,9 +2023,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 453,
+                            "x": 452,
                             "y": 363,
-                            "w": 108,
+                            "w": 106,
                             "h": 48,
                             "r": 0
                         },
@@ -2158,9 +2158,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 326,
+                            "x": 327,
                             "y": 39,
-                            "w": 652,
+                            "w": 654,
                             "h": 78,
                             "r": 0
                         },
@@ -2315,9 +2315,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 635,
+                            "x": 634,
                             "y": 324,
-                            "w": 236,
+                            "w": 234,
                             "h": 30,
                             "r": 0
                         },
@@ -2411,9 +2411,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 451,
+                            "x": 450,
                             "y": 500,
-                            "w": 104,
+                            "w": 102,
                             "h": 48,
                             "r": 0
                         },
@@ -2490,9 +2490,9 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 614,
+                            "x": 612,
                             "y": 695,
-                            "w": 414,
+                            "w": 410,
                             "h": 36,
                             "r": 0
                         },
@@ -2512,9 +2512,9 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 454,
+                            "x": 453,
                             "y": 731,
-                            "w": 72,
+                            "w": 70,
                             "h": 36,
                             "r": 0
                         },
@@ -2556,9 +2556,9 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 473,
+                            "x": 472,
                             "y": 895,
-                            "w": 118,
+                            "w": 116,
                             "h": 36,
                             "r": 0
                         },
@@ -2632,9 +2632,9 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 578,
+                            "x": 577,
                             "y": 1002,
-                            "w": 328,
+                            "w": 326,
                             "h": 36,
                             "r": 0
                         },
@@ -2670,9 +2670,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 502,
+                            "x": 501,
                             "y": 1139,
-                            "w": 204,
+                            "w": 202,
                             "h": 48,
                             "r": 0
                         },
@@ -2806,9 +2806,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 839,
+                            "x": 838,
                             "y": 1259,
-                            "w": 42,
+                            "w": 40,
                             "h": 30,
                             "r": 0
                         },
@@ -3000,9 +3000,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 464,
+                            "x": 463,
                             "y": 1421,
-                            "w": 130,
+                            "w": 128,
                             "h": 48,
                             "r": 0
                         },
@@ -3022,9 +3022,9 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 561,
+                            "x": 559,
                             "y": 1583,
-                            "w": 294,
+                            "w": 290,
                             "h": 36,
                             "r": 0
                         },
@@ -3044,9 +3044,9 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 502,
+                            "x": 501,
                             "y": 1619,
-                            "w": 176,
+                            "w": 174,
                             "h": 36,
                             "r": 0
                         },
@@ -3066,9 +3066,9 @@
                         },
                         "renderer": "RadioButton",
                         "transform": {
-                            "x": 483,
+                            "x": 482,
                             "y": 1655,
-                            "w": 138,
+                            "w": 136,
                             "h": 36,
                             "r": 0
                         },
@@ -3118,9 +3118,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 474,
+                            "x": 473,
                             "y": 1460,
-                            "w": 134,
+                            "w": 132,
                             "h": 30,
                             "r": 0
                         },
@@ -3180,9 +3180,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 358,
+                            "x": 359,
                             "y": 39,
-                            "w": 716,
+                            "w": 718,
                             "h": 78,
                             "r": 0
                         },
@@ -3324,9 +3324,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 596,
+                            "x": 595,
                             "y": 576,
-                            "w": 136,
+                            "w": 134,
                             "h": 30,
                             "r": 0
                         },
@@ -3565,9 +3565,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 43,
+                            "x": 44,
                             "y": 248,
-                            "w": 22,
+                            "w": 24,
                             "h": 30,
                             "r": 0
                         },
@@ -3582,9 +3582,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 43,
+                            "x": 44,
                             "y": 248,
-                            "w": 22,
+                            "w": 24,
                             "h": 30,
                             "r": 0
                         },
@@ -4684,8 +4684,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1132,
-                            "y": 68.5,
+                            "x": 1113,
+                            "y": 1535.5,
                             "w": 180,
                             "h": 87,
                             "r": 0
@@ -4701,9 +4701,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 513,
+                            "x": 509,
                             "y": 513,
-                            "w": 992,
+                            "w": 984,
                             "h": 30,
                             "r": 0
                         },
@@ -4983,9 +4983,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 246,
+                            "x": 247,
                             "y": 39,
-                            "w": 492,
+                            "w": 494,
                             "h": 78,
                             "r": 0
                         },
@@ -5204,9 +5204,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 620,
+                            "x": 619,
                             "y": 265,
-                            "w": 136,
+                            "w": 134,
                             "h": 30,
                             "r": 0
                         },
@@ -5410,9 +5410,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 49,
+                            "x": 50,
                             "y": 46,
-                            "w": 22,
+                            "w": 24,
                             "h": 30,
                             "r": 0
                         },
@@ -5427,9 +5427,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 49,
+                            "x": 50,
                             "y": 46,
-                            "w": 22,
+                            "w": 24,
                             "h": 30,
                             "r": 0
                         },
@@ -6015,9 +6015,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 621,
+                            "x": 620,
                             "y": 974,
-                            "w": 136,
+                            "w": 134,
                             "h": 30,
                             "r": 0
                         },
@@ -8092,9 +8092,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 622,
+                            "x": 621,
                             "y": 327,
-                            "w": 136,
+                            "w": 134,
                             "h": 30,
                             "r": 0
                         },
@@ -8853,9 +8853,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 622,
+                            "x": 621,
                             "y": 1045,
-                            "w": 136,
+                            "w": 134,
                             "h": 30,
                             "r": 0
                         },
@@ -10772,9 +10772,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 253,
+                            "x": 254,
                             "y": 39,
-                            "w": 506,
+                            "w": 508,
                             "h": 78,
                             "r": 0
                         },
@@ -11031,9 +11031,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 637,
+                            "x": 636,
                             "y": 324,
-                            "w": 212,
+                            "w": 210,
                             "h": 30,
                             "r": 0
                         },
@@ -11071,9 +11071,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 177,
+                            "x": 178,
                             "y": 39,
-                            "w": 354,
+                            "w": 356,
                             "h": 78,
                             "r": 0
                         },
@@ -11440,9 +11440,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 327,
+                            "x": 325,
                             "y": 388,
-                            "w": 284,
+                            "w": 280,
                             "h": 30,
                             "r": 0
                         },
@@ -11457,9 +11457,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 880,
+                            "x": 878,
                             "y": 192,
-                            "w": 284,
+                            "w": 280,
                             "h": 30,
                             "r": 0
                         },
@@ -11474,9 +11474,9 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 880,
+                            "x": 878,
                             "y": 573,
-                            "w": 284,
+                            "w": 280,
                             "h": 30,
                             "r": 0
                         },
@@ -11491,9 +11491,9 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 283,
+                            "x": 284,
                             "y": 39,
-                            "w": 566,
+                            "w": 568,
                             "h": 78,
                             "r": 0
                         },
@@ -11562,292 +11562,6 @@
                     "1713723813759"
                 ],
                 "title": "Check for Updates"
-            },
-            {
-                "id": "1713723751325",
-                "items": [
-                    {
-                        "id": "1713723751380",
-                        "appearance": {
-                            "FOREGROUND_COLOR": 16777215,
-                            "TEXT_DISABLED": true
-                        },
-                        "renderer": "Window",
-                        "transform": {
-                            "x": 675,
-                            "y": 647,
-                            "w": 800,
-                            "h": 600,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723751439",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Ricochet Refresh - Changelog"
-                        },
-                        "renderer": "Label",
-                        "transform": {
-                            "x": 675,
-                            "y": 332,
-                            "w": 228,
-                            "h": 30,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723751708",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "\n- Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n- Fusce fermentum semper est, vel tempor risus venenatis ac.\n- Nullam ultricies justo vitae elit consectetur, id luctus nisi vestibulum.\n\n- Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n- Phasellus quis velit sed est ultricies scelerisque nec ac nulla.\n\n\n- Curabitur condimentum ligula sed nibh laoreet, nec viverra ex luctus.\n- Praesent nec ex nec est accumsan suscipit.\n- Integer aliquet odio sit amet ex vestibulum, at malesuada sapien tempor.\n\n- Sed convallis odio eu scelerisque rutrum.\n- Nam id tellus sit amet eros pellentesque tristique.\n\n- Integer posuere justo ac risus facilisis, eget elementum justo sodales.\n\n- Vestibulum eget libero nec mi vehicula dapibus eget id leo."
-                        },
-                        "renderer": "Paragraph",
-                        "transform": {
-                            "x": 680.5,
-                            "y": 694,
-                            "w": 789,
-                            "h": 506,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723751794",
-                        "appearance": {
-                            "FONT_SIZE": 24,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "4.0.2-stable"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 349,
-                            "y": 379,
-                            "w": 148,
-                            "h": 48,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723752119",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "All Platforms"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 336,
-                            "y": 454,
-                            "w": 122,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723752208",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "macOS"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 316,
-                            "y": 548,
-                            "w": 82,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723752258",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Build System"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 334,
-                            "y": 645,
-                            "w": 126,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723752396",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Windows"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 322,
-                            "y": 740,
-                            "w": 94,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723752474",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "macOS"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 316,
-                            "y": 812,
-                            "w": 82,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723752509",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Linux"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 307,
-                            "y": 862,
-                            "w": 64,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723752872",
-                        "appearance": {
-                            "ARROW_COLOR": 12434877,
-                            "FOREGROUND_COLOR": 15790320,
-                            "BACKGROUND_COLOR": 2434341,
-                            "STROKE_COLOR": 15790320,
-                            "STROKE_THICKNESS": 2,
-                            "TEXT_DISABLED": true,
-                            "BAR_COLOR": 12434877,
-                            "BAR_POSITION": 0,
-                            "BAR_SIZE": 50
-                        },
-                        "renderer": "VerticalScrollbar",
-                        "transform": {
-                            "x": 1065,
-                            "y": 647,
-                            "w": 20,
-                            "h": 600,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723753022",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "November 1st, 2025"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 513,
-                            "y": 381,
-                            "w": 184,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723753395",
-                        "appearance": {
-                            "FONT_SIZE": 48,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Changelog Dialog"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 200,
-                            "y": 39,
-                            "w": 400,
-                            "h": 78,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723753541",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Accessed via the Help > Changelog... menu item, will display the most recent changelog."
-                        },
-                        "renderer": "Paragraph",
-                        "transform": {
-                            "x": 323,
-                            "y": 148,
-                            "w": 612,
-                            "h": 140,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713723753649",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: Alternatively, we could open the folder containing shipped changelog file and let the user open it in their preferred text editor"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 1129,
-                            "y": 121,
-                            "w": 180,
-                            "h": 206,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    }
-                ],
-                "rootIds": [
-                    "1713723751380",
-                    "1713723751439",
-                    "1713723751708",
-                    "1713723751794",
-                    "1713723752119",
-                    "1713723752208",
-                    "1713723752258",
-                    "1713723752396",
-                    "1713723752474",
-                    "1713723752509",
-                    "1713723752872",
-                    "1713723753022",
-                    "1713723753395",
-                    "1713723753541",
-                    "1713723753649"
-                ],
-                "title": "Changelog"
             }
         ],
         "diagramIds": [
@@ -11861,71 +11575,15 @@
             "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
             "aded38e4-f279-58df-12ed-8d8a929a1fdd",
             "544a9ad8-9a02-4fd4-b179-0e177bd09248",
-            "1713060276314",
-            "1713723751325"
+            "1713060276314"
         ],
-        "id": "8e4a73cb-bb16-15c8-bcb6-78a76134103c",
+        "id": "ff5d5d30-afb2-695e-29c0-e65300933aab",
         "size": {
             "x": 1240,
             "y": 1754
         }
     },
     "actions": [
-        {
-            "type": "diagram/remove",
-            "payload": {
-                "diagramId": "1713723751325",
-                "timestamp": 1713836638663
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713836666147,
-                "oldBounds": {
-                    "x": 1132,
-                    "y": 68.5,
-                    "w": 180,
-                    "h": 87,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1042,
-                    "y": 1228.5,
-                    "w": 180,
-                    "h": 87,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060210606"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1713836670331,
-                "oldBounds": {
-                    "x": 1042,
-                    "y": 1228.5,
-                    "w": 180,
-                    "h": 87,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1113,
-                    "y": 1535.5,
-                    "w": 180,
-                    "h": 87,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713060210606"
-                ]
-            }
-        },
         {
             "type": "items/transform",
             "payload": {
@@ -12361,6 +12019,142 @@
                 "force": false,
                 "itemIds": [
                     "1713060187933"
+                ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713838174861,
+                "itemIds": [
+                    "1713723758380"
+                ]
+            }
+        },
+        {
+            "type": "items/paste",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713838176961,
+                "json": "{\"visuals\":[{\"id\":\"1713723814445\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"We will try to follow a desktop'ified version of Tor Browser's about:torconnect page here\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":1053.5,\"y\":363,\"w\":253,\"h\":140,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713838179061,
+                "oldBounds": {
+                    "x": 1103.5,
+                    "y": 413,
+                    "w": 253,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 151.5,
+                    "y": 445,
+                    "w": 253,
+                    "h": 140,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723814445"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713838321014,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Potentially multiple profiles using the same guard is probably the least-bad option. There is a linkability concern here: if an adveresary disabled a guard node and multiple Ricochet Refresh users go offline, then they have (probably) identified their guard node, and that the two profiles (may) be the same person."
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723814445"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713838323480,
+                "oldBounds": {
+                    "x": 151.5,
+                    "y": 445,
+                    "w": 253,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 154.5,
+                    "y": 363,
+                    "w": 253,
+                    "h": 140,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723814445"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713838325730,
+                "oldBounds": {
+                    "x": 154.5,
+                    "y": 363,
+                    "w": 253,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 154.5,
+                    "y": 651.5,
+                    "w": 253,
+                    "h": 717,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713723814445"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713838504267,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Potentially multiple profiles using the same guard is probably the least-bad option.\n\nThere is a linkability concern here: if an adversary disabled a guard node and multiple Ricochet Refresh users go offline, then they have (probably) identified their guard node, and that the two profiles (may) be the same person. Maybe no terribly useful for a fishing expedition (since if we have more Ricochet Refresh users than there are guard relays, there will necessarily be profiles sharing guards), but more useful as a piece of evidence to add to a larger case, especially if this behaviour is stable across multiple guard rotations.\n\nOn the other hand, if you say ok 1 guard per profile, then you run into the problem having a stable guard solves: increased probability of a bad/adversarial guard versus a good guard."
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723814445"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "1708271085757",
+                "timestamp": 1713839327758,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Potentially multiple profiles using the same guard is probably the least-bad option.\n\nThere is a linkability concern here: if an adversary disabled a guard node and multiple Ricochet Refresh users go offline, then they have (probably) identified their guard node, and that the two profiles (may) be the same person. Maybe no terribly useful for a fishing expedition (since if we have more Ricochet Refresh users than there are guard relays, there will necessarily be profiles sharing guards), but more useful as a piece of evidence to add to a larger case, especially if this behaviour is stable across multiple guard rotations.\n\nOn the other hand, if you say ok one guard per profile, then you run into the problem having a stable guard solves: increased probability of a bad/adversarial guard versus a good guard."
+                },
+                "force": false,
+                "itemIds": [
+                    "1713723814445"
                 ]
             }
         }
