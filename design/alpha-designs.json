@@ -1773,19 +1773,19 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713723811188",
+                        "id": "1714182611320",
                         "appearance": {
                             "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
+                            "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: Ensure these ALL options are safe to store unencrypted, since they are the app-wide settings and so won't be stored in a profile"
+                            "TEXT": "All options in this dialog must be safe to store un-encrypted in the application config; no privacy or security related settings belong here! Those must be saved in the profile itself."
                         },
-                        "renderer": "Comment",
+                        "renderer": "Paragraph",
                         "transform": {
-                            "x": 1094,
-                            "y": 100.5,
-                            "w": 266,
-                            "h": 159,
+                            "x": 141,
+                            "y": 501,
+                            "w": 200,
+                            "h": 392,
                             "r": 0
                         },
                         "type": "Shape"
@@ -1801,7 +1801,7 @@
                     "1713723754696",
                     "1713723765583",
                     "1713723764869",
-                    "1713723811188"
+                    "1714182611320"
                 ],
                 "title": "Preferences - General"
             },
@@ -5117,6 +5117,42 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1716733016607",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Onion Service status, reachability"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 1124,
+                            "y": 1244.5,
+                            "w": 180,
+                            "h": 91,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1716733016651",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Smily selector"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 1124,
+                            "y": 1350.5,
+                            "w": 180,
+                            "h": 91,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -5197,7 +5233,9 @@
                     "1713723782648",
                     "1713723784914",
                     "1713839316222",
-                    "1713839316223"
+                    "1713839316223",
+                    "1716733016607",
+                    "1716733016651"
                 ],
                 "title": "Main Window - Conversations (Online)"
             },
@@ -11824,24 +11862,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713839318739",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Minimum Requirements:\n\n- Display Name\n- Profile info:\n⠀- icon\n⠀- pronouns\n⠀- status\n⠀- text description\n- Save Path\n\nOther:\n\n- Encryption Options?\n⠀- key generation\n⠀- see KeePassXC db options for instance"
-                        },
-                        "renderer": "Paragraph",
-                        "transform": {
-                            "x": 139,
-                            "y": 426.5,
-                            "w": 200,
-                            "h": 397,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713839319124",
                         "appearance": {
                             "FONT_SIZE": 16,
@@ -12033,8 +12053,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 845,
-                            "y": 376.5,
+                            "x": 164,
+                            "y": 397.5,
                             "w": 200,
                             "h": 279,
                             "r": 0
@@ -13783,7 +13803,6 @@
                     "1713839318036",
                     "1713839318111",
                     "1713839318504",
-                    "1713839318739",
                     "1713839319124",
                     "1713839319616",
                     "1713839319901",
@@ -13999,23 +14018,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713839347286",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Stable release channel"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 652,
-                            "y": 469,
-                            "w": 204,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1714182606149",
                         "appearance": {
                             "FOREGROUND_COLOR": 15790320,
@@ -14059,7 +14061,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Build tag: v4.0.3-stable\nCommit: 9bab2c5dc9495de040dcfd7569c39bb9d6c4c714\n"
+                            "TEXT": "Build tag: ricochet-refresh-v4.0.3\nCommit: 9bab2c5dc9495de040dcfd7569c39bb9d6c4c714\n"
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -14142,23 +14144,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1714182609488",
-                        "appearance": {
-                            "FONT_SIZE": 18,
-                            "BACKGROUND_COLOR": 2434341,
-                            "TEXT": "Alpha release channel"
-                        },
-                        "renderer": "Heading",
-                        "transform": {
-                            "x": 650,
-                            "y": 1010,
-                            "w": 200,
-                            "h": 42,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1714182609489",
                         "appearance": {
                             "FOREGROUND_COLOR": 15790320,
@@ -14202,7 +14187,7 @@
                             "FONT_SIZE": 16,
                             "BACKGROUND_COLOR": 2434341,
                             "TEXT_ALIGNMENT": "left",
-                            "TEXT": "Build tag: v4.1.0-alpha.1\nCommit: 581a3a68e9837def3bbb6d7b5e197bc0410f68a5\n"
+                            "TEXT": "Build tag: ricochet-refresh-v4.1.0-alpha.1\nCommit: 581a3a68e9837def3bbb6d7b5e197bc0410f68a5\n"
                         },
                         "renderer": "Paragraph",
                         "transform": {
@@ -14227,8 +14212,8 @@
                         },
                         "renderer": "Link",
                         "transform": {
-                            "x": 652,
-                            "y": 502,
+                            "x": 653,
+                            "y": 466,
                             "w": 192,
                             "h": 30,
                             "r": 0
@@ -14248,8 +14233,8 @@
                         },
                         "renderer": "Link",
                         "transform": {
-                            "x": 652,
-                            "y": 1043,
+                            "x": 653,
+                            "y": 1007,
                             "w": 192,
                             "h": 30,
                             "r": 0
@@ -14273,6 +14258,24 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1714182611057",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Ensure tag and commit labels are copy-able"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 1107,
+                            "y": 564,
+                            "w": 186,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
@@ -14282,7 +14285,6 @@
                     "1713839345731",
                     "1713839345924",
                     "1713839346831",
-                    "1713839347286",
                     "1714182606149",
                     "1714182607522",
                     "1714182608295",
@@ -14290,13 +14292,13 @@
                     "1714182609485",
                     "1714182609486",
                     "1714182609487",
-                    "1714182609488",
                     "1714182609489",
                     "1714182609490",
                     "1714182609491",
                     "1714182610310",
                     "1714182610435",
-                    "1714182610576"
+                    "1714182610576",
+                    "1714182611057"
                 ],
                 "title": "About Dialog"
             }
@@ -14316,7 +14318,7 @@
             "1713060276314",
             "1713839345582"
         ],
-        "id": "51cd6187-5ae6-bc8e-569c-a6d23ac1bb16",
+        "id": "260f2fcb-0f9c-1217-78bf-0d8d149588ba",
         "size": {
             "x": 1240,
             "y": 1754
@@ -14324,344 +14326,204 @@
     },
     "actions": [
         {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243553093,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Build tag: v4.0.3\nCommit: 9bab2c5dc9495de040dcfd7569c39bb9d6c4c714\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1714182608295"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243588898,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Build tag: ricochet-refresh-v4.0.3\nCommit: 9bab2c5dc9495de040dcfd7569c39bb9d6c4c714\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1714182608295"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243602336,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Build tag: ricochet-refresh-v4.1.0-alpha.1\nCommit: 581a3a68e9837def3bbb6d7b5e197bc0410f68a5\n"
-                },
-                "force": false,
-                "itemIds": [
-                    "1714182609491"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243633817,
-                "itemIds": [
-                    "1714182609488"
-                ]
-            }
-        },
-        {
-            "type": "items/remove",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243635868,
-                "itemIds": [
-                    "1713839347286"
-                ]
-            }
-        },
-        {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243646491,
+                "diagramId": "c1fe2795-f392-3b54-e4ee-ba14ad73ee7a",
+                "timestamp": 1716734332312,
                 "oldBounds": {
-                    "x": 652,
-                    "y": 772.5,
-                    "w": 192,
-                    "h": 571,
+                    "x": 687.5,
+                    "y": 1344,
+                    "w": 559,
+                    "h": 36,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 646,
-                    "y": 736.5,
-                    "w": 192,
-                    "h": 571,
+                    "x": 688,
+                    "y": 1344,
+                    "w": 560,
+                    "h": 36,
                     "r": 0
                 },
                 "itemIds": [
-                    "1714182610310",
-                    "1714182610435"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243647843,
-                "oldBounds": {
-                    "x": 646,
-                    "y": 736.5,
-                    "w": 192,
-                    "h": 571,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 652,
-                    "y": 736.5,
-                    "w": 192,
-                    "h": 571,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1714182610310",
-                    "1714182610435"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243648374,
-                "oldBounds": {
-                    "x": 652,
-                    "y": 736.5,
-                    "w": 192,
-                    "h": 571,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 653,
-                    "y": 736.5,
-                    "w": 192,
-                    "h": 571,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1714182610310",
-                    "1714182610435"
+                    "1713060178230"
                 ]
             }
         },
         {
             "type": "items/paste",
             "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243725441,
-                "json": "{\"visuals\":[{\"id\":\"1714182611057\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"Like in chats, the URL will open a context menu allowing the user to copy the link to the clipboard\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":159,\"y\":489,\"w\":200,\"h\":140,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809033322,
+                "json": "{\"visuals\":[{\"id\":\"1716733016790\",\"appearance\":{\"FONT_SIZE\":16,\"STROKE_THICKNESS\":1,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"TODO: Smily selector\"},\"renderer\":\"Comment\",\"transform\":{\"x\":1124,\"y\":1350.5,\"w\":180,\"h\":91,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
                 "offset": 50
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243726633,
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809035624,
                 "oldBounds": {
-                    "x": 209,
-                    "y": 539,
-                    "w": 200,
-                    "h": 140,
+                    "x": 1174,
+                    "y": 1400.5,
+                    "w": 180,
+                    "h": 91,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 773,
-                    "y": 466,
-                    "w": 200,
-                    "h": 140,
+                    "x": 1124,
+                    "y": 1456.5,
+                    "w": 180,
+                    "h": 91,
                     "r": 0
                 },
                 "itemIds": [
-                    "1714182611057"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243729933,
-                "oldBounds": {
-                    "x": 773,
-                    "y": 466,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1119,
-                    "y": 473,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1714182611057"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243740211,
-                "appearance": {
-                    "key": "TEXT",
-                    "value": "Ensure tag and commit labels are copy-able"
-                },
-                "force": false,
-                "itemIds": [
-                    "1714182611057"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243742955,
-                "oldBounds": {
-                    "x": 1119,
-                    "y": 473,
-                    "w": 200,
-                    "h": 140,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1112,
-                    "y": 427,
-                    "w": 186,
-                    "h": 48,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1714182611057"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839345582",
-                "timestamp": 1714243745600,
-                "oldBounds": {
-                    "x": 1112,
-                    "y": 427,
-                    "w": 186,
-                    "h": 48,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1107,
-                    "y": 564,
-                    "w": 186,
-                    "h": 48,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1714182611057"
+                    "1716733016790"
                 ]
             }
         },
         {
             "type": "items/remove",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714244701651,
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809040843,
                 "itemIds": [
-                    "1713839318739"
+                    "1716733016790"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809056723,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "TODO: Status bar with: Onion Service status, reachability, service id"
+                },
+                "force": false,
+                "itemIds": [
+                    "1716733016607"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714244708403,
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809059211,
                 "oldBounds": {
-                    "x": 845,
-                    "y": 376.5,
-                    "w": 200,
-                    "h": 279,
+                    "x": 1124,
+                    "y": 1350.5,
+                    "w": 180,
+                    "h": 91,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 223,
-                    "y": 367.5,
-                    "w": 200,
-                    "h": 279,
+                    "x": 1124,
+                    "y": 1392.5,
+                    "w": 180,
+                    "h": 91,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713839320660"
+                    "1716733016651"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714244709739,
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809061992,
                 "oldBounds": {
-                    "x": 223,
-                    "y": 367.5,
-                    "w": 200,
-                    "h": 279,
+                    "x": 1124,
+                    "y": 1244.5,
+                    "w": 180,
+                    "h": 91,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 108,
-                    "y": 382.5,
-                    "w": 200,
-                    "h": 279,
+                    "x": 1124,
+                    "y": 1266,
+                    "w": 180,
+                    "h": 134,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713839320660"
+                    "1716733016607"
+                ]
+            }
+        },
+        {
+            "type": "items/paste",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809112703,
+                "json": "{\"visuals\":[{\"id\":\"1716733016883\",\"appearance\":{\"FONT_SIZE\":16,\"STROKE_THICKNESS\":1,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"TODO: Smily selector\"},\"renderer\":\"Comment\",\"transform\":{\"x\":1124,\"y\":1392.5,\"w\":180,\"h\":91,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809115341,
+                "oldBounds": {
+                    "x": 1174,
+                    "y": 1442.5,
+                    "w": 180,
+                    "h": 91,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1124,
+                    "y": 1497.5,
+                    "w": 180,
+                    "h": 91,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1716733016883"
+                ]
+            }
+        },
+        {
+            "type": "items/appearance",
+            "payload": {
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809139402,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "TODO: Invite-only connectivity to identity server using client auth"
+                },
+                "force": false,
+                "itemIds": [
+                    "1716733016883"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714244711114,
+                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
+                "timestamp": 1716809143721,
                 "oldBounds": {
-                    "x": 108,
-                    "y": 382.5,
-                    "w": 200,
-                    "h": 279,
+                    "x": 1124,
+                    "y": 1497.5,
+                    "w": 180,
+                    "h": 91,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 164,
-                    "y": 397.5,
-                    "w": 200,
-                    "h": 279,
+                    "x": 1124,
+                    "y": 1517,
+                    "w": 180,
+                    "h": 130,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713839320660"
+                    "1716733016883"
                 ]
             }
         }
