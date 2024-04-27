@@ -14582,6 +14582,88 @@
                     "1714182611057"
                 ]
             }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "1713839317530",
+                "timestamp": 1714244701651,
+                "itemIds": [
+                    "1713839318739"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839317530",
+                "timestamp": 1714244708403,
+                "oldBounds": {
+                    "x": 845,
+                    "y": 376.5,
+                    "w": 200,
+                    "h": 279,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 223,
+                    "y": 367.5,
+                    "w": 200,
+                    "h": 279,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713839320660"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839317530",
+                "timestamp": 1714244709739,
+                "oldBounds": {
+                    "x": 223,
+                    "y": 367.5,
+                    "w": 200,
+                    "h": 279,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 108,
+                    "y": 382.5,
+                    "w": 200,
+                    "h": 279,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713839320660"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839317530",
+                "timestamp": 1714244711114,
+                "oldBounds": {
+                    "x": 108,
+                    "y": 382.5,
+                    "w": 200,
+                    "h": 279,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 164,
+                    "y": 397.5,
+                    "w": 200,
+                    "h": 279,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1713839320660"
+                ]
+            }
         }
     ]
 }
