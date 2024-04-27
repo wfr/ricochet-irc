@@ -583,24 +583,6 @@
                         "type": "Shape"
                     },
                     {
-                        "id": "1713060190285",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: New profile flow"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 1133,
-                            "y": 63.5,
-                            "w": 180,
-                            "h": 91,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
                         "id": "1713060213854",
                         "appearance": {
                             "FONT_SIZE": 16,
@@ -1531,10 +1513,27 @@
                             "r": 0
                         },
                         "type": "Shape"
+                    },
+                    {
+                        "id": "1714182610621",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "TODO: Downloads dialog"
+                        },
+                        "renderer": "Comment",
+                        "transform": {
+                            "x": 1125,
+                            "y": 65.5,
+                            "w": 180,
+                            "h": 87,
+                            "r": 0
+                        },
+                        "type": "Shape"
                     }
                 ],
                 "rootIds": [
-                    "1713060190285",
                     "1713060213854",
                     "1713060215502",
                     "1713060215503",
@@ -1589,7 +1588,8 @@
                     "1713839317635",
                     "1713839317636",
                     "1713839317637",
-                    "1713839317638"
+                    "1713839317638",
+                    "1714182610621"
                 ],
                 "title": "Main Window"
             },
@@ -3588,8 +3588,8 @@
                         },
                         "renderer": "Window",
                         "transform": {
-                            "x": 596,
-                            "y": 891,
+                            "x": 607,
+                            "y": 522,
                             "w": 800,
                             "h": 600,
                             "r": 0
@@ -3605,8 +3605,8 @@
                         },
                         "renderer": "Label",
                         "transform": {
-                            "x": 595,
-                            "y": 576,
+                            "x": 606,
+                            "y": 207,
                             "w": 134,
                             "h": 30,
                             "r": 0
@@ -3629,8 +3629,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 596,
-                            "y": 610,
+                            "x": 607,
+                            "y": 241,
                             "w": 800,
                             "h": 38,
                             "r": 0
@@ -3653,8 +3653,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 218.5,
-                            "y": 610,
+                            "x": 229.5,
+                            "y": 241,
                             "w": 45,
                             "h": 38,
                             "r": 0
@@ -3677,8 +3677,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 346,
-                            "y": 610,
+                            "x": 357,
+                            "y": 241,
                             "w": 86,
                             "h": 38,
                             "r": 0
@@ -3701,8 +3701,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 469.5,
-                            "y": 610,
+                            "x": 480.5,
+                            "y": 241,
                             "w": 59,
                             "h": 38,
                             "r": 0
@@ -3725,8 +3725,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 527.5,
-                            "y": 610,
+                            "x": 538.5,
+                            "y": 241,
                             "w": 57,
                             "h": 38,
                             "r": 0
@@ -3749,8 +3749,8 @@
                         },
                         "renderer": "Tabs",
                         "transform": {
-                            "x": 596,
-                            "y": 926,
+                            "x": 607,
+                            "y": 557,
                             "w": 800,
                             "h": 530,
                             "r": 0
@@ -3766,8 +3766,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 258,
-                            "y": 714,
+                            "x": 269,
+                            "y": 345,
                             "w": 124,
                             "h": 42,
                             "r": 0
@@ -3790,8 +3790,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 312.5,
-                            "y": 942,
+                            "x": 323.5,
+                            "y": 573,
                             "w": 233,
                             "h": 498,
                             "r": 0
@@ -3811,8 +3811,8 @@
                         },
                         "renderer": "ComboBox",
                         "transform": {
-                            "x": 288.5,
-                            "y": 1169.5,
+                            "x": 299.5,
+                            "y": 800.5,
                             "w": 187,
                             "h": 43,
                             "r": 0
@@ -3829,8 +3829,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 213,
-                            "y": 1169,
+                            "x": 224,
+                            "y": 800,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -3846,8 +3846,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 261,
-                            "y": 942,
+                            "x": 272,
+                            "y": 573,
                             "w": 128,
                             "h": 42,
                             "r": 0
@@ -3869,8 +3869,8 @@
                         },
                         "renderer": "VerticalScrollbar",
                         "transform": {
-                            "x": 417,
-                            "y": 920,
+                            "x": 428,
+                            "y": 551,
                             "w": 20,
                             "h": 454,
                             "r": 0
@@ -3887,8 +3887,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 706,
-                            "y": 891.5,
+                            "x": 717,
+                            "y": 522.5,
                             "w": 540,
                             "h": 403,
                             "r": 0
@@ -3910,8 +3910,8 @@
                         },
                         "renderer": "VerticalScrollbar",
                         "transform": {
-                            "x": 985,
-                            "y": 894,
+                            "x": 996,
+                            "y": 525,
                             "w": 20,
                             "h": 402,
                             "r": 0
@@ -3931,8 +3931,8 @@
                         },
                         "renderer": "TextArea",
                         "transform": {
-                            "x": 680.5,
-                            "y": 1158,
+                            "x": 691.5,
+                            "y": 789,
                             "w": 503,
                             "h": 66,
                             "r": 0
@@ -3952,8 +3952,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 958.5,
-                            "y": 1158,
+                            "x": 969.5,
+                            "y": 789,
                             "w": 75,
                             "h": 66,
                             "r": 0
@@ -3976,8 +3976,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 713,
-                            "y": 1109,
+                            "x": 724,
+                            "y": 740,
                             "w": 564,
                             "h": 32,
                             "r": 0
@@ -3997,8 +3997,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 448,
-                            "y": 1110,
+                            "x": 459,
+                            "y": 741,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4018,8 +4018,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 481,
-                            "y": 1110,
+                            "x": 492,
+                            "y": 741,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4039,8 +4039,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 514,
-                            "y": 1110,
+                            "x": 525,
+                            "y": 741,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4057,8 +4057,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 448,
-                            "y": 1111,
+                            "x": 459,
+                            "y": 742,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4075,8 +4075,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 481,
-                            "y": 1111,
+                            "x": 492,
+                            "y": 742,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4093,8 +4093,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 513,
-                            "y": 1111,
+                            "x": 524,
+                            "y": 742,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4114,8 +4114,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 547,
-                            "y": 1110,
+                            "x": 558,
+                            "y": 741,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4132,8 +4132,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 547,
-                            "y": 1111,
+                            "x": 558,
+                            "y": 742,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4150,8 +4150,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 580,
-                            "y": 1111,
+                            "x": 591,
+                            "y": 742,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4171,8 +4171,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 580,
-                            "y": 1110,
+                            "x": 591,
+                            "y": 741,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4189,8 +4189,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 406,
-                            "y": 1171,
+                            "x": 417,
+                            "y": 802,
                             "w": 48,
                             "h": 48,
                             "r": 0
@@ -4207,8 +4207,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 295.5,
-                            "y": 1478,
+                            "x": 306.5,
+                            "y": 1109,
                             "w": 199,
                             "h": 552,
                             "r": 0
@@ -4231,8 +4231,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 596,
-                            "y": 645,
+                            "x": 607,
+                            "y": 276,
                             "w": 800,
                             "h": 32,
                             "r": 0
@@ -4252,8 +4252,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 484,
-                            "y": 645,
+                            "x": 495,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4270,8 +4270,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 1113,
-                            "y": 866.5,
+                            "x": 1124,
+                            "y": 497.5,
                             "w": 200,
                             "h": 411,
                             "r": 0
@@ -4288,8 +4288,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 487,
-                            "y": 1363,
+                            "x": 498,
+                            "y": 994,
                             "w": 200,
                             "h": 306,
                             "r": 0
@@ -4306,8 +4306,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 958,
-                            "y": 1158,
+                            "x": 969,
+                            "y": 789,
                             "w": 40,
                             "h": 40,
                             "r": 0
@@ -4327,8 +4327,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 517,
-                            "y": 645,
+                            "x": 528,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4345,8 +4345,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 516,
-                            "y": 645,
+                            "x": 527,
+                            "y": 276,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -4363,8 +4363,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 755,
-                            "y": 1384,
+                            "x": 766,
+                            "y": 1015,
                             "w": 332,
                             "h": 348,
                             "r": 0
@@ -4387,8 +4387,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 412,
-                            "y": 610,
+                            "x": 423,
+                            "y": 241,
                             "w": 58,
                             "h": 38,
                             "r": 0
@@ -4408,8 +4408,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 349,
-                            "y": 645,
+                            "x": 360,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4429,8 +4429,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 382,
-                            "y": 645,
+                            "x": 393,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4450,8 +4450,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 415,
-                            "y": 645,
+                            "x": 426,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4468,8 +4468,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 349,
-                            "y": 646,
+                            "x": 360,
+                            "y": 277,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4486,8 +4486,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 381,
-                            "y": 646,
+                            "x": 392,
+                            "y": 277,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4504,8 +4504,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 415,
-                            "y": 646,
+                            "x": 426,
+                            "y": 277,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4521,8 +4521,8 @@
                         },
                         "renderer": "VerticalLine",
                         "transform": {
-                            "x": 429,
-                            "y": 942,
+                            "x": 440,
+                            "y": 573,
                             "w": 4,
                             "h": 498,
                             "r": 0
@@ -4545,8 +4545,8 @@
                         },
                         "renderer": "Rectangle",
                         "transform": {
-                            "x": 274.5,
-                            "y": 610,
+                            "x": 285.5,
+                            "y": 241,
                             "w": 65,
                             "h": 38,
                             "r": 0
@@ -4563,8 +4563,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1113,
-                            "y": 1311.5,
+                            "x": 1124,
+                            "y": 942.5,
                             "w": 180,
                             "h": 81,
                             "r": 0
@@ -4581,8 +4581,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1112,
-                            "y": 1171.5,
+                            "x": 1123,
+                            "y": 802.5,
                             "w": 180,
                             "h": 187,
                             "r": 0
@@ -4602,8 +4602,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 212,
-                            "y": 645,
+                            "x": 223,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4623,8 +4623,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 278,
-                            "y": 645,
+                            "x": 289,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4644,8 +4644,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 311,
-                            "y": 645,
+                            "x": 322,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4662,8 +4662,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 485,
-                            "y": 645,
+                            "x": 496,
+                            "y": 276,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -4680,8 +4680,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 211,
-                            "y": 644,
+                            "x": 222,
+                            "y": 275,
                             "w": 26,
                             "h": 26,
                             "r": 0
@@ -4698,8 +4698,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 278,
-                            "y": 644,
+                            "x": 289,
+                            "y": 275,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -4715,8 +4715,8 @@
                         },
                         "renderer": "VerticalLine",
                         "transform": {
-                            "x": 330,
-                            "y": 645,
+                            "x": 341,
+                            "y": 276,
                             "w": 2,
                             "h": 32,
                             "r": 0
@@ -4732,8 +4732,8 @@
                         },
                         "renderer": "VerticalLine",
                         "transform": {
-                            "x": 466,
-                            "y": 645,
+                            "x": 477,
+                            "y": 276,
                             "w": 2,
                             "h": 32,
                             "r": 0
@@ -4750,8 +4750,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 313,
-                            "y": 645,
+                            "x": 324,
+                            "y": 276,
                             "w": 30,
                             "h": 30,
                             "r": 0
@@ -4771,28 +4771,10 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 405.5,
-                            "y": 1169.5,
+                            "x": 416.5,
+                            "y": 800.5,
                             "w": 47,
                             "h": 43,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060210606",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: Downloads dialog"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 1113,
-                            "y": 1498.5,
-                            "w": 180,
-                            "h": 87,
                             "r": 0
                         },
                         "type": "Shape"
@@ -4807,8 +4789,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1113,
-                            "y": 1403.5,
+                            "x": 1124,
+                            "y": 1034.5,
                             "w": 180,
                             "h": 87,
                             "r": 0
@@ -4825,8 +4807,8 @@
                         },
                         "renderer": "Paragraph",
                         "transform": {
-                            "x": 103.5,
-                            "y": 1124.5,
+                            "x": 114.5,
+                            "y": 755.5,
                             "w": 173,
                             "h": 869,
                             "r": 0
@@ -4843,8 +4825,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 447,
-                            "y": 646,
+                            "x": 458,
+                            "y": 277,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -4864,8 +4846,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 448,
-                            "y": 645,
+                            "x": 459,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -4881,8 +4863,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 269,
-                            "y": 852,
+                            "x": 280,
+                            "y": 483,
                             "w": 146,
                             "h": 42,
                             "r": 0
@@ -4898,8 +4880,8 @@
                         },
                         "renderer": "Heading",
                         "transform": {
-                            "x": 247,
-                            "y": 1032,
+                            "x": 258,
+                            "y": 663,
                             "w": 100,
                             "h": 42,
                             "r": 0
@@ -4920,8 +4902,8 @@
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 302,
-                            "y": 783,
+                            "x": 313,
+                            "y": 414,
                             "w": 210,
                             "h": 96,
                             "r": 0
@@ -4938,8 +4920,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 224,
-                            "y": 761,
+                            "x": 235,
+                            "y": 392,
                             "w": 54,
                             "h": 48,
                             "r": 0
@@ -4956,8 +4938,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 224,
-                            "y": 805,
+                            "x": 235,
+                            "y": 436,
                             "w": 54,
                             "h": 48,
                             "r": 0
@@ -4978,8 +4960,8 @@
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 302,
-                            "y": 891,
+                            "x": 313,
+                            "y": 522,
                             "w": 210,
                             "h": 48,
                             "r": 0
@@ -4996,8 +4978,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 224,
-                            "y": 891,
+                            "x": 235,
+                            "y": 522,
                             "w": 54,
                             "h": 48,
                             "r": 0
@@ -5018,8 +5000,8 @@
                         },
                         "renderer": "List",
                         "transform": {
-                            "x": 302,
-                            "y": 987,
+                            "x": 313,
+                            "y": 618,
                             "w": 210,
                             "h": 48,
                             "r": 0
@@ -5036,28 +5018,10 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 224,
-                            "y": 987,
+                            "x": 235,
+                            "y": 618,
                             "w": 54,
                             "h": 48,
-                            "r": 0
-                        },
-                        "type": "Shape"
-                    },
-                    {
-                        "id": "1713060276912",
-                        "appearance": {
-                            "FONT_SIZE": 16,
-                            "STROKE_THICKNESS": 1,
-                            "TEXT_ALIGNMENT": "left",
-                            "TEXT": "TODO: About dialog"
-                        },
-                        "renderer": "Comment",
-                        "transform": {
-                            "x": 1113,
-                            "y": 1585,
-                            "w": 180,
-                            "h": 70,
                             "r": 0
                         },
                         "type": "Shape"
@@ -5107,8 +5071,8 @@
                         },
                         "renderer": "Comment",
                         "transform": {
-                            "x": 1113,
-                            "y": 1673.5,
+                            "x": 1124,
+                            "y": 1138.5,
                             "w": 180,
                             "h": 91,
                             "r": 0
@@ -5128,8 +5092,8 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 245,
-                            "y": 645,
+                            "x": 256,
+                            "y": 276,
                             "w": 32,
                             "h": 32,
                             "r": 0
@@ -5146,8 +5110,8 @@
                         },
                         "renderer": "Icon",
                         "transform": {
-                            "x": 247,
-                            "y": 646,
+                            "x": 258,
+                            "y": 277,
                             "w": 28,
                             "h": 28,
                             "r": 0
@@ -5215,7 +5179,6 @@
                     "1713060207327",
                     "1713060209824",
                     "1713060160298",
-                    "1713060210606",
                     "1713060212050",
                     "1713060212980",
                     "1713060250429",
@@ -5230,7 +5193,6 @@
                     "1713060257774",
                     "1713060258052",
                     "1713060258196",
-                    "1713060276912",
                     "1713723782647",
                     "1713723782648",
                     "1713723784914",
@@ -13433,9 +13395,9 @@
                         "renderer": "Window",
                         "transform": {
                             "x": 1023,
-                            "y": 1434,
+                            "y": 1437,
                             "w": 378,
-                            "h": 526,
+                            "h": 532,
                             "r": 0
                         },
                         "type": "Shape"
@@ -13518,7 +13480,7 @@
                         "appearance": {
                             "FOREGROUND_COLOR": 15790320,
                             "FONT_SIZE": 16,
-                            "BACKGROUND_COLOR": "#969696",
+                            "BACKGROUND_COLOR": "#000000",
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "center",
@@ -13526,7 +13488,7 @@
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 1095.5,
+                            "x": 1083.5,
                             "y": 1676,
                             "w": 67,
                             "h": 30,
@@ -13543,13 +13505,13 @@
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Next"
+                            "TEXT": "Finish"
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 1173.5,
+                            "x": 1166,
                             "y": 1676,
-                            "w": 63,
+                            "w": 78,
                             "h": 30,
                             "r": 0
                         },
@@ -13710,13 +13672,13 @@
                             "STROKE_COLOR": 13224393,
                             "STROKE_THICKNESS": 1,
                             "TEXT_ALIGNMENT": "center",
-                            "TEXT": "Remove avatar"
+                            "TEXT": "Remove"
                         },
                         "renderer": "Button",
                         "transform": {
-                            "x": 1133.5,
+                            "x": 1161,
                             "y": 1464,
-                            "w": 143,
+                            "w": 88,
                             "h": 30,
                             "r": 0
                         },
@@ -13927,6 +13889,416 @@
                     "1713839337238"
                 ],
                 "title": "New Profile Dialog"
+            },
+            {
+                "id": "1713839345582",
+                "items": [
+                    {
+                        "id": "1713839345624",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 657.5,
+                            "y": 517.5,
+                            "w": 653,
+                            "h": 261,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713839345666",
+                        "appearance": {
+                            "FONT_SIZE": 48,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "About Dialog"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 148,
+                            "y": 39,
+                            "w": 296,
+                            "h": 78,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713839345667",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Accessed via the Help > About menu item. Dialog should show simple version and build info"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 323,
+                            "y": 148,
+                            "w": 612,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713839345731",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_DISABLED": true,
+                            "ASPECT_RATIO": true,
+                            "URL": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMzIiCiAgIGhlaWdodD0iMzIiCiAgIHZpZXdCb3g9IjAgMCA4LjQ2NjY2NiA4LjQ2NjY2NjEiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzEiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnMKICAgICBpZD0iZGVmczEiPjxmaWx0ZXIKICAgICAgIHN0eWxlPSJjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM6c1JHQiIKICAgICAgIGlkPSJmaWx0ZXI5IgogICAgICAgeD0iLTAuMTQxNjE1MTQiCiAgICAgICB5PSItMC4xMTgwMTM0IgogICAgICAgd2lkdGg9IjEuMjgzMjMwNCIKICAgICAgIGhlaWdodD0iMS4yODAyMjA2Ij48ZmVHYXVzc2lhbkJsdXIKICAgICAgICAgc3RkRGV2aWF0aW9uPSIwLjIyOTU2MTUiCiAgICAgICAgIGlkPSJmZUdhdXNzaWFuQmx1cjkiIC8+PC9maWx0ZXI+PC9kZWZzPjxnCiAgICAgaWQ9ImxheWVyMSI+PHBhdGgKICAgICAgIGlkPSJwYXRoMiIKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjM5Njg3NTtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MTtmaWx0ZXI6dXJsKCNmaWx0ZXI5KSIKICAgICAgIGQ9Im0gMi45MTA0MywxLjA1ODMzIGMgLTAuOTI2MDQsMCAtMS4zMjI5MiwwLjM5Njg4IC0xLjMyMjkyLDEuMzIyOTIgViA0Ljc2MjUgQyAxLjU4MzYsNS43Mjc1MyAxLjk4NDM5LDYuMDg1NDIgMi45MTA0Myw2LjA4NTQyIFYgNy40MDgzMyBMIDQuMjMzMzUsNi4wODU0MiBoIDEuMzIyOTEgYyAwLjkyNjA1LDAgMS4zMjI5MiwtMC4zOTY4OCAxLjMyMjkyLC0xLjMyMjkyIFYgMi4zODEyNSBjIDAsLTAuOTI2MDQgLTAuMzk2ODcsLTEuMzIyOTIgLTEuMzIyOTIsLTEuMzIyOTIgeiIgLz48cGF0aAogICAgICAgaWQ9InBhdGgyLTIiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDA4YmNjO3N0cm9rZS13aWR0aDowLjUyOTE2NztzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMi45MTA0MywxLjA1ODMzIGMgLTAuOTI2MDQsMCAtMS4zMjI5MiwwLjM5Njg4IC0xLjMyMjkyLDEuMzIyOTIgViA0Ljc2MjUgQyAxLjU4MzYsNS43Mjc1MyAxLjk4NDM5LDYuMDg1NDIgMi45MTA0Myw2LjA4NTQyIFYgNy40MDgzMyBMIDQuMjMzMzUsNi4wODU0MiBoIDEuMzIyOTEgYyAwLjkyNjA1LDAgMS4zMjI5MiwtMC4zOTY4OCAxLjMyMjkyLC0xLjMyMjkyIFYgMi4zODEyNSBjIDAsLTAuOTI2MDQgLTAuMzk2ODcsLTEuMzIyOTIgLTEuMzIyOTIsLTEuMzIyOTIgeiIgLz48cGF0aAogICAgICAgc3R5bGU9ImNvbG9yOiMwMDAwMDA7ZmlsbDojYTZjODNjO3N0cm9rZS1saW5lY2FwOnNxdWFyZTtzdHJva2UtbWl0ZXJsaW1pdDowOy1pbmtzY2FwZS1zdHJva2U6bm9uZTtwYWludC1vcmRlcjpzdHJva2UgZmlsbCBtYXJrZXJzIgogICAgICAgZD0iTSA1Ljk3ODE5LDEuNjEzMDIgQyA1Ljc5Mzc0LDEuNTUyMjcgNS41Njk0NCwxLjYwNDc0IDUuMzg3MDEsMS43ODQ4MiBMIDUuMjkxNjYsMS44NzczNyA1LjQ5MjUsMi4wNTMwMSA1LjU4NTgyLDEuOTYwNDcgQyA1LjcwODE3LDEuODM5NjggNS44MDM0LDEuODM2MjUgNS44ODY5LDEuODYzNzUgNS45NzAzOSwxLjg5MTI1IDYuMDI2MDksMS45NTAwMiA2LjAyNjg3LDIuMDE5MDggNi4wMjg1NywyLjE2Nzk0IDYuMDA5MzYsMi4yNTE5MSA1Ljg2NTY2LDIuMzcwMzYgNS43MjE5NywyLjQ4ODgxIDUuNTA4NzYsMi42MjE1MiA1LjI5MTY2LDIuODIzNjMgdiAwLjIxOTA4IGggMC45MjA5IDAuMTM3OTUgViAyLjc3ODEyIEggNS43NjQyMyBDIDUuODYwNDEsMi43MDY3OSA1Ljk2NDMxLDIuNjMyMTggNi4wNDgyNCwyLjU2MyA2LjIxNDgxLDIuNDI1NjkgNi4zMDU0NSwyLjI1MjQ0IDYuMzAyNzcsMi4wMTcxOSA2LjMwMDY1LDEuODMwMzMgNi4xNjI2NCwxLjY3Mzc4IDUuOTc4MTksMS42MTMwMiBaIgogICAgICAgaWQ9InBhdGg2IiAvPjxnCiAgICAgICBpZD0iZzYiPjxwYXRoCiAgICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDBiOWU4O3N0cm9rZS13aWR0aDowLjUyOTE2NztzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgZD0ibSAyLjc3ODE0LDIuMjQ4OTYgaCAwLjkyNjA1IGMgMC41MjkxNiwwIDEuMDU4MzMsMC4xMzIyOSAxLjA1ODMzLDAuNzkzNzUgMCwwLjY2MTQ2IC0wLjUyOTEsMC43OTM3NSAtMS4wNTgzMywwLjc5Mzc1IEggMi43NzgxNCIKICAgICAgICAgaWQ9InBhdGgzIiAvPjxwYXRoCiAgICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDBiOWU4O3N0cm9rZS13aWR0aDowLjUyOTE2NztzdHJva2UtbGluZWNhcDpzcXVhcmU7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICBkPSJNIDIuNzc4MTQsNC44OTQ3OSBWIDIuMjQ4OTYiCiAgICAgICAgIGlkPSJwYXRoNCIgLz48cGF0aAogICAgICAgICBpZD0icGF0aDUiCiAgICAgICAgIHN0eWxlPSJjb2xvcjojMDAwMDAwO2ZpbGw6IzAwYjllODstaW5rc2NhcGUtc3Ryb2tlOm5vbmUiCiAgICAgICAgIGQ9Ik0gNC4wNTQ1NSwzLjU1Mjc1IDMuNjE4OTIsMy44NTU1OCA0LjUyMjc0LDUuMTU5MzcgaCAwLjY0MjM0IHoiIC8+PC9nPjwvZz48L3N2Zz4K"
+                        },
+                        "renderer": "Image",
+                        "transform": {
+                            "x": 446.5,
+                            "y": 518.5,
+                            "w": 231,
+                            "h": 231,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713839345924",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh - About"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 657,
+                            "y": 372,
+                            "w": 190,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713839346831",
+                        "appearance": {
+                            "FONT_SIZE": 24,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh 4.0.3"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 683,
+                            "y": 434,
+                            "w": 266,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1713839347286",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Stable release channel"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 652,
+                            "y": 469,
+                            "w": 204,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182606149",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Close"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 932.5,
+                            "y": 619,
+                            "w": 77,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182607522",
+                        "appearance": {
+                            "FONT_SIZE": 24,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Stable Channel"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 657,
+                            "y": 333,
+                            "w": 186,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182608295",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Build tag: v4.0.3-stable\nCommit: 9bab2c5dc9495de040dcfd7569c39bb9d6c4c714\n"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 773,
+                            "y": 572,
+                            "w": 422,
+                            "h": 64,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609484",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "TEXT_DISABLED": true
+                        },
+                        "renderer": "Window",
+                        "transform": {
+                            "x": 657.5,
+                            "y": 1058.5,
+                            "w": 653,
+                            "h": 261,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609485",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 16777215,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_DISABLED": true,
+                            "ASPECT_RATIO": true,
+                            "URL": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMzIiCiAgIGhlaWdodD0iMzIiCiAgIHZpZXdCb3g9IjAgMCA4LjQ2NjY2NiA4LjQ2NjY2NjEiCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZzEiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnMKICAgICBpZD0iZGVmczEiPjxmaWx0ZXIKICAgICAgIHN0eWxlPSJjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM6c1JHQiIKICAgICAgIGlkPSJmaWx0ZXI5IgogICAgICAgeD0iLTAuMTQxNjE1MTQiCiAgICAgICB5PSItMC4xMTgwMTM0IgogICAgICAgd2lkdGg9IjEuMjgzMjMwNCIKICAgICAgIGhlaWdodD0iMS4yODAyMjA2Ij48ZmVHYXVzc2lhbkJsdXIKICAgICAgICAgc3RkRGV2aWF0aW9uPSIwLjIyOTU2MTUiCiAgICAgICAgIGlkPSJmZUdhdXNzaWFuQmx1cjkiIC8+PC9maWx0ZXI+PC9kZWZzPjxnCiAgICAgaWQ9ImxheWVyMSI+PHBhdGgKICAgICAgIGlkPSJwYXRoMiIKICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjM5Njg3NTtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MTtmaWx0ZXI6dXJsKCNmaWx0ZXI5KSIKICAgICAgIGQ9Im0gMi45MTA0MywxLjA1ODMzIGMgLTAuOTI2MDQsMCAtMS4zMjI5MiwwLjM5Njg4IC0xLjMyMjkyLDEuMzIyOTIgViA0Ljc2MjUgQyAxLjU4MzYsNS43Mjc1MyAxLjk4NDM5LDYuMDg1NDIgMi45MTA0Myw2LjA4NTQyIFYgNy40MDgzMyBMIDQuMjMzMzUsNi4wODU0MiBoIDEuMzIyOTEgYyAwLjkyNjA1LDAgMS4zMjI5MiwtMC4zOTY4OCAxLjMyMjkyLC0xLjMyMjkyIFYgMi4zODEyNSBjIDAsLTAuOTI2MDQgLTAuMzk2ODcsLTEuMzIyOTIgLTEuMzIyOTIsLTEuMzIyOTIgeiIgLz48cGF0aAogICAgICAgaWQ9InBhdGgyLTIiCiAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDA4YmNjO3N0cm9rZS13aWR0aDowLjUyOTE2NztzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gMi45MTA0MywxLjA1ODMzIGMgLTAuOTI2MDQsMCAtMS4zMjI5MiwwLjM5Njg4IC0xLjMyMjkyLDEuMzIyOTIgViA0Ljc2MjUgQyAxLjU4MzYsNS43Mjc1MyAxLjk4NDM5LDYuMDg1NDIgMi45MTA0Myw2LjA4NTQyIFYgNy40MDgzMyBMIDQuMjMzMzUsNi4wODU0MiBoIDEuMzIyOTEgYyAwLjkyNjA1LDAgMS4zMjI5MiwtMC4zOTY4OCAxLjMyMjkyLC0xLjMyMjkyIFYgMi4zODEyNSBjIDAsLTAuOTI2MDQgLTAuMzk2ODcsLTEuMzIyOTIgLTEuMzIyOTIsLTEuMzIyOTIgeiIgLz48cGF0aAogICAgICAgc3R5bGU9ImNvbG9yOiMwMDAwMDA7ZmlsbDojYTZjODNjO3N0cm9rZS1saW5lY2FwOnNxdWFyZTtzdHJva2UtbWl0ZXJsaW1pdDowOy1pbmtzY2FwZS1zdHJva2U6bm9uZTtwYWludC1vcmRlcjpzdHJva2UgZmlsbCBtYXJrZXJzIgogICAgICAgZD0iTSA1Ljk3ODE5LDEuNjEzMDIgQyA1Ljc5Mzc0LDEuNTUyMjcgNS41Njk0NCwxLjYwNDc0IDUuMzg3MDEsMS43ODQ4MiBMIDUuMjkxNjYsMS44NzczNyA1LjQ5MjUsMi4wNTMwMSA1LjU4NTgyLDEuOTYwNDcgQyA1LjcwODE3LDEuODM5NjggNS44MDM0LDEuODM2MjUgNS44ODY5LDEuODYzNzUgNS45NzAzOSwxLjg5MTI1IDYuMDI2MDksMS45NTAwMiA2LjAyNjg3LDIuMDE5MDggNi4wMjg1NywyLjE2Nzk0IDYuMDA5MzYsMi4yNTE5MSA1Ljg2NTY2LDIuMzcwMzYgNS43MjE5NywyLjQ4ODgxIDUuNTA4NzYsMi42MjE1MiA1LjI5MTY2LDIuODIzNjMgdiAwLjIxOTA4IGggMC45MjA5IDAuMTM3OTUgViAyLjc3ODEyIEggNS43NjQyMyBDIDUuODYwNDEsMi43MDY3OSA1Ljk2NDMxLDIuNjMyMTggNi4wNDgyNCwyLjU2MyA2LjIxNDgxLDIuNDI1NjkgNi4zMDU0NSwyLjI1MjQ0IDYuMzAyNzcsMi4wMTcxOSA2LjMwMDY1LDEuODMwMzMgNi4xNjI2NCwxLjY3Mzc4IDUuOTc4MTksMS42MTMwMiBaIgogICAgICAgaWQ9InBhdGg2IiAvPjxnCiAgICAgICBpZD0iZzYiPjxwYXRoCiAgICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDBiOWU4O3N0cm9rZS13aWR0aDowLjUyOTE2NztzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgZD0ibSAyLjc3ODE0LDIuMjQ4OTYgaCAwLjkyNjA1IGMgMC41MjkxNiwwIDEuMDU4MzMsMC4xMzIyOSAxLjA1ODMzLDAuNzkzNzUgMCwwLjY2MTQ2IC0wLjUyOTEsMC43OTM3NSAtMS4wNTgzMywwLjc5Mzc1IEggMi43NzgxNCIKICAgICAgICAgaWQ9InBhdGgzIiAvPjxwYXRoCiAgICAgICAgIHN0eWxlPSJvcGFjaXR5OjE7ZmlsbDpub25lO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDBiOWU4O3N0cm9rZS13aWR0aDowLjUyOTE2NztzdHJva2UtbGluZWNhcDpzcXVhcmU7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICBkPSJNIDIuNzc4MTQsNC44OTQ3OSBWIDIuMjQ4OTYiCiAgICAgICAgIGlkPSJwYXRoNCIgLz48cGF0aAogICAgICAgICBpZD0icGF0aDUiCiAgICAgICAgIHN0eWxlPSJjb2xvcjojMDAwMDAwO2ZpbGw6IzAwYjllODstaW5rc2NhcGUtc3Ryb2tlOm5vbmUiCiAgICAgICAgIGQ9Ik0gNC4wNTQ1NSwzLjU1Mjc1IDMuNjE4OTIsMy44NTU1OCA0LjUyMjc0LDUuMTU5MzcgaCAwLjY0MjM0IHoiIC8+PC9nPjwvZz48L3N2Zz4K"
+                        },
+                        "renderer": "Image",
+                        "transform": {
+                            "x": 446.5,
+                            "y": 1059.5,
+                            "w": 231,
+                            "h": 231,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609486",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh - About"
+                        },
+                        "renderer": "Label",
+                        "transform": {
+                            "x": 657,
+                            "y": 913,
+                            "w": 190,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609487",
+                        "appearance": {
+                            "FONT_SIZE": 24,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Ricochet Refresh 4.1.0 Alpha 1"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 726,
+                            "y": 975,
+                            "w": 352,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609488",
+                        "appearance": {
+                            "FONT_SIZE": 18,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Alpha release channel"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 650,
+                            "y": 1010,
+                            "w": 200,
+                            "h": 42,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609489",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "Close"
+                        },
+                        "renderer": "Button",
+                        "transform": {
+                            "x": 932.5,
+                            "y": 1160,
+                            "w": 77,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609490",
+                        "appearance": {
+                            "FONT_SIZE": 24,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT": "Alpha Channel"
+                        },
+                        "renderer": "Heading",
+                        "transform": {
+                            "x": 657,
+                            "y": 874,
+                            "w": 178,
+                            "h": 48,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182609491",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Build tag: v4.1.0-alpha.1\nCommit: 581a3a68e9837def3bbb6d7b5e197bc0410f68a5\n"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 773,
+                            "y": 1113,
+                            "w": 422,
+                            "h": 64,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182610310",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 545180,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "https://ricochetrefresh.net"
+                        },
+                        "renderer": "Link",
+                        "transform": {
+                            "x": 652,
+                            "y": 502,
+                            "w": 192,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182610435",
+                        "appearance": {
+                            "FOREGROUND_COLOR": 15790320,
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 545180,
+                            "STROKE_COLOR": 13224393,
+                            "STROKE_THICKNESS": 1,
+                            "TEXT_ALIGNMENT": "center",
+                            "TEXT": "https://ricochetrefresh.net"
+                        },
+                        "renderer": "Link",
+                        "transform": {
+                            "x": 652,
+                            "y": 1043,
+                            "w": 192,
+                            "h": 30,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    },
+                    {
+                        "id": "1714182610576",
+                        "appearance": {
+                            "FONT_SIZE": 16,
+                            "BACKGROUND_COLOR": 2434341,
+                            "TEXT_ALIGNMENT": "left",
+                            "TEXT": "Like in chats, the URL will open a context menu allowing the user to copy the link to the clipboard"
+                        },
+                        "renderer": "Paragraph",
+                        "transform": {
+                            "x": 159,
+                            "y": 489,
+                            "w": 200,
+                            "h": 140,
+                            "r": 0
+                        },
+                        "type": "Shape"
+                    }
+                ],
+                "rootIds": [
+                    "1713839345624",
+                    "1713839345666",
+                    "1713839345667",
+                    "1713839345731",
+                    "1713839345924",
+                    "1713839346831",
+                    "1713839347286",
+                    "1714182606149",
+                    "1714182607522",
+                    "1714182608295",
+                    "1714182609484",
+                    "1714182609485",
+                    "1714182609486",
+                    "1714182609487",
+                    "1714182609488",
+                    "1714182609489",
+                    "1714182609490",
+                    "1714182609491",
+                    "1714182610310",
+                    "1714182610435",
+                    "1714182610576"
+                ],
+                "title": "About Dialog"
             }
         ],
         "diagramIds": [
@@ -13941,9 +14313,10 @@
             "aded38e4-f279-58df-12ed-8d8a929a1fdd",
             "544a9ad8-9a02-4fd4-b179-0e177bd09248",
             "1713839317530",
-            "1713060276314"
+            "1713060276314",
+            "1713839345582"
         ],
-        "id": "ff5d5d30-afb2-695e-29c0-e65300933aab",
+        "id": "51cd6187-5ae6-bc8e-569c-a6d23ac1bb16",
         "size": {
             "x": 1240,
             "y": 1754
@@ -13951,451 +14324,262 @@
     },
     "actions": [
         {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166441340,
-                "oldBounds": {
-                    "x": 1023,
-                    "y": 1434,
-                    "w": 378,
-                    "h": 526,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1023,
-                    "y": 1437,
-                    "w": 378,
-                    "h": 532,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713839332163"
-                ]
-            }
-        },
-        {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166448897,
-                "appearance": {
-                    "key": "BACKGROUND_COLOR",
-                    "value": "#000000"
-                },
-                "force": false,
-                "itemIds": [
-                    "1713839332171"
-                ]
-            }
-        },
-        {
-            "type": "items/appearance",
-            "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166457909,
+                "diagramId": "1713839345582",
+                "timestamp": 1714243553093,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Finish"
+                    "value": "Build tag: v4.0.3\nCommit: 9bab2c5dc9495de040dcfd7569c39bb9d6c4c714\n"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713839332172"
+                    "1714182608295"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166460832,
-                "oldBounds": {
-                    "x": 1095.5,
-                    "y": 1676,
-                    "w": 67,
-                    "h": 30,
-                    "r": 0
+                "diagramId": "1713839345582",
+                "timestamp": 1714243588898,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Build tag: ricochet-refresh-v4.0.3\nCommit: 9bab2c5dc9495de040dcfd7569c39bb9d6c4c714\n"
                 },
-                "newBounds": {
-                    "x": 1076.5,
-                    "y": 1676,
-                    "w": 67,
-                    "h": 30,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713839332171"
+                    "1714182608295"
                 ]
             }
         },
         {
-            "type": "items/transform",
+            "type": "items/appearance",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166462827,
-                "oldBounds": {
-                    "x": 1173.5,
-                    "y": 1676,
-                    "w": 63,
-                    "h": 30,
-                    "r": 0
+                "diagramId": "1713839345582",
+                "timestamp": 1714243602336,
+                "appearance": {
+                    "key": "TEXT",
+                    "value": "Build tag: ricochet-refresh-v4.1.0-alpha.1\nCommit: 581a3a68e9837def3bbb6d7b5e197bc0410f68a5\n"
                 },
-                "newBounds": {
-                    "x": 1163.5,
-                    "y": 1676,
-                    "w": 83,
-                    "h": 30,
-                    "r": 0
-                },
+                "force": false,
                 "itemIds": [
-                    "1713839332172"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166465228,
-                "oldBounds": {
-                    "x": 1163.5,
-                    "y": 1676,
-                    "w": 83,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1166,
-                    "y": 1676,
-                    "w": 78,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713839332172"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166468812,
-                "oldBounds": {
-                    "x": 1076.5,
-                    "y": 1676,
-                    "w": 67,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1078.5,
-                    "y": 1676,
-                    "w": 67,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713839332171"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166472819,
-                "oldBounds": {
-                    "x": 1078.5,
-                    "y": 1676,
-                    "w": 67,
-                    "h": 30,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 1083.5,
-                    "y": 1676,
-                    "w": 67,
-                    "h": 30,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1713839332171"
+                    "1714182609491"
                 ]
             }
         },
         {
             "type": "items/remove",
             "payload": {
-                "diagramId": "1708271107626",
-                "timestamp": 1714166609638,
+                "diagramId": "1713839345582",
+                "timestamp": 1714243633817,
                 "itemIds": [
-                    "1713060190285"
+                    "1714182609488"
+                ]
+            }
+        },
+        {
+            "type": "items/remove",
+            "payload": {
+                "diagramId": "1713839345582",
+                "timestamp": 1714243635868,
+                "itemIds": [
+                    "1713839347286"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839345582",
+                "timestamp": 1714243646491,
+                "oldBounds": {
+                    "x": 652,
+                    "y": 772.5,
+                    "w": 192,
+                    "h": 571,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 646,
+                    "y": 736.5,
+                    "w": 192,
+                    "h": 571,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1714182610310",
+                    "1714182610435"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839345582",
+                "timestamp": 1714243647843,
+                "oldBounds": {
+                    "x": 646,
+                    "y": 736.5,
+                    "w": 192,
+                    "h": 571,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 652,
+                    "y": 736.5,
+                    "w": 192,
+                    "h": 571,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1714182610310",
+                    "1714182610435"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839345582",
+                "timestamp": 1714243648374,
+                "oldBounds": {
+                    "x": 652,
+                    "y": 736.5,
+                    "w": 192,
+                    "h": 571,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 653,
+                    "y": 736.5,
+                    "w": 192,
+                    "h": 571,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1714182610310",
+                    "1714182610435"
+                ]
+            }
+        },
+        {
+            "type": "items/paste",
+            "payload": {
+                "diagramId": "1713839345582",
+                "timestamp": 1714243725441,
+                "json": "{\"visuals\":[{\"id\":\"1714182611057\",\"appearance\":{\"FONT_SIZE\":16,\"BACKGROUND_COLOR\":2434341,\"TEXT_ALIGNMENT\":\"left\",\"TEXT\":\"Like in chats, the URL will open a context menu allowing the user to copy the link to the clipboard\"},\"renderer\":\"Paragraph\",\"transform\":{\"x\":159,\"y\":489,\"w\":200,\"h\":140,\"r\":0},\"type\":\"Shape\"}],\"groups\":[]}",
+                "offset": 50
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839345582",
+                "timestamp": 1714243726633,
+                "oldBounds": {
+                    "x": 209,
+                    "y": 539,
+                    "w": 200,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 773,
+                    "y": 466,
+                    "w": 200,
+                    "h": 140,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1714182611057"
+                ]
+            }
+        },
+        {
+            "type": "items/transform",
+            "payload": {
+                "diagramId": "1713839345582",
+                "timestamp": 1714243729933,
+                "oldBounds": {
+                    "x": 773,
+                    "y": 466,
+                    "w": 200,
+                    "h": 140,
+                    "r": 0
+                },
+                "newBounds": {
+                    "x": 1119,
+                    "y": 473,
+                    "w": 200,
+                    "h": 140,
+                    "r": 0
+                },
+                "itemIds": [
+                    "1714182611057"
                 ]
             }
         },
         {
             "type": "items/appearance",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166627315,
+                "diagramId": "1713839345582",
+                "timestamp": 1714243740211,
                 "appearance": {
                     "key": "TEXT",
-                    "value": "Remove"
+                    "value": "Ensure tag and commit labels are copy-able"
                 },
                 "force": false,
                 "itemIds": [
-                    "1713839336313"
+                    "1714182611057"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166631229,
+                "diagramId": "1713839345582",
+                "timestamp": 1714243742955,
                 "oldBounds": {
-                    "x": 1133.5,
-                    "y": 1464,
-                    "w": 143,
-                    "h": 30,
+                    "x": 1119,
+                    "y": 473,
+                    "w": 200,
+                    "h": 140,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1166,
-                    "y": 1464,
-                    "w": 78,
-                    "h": 30,
+                    "x": 1112,
+                    "y": 427,
+                    "w": 186,
+                    "h": 48,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713839336313"
+                    "1714182611057"
                 ]
             }
         },
         {
             "type": "items/transform",
             "payload": {
-                "diagramId": "1713839317530",
-                "timestamp": 1714166634078,
+                "diagramId": "1713839345582",
+                "timestamp": 1714243745600,
                 "oldBounds": {
-                    "x": 1166,
-                    "y": 1464,
-                    "w": 78,
-                    "h": 30,
+                    "x": 1112,
+                    "y": 427,
+                    "w": 186,
+                    "h": 48,
                     "r": 0
                 },
                 "newBounds": {
-                    "x": 1161,
-                    "y": 1464,
-                    "w": 88,
-                    "h": 30,
+                    "x": 1107,
+                    "y": 564,
+                    "w": 186,
+                    "h": 48,
                     "r": 0
                 },
                 "itemIds": [
-                    "1713839336313"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1714179647012,
-                "oldBounds": {
-                    "x": 615,
-                    "y": 1157.5,
-                    "w": 1196,
-                    "h": 1193,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 626,
-                    "y": 773.5,
-                    "w": 1196,
-                    "h": 1193,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1708271107634",
-                    "1711155024002",
-                    "1708271107681",
-                    "1708271108331",
-                    "1708271110358",
-                    "1708271110635",
-                    "1708271110726",
-                    "1708271110919",
-                    "1712077854189",
-                    "1712077854111",
-                    "1712077855873",
-                    "1712077856120",
-                    "1713060155073",
-                    "1713060156078",
-                    "1713060156237",
-                    "1713060156491",
-                    "1713060156542",
-                    "1713060156864",
-                    "1713060157034",
-                    "1713060157247",
-                    "1713060157285",
-                    "1713060157348",
-                    "1713060157440",
-                    "1713060157643",
-                    "1713060157798",
-                    "1713060158244",
-                    "1713060158335",
-                    "1713060158316",
-                    "1713060161318",
-                    "1713060161448",
-                    "1713060183886",
-                    "1713060184068",
-                    "1713060184503",
-                    "1713060188609",
-                    "1713060189372",
-                    "1713060189406",
-                    "1713060189458",
-                    "1713060189752",
-                    "1713060189817",
-                    "1713060189888",
-                    "1713060191516",
-                    "1713060192233",
-                    "1713060205391",
-                    "1713060205453",
-                    "1713060205496",
-                    "1713060205578",
-                    "1713060205670",
-                    "1713060205767",
-                    "1713060205915",
-                    "1713060206858",
-                    "1713060207327",
-                    "1713060209824",
-                    "1713060160298",
-                    "1713060250429",
-                    "1713060250353",
-                    "1713060256679",
-                    "1713060256823",
-                    "1713060257017",
-                    "1713060155488",
-                    "1713060257326",
-                    "1713060257467",
-                    "1713060257694",
-                    "1713060257774",
-                    "1713060258052",
-                    "1713060258196",
-                    "1713839316222",
-                    "1713839316223",
-                    "1713060212980",
-                    "1713060160748",
-                    "1713060180596",
-                    "1713060188154",
-                    "1713060162090",
-                    "1713060203907",
-                    "1713060203819",
-                    "1713060212050",
-                    "1713060210606",
-                    "1713060276912",
-                    "1713723784914"
-                ]
-            }
-        },
-        {
-            "type": "items/transform",
-            "payload": {
-                "diagramId": "2bbbacdc-15be-9c5b-1a19-e04902aff5ef",
-                "timestamp": 1714179650099,
-                "oldBounds": {
-                    "x": 626,
-                    "y": 773.5,
-                    "w": 1196,
-                    "h": 1193,
-                    "r": 0
-                },
-                "newBounds": {
-                    "x": 626,
-                    "y": 788.5,
-                    "w": 1196,
-                    "h": 1193,
-                    "r": 0
-                },
-                "itemIds": [
-                    "1708271107634",
-                    "1711155024002",
-                    "1708271107681",
-                    "1708271108331",
-                    "1708271110358",
-                    "1708271110635",
-                    "1708271110726",
-                    "1708271110919",
-                    "1712077854189",
-                    "1712077854111",
-                    "1712077855873",
-                    "1712077856120",
-                    "1713060155073",
-                    "1713060156078",
-                    "1713060156237",
-                    "1713060156491",
-                    "1713060156542",
-                    "1713060156864",
-                    "1713060157034",
-                    "1713060157247",
-                    "1713060157285",
-                    "1713060157348",
-                    "1713060157440",
-                    "1713060157643",
-                    "1713060157798",
-                    "1713060158244",
-                    "1713060158335",
-                    "1713060158316",
-                    "1713060161318",
-                    "1713060161448",
-                    "1713060183886",
-                    "1713060184068",
-                    "1713060184503",
-                    "1713060188609",
-                    "1713060189372",
-                    "1713060189406",
-                    "1713060189458",
-                    "1713060189752",
-                    "1713060189817",
-                    "1713060189888",
-                    "1713060191516",
-                    "1713060192233",
-                    "1713060205391",
-                    "1713060205453",
-                    "1713060205496",
-                    "1713060205578",
-                    "1713060205670",
-                    "1713060205767",
-                    "1713060205915",
-                    "1713060206858",
-                    "1713060207327",
-                    "1713060209824",
-                    "1713060160298",
-                    "1713060250429",
-                    "1713060250353",
-                    "1713060256679",
-                    "1713060256823",
-                    "1713060257017",
-                    "1713060155488",
-                    "1713060257326",
-                    "1713060257467",
-                    "1713060257694",
-                    "1713060257774",
-                    "1713060258052",
-                    "1713060258196",
-                    "1713839316222",
-                    "1713839316223",
-                    "1713060212980",
-                    "1713060160748",
-                    "1713060180596",
-                    "1713060188154",
-                    "1713060162090",
-                    "1713060203907",
-                    "1713060203819",
-                    "1713060212050",
-                    "1713060210606",
-                    "1713060276912",
-                    "1713723784914"
+                    "1714182611057"
                 ]
             }
         }
