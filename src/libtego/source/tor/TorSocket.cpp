@@ -42,7 +42,8 @@ TorSocket::TorSocket(QObject *parent)
     : QTcpSocket(parent)
     , m_port(0)
     , m_reconnectEnabled(true)
-    , m_maxInterval(900)
+    // 10 minutes
+    , m_maxInterval(600)
     , m_connectAttempts(0)
 {
     connect(g_globals.context->torControl, SIGNAL(connectivityChanged()), SLOT(connectivityChanged()));
@@ -89,12 +90,22 @@ void TorSocket::resetAttempts()
 int TorSocket::reconnectInterval()
 {
     int delay = 0;
-    if (m_connectAttempts <= 4)
+    // 10 attempts with 30s delay -> 0 - 5 minutes
+    if (m_connectAttempts <= 10) {
         delay = 30;
-    else if (m_connectAttempts <= 6)
+    }
+    // 5 attempts with 60s delay -> 5 - 10 minutes
+    else if (m_connectAttempts <= 15) {
+        delay = 60;
+    }
+    // 5 attempts with 120s delay -> 10 - 20 minutes
+    else if (m_connectAttempts <= 20) {
         delay = 120;
-    else
+    }
+    // max delay ever after (10 minutes default)
+    else {
         delay = m_maxInterval;
+    }
 
     return qMin(delay, m_maxInterval);
 }
