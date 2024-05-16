@@ -26,7 +26,7 @@ We also have additional packages available on our GitHub Release page:
 
 #### DMG
 
-1. Download the Ricochet Refresh `.dmg` image (currently only Intel `x86_64` build target is available, but this also automatically runs on newer `arm` M1 Mac computers using Rosetta).
+1. Download the Ricochet Refresh `.dmg` image for your system architecture; either `x86_64` or `aarch64`.
 1. When the download is complete, double click the `.dmg` file and mount the image.
 1. Drag the Ricochet Refresh application to your Applications folder.
 1. Unmount/Eject the `.dmg` disk image.
@@ -104,18 +104,27 @@ For example, the Snowflake PT makes your network traffic look like the WebRTC pr
 
 The list of currently supported PTs are:
 
-- obfs2
-- obfs3
-- obfs4
-- meek_lite
-- scramblesuit
-- snowflake
+- conjure-client
+- lyrebird
+- snowflake-client
+- webtunnel-client
 
 #### Bridges
 
 PTs are the method by which traffic is obfuscated, but they are useless without supporting infrastructure. This is where bridges come in.
 
 You can think of a bridge as a sort of 'endpoint' a PT connects through to get to the tor network (this is not be *technically* true for all PTs but it is still a useful analogy).
+
+The currently supported bridges are:
+
+- conjure
+- meek_lite
+- obfs2
+- obfs3
+- obfs4
+- scramblesuit
+- snowflake
+- webtunnel
 
 Ricochet Refresh lets you circumvent censorship using two different types of bridges: built-in and custom.
 
