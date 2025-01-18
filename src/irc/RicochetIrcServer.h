@@ -65,8 +65,8 @@ protected:
     const QString getWelcomeMessage() override;
 
 private slots:
-    void torConfigurationNeededChanged();
     void torConfigurationFinished();
+    void onTorControlStatusChanged(int status);
     void torLogMessage(const QString &message);
     void torRunningChanged();
     void torErrorChanged();

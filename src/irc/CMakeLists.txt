@@ -1,3 +1,34 @@
+# Ricochet Refresh - https://ricochetrefresh.net/
+# Copyright (C) 2021, Blueprint For Free Speech <ricochet@blueprintforfreespeech.net>
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+# 
+#    * Redistributions of source code must retain the above copyright
+#      notice, this list of conditions and the following disclaimer.
+# 
+#    * Redistributions in binary form must reproduce the above
+#      copyright notice, this list of conditions and the following disclaimer
+#      in the documentation and/or other materials provided with the
+#      distribution.
+# 
+#    * Neither the names of the copyright owners nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#      this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 cmake_minimum_required(VERSION 3.16)
 
 project(ricochet-irc LANGUAGES CXX)
@@ -15,7 +46,10 @@ if (FORCE_QT5)
         NAMES
         Qt5
         COMPONENTS Core
+                Gui
                 Network
+                Quick
+                Widgets
         REQUIRED)
 else ()
     find_package(
@@ -24,14 +58,20 @@ else ()
         Qt6
         Qt5
         COMPONENTS Core
+                Gui
                 Network
+                Quick
+                Widgets
         REQUIRED)
 endif ()
 
 find_package(
     Qt${QT_VERSION_MAJOR}
     COMPONENTS Core
+               Gui
                Network
+               Quick
+               Widgets
     REQUIRED)
 
 # Require Qt >5.15
@@ -48,42 +88,47 @@ if (APPLE)
         REQUIRED)
 endif ()
 
-include(FindOpenSSL)
-
-add_executable(ricochet-irc)
-
-if (DEFINED ENV{RICOCHET_REFRESH_VERSION})
-    add_compile_definitions(TEGO_VERSION=$ENV{RICOCHET_REFRESH_VERSION})
-endif ()
-
-target_sources(ricochet-irc PRIVATE 
-    main.cpp ${RICOCHET_QML_RES} ${RICOCHET_QM_RES}
+add_executable(
+    ricochet-irc
+    main.cpp
+    utils/Useful.h
+    utils/Settings.cpp
+    utils/Settings.h
+    libtego_callbacks.cpp
+    shims/UserIdentity.h
+    shims/ContactsManager.cpp
+    shims/TorCommand.h
+    shims/UserIdentity.cpp
+    shims/ContactUser.h
+    shims/ContactsManager.h
+    shims/OutgoingContactRequest.h
+    shims/ContactIDValidator.h
+    shims/TorControl.h
+    shims/TorManager.h
+    shims/TorCommand.cpp
+    shims/TorControl.cpp
+    shims/IncomingContactRequest.h
+    shims/OutgoingContactRequest.cpp
+    shims/ConversationModel.cpp
+    shims/ContactIDValidator.cpp
+    shims/IncomingContactRequest.cpp
+    shims/ContactUser.cpp
+    shims/ConversationModel.h
+    shims/TorManager.cpp
+    libtego_callbacks.hpp
     IrcChannel.cpp
+    IrcChannel.h
     IrcConnection.cpp
+    IrcConnection.h
+    IrcConstants.h
     IrcServer.cpp
+    IrcServer.h
     IrcUser.cpp
+    IrcUser.h
     RicochetIrcServer.cpp
+    RicochetIrcServer.h
     RicochetIrcServerTask.cpp
-    # Not nice, but we can't link against libtego_ui
-    # if we want to avoid GUI dependencies:
-    ../libtego_ui/libtego_callbacks.cpp
-    ../libtego_ui/shims/ContactIDValidator.cpp
-    ../libtego_ui/shims/ContactsManager.cpp
-    ../libtego_ui/shims/ContactUser.cpp
-    ../libtego_ui/shims/ConversationModel.cpp
-    ../libtego_ui/shims/IncomingContactRequest.cpp
-    ../libtego_ui/shims/OutgoingContactRequest.cpp
-    ../libtego_ui/shims/TorCommand.cpp
-    ../libtego_ui/shims/TorControl.cpp
-    ../libtego_ui/shims/TorManager.cpp
-    ../libtego_ui/shims/UserIdentity.cpp
-    ../libtego_ui/utils/Settings.cpp
-)
-if (STATIC_QT)
-    include(qmake_static)
-    target_generate_static_qml_plugins(ricochet-irc)
-    target_generate_static_qt_plugins(ricochet-irc)
-endif ()
+    RicochetIrcServerTask.h)
 
 target_precompile_headers(ricochet-irc PRIVATE precomp.hpp)
 
@@ -94,22 +139,26 @@ setup_compiler(ricochet-irc)
 
 target_compile_features(ricochet-irc PRIVATE cxx_std_20)
 
-target_link_libraries(ricochet-irc PUBLIC tego)
+# Since ricochet-refresh includes libtego_callbacks.hpp as a system header file, we export the include directory twice,
+# once as local, once as system TODO: perhaps there's a cleaner way to go about this
+target_include_directories(ricochet-irc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(ricochet-irc SYSTEM PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Ugly, but we need bits of libtego_ui without linking to it,
-# in order to avoid GUI dependencies.
-target_include_directories(ricochet-irc PUBLIC ../libtego_ui/)
+target_link_libraries(ricochet-irc PUBLIC tego)
 
 if (NOT USE_SUBMODULE_FMT)
     find_package(fmt REQUIRED)
 endif ()
 target_link_libraries(ricochet-irc PRIVATE fmt::fmt-header-only)
-target_link_libraries(ricochet-irc PRIVATE OpenSSL::Crypto)
 
+# QT
 target_link_libraries(
     ricochet-irc
     PRIVATE Qt${QT_VERSION_MAJOR}::Core
-            Qt${QT_VERSION_MAJOR}::Network)
+            Qt${QT_VERSION_MAJOR}::Widgets
+            Qt${QT_VERSION_MAJOR}::Network
+            Qt${QT_VERSION_MAJOR}::Qml
+            Qt${QT_VERSION_MAJOR}::Quick)
 if (APPLE)
     target_link_libraries(ricochet-irc PRIVATE Qt${QT_VERSION_MAJOR}::MacExtras)
 endif ()
@@ -117,17 +166,3 @@ endif ()
 if ("${CMAKE_BUILD_TYPE}" MATCHES "Rel.*" OR "${CMAKE_BUILD_TYPE}" STREQUAL "MinSizeRel")
     target_compile_definitions(ricochet-irc PRIVATE QT_NO_DEBUG_OUTPUT QT_NO_WARNING_OUTPUT)
 endif ()
-
-# Linux / Cygwin
-if (UNIX)
-    # Again, not sure if this needs to be UNIX AND NOT WIN32, or if we should
-    # install to /bin on Cygwin like it does now
-    install(TARGETS ricochet-irc DESTINATION usr/bin)
-endif ()
-
-# Move our final binary to a bin dir inside the output dir. This makes it
-# easier for integration with ricochet-build
-set_target_properties(ricochet-irc
-    PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/ricochet-irc/"
-)

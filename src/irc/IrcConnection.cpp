@@ -237,6 +237,7 @@ void IrcConnection::handle_PASS(QList<QString> params)
     }
     if(!have_pass)
     {
+        // TODO: constant time comparison
         if(password == params[0])
         {
             have_pass = true;

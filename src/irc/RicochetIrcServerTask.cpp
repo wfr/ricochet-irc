@@ -1,7 +1,7 @@
 #include "RicochetIrcServerTask.h"
 #include "RicochetIrcServer.h"
 
-#include "ui/ContactsModel.h"
+// #include "ui/ContactsModel.h"
 
 #include "utils/Settings.h"
 
@@ -17,6 +17,7 @@
 #include "shims/IncomingContactRequest.h"
 
 #include <iostream>
+#include <QCoreApplication>
 
 RicochetIrcServerTask::RicochetIrcServerTask(QCoreApplication* app)
     : QObject(app), irc_server(nullptr)
@@ -24,6 +25,7 @@ RicochetIrcServerTask::RicochetIrcServerTask(QCoreApplication* app)
     SettingsObject settings;
     uint16_t port = static_cast<uint16_t>(settings.read("irc.port", 6667).toInt());
     QString password = settings.read("irc.password", QLatin1String("")).toString();
+    assert(password.length());
 
     irc_server = new RicochetIrcServer(this, port, password);
 }
@@ -46,6 +48,7 @@ void RicochetIrcServerTask::run()
     std::cout << std::endl;
     std::cout << "### WeeChat client setup:" << std::endl;
     std::cout << "/server add ricochet 127.0.0.1/" << irc_server->port()  << std::endl;
+    std::cout << "/set irc.server.ricochet.tls \"off\"" << std::endl;
     std::cout << "/set irc.server.ricochet.password \"" << irc_server->password().toUtf8().data() << "\"" << std::endl;
     std::cout << "/set logger.level.irc.ricochet 0" << std::endl;
     std::cout << std::endl;

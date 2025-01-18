@@ -1,27 +1,47 @@
+#include <QtGlobal>
+
 // C headers
 
-// openssl
-#include <openssl/crypto.h>
+// standard library
+#include <limits.h>
 
 // C++ headers
 #ifdef __cplusplus
 
-// Qt
+// standard library
+#include <sstream>
+#include <iomanip>
+#include <cassert>
+#include <type_traits>
+#include <cstdint>
+#include <functional>
+#include <fstream>
+#include <iterator>
+#include <set>
+#include <random>
 
-#include <QCoreApplication>
-#include <QByteArray>
+// fmt
+#include <fmt/format.h>
+#include <fmt/ostream.h>
+
+// Qt
+#include <QAbstractListModel>
+#include <QDateTime>
 #include <QDir>
-#include <QFile>
-#include <QHostAddress>
 #include <QJsonArray>
+#include <QJsonDocument>
 #include <QJsonObject>
-#include <QLibraryInfo>
+#include <QJsonValue>
 #include <QLockFile>
-#include <QObject>
-#include <QSettings>
+#include <QPointer>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator> // QtGui
+#include <QSaveFile>
 #include <QStandardPaths>
-#include <QTranslator>
-#include <QRandomGenerator>
+#include <QTimer>
+#ifdef Q_OS_MAC
+#   include <QtMac>
+#endif // Q_OS_MAC
 
 // tego
 #include <tego/tego.hpp>

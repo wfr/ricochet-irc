@@ -69,10 +69,6 @@ RicochetIrcServer::~RicochetIrcServer()
 void RicochetIrcServer::initRicochet()
 {
     connect(shims::TorManager::torManager,
-            &shims::TorManager::configurationNeededChanged,
-            this,
-            &RicochetIrcServer::torConfigurationNeededChanged);
-    connect(shims::TorManager::torManager,
             &shims::TorManager::runningChanged,
             this,
             &RicochetIrcServer::torRunningChanged);
@@ -80,6 +76,10 @@ void RicochetIrcServer::initRicochet()
             &shims::TorManager::errorChanged,
             this,
             &RicochetIrcServer::torErrorChanged);
+    connect(shims::TorControl::torControl,
+            &shims::TorControl::statusChanged,
+            this,
+            &RicochetIrcServer::onTorControlStatusChanged);
 
     auto userIdentity = shims::UserIdentity::userIdentity;
     auto contactsManager = shims::UserIdentity::userIdentity->getContacts();
@@ -171,35 +171,14 @@ void RicochetIrcServer::stopRicochet()
     shims::TorControl::torControl->setConfiguration(conf);
 }
 
-
-/**
- * @brief RicochetIrcServer::torConfigurationNeededChanged  Hardcoded Tor configuration
- *
- * BUG: This slot is currently never called because the signal in TorManager
- *      is emitted in its constructor, before this class is instantiated.
- */
-void RicochetIrcServer::torConfigurationNeededChanged()
-{
-//    auto& torControl = shims::TorControl::torControl;
-//    qDebug() << "==== IRC torConfigurationNeededChanged() ====";
-//    QVariantMap conf = {
-//        { QStringLiteral("disableNetwork"), 0 },
-//        { QStringLiteral("bridges"), QStringList() }
-//    };
-//    torControl->setConfiguration(conf);
-//    auto command = qobject_cast<shims::TorControlCommand*>(torControl->setConfiguration(conf));
-//    QObject::connect(command, &shims::TorControlCommand::finished, this, &RicochetIrcServer::torConfigurationFinished);
-}
-
-
 void RicochetIrcServer::torConfigurationFinished()
 {
-    qDebug() << "==== IRC torConfigurationFinished() ====";
+    qDebug() << "=== torConfigurationFinished";
 
-    auto& torControl = shims::TorControl::torControl;
-    if (torControl->hasOwnership()) {
-        torControl->saveConfiguration();
-    }
+    //auto& torControl = shims::TorControl::torControl;
+    //if (torControl->hasOwnership()) {
+    //    torControl->saveConfiguration();
+    //}
 }
 
 
@@ -208,24 +187,18 @@ void RicochetIrcServer::torRunningChanged() {
     auto& torManager = shims::TorManager::torManager;
     auto& torControl = shims::TorControl::torControl;
 
-    qDebug() << "==== IRC torRunningChanged: " << torManager->running();
+    qDebug() << "=== torRunningChanged " << torManager->running();
 
-    if (torManager->configurationNeeded()) {
-        if (torManager->running() == "Yes") {
-            QVariantMap conf = {
-                { QStringLiteral("disableNetwork"), 0 },
-                { QStringLiteral("bridges"), QStringList() }
-            };
-            torControl->setConfiguration(conf);
-            torControl->saveConfiguration();
-        }
-    }
-
-    if (torManager->running() == "Yes") {
-        qDebug() << "=== Tor ready ===";
-        QString topic = userIdentity->contactID();
-        getChannel(control_channel_name)->setTopic(ricochet_user, topic);
-    }
+    // //if (torManager->configurationNeeded()) {
+    //     if (torManager->running() == "Yes") {
+    //         QVariantMap conf = {
+    //             { QStringLiteral("disableNetwork"), 0 },
+    //             { QStringLiteral("bridges"), QStringList() }
+    //         };
+    //         torControl->setConfiguration(conf);
+    // //        torControl->saveConfiguration();
+    //     }
+    // //}
 
     if (clients.count() > 0) {
         auto contactsManager = userIdentity->getContacts();
@@ -241,6 +214,18 @@ void RicochetIrcServer::torRunningChanged() {
 
 void RicochetIrcServer::torErrorChanged() {
     qDebug() << "=== NOT-IMPLEMENTED: IRC torErrorChanged() ===";
+}
+
+void RicochetIrcServer::onTorControlStatusChanged(int status) {
+    qDebug() << "=== onTorControlStatusChanged" << status;
+    auto& userIdentity = shims::UserIdentity::userIdentity;
+    switch (status) {
+    case shims::TorControl::Status::Connected:
+        qDebug() << "=== Tor connected";
+        QString topic = userIdentity->contactID();
+        getChannel(control_channel_name)->setTopic(ricochet_user, topic);
+        break;
+    }
 }
 
 void RicochetIrcServer::torLogMessage(const QString &message) {
@@ -429,7 +414,7 @@ void RicochetIrcServer::cmdHelp()
     echo(QStringLiteral("| _ (_)__ ___  __| |_  ___| |_  |_ _| _ \\/ __| __ _|__ /"));
     echo(QStringLiteral("|   / / _/ _ \\/ _| ' \\/ -_)  _|  | ||   / (__  \\ V /|_ \\"));
     echo(QStringLiteral("|_|_\\_\\__\\___/\\__|_||_\\___|\\__| |___|_|_\\\\___|  \\_/|___/"));
-    echo(QStringLiteral("%1, based on libtego 3.0.11")
+    echo(QStringLiteral("%1, based on libtego_ui 3.0.29")
          .arg(QCoreApplication::applicationVersion()));
     echo(QLatin1String(""));
     echo(QStringLiteral("COMMANDS:"));
@@ -470,7 +455,8 @@ void RicochetIrcServer::cmdAdd(const QStringList& args)
             message.append(QStringLiteral(" %1").arg(args[i]));
         }
         shims::ContactIDValidator contactIdValidator;
-        if(contactIdValidator.isValidID(id))
+        int pos;
+        if(contactIdValidator.validate(id, pos) == QValidator::Acceptable)
         {
             echo(QStringLiteral("sending contact request to user `%1` with id: %2 with message: %3").arg(nickname).arg(id).arg(message));
             // TODO: my nickname

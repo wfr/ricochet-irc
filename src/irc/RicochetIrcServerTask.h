@@ -1,6 +1,7 @@
 #pragma once
 
 class RicochetIrcServer;
+class QCoreApplication;
 
 class RicochetIrcServerTask : public QObject
 {
