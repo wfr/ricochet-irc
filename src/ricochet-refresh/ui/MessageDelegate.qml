@@ -146,6 +146,7 @@ Column {
                             height: styleHelper.pointSize * 1.5
 
                             text: model.transfer ? model.transfer.file_name : ""
+                            textFormat: Text.PlainText
                             font.bold: true
                             font.pointSize: styleHelper.pointSize
                             elide: Text.ElideMiddle

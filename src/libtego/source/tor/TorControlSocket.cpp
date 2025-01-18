@@ -95,6 +95,8 @@ void TorControlSocket::process()
             return;
 
         QByteArray line = readLine(5120);
+        qDebug() << "torctrl: Recv" << line.trimmed();
+
         if (!line.endsWith("\r\n")) {
             setError(QStringLiteral("Invalid control message syntax"));
             return;

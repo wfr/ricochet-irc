@@ -29,7 +29,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.18)
 
 project(tego)
 
@@ -80,6 +80,10 @@ set(STATIC_QT OFF CACHE BOOL "Enable if using a static build of QT" )
 set(STATIC_QT_ROOT_DIR "" CACHE STRING "Path to static build of QT (ignored if STATIC_QT is set to OFF)")
 
 option(USE_SUBMODULE_FMT "Use the version of fmt included as a submodule instead of one potentially installed to the system" ON)
+
+include(FindOpenSSL)
+find_package(OpenSSL 3.0.0 REQUIRED)
+
 if (USE_SUBMODULE_FMT)
     add_subdirectory(extern/fmt)
 endif ()

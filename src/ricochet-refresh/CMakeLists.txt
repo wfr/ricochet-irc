@@ -54,6 +54,7 @@ if (FORCE_QT5)
                 QmlWorkerScript
                 Multimedia
                 MultimediaQuick
+                QuickControls2
         REQUIRED)
 else ()
     find_package(
@@ -70,6 +71,7 @@ else ()
                 QmlWorkerScript
                 Multimedia
                 MultimediaQuick
+                QuickControls2
         REQUIRED)
 endif ()
 
@@ -84,6 +86,7 @@ find_package(
                QmlWorkerScript
                Multimedia
                MultimediaQuick
+               QuickControls2
     REQUIRED)
 
 # Require Qt >5.15
@@ -99,8 +102,6 @@ if (APPLE)
         COMPONENTS MacExtras
         REQUIRED)
 endif ()
-
-include(FindOpenSSL)
 
 if (APPLE)
     add_executable(ricochet-refresh MACOSX_BUNDLE)
@@ -205,7 +206,8 @@ target_link_libraries(
             Qt${QT_VERSION_MAJOR}::Quick
             Qt${QT_VERSION_MAJOR}::QmlWorkerScript
             Qt${QT_VERSION_MAJOR}::Multimedia
-            Qt${QT_VERSION_MAJOR}::MultimediaQuick)
+            Qt${QT_VERSION_MAJOR}::MultimediaQuick
+            Qt${QT_VERSION_MAJOR}::QuickControls2)
 if (APPLE)
     target_link_libraries(ricochet-refresh PRIVATE Qt${QT_VERSION_MAJOR}::MacExtras)
 endif ()
@@ -218,16 +220,16 @@ endif ()
 if (UNIX)
     # Again, not sure if this needs to be UNIX AND NOT WIN32, or if we should
     # install to /bin on Cygwin like it does now
-    install(TARGETS ricochet-refresh DESTINATION usr/bin)
+    install(TARGETS ricochet-refresh DESTINATION bin)
 endif ()
 
 # Linux
 if (UNIX AND NOT WIN32)
     option (RICOCHET_REFRESH_INSTALL_DESKTOP "Install desktop integration files + icons" OFF)
     if (RICOCHET_REFRESH_INSTALL_DESKTOP)
-        install(FILES resources/linux/ricochet-refresh.desktop DESTINATION usr/share/applications)
-        install(FILES resources/linux/icons/48x48/ricochet-refresh.png DESTINATION usr/share/icons/hicolor/48x48/apps/)
-        install(FILES resources/linux/icons/scalable/ricochet-refresh.svg DESTINATION usr/share/icons/hicolor/scalable/apps/)
+        install(FILES resources/linux/ricochet-refresh.desktop DESTINATION share/applications)
+        install(FILES resources/linux/icons/48x48/ricochet-refresh.png DESTINATION share/icons/hicolor/48x48/apps/)
+        install(FILES resources/linux/icons/scalable/ricochet-refresh.svg DESTINATION share/icons/hicolor/scalable/apps/)
     endif ()
 endif ()
 

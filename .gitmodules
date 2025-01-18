@@ -3,4 +3,4 @@
 	url = https://github.com/fmtlib/fmt.git
 [submodule "src/extern/tor"]
 	path = src/extern/tor
-	url = https://git.torproject.org/tor.git
+	url = https://gitlab.torproject.org/tpo/core/tor.git

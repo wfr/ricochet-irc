@@ -16,6 +16,7 @@ using std::experimental::source_location;
 // fmt
 #include <fmt/format.h>
 #include <fmt/ostream.h>
+#include <fmt/std.h>
 
 // wrapper around fmt::print that writes to singleton log file libtego.log
 class logger
@@ -64,8 +65,3 @@ public:
     static void trace() {}
 };
 #endif // ENABLE_TEGO_LOGGER
-
-// always provide these overloads
-std::ostream& operator<<(std::ostream& out, const class QString& str);
-std::ostream& operator<<(std::ostream& out, const class QByteArray& blob);
-

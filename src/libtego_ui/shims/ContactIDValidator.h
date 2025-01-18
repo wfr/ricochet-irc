@@ -19,11 +19,20 @@ namespace shims
         virtual void fixup(QString &text) const;
         virtual State validate(QString &text, int &pos) const;
 
-        Q_INVOKABLE bool isValidID(const QString &serviceID) const;
-        Q_INVOKABLE shims::ContactUser *matchingContact(const QString &text) const;
-        Q_INVOKABLE bool matchesIdentity(const QString &text) const;
     signals:
-        void failed() const;
-        void success() const;
+        // fired when the service id is a new valid contact
+        void acceptable() const;
+        // fired when user input is maybe a valid contact
+        void intermediate() const;
+        // fired when the service-id matches the regex but is not a valid service id
+        void invalidServiceId() const;
+        // fired when the service-id is already a contact
+        void matchesContact(QString) const;
+        // fired when the service-id is ourself
+        void matchesSelf() const;
+    private:
+        bool isValidID(const QString &serviceID) const;
+        shims::ContactUser *matchingContact(const QString &text) const;
+        bool matchesIdentity(const QString &text) const;
     };
 }

@@ -375,10 +375,9 @@ namespace
             auto userIdentity = shims::UserIdentity::userIdentity;
             auto contactsManager = userIdentity->getContacts();
             auto contact = contactsManager->getShimContactByContactId(serviceIdToContactId(serviceId));
-            auto conversation = contact->conversation();
-
             if (contact != nullptr)
             {
+                auto conversation = contact->conversation();
                 switch(status)
                 {
                     case tego_user_status_online:

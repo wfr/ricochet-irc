@@ -14,7 +14,7 @@ FocusScope {
     property alias text: field.text
     property alias readOnly: field.readOnly
     property alias horizontalAlignment: field.horizontalAlignment
-    property alias acceptableInput: field.acceptableInput
+    property bool acceptableInput: false
     property bool showCopyButton: true
 
     RowLayout {
@@ -24,7 +24,6 @@ FocusScope {
         TextField {
             id: field
             Layout.fillWidth: true
-            font.family: "Courier"
             validator: readOnly ? null : idValidator
             placeholderText: "ricochet:"
             focus: true
@@ -32,32 +31,29 @@ FocusScope {
             ContactIDValidator {
                 id: idValidator
 
-                onFailed: {
-                    var contact
-                    if ((contact = matchingContact(field.text)))
-                    {
-                        //: Error message showed when user attempts to add a contact already in their contact list
-                        errorBubble.show(qsTr("<b>%1</b> is already your contact").arg(Utils.htmlEscaped(contact.nickname)))
-                    }
-                    else if (!isValidID(field.text))
-                    {
-                        //: Error message showed when the id doesn't comply with spec https://gitweb.torproject.org/torspec.git/tree/rend-spec-v3.txt
-                        errorBubble.show(qsTr("This ID is invalid"));
-                    }
-                    else if (matchesIdentity(field.text))
-                    {
-                        //: Error message showed when user attempts to add themselves as a contact in their contact list
-                        errorBubble.show(qsTr("You can't add yourself as a contact"))
-                    }
-                    else
-                    {
-                        //: Error message showed when the provided ricochet id is invalid
-                        errorBubble.show(qsTr("Enter an ID starting with <b>ricochet:</b>"))
-                    }
+                onAcceptable: {
+                    contactId.acceptableInput = true;
+                    errorBubble.clear()
                 }
 
-                onSuccess: {
+                onIntermediate: {
+                    contactId.acceptableInput = false;
                     errorBubble.clear()
+                }
+
+                onInvalidServiceId : {
+                    contactId.acceptableInput = false;
+                    errorBubble.show(qsTr("This ID is invalid"));
+                }
+
+                onMatchesContact: function(nickname) {
+                    contactId.acceptableInput = false;
+                    errorBubble.show(qsTr("<b>%1</b> is already your contact").arg(Utils.htmlEscaped(nickname)))
+                }
+
+                onMatchesSelf: {
+                    contactId.acceptableInput = false;
+                    errorBubble.show(qsTr("You can't add yourself as a contact"))
                 }
             }
 

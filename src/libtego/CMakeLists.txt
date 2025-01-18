@@ -93,7 +93,6 @@ if (NOT ${Protobuf_ROOT_DIR} STREQUAL "")
 endif ()
 
 include(FindProtobuf)
-include(FindOpenSSL)
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
@@ -185,6 +184,7 @@ add_library(
     source/tor_stubs.cpp
     source/user.cpp
     source/user.hpp
+    source/utilities.cpp
     source/utils/CryptoKey.cpp
     source/utils/CryptoKey.h
     source/utils/PendingOperation.cpp
