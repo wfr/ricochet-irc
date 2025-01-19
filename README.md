@@ -4,9 +4,6 @@
 [R2: Ricochet-Refresh](https://github.com/blueprint-freespeech/ricochet-refresh/)
 P2P chat network.
 
-## R<sup>2</sup>: Ricochet Refresh
-Ricochet Refresh is the new updated version of Ricochet, supported by Blueprint for Free Speech. We are a non-government, not-for-profit organisation working to safeguard the freedom of expression for whistleblowers, activists, and everybody else, worldwide. To find out more, check out our profile, or head to [blueprintforfreespeech.net](https://blueprintforfreespeech.net). Blueprint was the original sponsor of Ricochet, written by developer J. Brooks.
-
 ![ricochet-irc screenshot](doc/irc/ricochet-irc.png)
 
 For an introduction to Ricochet itself, please refer to
