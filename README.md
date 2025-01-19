@@ -10,20 +10,27 @@ For an introduction to Ricochet itself, please refer to
 [README-upstream.md](README-upstream.md).
 
 ### Building
-#### Debian GNU/Linux 11 (bullseye)
+#### Debian GNU/Linux 12 (bookworm)
 
 ```
-apt-get install -y build-essential cmake git protobuf-compiler libssl-dev
-apt-get install -y qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qttools5-dev
+apt-get update
+apt-get install -y git
+apt-get install -y cmake tor build-essential libprotobuf-dev protobuf-compiler libssl-dev \
+    qtbase5-dev qtdeclarative5-dev qml-module-qtquick-layouts \
+    qml-module-qtquick-controls qml-module-qtquick-dialogs qttools5-dev \
+    qtmultimedia5-dev qtquickcontrols2-5-dev
 ```
 
 ```
-git clone --recurse-submodules https://github.com/wfr/ricochet-irc
+git clone https://github.com/wfr/ricochet-irc/
 cd ricochet-irc
-git submodule update --init --recursive
-mkdir build && cd build
-cmake ../src/
-make -j$(nproc)
+git submodule update --init src/extern/tor
+git submodule update --init src/extern/fmt
+
+mkdir build
+cmake -S ./src -B ./build -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug \
+  -DRICOCHET_REFRESH_INSTALL_DESKTOP=OFF -DUSE_SUBMODULE_FMT=ON
+cmake --build ./build -j$(nproc)
 ```
 
 Note that, while the build deps pull in Xorg, the resulting binary does not
