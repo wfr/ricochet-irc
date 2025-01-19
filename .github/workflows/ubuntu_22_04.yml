@@ -32,13 +32,10 @@ jobs:
         echo github.event.action: ${{ github.event.action }}
         echo github.event_name: ${{ github.event_name }}
 
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v2.14.0
-
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake tor build-essential libprotobuf-dev protobuf-compiler libssl-dev
+        sudo apt-get install -y git cmake tor build-essential libprotobuf-dev protobuf-compiler libssl-dev
                                 qtbase5-dev qtdeclarative5-dev qml-module-qtquick-layouts
                                 qml-module-qtquick-controls qml-module-qtquick-dialogs qttools5-dev
                                 qtmultimedia5-dev qtquickcontrols2-5-dev
@@ -48,7 +45,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: |
         cmake -S ./src -B ${{github.workspace}}/build -G"Unix Makefiles" \
-          -DCMAKE_BUILD_TYPE=${{env.BUILD-TYPE}} \
+          -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
           -DRICOCHET_REFRESH_INSTALL_DESKTOP=OFF \
           -DUSE_SUBMODULE_FMT=ON
 
