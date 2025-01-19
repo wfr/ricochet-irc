@@ -1,5 +1,5 @@
 # ricochet-irc
-## IRC interface to Ricochet-Refresh (v3.0.11)
+## IRC interface to Ricochet-Refresh (v3.0.29)
 `ricochet-irc` is an IRC interface to the
 [R2: Ricochet-Refresh](https://github.com/blueprint-freespeech/ricochet-refresh/)
 P2P chat network.
