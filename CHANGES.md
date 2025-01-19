@@ -1,3 +1,8 @@
+2025-01-19:
+ * Update to ricochet-refresh v3.0.29
+ * Basic functionality has been restored but beware of bugs.
+ * Added Dockerfile
+
 2022-04-28:
  * Headless build:
    `cmake -D ENABLE_GUI=OFF (default)`

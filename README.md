@@ -33,10 +33,6 @@ cmake -S ./src -B ./build -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug \
 cmake --build ./build -j$(nproc)
 ```
 
-Note that, while the build deps pull in Xorg, the resulting binary does not
-link against any graphics libraries. It could be packaged for use on headless
-machines.
-
 ### Usage
 ```
 ./ricochet-irc --help
