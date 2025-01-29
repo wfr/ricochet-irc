@@ -35,7 +35,9 @@
 #include <QLockFile>
 #include <QPointer>
 #include <QRegularExpression>
+#ifdef ENABLE_GUI
 #include <QRegularExpressionValidator> // QtGui
+#endif
 #include <QSaveFile>
 #include <QStandardPaths>
 #include <QTimer>

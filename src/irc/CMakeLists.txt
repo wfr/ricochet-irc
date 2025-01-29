@@ -40,16 +40,18 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if (ENABLE_GUI)
+    set(TEGO_QT_COMPONENTS Core Network Gui Quick Widgets)
+else()
+    set(TEGO_QT_COMPONENTS Core Network)
+endif()
+
 if (FORCE_QT5)
     find_package(
         QT
         NAMES
         Qt5
-        COMPONENTS Core
-                Gui
-                Network
-                Quick
-                Widgets
+        COMPONENTS $TEGO_QT_COMPONENTS
         REQUIRED)
 else ()
     find_package(
@@ -57,21 +59,13 @@ else ()
         NAMES
         Qt6
         Qt5
-        COMPONENTS Core
-                Gui
-                Network
-                Quick
-                Widgets
+        COMPONENTS $TEGO_QT_COMPONENTS
         REQUIRED)
 endif ()
 
 find_package(
     Qt${QT_VERSION_MAJOR}
-    COMPONENTS Core
-               Gui
-               Network
-               Quick
-               Widgets
+    COMPONENTS ${TEGO_QT_COMPONENTS}
     REQUIRED)
 
 # Require Qt >5.15
@@ -152,13 +146,21 @@ endif ()
 target_link_libraries(ricochet-irc PRIVATE fmt::fmt-header-only)
 
 # QT
-target_link_libraries(
-    ricochet-irc
-    PRIVATE Qt${QT_VERSION_MAJOR}::Core
-            Qt${QT_VERSION_MAJOR}::Widgets
-            Qt${QT_VERSION_MAJOR}::Network
-            Qt${QT_VERSION_MAJOR}::Qml
-            Qt${QT_VERSION_MAJOR}::Quick)
+if (ENABLE_GUI)
+    target_link_libraries(
+        ricochet-irc
+        PRIVATE Qt${QT_VERSION_MAJOR}::Core
+                Qt${QT_VERSION_MAJOR}::Widgets
+                Qt${QT_VERSION_MAJOR}::Network
+                Qt${QT_VERSION_MAJOR}::Qml
+                Qt${QT_VERSION_MAJOR}::Quick)
+else()
+    target_link_libraries(
+        ricochet-irc
+        PRIVATE Qt${QT_VERSION_MAJOR}::Core
+                Qt${QT_VERSION_MAJOR}::Network)
+endif()
+
 if (APPLE)
     target_link_libraries(ricochet-irc PRIVATE Qt${QT_VERSION_MAJOR}::MacExtras)
 endif ()
