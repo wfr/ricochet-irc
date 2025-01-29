@@ -40,6 +40,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+message(STATUS "ENABLE_GUI=${ENABLE_GUI}")
 if (ENABLE_GUI)
     set(TEGO_QT_COMPONENTS Core Network Gui Quick Widgets)
 else()
@@ -97,10 +98,19 @@ include(FindProtobuf)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 
+if (ENABLE_GUI)
+    set(HEADLESS_COMPAT
+    )
+else()
+    set(HEADLESS_COMPAT
+        ../headless_compat/QRegularExpressionValidator.cpp
+        ../headless_compat/QRegularExpressionValidator.h
+	)
+endif ()
+
 add_library(
     tego STATIC
-    ../nogui-qt/QRegularExpressionValidator.cpp
-    ../nogui-qt/QRegularExpressionValidator.h
+    ${HEADLESS_COMPAT}
     include/tego/logger.hpp
     include/tego/tego.h
     include/tego/tego.hpp
@@ -203,7 +213,9 @@ setup_compiler(tego)
 
 target_compile_features(tego PRIVATE cxx_std_20)
 
-target_include_directories(tego PUBLIC ../nogui-qt/)
+if (NOT ENABLE_GUI)
+    target_include_directories(tego PUBLIC ../headless_compat/)
+endif()
 target_include_directories(tego PRIVATE source/)
 target_include_directories(tego PUBLIC include/)
 

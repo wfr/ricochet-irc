@@ -1,11 +1,5 @@
 #pragma once
 
-#ifdef ENABLE_GUI
-	#include <QRegularExpressionValidator>
-#else
-	#include "QRegularExpressionValidator.h"
-#endif
-
 namespace shims
 {
     class ContactUser;

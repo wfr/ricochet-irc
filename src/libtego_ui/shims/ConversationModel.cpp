@@ -217,7 +217,6 @@ namespace shims
 
     void ConversationModel::sendFile()
     {
-        #ifdef ENABLE_GUI
         auto filePath =
             QFileDialog::getOpenFileName(
                 nullptr,
@@ -272,15 +271,10 @@ namespace shims
                 qWarning() << err.what();
             }
         }
-        #else
-        qWarning() << "ConversationModel::sendFile not implemented in headless mode";
-        return;
-        #endif
     }
 
     void ConversationModel::deserializeTextMessageEventToFile(const EventData &event, std::ofstream &ofile) const
     {
-        #ifdef ENABLE_GUI
         auto &md = this->messages[this->messages.size() - safe_cast<int>(event.messageData.reverseIndex)];
         switch (md.status)
         {
@@ -302,16 +296,10 @@ namespace shims
                                     getMessageStatusString(md.status),
                                     md.text.toStdString()); break;
         }
-        #else
-        (void)event;
-        (void)ofile;
-        qWarning() << "ConversationModel::deserializeTextMessageEventToFile not implemented in headless mode";
-        #endif
     }
 
     void ConversationModel::deserializeTransferMessageEventToFile(const EventData &event, std::ofstream &ofile) const
     {
-        #ifdef ENABLE_GUI
         auto &md = this->messages[this->messages.size() - safe_cast<int>(event.transferData.reverseIndex)];
 
         if (md.transferDirection == InvalidDirection)
@@ -351,16 +339,10 @@ namespace shims
                 qWarning() << "Invalid transfer status in events";
                 break;
         }
-        #else
-        (void)event;
-        (void)ofile;
-        qWarning() << "ConversationModel::deserializeTransferMessageEventToFile not implemented in headless mode";
-        #endif
     }
 
     void ConversationModel::deserializeUserStatusUpdateEventToFile(const EventData &event, std::ofstream &ofile) const
     {
-        #ifdef ENABLE_GUI
         if (event.userStatusData.target == UserTargetNone)
             return;
 
@@ -389,11 +371,6 @@ namespace shims
             default:
                 break;
         }
-        #else
-        (void)event;
-        (void)ofile;
-        qWarning() << "ConversationModel::deserializeUserStatusUpdateEventToFile not implemented in headless mode";
-        #endif
     }
 
     void ConversationModel::deserializeEventToFile(const EventData &event, std::ofstream &ofile) const
@@ -418,7 +395,6 @@ namespace shims
 
     bool ConversationModel::exportConversation()
     {
-        #ifdef ENABLE_GUI
         const auto proposedDest = QString("%1/%2-%3.log").arg(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).arg(this->contact()->getNickname()).arg(this->events.constFirst().time.toString(Qt::ISODate));
 
         auto filePath = QFileDialog::getSaveFileName(nullptr,
@@ -444,15 +420,12 @@ namespace shims
         {
             deserializeEventToFile(event, ofile);
         }
-        #else
-        qWarning() << "ConversationModel::exportConversation not implemented in headless mode";
-        #endif
+
         return true;
     }
 
     void ConversationModel::tryAcceptFileTransfer(quint32 id)
     {
-        #ifdef ENABLE_GUI
         auto row = this->indexOfIncomingMessage(id);
         if (row < 0)
         {
@@ -495,10 +468,6 @@ namespace shims
             emitDataChanged(row);
             this->addEventFromMessage(row);
         }
-        #else
-        (void)id;
-        qWarning() << "ConversationModel::tryAcceptFileTransfer not implemented in headless mode";
-        #endif
     }
 
     void ConversationModel::cancelFileTransfer(tego_file_transfer_id_t id)
@@ -719,13 +688,6 @@ namespace shims
         }
 
         auto row = this->indexOfOutgoingMessage(messageId);
-        // irc clears the history very frequently, which can lead to outgoing messages
-        // disappearing before they're acknowledged. In the long run the irc branch
-        // should get rid off libtego_ui entirely. Until then simply
-        // ignore ACKs for unknown messages.
-        if (row == -1) {
-            return;
-        }
         Q_ASSERT(row >= 0);
 
         MessageData &data = messages[row];

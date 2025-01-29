@@ -31,12 +31,6 @@
  */
 
 #include "Settings.h"
-#ifndef ENABLE_GUI
-#include <QTimer>
-#include <QJsonDocument>
-#include <QSaveFile>
-#include <QPointer>
-#endif
 
 class SettingsFilePrivate : public QObject
 {

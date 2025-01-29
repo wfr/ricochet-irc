@@ -5,10 +5,6 @@
 #include "shims/UserIdentity.h"
 #include "shims/ConversationModel.h"
 #include "shims/OutgoingContactRequest.h"
-#ifndef ENABLE_GUI
-#include <QTimer>
-#include <mutex>
-#endif
 
 namespace
 {

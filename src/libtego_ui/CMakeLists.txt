@@ -159,7 +159,3 @@ endif ()
 if ("${CMAKE_BUILD_TYPE}" MATCHES "Rel.*" OR "${CMAKE_BUILD_TYPE}" STREQUAL "MinSizeRel")
     target_compile_definitions(tego_ui PRIVATE QT_NO_DEBUG_OUTPUT QT_NO_WARNING_OUTPUT)
 endif ()
-
-if (ENABLE_GUI)
-	target_compile_definitions(tego_ui PRIVATE ENABLE_GUI)
-endif ()

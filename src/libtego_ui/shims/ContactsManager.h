@@ -19,7 +19,6 @@ namespace shims
         shims::ContactUser* addContact(const QString& serviceId, const QString& nickname);
         const QList<shims::ContactUser*>& contacts() const;
         shims::ContactUser* getShimContactByContactId(const QString& contactId) const;
-        shims::ContactUser* getShimContactByNickname(const QString& nickname) const;
 
         void setUnreadCount(shims::ContactUser* user, int unreadCount);
         void setContactStatus(shims::ContactUser* user, int status);

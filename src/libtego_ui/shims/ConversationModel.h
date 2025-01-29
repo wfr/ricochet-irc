@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ContactUser.h"
-#include <QAbstractListModel>
 
 namespace shims
 {
