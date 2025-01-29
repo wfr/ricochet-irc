@@ -570,6 +570,12 @@ namespace shims
         }
 
         auto row = this->indexOfOutgoingMessage(messageId);
+        // irc clears the history very frequently, which can lead to outgoing messages
+        // disappearing before they're acknowledged.
+        // ignore ACKs for unknown messages.
+        if (row == -1) {
+            return;
+        }
         Q_ASSERT(row >= 0);
 
         MessageData &data = messages[row];
