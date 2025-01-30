@@ -15,10 +15,8 @@ For an introduction to Ricochet itself, please refer to
 ```
 apt-get update
 apt-get install -y git
-apt-get install -y cmake tor build-essential libprotobuf-dev protobuf-compiler libssl-dev \
-    qtbase5-dev qtdeclarative5-dev qml-module-qtquick-layouts \
-    qml-module-qtquick-controls qml-module-qtquick-dialogs qttools5-dev \
-    qtmultimedia5-dev qtquickcontrols2-5-dev
+apt-get install -y cmake tor build-essential \
+    libprotobuf-dev protobuf-compiler libssl-dev qtbase5-dev
 ```
 
 ```
@@ -29,7 +27,8 @@ git submodule update --init src/extern/fmt
 
 mkdir build
 cmake -S ./src -B ./build -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug \
-  -DRICOCHET_REFRESH_INSTALL_DESKTOP=OFF -DUSE_SUBMODULE_FMT=ON
+  -DRICOCHET_REFRESH_INSTALL_DESKTOP=OFF -DUSE_SUBMODULE_FMT=ON \
+  -DENABLE_GUI=off
 cmake --build ./build -j$(nproc)
 ```
 
