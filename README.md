@@ -37,17 +37,19 @@ cmake --build ./build -j$(nproc)
 ./ricochet-irc --help
 ```
 ```
-Usage: ./ricochet-irc [options]
+Usage: ricochet-irc [options]
 Anonymous peer-to-peer instant messaging, IRC gateway
 
 Options:
-  --config <config-path>  Select configuration directory.
-  --port <port>           Set IRC server port.
-  --generate-password     Generate random IRC password.
-  --debug, --verbose      Verbose output
-  -h, --help              Displays help on commandline options.
-  --help-all              Displays help including Qt specific options.
-  -v, --version           Displays version information.
+  --config <config-path>    Select configuration directory.
+  --host <host>             Set IRC server host.
+  --i-know-what-i-am-doing  Allow --host option
+  --port <port>             Set IRC server port.
+  --generate-password       Generate random IRC password.
+  --debug, --verbose        Verbose output
+  -h, --help                Displays help on commandline options.
+  --help-all                Displays help including Qt specific options.
+  -v, --version             Displays version information.
 ```
 
 #### IRC interface
