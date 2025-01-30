@@ -20,4 +20,4 @@ RUN cd ricochet-irc && \
 	  -DRICOCHET_REFRESH_INSTALL_DESKTOP=OFF -DUSE_SUBMODULE_FMT=ON -DENABLE_GUI=off && \
 	cmake --build ./build -j$(nproc)
 
-ENTRYPOINT /work/ricochet-irc/build/irc/ricochet-irc
+ENTRYPOINT /work/ricochet-irc/build/irc/ricochet-irc --host 0.0.0.0 --i-know-what-i-am-doing
