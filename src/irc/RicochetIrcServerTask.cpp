@@ -23,11 +23,12 @@ RicochetIrcServerTask::RicochetIrcServerTask(QCoreApplication* app)
     : QObject(app), irc_server(nullptr)
 {
     SettingsObject settings;
+    QHostAddress host(settings.read("irc.host", "127.0.0.1").toString());
     uint16_t port = static_cast<uint16_t>(settings.read("irc.port", 6667).toInt());
     QString password = settings.read("irc.password", QLatin1String("")).toString();
     assert(password.length());
 
-    irc_server = new RicochetIrcServer(this, port, password);
+    irc_server = new RicochetIrcServer(this, host, port, password);
 }
 
 void RicochetIrcServerTask::run()
@@ -42,7 +43,7 @@ void RicochetIrcServerTask::run()
 
     std::cout << std::endl;
     std::cout << "## IRC server started:" << std::endl;
-    std::cout << "Host:      127.0.0.1" << std::endl;
+    std::cout << "Host:      " << irc_server->host().toString() << std::endl;
     std::cout << "Port:      " << irc_server->port() << std::endl;
     std::cout << "Password:  " << irc_server->password().toUtf8().data() << std::endl;
     std::cout << std::endl;

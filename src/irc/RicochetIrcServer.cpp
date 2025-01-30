@@ -48,9 +48,11 @@
 
 
 RicochetIrcServer::RicochetIrcServer(QObject *parent,
-                                     uint16_t port, const QString& password,
+                                     const QHostAddress& host,
+                                     uint16_t port,
+                                     const QString& password,
                                      const QString& control_channel_name)
-    : IrcServer(parent, port, password),
+    : IrcServer(parent, host, port, password),
       control_channel_name(control_channel_name)
 {
 

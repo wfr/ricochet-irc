@@ -38,8 +38,14 @@
 #include <QException>
 #include <QDebug>
 
-IrcServer::IrcServer(QObject *parent, uint16_t port, const QString& password)
-    : QObject(parent), m_port(port), m_password(password)
+IrcServer::IrcServer(QObject *parent,
+                     const QHostAddress& host,
+                     uint16_t port,
+                     const QString& password)
+    : QObject(parent),
+    m_host(host),
+    m_port(port),
+    m_password(password)
 {
 }
 
@@ -62,7 +68,7 @@ IrcServer::~IrcServer()
 bool IrcServer::run()
 {
     tcpServer = new QTcpServer(this);
-    if(tcpServer->listen(QHostAddress::LocalHost, m_port))
+    if(tcpServer->listen(m_host, m_port))
     {
         connect(tcpServer,
                 SIGNAL(newConnection()),
@@ -131,6 +137,10 @@ void IrcServer::clientLoggedIn()
 const QString IrcServer::getWelcomeMessage()
 {
     return QString(QStringLiteral("Welcome to a local IRC server!"));
+}
+
+const QHostAddress& IrcServer::host() {
+    return m_host;
 }
 
 uint16_t IrcServer::port() {

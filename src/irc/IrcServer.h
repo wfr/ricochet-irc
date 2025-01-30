@@ -47,6 +47,7 @@ class IrcServer : public QObject
     Q_OBJECT
 public:
     explicit IrcServer(QObject *parent = 0,
+                       const QHostAddress& host = QHostAddress::LocalHost,
                        uint16_t port = 6667,
                        const QString& password = QStringLiteral(""));
     ~IrcServer();
@@ -73,6 +74,7 @@ public:
 
     virtual const QString getWelcomeMessage();
 
+    const QHostAddress& host();
     uint16_t port();
     const QString& password() const;
 
@@ -112,6 +114,7 @@ public slots:
 
 
 protected:
+    QHostAddress m_host;
     uint16_t m_port;
     QString m_password;
     QString welcome_message;

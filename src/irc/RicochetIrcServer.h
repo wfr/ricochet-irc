@@ -51,6 +51,7 @@ class RicochetIrcServer : public IrcServer
     Q_OBJECT
 public:
     explicit RicochetIrcServer(QObject *parent = nullptr,
+                               const QHostAddress& host = QHostAddress::LocalHost,
                                uint16_t port = 6667,
                                const QString& password = QStringLiteral(""),
                                const QString& control_channel_name = QStringLiteral("#ricochet"));

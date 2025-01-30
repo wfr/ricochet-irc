@@ -275,6 +275,14 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
                                        QStringLiteral("config-path"),
                                        defaultConfigPath);
     parser.addOption(opt_config_path);
+    QCommandLineOption opt_irc_host(QStringLiteral("host"),
+                                    QCoreApplication::translate("irc", "Set IRC server host."),
+                                    QStringLiteral("host"),
+                                    QStringLiteral("127.0.0.1"));
+    parser.addOption(opt_irc_host);
+    QCommandLineOption opt_irc_expert(QStringLiteral("i-know-what-i-am-doing"),
+                                   QCoreApplication::translate("irc", "Allow --host option"));
+    parser.addOption(opt_irc_expert);
     QCommandLineOption opt_irc_port(QStringLiteral("port"),
                                     QCoreApplication::translate("irc", "Set IRC server port."),
                                     QStringLiteral("port"),
@@ -344,6 +352,16 @@ static bool initSettings(SettingsFile *settings, QLockFile **lockFile, QString &
     }
 
     // IRC settings
+    if(parser.isSet(opt_irc_host)) {
+        if (!parser.isSet(opt_irc_expert) && parser.value("host") != "127.0.0.1") {
+            errorMessage = QStringLiteral("--host requires --i-know-what-i-am-doing");
+            return false;
+        }
+        QHostAddress host(parser.value("host"));
+        settings->root()->write("irc.host", host.toString());
+        qDebug() << "IRC server host is " << host;
+    }
+
     if(parser.isSet(opt_irc_port)) {
         bool ok;
         int port = parser.value(QStringLiteral("port")).toInt(&ok);
